@@ -1,0 +1,26 @@
+{
+  "parameters": {
+    "width": 8,
+    "size": 512,
+    "depth": 3,
+    "max_value": 1000,
+    "seed": 1
+  },
+  "timings_seconds": {
+    "tree_build": 0.033820390701293945,
+    "challenge_generation": 1.5020370483398438e-05,
+    "proof_generation": 0.0060842037200927734,
+    "proof_verification": 0.02138519287109375
+  },
+  "sizes_bytes": {
+    "tree_estimated": 177840,
+    "proof_estimated": 600,
+    "commitment": 48,
+    "dataset": 4096
+  },
+  "proof_node_count": 3,
+  "challenge_indices": 160,
+  "challenge_values": 74,
+  "root_commitment_hex": "0xadb3369339740cd80fda2768040897330ed91745e337f97d695f26377ff7f19389373e036296c5aa737d034d82927e68",
+  "proof_verification_result": true
+}

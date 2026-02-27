@@ -1,0 +1,4486 @@
+{
+  "model_name": "meta-llama/Llama-2-70b-hf",
+  "num_layers": 560,
+  "layers": [
+    {
+      "index": 0,
+      "name": "0.self_attn.q_proj",
+      "norm_1": 413246.25,
+      "norm_2": 83.96365356445312,
+      "norm_inf": 0.6640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 1,
+      "name": "0.self_attn.k_proj",
+      "norm_1": 114795.7265625,
+      "norm_2": 66.93034362792969,
+      "norm_inf": 0.9453125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 2,
+      "name": "0.self_attn.v_proj",
+      "norm_1": 55203.81640625,
+      "norm_2": 24.86035919189453,
+      "norm_inf": 0.07080078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 3,
+      "name": "0.self_attn.o_proj",
+      "norm_1": 379645.53125,
+      "norm_2": 61.282615661621094,
+      "norm_inf": 0.5859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 4,
+      "name": "0.mlp.gate_proj",
+      "norm_1": 1738588.5,
+      "norm_2": 145.6156768798828,
+      "norm_inf": 0.61328125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 5,
+      "name": "0.mlp.up_proj",
+      "norm_1": 1706087.25,
+      "norm_2": 141.93902587890625,
+      "norm_inf": 0.2578125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 6,
+      "name": "0.mlp.down_proj",
+      "norm_1": 2112149.25,
+      "norm_2": 175.32725524902344,
+      "norm_inf": 0.486328125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 7,
+      "name": "1.self_attn.q_proj",
+      "norm_1": 597038.0,
+      "norm_2": 112.53978729248047,
+      "norm_inf": 0.43359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 8,
+      "name": "1.self_attn.k_proj",
+      "norm_1": 146670.59375,
+      "norm_2": 74.48359680175781,
+      "norm_inf": 0.431640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 9,
+      "name": "1.self_attn.v_proj",
+      "norm_1": 52918.859375,
+      "norm_2": 24.379486083984375,
+      "norm_inf": 0.07421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 10,
+      "name": "1.self_attn.o_proj",
+      "norm_1": 454433.125,
+      "norm_2": 73.72679138183594,
+      "norm_inf": 0.62890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 11,
+      "name": "1.mlp.gate_proj",
+      "norm_1": 2383018.0,
+      "norm_2": 195.9561767578125,
+      "norm_inf": 0.5078125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 12,
+      "name": "1.mlp.up_proj",
+      "norm_1": 2338790.0,
+      "norm_2": 191.64752197265625,
+      "norm_inf": 0.365234375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 13,
+      "name": "1.mlp.down_proj",
+      "norm_1": 2520161.0,
+      "norm_2": 206.45245361328125,
+      "norm_inf": 0.51171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 14,
+      "name": "2.self_attn.q_proj",
+      "norm_1": 861317.0625,
+      "norm_2": 142.93849182128906,
+      "norm_inf": 0.30859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 15,
+      "name": "2.self_attn.k_proj",
+      "norm_1": 185781.421875,
+      "norm_2": 88.30493927001953,
+      "norm_inf": 0.53125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 16,
+      "name": "2.self_attn.v_proj",
+      "norm_1": 60176.6015625,
+      "norm_2": 26.559389114379883,
+      "norm_inf": 0.10595703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 17,
+      "name": "2.self_attn.o_proj",
+      "norm_1": 595602.5,
+      "norm_2": 92.5765380859375,
+      "norm_inf": 0.4609375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 18,
+      "name": "2.mlp.gate_proj",
+      "norm_1": 2626546.5,
+      "norm_2": 215.3674774169922,
+      "norm_inf": 0.7734375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 19,
+      "name": "2.mlp.up_proj",
+      "norm_1": 2513762.25,
+      "norm_2": 205.66668701171875,
+      "norm_inf": 0.302734375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 20,
+      "name": "2.mlp.down_proj",
+      "norm_1": 2616938.5,
+      "norm_2": 214.1370849609375,
+      "norm_inf": 2.15625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 21,
+      "name": "3.self_attn.q_proj",
+      "norm_1": 823033.3125,
+      "norm_2": 133.40423583984375,
+      "norm_inf": 0.451171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 22,
+      "name": "3.self_attn.k_proj",
+      "norm_1": 164561.0,
+      "norm_2": 77.59052276611328,
+      "norm_inf": 0.32421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 23,
+      "name": "3.self_attn.v_proj",
+      "norm_1": 70598.5390625,
+      "norm_2": 30.945436477661133,
+      "norm_inf": 0.07470703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 24,
+      "name": "3.self_attn.o_proj",
+      "norm_1": 665159.125,
+      "norm_2": 102.33345794677734,
+      "norm_inf": 0.546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 25,
+      "name": "3.mlp.gate_proj",
+      "norm_1": 2681384.75,
+      "norm_2": 219.9878387451172,
+      "norm_inf": 0.5390625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 26,
+      "name": "3.mlp.up_proj",
+      "norm_1": 2573247.5,
+      "norm_2": 210.6931915283203,
+      "norm_inf": 0.34765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 27,
+      "name": "3.mlp.down_proj",
+      "norm_1": 2632785.25,
+      "norm_2": 215.47952270507812,
+      "norm_inf": 0.5390625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 28,
+      "name": "4.self_attn.q_proj",
+      "norm_1": 779749.5,
+      "norm_2": 125.53412628173828,
+      "norm_inf": 0.5859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 29,
+      "name": "4.self_attn.k_proj",
+      "norm_1": 141773.203125,
+      "norm_2": 67.18680572509766,
+      "norm_inf": 0.296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 30,
+      "name": "4.self_attn.v_proj",
+      "norm_1": 67614.9375,
+      "norm_2": 29.96258544921875,
+      "norm_inf": 0.103515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 31,
+      "name": "4.self_attn.o_proj",
+      "norm_1": 627506.625,
+      "norm_2": 96.90546417236328,
+      "norm_inf": 0.51953125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 32,
+      "name": "4.mlp.gate_proj",
+      "norm_1": 2702410.75,
+      "norm_2": 221.79212951660156,
+      "norm_inf": 0.431640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 33,
+      "name": "4.mlp.up_proj",
+      "norm_1": 2586248.75,
+      "norm_2": 211.68588256835938,
+      "norm_inf": 0.51953125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 34,
+      "name": "4.mlp.down_proj",
+      "norm_1": 2634633.25,
+      "norm_2": 215.5556182861328,
+      "norm_inf": 0.4921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 35,
+      "name": "5.self_attn.q_proj",
+      "norm_1": 823093.75,
+      "norm_2": 131.55152893066406,
+      "norm_inf": 0.59765625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 36,
+      "name": "5.self_attn.k_proj",
+      "norm_1": 149747.34375,
+      "norm_2": 70.0868148803711,
+      "norm_inf": 0.40625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 37,
+      "name": "5.self_attn.v_proj",
+      "norm_1": 69941.3359375,
+      "norm_2": 30.588903427124023,
+      "norm_inf": 0.0703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 38,
+      "name": "5.self_attn.o_proj",
+      "norm_1": 655207.875,
+      "norm_2": 100.73218536376953,
+      "norm_inf": 0.3125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 39,
+      "name": "5.mlp.gate_proj",
+      "norm_1": 2713398.0,
+      "norm_2": 222.74249267578125,
+      "norm_inf": 0.453125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 40,
+      "name": "5.mlp.up_proj",
+      "norm_1": 2597766.25,
+      "norm_2": 212.6857147216797,
+      "norm_inf": 0.33203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 41,
+      "name": "5.mlp.down_proj",
+      "norm_1": 2635094.25,
+      "norm_2": 215.6568145751953,
+      "norm_inf": 0.546875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 42,
+      "name": "6.self_attn.q_proj",
+      "norm_1": 838450.25,
+      "norm_2": 135.48843383789062,
+      "norm_inf": 0.478515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 43,
+      "name": "6.self_attn.k_proj",
+      "norm_1": 150181.28125,
+      "norm_2": 69.96696472167969,
+      "norm_inf": 0.40625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 44,
+      "name": "6.self_attn.v_proj",
+      "norm_1": 70895.2421875,
+      "norm_2": 30.929359436035156,
+      "norm_inf": 0.060546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 45,
+      "name": "6.self_attn.o_proj",
+      "norm_1": 669990.9375,
+      "norm_2": 102.82147216796875,
+      "norm_inf": 0.5078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 46,
+      "name": "6.mlp.gate_proj",
+      "norm_1": 2733645.5,
+      "norm_2": 224.27120971679688,
+      "norm_inf": 0.439453125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 47,
+      "name": "6.mlp.up_proj",
+      "norm_1": 2614337.0,
+      "norm_2": 213.97784423828125,
+      "norm_inf": 0.41796875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 48,
+      "name": "6.mlp.down_proj",
+      "norm_1": 2647138.75,
+      "norm_2": 216.64132690429688,
+      "norm_inf": 0.4375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 49,
+      "name": "7.self_attn.q_proj",
+      "norm_1": 832244.875,
+      "norm_2": 133.60604858398438,
+      "norm_inf": 0.443359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 50,
+      "name": "7.self_attn.k_proj",
+      "norm_1": 146092.28125,
+      "norm_2": 68.73148345947266,
+      "norm_inf": 0.2890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 51,
+      "name": "7.self_attn.v_proj",
+      "norm_1": 68562.6953125,
+      "norm_2": 29.97888946533203,
+      "norm_inf": 0.08837890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 52,
+      "name": "7.self_attn.o_proj",
+      "norm_1": 669543.3125,
+      "norm_2": 102.69277954101562,
+      "norm_inf": 0.310546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 53,
+      "name": "7.mlp.gate_proj",
+      "norm_1": 2748946.0,
+      "norm_2": 225.48251342773438,
+      "norm_inf": 0.451171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 54,
+      "name": "7.mlp.up_proj",
+      "norm_1": 2629650.25,
+      "norm_2": 215.1710205078125,
+      "norm_inf": 0.35546875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 55,
+      "name": "7.mlp.down_proj",
+      "norm_1": 2660792.25,
+      "norm_2": 217.7233123779297,
+      "norm_inf": 0.94921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 56,
+      "name": "8.self_attn.q_proj",
+      "norm_1": 845863.625,
+      "norm_2": 135.31483459472656,
+      "norm_inf": 0.447265625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 57,
+      "name": "8.self_attn.k_proj",
+      "norm_1": 157408.375,
+      "norm_2": 74.12027740478516,
+      "norm_inf": 0.333984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 58,
+      "name": "8.self_attn.v_proj",
+      "norm_1": 69902.5234375,
+      "norm_2": 30.532957077026367,
+      "norm_inf": 0.0830078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 59,
+      "name": "8.self_attn.o_proj",
+      "norm_1": 673759.25,
+      "norm_2": 104.0201187133789,
+      "norm_inf": 0.82421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 60,
+      "name": "8.mlp.gate_proj",
+      "norm_1": 2789755.0,
+      "norm_2": 229.71865844726562,
+      "norm_inf": 0.6484375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 61,
+      "name": "8.mlp.up_proj",
+      "norm_1": 2633573.0,
+      "norm_2": 215.6221923828125,
+      "norm_inf": 0.58984375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 62,
+      "name": "8.mlp.down_proj",
+      "norm_1": 2667309.0,
+      "norm_2": 218.4098663330078,
+      "norm_inf": 2.015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 63,
+      "name": "9.self_attn.q_proj",
+      "norm_1": 766061.875,
+      "norm_2": 122.93135070800781,
+      "norm_inf": 0.404296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 64,
+      "name": "9.self_attn.k_proj",
+      "norm_1": 143300.625,
+      "norm_2": 67.47064971923828,
+      "norm_inf": 0.359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 65,
+      "name": "9.self_attn.v_proj",
+      "norm_1": 77611.8828125,
+      "norm_2": 33.92604446411133,
+      "norm_inf": 0.115234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 66,
+      "name": "9.self_attn.o_proj",
+      "norm_1": 693748.3125,
+      "norm_2": 106.37435150146484,
+      "norm_inf": 0.51953125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 67,
+      "name": "9.mlp.gate_proj",
+      "norm_1": 2813525.0,
+      "norm_2": 231.0928955078125,
+      "norm_inf": 0.64453125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 68,
+      "name": "9.mlp.up_proj",
+      "norm_1": 2648254.25,
+      "norm_2": 216.59364318847656,
+      "norm_inf": 0.298828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 69,
+      "name": "9.mlp.down_proj",
+      "norm_1": 2677977.75,
+      "norm_2": 219.0736846923828,
+      "norm_inf": 0.96484375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 70,
+      "name": "10.self_attn.q_proj",
+      "norm_1": 703688.6875,
+      "norm_2": 115.44259643554688,
+      "norm_inf": 0.5234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 71,
+      "name": "10.self_attn.k_proj",
+      "norm_1": 131173.65625,
+      "norm_2": 62.141265869140625,
+      "norm_inf": 0.365234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 72,
+      "name": "10.self_attn.v_proj",
+      "norm_1": 83906.21875,
+      "norm_2": 36.436100006103516,
+      "norm_inf": 0.0751953125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 73,
+      "name": "10.self_attn.o_proj",
+      "norm_1": 671039.125,
+      "norm_2": 103.93065643310547,
+      "norm_inf": 1.140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 74,
+      "name": "10.mlp.gate_proj",
+      "norm_1": 2829931.25,
+      "norm_2": 232.3733367919922,
+      "norm_inf": 0.5625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 75,
+      "name": "10.mlp.up_proj",
+      "norm_1": 2661061.5,
+      "norm_2": 217.63882446289062,
+      "norm_inf": 0.349609375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 76,
+      "name": "10.mlp.down_proj",
+      "norm_1": 2677987.25,
+      "norm_2": 219.0865936279297,
+      "norm_inf": 0.90625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 77,
+      "name": "11.self_attn.q_proj",
+      "norm_1": 739834.875,
+      "norm_2": 120.67501831054688,
+      "norm_inf": 0.283203125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 78,
+      "name": "11.self_attn.k_proj",
+      "norm_1": 142076.625,
+      "norm_2": 66.24542236328125,
+      "norm_inf": 0.35546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 79,
+      "name": "11.self_attn.v_proj",
+      "norm_1": 78823.09375,
+      "norm_2": 34.25514221191406,
+      "norm_inf": 0.08544921875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 80,
+      "name": "11.self_attn.o_proj",
+      "norm_1": 663866.0625,
+      "norm_2": 102.74138641357422,
+      "norm_inf": 0.6328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 81,
+      "name": "11.mlp.gate_proj",
+      "norm_1": 2824028.0,
+      "norm_2": 231.9130096435547,
+      "norm_inf": 0.51171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 82,
+      "name": "11.mlp.up_proj",
+      "norm_1": 2668289.75,
+      "norm_2": 218.27374267578125,
+      "norm_inf": 0.396484375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 83,
+      "name": "11.mlp.down_proj",
+      "norm_1": 2674255.75,
+      "norm_2": 218.7908935546875,
+      "norm_inf": 0.56640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 84,
+      "name": "12.self_attn.q_proj",
+      "norm_1": 794403.5625,
+      "norm_2": 126.97740936279297,
+      "norm_inf": 0.287109375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 85,
+      "name": "12.self_attn.k_proj",
+      "norm_1": 152829.5625,
+      "norm_2": 70.2650375366211,
+      "norm_inf": 0.31640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 86,
+      "name": "12.self_attn.v_proj",
+      "norm_1": 81986.109375,
+      "norm_2": 35.664974212646484,
+      "norm_inf": 0.1162109375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 87,
+      "name": "12.self_attn.o_proj",
+      "norm_1": 683780.0625,
+      "norm_2": 105.20956420898438,
+      "norm_inf": 0.470703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 88,
+      "name": "12.mlp.gate_proj",
+      "norm_1": 2797003.75,
+      "norm_2": 229.6412353515625,
+      "norm_inf": 0.419921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 89,
+      "name": "12.mlp.up_proj",
+      "norm_1": 2667203.5,
+      "norm_2": 218.27403259277344,
+      "norm_inf": 0.310546875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 90,
+      "name": "12.mlp.down_proj",
+      "norm_1": 2671330.0,
+      "norm_2": 218.63323974609375,
+      "norm_inf": 1.1171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 91,
+      "name": "13.self_attn.q_proj",
+      "norm_1": 766356.75,
+      "norm_2": 124.60550689697266,
+      "norm_inf": 0.49609375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 92,
+      "name": "13.self_attn.k_proj",
+      "norm_1": 142442.671875,
+      "norm_2": 67.81573486328125,
+      "norm_inf": 0.4296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 93,
+      "name": "13.self_attn.v_proj",
+      "norm_1": 77567.65625,
+      "norm_2": 33.8912239074707,
+      "norm_inf": 0.07275390625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 94,
+      "name": "13.self_attn.o_proj",
+      "norm_1": 695182.9375,
+      "norm_2": 106.86177062988281,
+      "norm_inf": 0.95703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 95,
+      "name": "13.mlp.gate_proj",
+      "norm_1": 2781444.5,
+      "norm_2": 228.25205993652344,
+      "norm_inf": 0.97265625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 96,
+      "name": "13.mlp.up_proj",
+      "norm_1": 2666278.0,
+      "norm_2": 218.11141967773438,
+      "norm_inf": 0.3125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 97,
+      "name": "13.mlp.down_proj",
+      "norm_1": 2681350.0,
+      "norm_2": 219.3786163330078,
+      "norm_inf": 1.5,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 98,
+      "name": "14.self_attn.q_proj",
+      "norm_1": 791490.25,
+      "norm_2": 127.0637435913086,
+      "norm_inf": 0.46875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 99,
+      "name": "14.self_attn.k_proj",
+      "norm_1": 141706.078125,
+      "norm_2": 65.70083618164062,
+      "norm_inf": 0.333984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 100,
+      "name": "14.self_attn.v_proj",
+      "norm_1": 78003.2734375,
+      "norm_2": 33.95499038696289,
+      "norm_inf": 0.06640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 101,
+      "name": "14.self_attn.o_proj",
+      "norm_1": 701141.75,
+      "norm_2": 107.7252426147461,
+      "norm_inf": 0.53515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 102,
+      "name": "14.mlp.gate_proj",
+      "norm_1": 2787273.5,
+      "norm_2": 228.80897521972656,
+      "norm_inf": 0.640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 103,
+      "name": "14.mlp.up_proj",
+      "norm_1": 2670536.75,
+      "norm_2": 218.4962615966797,
+      "norm_inf": 0.330078125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 104,
+      "name": "14.mlp.down_proj",
+      "norm_1": 2677031.75,
+      "norm_2": 219.06578063964844,
+      "norm_inf": 0.703125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 105,
+      "name": "15.self_attn.q_proj",
+      "norm_1": 712481.5625,
+      "norm_2": 116.43964385986328,
+      "norm_inf": 0.478515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 106,
+      "name": "15.self_attn.k_proj",
+      "norm_1": 129685.34375,
+      "norm_2": 61.632259368896484,
+      "norm_inf": 0.34765625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 107,
+      "name": "15.self_attn.v_proj",
+      "norm_1": 83765.859375,
+      "norm_2": 36.58027267456055,
+      "norm_inf": 0.07666015625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 108,
+      "name": "15.self_attn.o_proj",
+      "norm_1": 707562.875,
+      "norm_2": 108.8393783569336,
+      "norm_inf": 0.85546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 109,
+      "name": "15.mlp.gate_proj",
+      "norm_1": 2785952.0,
+      "norm_2": 228.636474609375,
+      "norm_inf": 0.478515625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 110,
+      "name": "15.mlp.up_proj",
+      "norm_1": 2671827.5,
+      "norm_2": 218.54139709472656,
+      "norm_inf": 0.296875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 111,
+      "name": "15.mlp.down_proj",
+      "norm_1": 2681416.5,
+      "norm_2": 219.37310791015625,
+      "norm_inf": 0.578125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 112,
+      "name": "16.self_attn.q_proj",
+      "norm_1": 718755.5,
+      "norm_2": 117.33426666259766,
+      "norm_inf": 0.49609375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 113,
+      "name": "16.self_attn.k_proj",
+      "norm_1": 137476.5625,
+      "norm_2": 64.71721649169922,
+      "norm_inf": 0.390625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 114,
+      "name": "16.self_attn.v_proj",
+      "norm_1": 83774.6796875,
+      "norm_2": 36.42683410644531,
+      "norm_inf": 0.07763671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 115,
+      "name": "16.self_attn.o_proj",
+      "norm_1": 706207.0625,
+      "norm_2": 108.60086059570312,
+      "norm_inf": 0.4453125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 116,
+      "name": "16.mlp.gate_proj",
+      "norm_1": 2777123.0,
+      "norm_2": 227.990966796875,
+      "norm_inf": 0.74609375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 117,
+      "name": "16.mlp.up_proj",
+      "norm_1": 2674847.0,
+      "norm_2": 218.86770629882812,
+      "norm_inf": 0.51953125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 118,
+      "name": "16.mlp.down_proj",
+      "norm_1": 2676718.25,
+      "norm_2": 219.0426483154297,
+      "norm_inf": 0.59375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 119,
+      "name": "17.self_attn.q_proj",
+      "norm_1": 795522.3125,
+      "norm_2": 128.1334228515625,
+      "norm_inf": 0.486328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 120,
+      "name": "17.self_attn.k_proj",
+      "norm_1": 149540.53125,
+      "norm_2": 70.20619201660156,
+      "norm_inf": 0.29296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 121,
+      "name": "17.self_attn.v_proj",
+      "norm_1": 80582.171875,
+      "norm_2": 35.36676025390625,
+      "norm_inf": 0.08056640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 122,
+      "name": "17.self_attn.o_proj",
+      "norm_1": 710583.375,
+      "norm_2": 109.1846923828125,
+      "norm_inf": 0.8203125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 123,
+      "name": "17.mlp.gate_proj",
+      "norm_1": 2776741.75,
+      "norm_2": 228.0453643798828,
+      "norm_inf": 0.384765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 124,
+      "name": "17.mlp.up_proj",
+      "norm_1": 2666145.0,
+      "norm_2": 218.1371307373047,
+      "norm_inf": 0.4609375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 125,
+      "name": "17.mlp.down_proj",
+      "norm_1": 2685963.75,
+      "norm_2": 219.78936767578125,
+      "norm_inf": 0.87109375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 126,
+      "name": "18.self_attn.q_proj",
+      "norm_1": 724606.5,
+      "norm_2": 118.44623565673828,
+      "norm_inf": 0.244140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 127,
+      "name": "18.self_attn.k_proj",
+      "norm_1": 135497.15625,
+      "norm_2": 63.693904876708984,
+      "norm_inf": 0.330078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 128,
+      "name": "18.self_attn.v_proj",
+      "norm_1": 88295.703125,
+      "norm_2": 38.474063873291016,
+      "norm_inf": 0.083984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 129,
+      "name": "18.self_attn.o_proj",
+      "norm_1": 710443.0625,
+      "norm_2": 109.40948486328125,
+      "norm_inf": 1.2265625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 130,
+      "name": "18.mlp.gate_proj",
+      "norm_1": 2787686.5,
+      "norm_2": 228.89573669433594,
+      "norm_inf": 0.482421875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 131,
+      "name": "18.mlp.up_proj",
+      "norm_1": 2664245.0,
+      "norm_2": 217.9388427734375,
+      "norm_inf": 0.353515625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 132,
+      "name": "18.mlp.down_proj",
+      "norm_1": 2689022.75,
+      "norm_2": 220.0265655517578,
+      "norm_inf": 1.171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 133,
+      "name": "19.self_attn.q_proj",
+      "norm_1": 717858.5,
+      "norm_2": 116.7813720703125,
+      "norm_inf": 0.443359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 134,
+      "name": "19.self_attn.k_proj",
+      "norm_1": 135498.96875,
+      "norm_2": 64.4141616821289,
+      "norm_inf": 0.353515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 135,
+      "name": "19.self_attn.v_proj",
+      "norm_1": 90828.390625,
+      "norm_2": 39.601470947265625,
+      "norm_inf": 0.0859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 136,
+      "name": "19.self_attn.o_proj",
+      "norm_1": 735125.875,
+      "norm_2": 112.84600067138672,
+      "norm_inf": 0.87890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 137,
+      "name": "19.mlp.gate_proj",
+      "norm_1": 2789483.25,
+      "norm_2": 228.80128479003906,
+      "norm_inf": 0.671875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 138,
+      "name": "19.mlp.up_proj",
+      "norm_1": 2676714.75,
+      "norm_2": 218.90675354003906,
+      "norm_inf": 0.322265625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 139,
+      "name": "19.mlp.down_proj",
+      "norm_1": 2700395.5,
+      "norm_2": 220.90493774414062,
+      "norm_inf": 1.015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 140,
+      "name": "20.self_attn.q_proj",
+      "norm_1": 702948.5,
+      "norm_2": 115.4099349975586,
+      "norm_inf": 0.423828125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 141,
+      "name": "20.self_attn.k_proj",
+      "norm_1": 135698.984375,
+      "norm_2": 65.15330505371094,
+      "norm_inf": 0.353515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 142,
+      "name": "20.self_attn.v_proj",
+      "norm_1": 84719.5859375,
+      "norm_2": 37.039093017578125,
+      "norm_inf": 0.19140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 143,
+      "name": "20.self_attn.o_proj",
+      "norm_1": 693483.875,
+      "norm_2": 107.45064544677734,
+      "norm_inf": 1.96875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 144,
+      "name": "20.mlp.gate_proj",
+      "norm_1": 2792880.75,
+      "norm_2": 229.10057067871094,
+      "norm_inf": 0.39453125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 145,
+      "name": "20.mlp.up_proj",
+      "norm_1": 2683263.25,
+      "norm_2": 219.44754028320312,
+      "norm_inf": 0.404296875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 146,
+      "name": "20.mlp.down_proj",
+      "norm_1": 2698672.0,
+      "norm_2": 220.76007080078125,
+      "norm_inf": 1.0859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 147,
+      "name": "21.self_attn.q_proj",
+      "norm_1": 647857.0,
+      "norm_2": 109.33829498291016,
+      "norm_inf": 0.25,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 148,
+      "name": "21.self_attn.k_proj",
+      "norm_1": 126824.6875,
+      "norm_2": 63.03070831298828,
+      "norm_inf": 0.353515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 149,
+      "name": "21.self_attn.v_proj",
+      "norm_1": 84080.890625,
+      "norm_2": 36.6918830871582,
+      "norm_inf": 0.09228515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 150,
+      "name": "21.self_attn.o_proj",
+      "norm_1": 686342.0,
+      "norm_2": 106.17243194580078,
+      "norm_inf": 1.0234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 151,
+      "name": "21.mlp.gate_proj",
+      "norm_1": 2787466.5,
+      "norm_2": 228.5134735107422,
+      "norm_inf": 0.43359375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 152,
+      "name": "21.mlp.up_proj",
+      "norm_1": 2691726.25,
+      "norm_2": 220.13673400878906,
+      "norm_inf": 0.31640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 153,
+      "name": "21.mlp.down_proj",
+      "norm_1": 2702795.75,
+      "norm_2": 221.0895233154297,
+      "norm_inf": 0.96875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 154,
+      "name": "22.self_attn.q_proj",
+      "norm_1": 645743.0625,
+      "norm_2": 107.05975341796875,
+      "norm_inf": 0.2578125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 155,
+      "name": "22.self_attn.k_proj",
+      "norm_1": 133061.8125,
+      "norm_2": 63.92930603027344,
+      "norm_inf": 0.37890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 156,
+      "name": "22.self_attn.v_proj",
+      "norm_1": 93343.953125,
+      "norm_2": 40.7296142578125,
+      "norm_inf": 0.15234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 157,
+      "name": "22.self_attn.o_proj",
+      "norm_1": 716693.875,
+      "norm_2": 109.89972686767578,
+      "norm_inf": 0.75390625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 158,
+      "name": "22.mlp.gate_proj",
+      "norm_1": 2786694.25,
+      "norm_2": 228.38787841796875,
+      "norm_inf": 0.69921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 159,
+      "name": "22.mlp.up_proj",
+      "norm_1": 2696119.75,
+      "norm_2": 220.4833221435547,
+      "norm_inf": 0.427734375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 160,
+      "name": "22.mlp.down_proj",
+      "norm_1": 2701406.0,
+      "norm_2": 220.9581298828125,
+      "norm_inf": 1.0859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 161,
+      "name": "23.self_attn.q_proj",
+      "norm_1": 698532.125,
+      "norm_2": 113.91111755371094,
+      "norm_inf": 0.4296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 162,
+      "name": "23.self_attn.k_proj",
+      "norm_1": 139769.53125,
+      "norm_2": 65.58322143554688,
+      "norm_inf": 0.384765625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 163,
+      "name": "23.self_attn.v_proj",
+      "norm_1": 91052.046875,
+      "norm_2": 39.6699104309082,
+      "norm_inf": 0.08154296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 164,
+      "name": "23.self_attn.o_proj",
+      "norm_1": 706393.625,
+      "norm_2": 108.89757537841797,
+      "norm_inf": 1.3984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 165,
+      "name": "23.mlp.gate_proj",
+      "norm_1": 2783745.5,
+      "norm_2": 228.18817138671875,
+      "norm_inf": 0.66796875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 166,
+      "name": "23.mlp.up_proj",
+      "norm_1": 2696997.75,
+      "norm_2": 220.57940673828125,
+      "norm_inf": 0.494140625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 167,
+      "name": "23.mlp.down_proj",
+      "norm_1": 2696846.75,
+      "norm_2": 220.59571838378906,
+      "norm_inf": 0.8203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 168,
+      "name": "24.self_attn.q_proj",
+      "norm_1": 706185.9375,
+      "norm_2": 114.8992691040039,
+      "norm_inf": 0.2294921875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 169,
+      "name": "24.self_attn.k_proj",
+      "norm_1": 138518.515625,
+      "norm_2": 64.90299987792969,
+      "norm_inf": 0.357421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 170,
+      "name": "24.self_attn.v_proj",
+      "norm_1": 84117.15625,
+      "norm_2": 36.57411575317383,
+      "norm_inf": 0.1396484375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 171,
+      "name": "24.self_attn.o_proj",
+      "norm_1": 678010.4375,
+      "norm_2": 104.74984741210938,
+      "norm_inf": 0.7109375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 172,
+      "name": "24.mlp.gate_proj",
+      "norm_1": 2764475.75,
+      "norm_2": 226.70919799804688,
+      "norm_inf": 0.6015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 173,
+      "name": "24.mlp.up_proj",
+      "norm_1": 2699210.75,
+      "norm_2": 220.85537719726562,
+      "norm_inf": 0.439453125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 174,
+      "name": "24.mlp.down_proj",
+      "norm_1": 2695385.0,
+      "norm_2": 220.56881713867188,
+      "norm_inf": 1.03125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 175,
+      "name": "25.self_attn.q_proj",
+      "norm_1": 736833.875,
+      "norm_2": 121.6222152709961,
+      "norm_inf": 0.55078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 176,
+      "name": "25.self_attn.k_proj",
+      "norm_1": 147576.953125,
+      "norm_2": 71.3802261352539,
+      "norm_inf": 0.515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 177,
+      "name": "25.self_attn.v_proj",
+      "norm_1": 80961.515625,
+      "norm_2": 35.28699493408203,
+      "norm_inf": 0.07177734375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 178,
+      "name": "25.self_attn.o_proj",
+      "norm_1": 696355.75,
+      "norm_2": 107.18241119384766,
+      "norm_inf": 0.91796875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 179,
+      "name": "25.mlp.gate_proj",
+      "norm_1": 2742486.75,
+      "norm_2": 224.9998321533203,
+      "norm_inf": 0.431640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 180,
+      "name": "25.mlp.up_proj",
+      "norm_1": 2689708.75,
+      "norm_2": 220.02845764160156,
+      "norm_inf": 0.376953125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 181,
+      "name": "25.mlp.down_proj",
+      "norm_1": 2705357.75,
+      "norm_2": 221.30670166015625,
+      "norm_inf": 0.83203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 182,
+      "name": "26.self_attn.q_proj",
+      "norm_1": 734650.6875,
+      "norm_2": 118.6365966796875,
+      "norm_inf": 0.3671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 183,
+      "name": "26.self_attn.k_proj",
+      "norm_1": 140612.46875,
+      "norm_2": 65.94611358642578,
+      "norm_inf": 0.3125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 184,
+      "name": "26.self_attn.v_proj",
+      "norm_1": 87589.8515625,
+      "norm_2": 38.07017135620117,
+      "norm_inf": 0.07275390625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 185,
+      "name": "26.self_attn.o_proj",
+      "norm_1": 722977.6875,
+      "norm_2": 110.91112518310547,
+      "norm_inf": 0.59375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 186,
+      "name": "26.mlp.gate_proj",
+      "norm_1": 2748050.0,
+      "norm_2": 225.3988037109375,
+      "norm_inf": 0.380859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 187,
+      "name": "26.mlp.up_proj",
+      "norm_1": 2686890.75,
+      "norm_2": 219.77525329589844,
+      "norm_inf": 0.2578125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 188,
+      "name": "26.mlp.down_proj",
+      "norm_1": 2700424.0,
+      "norm_2": 220.89300537109375,
+      "norm_inf": 1.4296875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 189,
+      "name": "27.self_attn.q_proj",
+      "norm_1": 631850.625,
+      "norm_2": 105.98755645751953,
+      "norm_inf": 0.546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 190,
+      "name": "27.self_attn.k_proj",
+      "norm_1": 131666.671875,
+      "norm_2": 63.07561492919922,
+      "norm_inf": 0.37109375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 191,
+      "name": "27.self_attn.v_proj",
+      "norm_1": 93459.453125,
+      "norm_2": 40.6243896484375,
+      "norm_inf": 0.09130859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 192,
+      "name": "27.self_attn.o_proj",
+      "norm_1": 701720.1875,
+      "norm_2": 108.53328704833984,
+      "norm_inf": 1.65625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 193,
+      "name": "27.mlp.gate_proj",
+      "norm_1": 2751781.25,
+      "norm_2": 225.67005920410156,
+      "norm_inf": 0.47265625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 194,
+      "name": "27.mlp.up_proj",
+      "norm_1": 2684012.5,
+      "norm_2": 219.5384521484375,
+      "norm_inf": 0.4765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 195,
+      "name": "27.mlp.down_proj",
+      "norm_1": 2696529.75,
+      "norm_2": 220.56753540039062,
+      "norm_inf": 0.96484375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 196,
+      "name": "28.self_attn.q_proj",
+      "norm_1": 669257.1875,
+      "norm_2": 109.88592529296875,
+      "norm_inf": 0.2451171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 197,
+      "name": "28.self_attn.k_proj",
+      "norm_1": 131234.375,
+      "norm_2": 61.54148864746094,
+      "norm_inf": 0.3671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 198,
+      "name": "28.self_attn.v_proj",
+      "norm_1": 96562.46875,
+      "norm_2": 41.948158264160156,
+      "norm_inf": 0.08837890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 199,
+      "name": "28.self_attn.o_proj",
+      "norm_1": 723564.25,
+      "norm_2": 111.01822662353516,
+      "norm_inf": 0.53125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 200,
+      "name": "28.mlp.gate_proj",
+      "norm_1": 2753080.5,
+      "norm_2": 225.77313232421875,
+      "norm_inf": 0.53515625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 201,
+      "name": "28.mlp.up_proj",
+      "norm_1": 2684373.0,
+      "norm_2": 219.5539093017578,
+      "norm_inf": 0.46875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 202,
+      "name": "28.mlp.down_proj",
+      "norm_1": 2696579.25,
+      "norm_2": 220.56243896484375,
+      "norm_inf": 1.453125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 203,
+      "name": "29.self_attn.q_proj",
+      "norm_1": 646276.5,
+      "norm_2": 107.46595764160156,
+      "norm_inf": 0.2138671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 204,
+      "name": "29.self_attn.k_proj",
+      "norm_1": 125794.1171875,
+      "norm_2": 59.91947937011719,
+      "norm_inf": 0.384765625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 205,
+      "name": "29.self_attn.v_proj",
+      "norm_1": 94237.0078125,
+      "norm_2": 40.980072021484375,
+      "norm_inf": 0.0791015625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 206,
+      "name": "29.self_attn.o_proj",
+      "norm_1": 719010.9375,
+      "norm_2": 110.42767333984375,
+      "norm_inf": 1.2578125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 207,
+      "name": "29.mlp.gate_proj",
+      "norm_1": 2757925.25,
+      "norm_2": 226.11117553710938,
+      "norm_inf": 0.5,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 208,
+      "name": "29.mlp.up_proj",
+      "norm_1": 2685171.25,
+      "norm_2": 219.5900421142578,
+      "norm_inf": 0.30859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 209,
+      "name": "29.mlp.down_proj",
+      "norm_1": 2694550.0,
+      "norm_2": 220.3817901611328,
+      "norm_inf": 0.71875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 210,
+      "name": "30.self_attn.q_proj",
+      "norm_1": 543163.75,
+      "norm_2": 91.75047302246094,
+      "norm_inf": 0.244140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 211,
+      "name": "30.self_attn.k_proj",
+      "norm_1": 108509.3515625,
+      "norm_2": 53.62825012207031,
+      "norm_inf": 0.41015625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 212,
+      "name": "30.self_attn.v_proj",
+      "norm_1": 96997.9140625,
+      "norm_2": 42.147796630859375,
+      "norm_inf": 0.1083984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 213,
+      "name": "30.self_attn.o_proj",
+      "norm_1": 705087.125,
+      "norm_2": 108.2613296508789,
+      "norm_inf": 0.5859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 214,
+      "name": "30.mlp.gate_proj",
+      "norm_1": 2763671.5,
+      "norm_2": 226.60134887695312,
+      "norm_inf": 0.423828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 215,
+      "name": "30.mlp.up_proj",
+      "norm_1": 2685304.5,
+      "norm_2": 219.60743713378906,
+      "norm_inf": 0.484375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 216,
+      "name": "30.mlp.down_proj",
+      "norm_1": 2690954.0,
+      "norm_2": 220.08023071289062,
+      "norm_inf": 0.6875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 217,
+      "name": "31.self_attn.q_proj",
+      "norm_1": 648844.1875,
+      "norm_2": 106.8437271118164,
+      "norm_inf": 0.66796875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 218,
+      "name": "31.self_attn.k_proj",
+      "norm_1": 125851.6796875,
+      "norm_2": 59.66728210449219,
+      "norm_inf": 0.365234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 219,
+      "name": "31.self_attn.v_proj",
+      "norm_1": 92886.0859375,
+      "norm_2": 40.475120544433594,
+      "norm_inf": 0.083984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 220,
+      "name": "31.self_attn.o_proj",
+      "norm_1": 705665.875,
+      "norm_2": 108.57676696777344,
+      "norm_inf": 1.4375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 221,
+      "name": "31.mlp.gate_proj",
+      "norm_1": 2766705.0,
+      "norm_2": 226.80917358398438,
+      "norm_inf": 0.384765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 222,
+      "name": "31.mlp.up_proj",
+      "norm_1": 2686754.5,
+      "norm_2": 219.72999572753906,
+      "norm_inf": 0.412109375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 223,
+      "name": "31.mlp.down_proj",
+      "norm_1": 2687195.75,
+      "norm_2": 219.7743377685547,
+      "norm_inf": 1.015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 224,
+      "name": "32.self_attn.q_proj",
+      "norm_1": 682440.5625,
+      "norm_2": 110.51880645751953,
+      "norm_inf": 0.455078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 225,
+      "name": "32.self_attn.k_proj",
+      "norm_1": 131952.984375,
+      "norm_2": 61.802490234375,
+      "norm_inf": 0.35546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 226,
+      "name": "32.self_attn.v_proj",
+      "norm_1": 93021.2578125,
+      "norm_2": 40.421287536621094,
+      "norm_inf": 0.078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 227,
+      "name": "32.self_attn.o_proj",
+      "norm_1": 695264.875,
+      "norm_2": 107.14920806884766,
+      "norm_inf": 0.671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 228,
+      "name": "32.mlp.gate_proj",
+      "norm_1": 2764364.75,
+      "norm_2": 226.60855102539062,
+      "norm_inf": 0.482421875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 229,
+      "name": "32.mlp.up_proj",
+      "norm_1": 2688292.75,
+      "norm_2": 219.87478637695312,
+      "norm_inf": 0.44140625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 230,
+      "name": "32.mlp.down_proj",
+      "norm_1": 2686581.25,
+      "norm_2": 219.75143432617188,
+      "norm_inf": 0.8125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 231,
+      "name": "33.self_attn.q_proj",
+      "norm_1": 738138.125,
+      "norm_2": 118.77635955810547,
+      "norm_inf": 0.26171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 232,
+      "name": "33.self_attn.k_proj",
+      "norm_1": 134124.265625,
+      "norm_2": 63.01462936401367,
+      "norm_inf": 0.416015625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 233,
+      "name": "33.self_attn.v_proj",
+      "norm_1": 90461.0546875,
+      "norm_2": 39.44971466064453,
+      "norm_inf": 0.0791015625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 234,
+      "name": "33.self_attn.o_proj",
+      "norm_1": 705264.5,
+      "norm_2": 108.97754669189453,
+      "norm_inf": 1.109375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 235,
+      "name": "33.mlp.gate_proj",
+      "norm_1": 2755920.75,
+      "norm_2": 225.97244262695312,
+      "norm_inf": 0.3984375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 236,
+      "name": "33.mlp.up_proj",
+      "norm_1": 2685260.25,
+      "norm_2": 219.6265106201172,
+      "norm_inf": 0.59765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 237,
+      "name": "33.mlp.down_proj",
+      "norm_1": 2687905.75,
+      "norm_2": 219.84939575195312,
+      "norm_inf": 0.828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 238,
+      "name": "34.self_attn.q_proj",
+      "norm_1": 660798.625,
+      "norm_2": 109.68429565429688,
+      "norm_inf": 0.2353515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 239,
+      "name": "34.self_attn.k_proj",
+      "norm_1": 135272.984375,
+      "norm_2": 64.50725555419922,
+      "norm_inf": 0.3828125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 240,
+      "name": "34.self_attn.v_proj",
+      "norm_1": 92668.6796875,
+      "norm_2": 40.33436584472656,
+      "norm_inf": 0.0869140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 241,
+      "name": "34.self_attn.o_proj",
+      "norm_1": 697261.0,
+      "norm_2": 107.36495208740234,
+      "norm_inf": 0.6171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 242,
+      "name": "34.mlp.gate_proj",
+      "norm_1": 2750979.5,
+      "norm_2": 225.6762237548828,
+      "norm_inf": 0.50390625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 243,
+      "name": "34.mlp.up_proj",
+      "norm_1": 2678450.0,
+      "norm_2": 219.05528259277344,
+      "norm_inf": 0.443359375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 244,
+      "name": "34.mlp.down_proj",
+      "norm_1": 2685180.0,
+      "norm_2": 219.60914611816406,
+      "norm_inf": 1.0,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 245,
+      "name": "35.self_attn.q_proj",
+      "norm_1": 659266.25,
+      "norm_2": 108.59923553466797,
+      "norm_inf": 0.2158203125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 246,
+      "name": "35.self_attn.k_proj",
+      "norm_1": 124271.7578125,
+      "norm_2": 59.28679275512695,
+      "norm_inf": 0.376953125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 247,
+      "name": "35.self_attn.v_proj",
+      "norm_1": 91310.984375,
+      "norm_2": 39.89717102050781,
+      "norm_inf": 0.0830078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 248,
+      "name": "35.self_attn.o_proj",
+      "norm_1": 683391.5,
+      "norm_2": 106.10521697998047,
+      "norm_inf": 1.25,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 249,
+      "name": "35.mlp.gate_proj",
+      "norm_1": 2751711.25,
+      "norm_2": 225.70347595214844,
+      "norm_inf": 0.43359375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 250,
+      "name": "35.mlp.up_proj",
+      "norm_1": 2673520.75,
+      "norm_2": 218.67774963378906,
+      "norm_inf": 0.53125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 251,
+      "name": "35.mlp.down_proj",
+      "norm_1": 2682869.75,
+      "norm_2": 219.41970825195312,
+      "norm_inf": 1.0,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 252,
+      "name": "36.self_attn.q_proj",
+      "norm_1": 674619.9375,
+      "norm_2": 111.45176696777344,
+      "norm_inf": 0.267578125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 253,
+      "name": "36.self_attn.k_proj",
+      "norm_1": 127594.4921875,
+      "norm_2": 61.234169006347656,
+      "norm_inf": 0.419921875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 254,
+      "name": "36.self_attn.v_proj",
+      "norm_1": 92789.0859375,
+      "norm_2": 40.5300407409668,
+      "norm_inf": 0.12451171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 255,
+      "name": "36.self_attn.o_proj",
+      "norm_1": 680685.5625,
+      "norm_2": 105.8382339477539,
+      "norm_inf": 0.99609375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 256,
+      "name": "36.mlp.gate_proj",
+      "norm_1": 2750434.0,
+      "norm_2": 225.7112579345703,
+      "norm_inf": 0.640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 257,
+      "name": "36.mlp.up_proj",
+      "norm_1": 2670576.5,
+      "norm_2": 218.42742919921875,
+      "norm_inf": 0.314453125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 258,
+      "name": "36.mlp.down_proj",
+      "norm_1": 2683119.5,
+      "norm_2": 219.4477081298828,
+      "norm_inf": 1.28125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 259,
+      "name": "37.self_attn.q_proj",
+      "norm_1": 709711.1875,
+      "norm_2": 115.22052001953125,
+      "norm_inf": 0.21484375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 260,
+      "name": "37.self_attn.k_proj",
+      "norm_1": 131644.328125,
+      "norm_2": 62.204593658447266,
+      "norm_inf": 0.375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 261,
+      "name": "37.self_attn.v_proj",
+      "norm_1": 93758.21875,
+      "norm_2": 40.95519256591797,
+      "norm_inf": 0.10546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 262,
+      "name": "37.self_attn.o_proj",
+      "norm_1": 695877.125,
+      "norm_2": 107.95185852050781,
+      "norm_inf": 0.484375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 263,
+      "name": "37.mlp.gate_proj",
+      "norm_1": 2751631.25,
+      "norm_2": 225.83883666992188,
+      "norm_inf": 0.48046875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 264,
+      "name": "37.mlp.up_proj",
+      "norm_1": 2671823.25,
+      "norm_2": 218.54005432128906,
+      "norm_inf": 0.4609375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 265,
+      "name": "37.mlp.down_proj",
+      "norm_1": 2684482.0,
+      "norm_2": 219.57177734375,
+      "norm_inf": 1.0,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 266,
+      "name": "38.self_attn.q_proj",
+      "norm_1": 725116.4375,
+      "norm_2": 118.50348663330078,
+      "norm_inf": 0.484375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 267,
+      "name": "38.self_attn.k_proj",
+      "norm_1": 131452.015625,
+      "norm_2": 62.292747497558594,
+      "norm_inf": 0.337890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 268,
+      "name": "38.self_attn.v_proj",
+      "norm_1": 90508.65625,
+      "norm_2": 39.457576751708984,
+      "norm_inf": 0.078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 269,
+      "name": "38.self_attn.o_proj",
+      "norm_1": 691513.4375,
+      "norm_2": 107.83036804199219,
+      "norm_inf": 0.671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 270,
+      "name": "38.mlp.gate_proj",
+      "norm_1": 2752242.5,
+      "norm_2": 225.97549438476562,
+      "norm_inf": 0.484375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 271,
+      "name": "38.mlp.up_proj",
+      "norm_1": 2673513.0,
+      "norm_2": 218.70513916015625,
+      "norm_inf": 0.5546875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 272,
+      "name": "38.mlp.down_proj",
+      "norm_1": 2687464.25,
+      "norm_2": 219.82940673828125,
+      "norm_inf": 0.94921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 273,
+      "name": "39.self_attn.q_proj",
+      "norm_1": 776029.9375,
+      "norm_2": 124.7606430053711,
+      "norm_inf": 0.21484375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 274,
+      "name": "39.self_attn.k_proj",
+      "norm_1": 138384.875,
+      "norm_2": 63.74274826049805,
+      "norm_inf": 0.322265625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 275,
+      "name": "39.self_attn.v_proj",
+      "norm_1": 92556.4609375,
+      "norm_2": 40.320438385009766,
+      "norm_inf": 0.08837890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 276,
+      "name": "39.self_attn.o_proj",
+      "norm_1": 715075.75,
+      "norm_2": 110.6008529663086,
+      "norm_inf": 0.58203125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 277,
+      "name": "39.mlp.gate_proj",
+      "norm_1": 2756169.5,
+      "norm_2": 226.40892028808594,
+      "norm_inf": 0.390625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 278,
+      "name": "39.mlp.up_proj",
+      "norm_1": 2680740.5,
+      "norm_2": 219.3277587890625,
+      "norm_inf": 0.435546875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 279,
+      "name": "39.mlp.down_proj",
+      "norm_1": 2697370.5,
+      "norm_2": 220.66998291015625,
+      "norm_inf": 1.171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 280,
+      "name": "40.self_attn.q_proj",
+      "norm_1": 756706.625,
+      "norm_2": 122.75578308105469,
+      "norm_inf": 0.3515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 281,
+      "name": "40.self_attn.k_proj",
+      "norm_1": 134055.484375,
+      "norm_2": 62.32517623901367,
+      "norm_inf": 0.392578125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 282,
+      "name": "40.self_attn.v_proj",
+      "norm_1": 98046.40625,
+      "norm_2": 42.7921142578125,
+      "norm_inf": 0.1318359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 283,
+      "name": "40.self_attn.o_proj",
+      "norm_1": 754800.0625,
+      "norm_2": 115.97871398925781,
+      "norm_inf": 0.640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 284,
+      "name": "40.mlp.gate_proj",
+      "norm_1": 2761280.25,
+      "norm_2": 226.60842895507812,
+      "norm_inf": 0.55859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 285,
+      "name": "40.mlp.up_proj",
+      "norm_1": 2681032.0,
+      "norm_2": 219.31472778320312,
+      "norm_inf": 0.515625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 286,
+      "name": "40.mlp.down_proj",
+      "norm_1": 2703210.0,
+      "norm_2": 221.1540069580078,
+      "norm_inf": 1.0703125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 287,
+      "name": "41.self_attn.q_proj",
+      "norm_1": 727183.5,
+      "norm_2": 118.0007553100586,
+      "norm_inf": 0.53125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 288,
+      "name": "41.self_attn.k_proj",
+      "norm_1": 133244.28125,
+      "norm_2": 62.89631271362305,
+      "norm_inf": 0.3515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 289,
+      "name": "41.self_attn.v_proj",
+      "norm_1": 95469.9140625,
+      "norm_2": 41.559791564941406,
+      "norm_inf": 0.0869140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 290,
+      "name": "41.self_attn.o_proj",
+      "norm_1": 725676.0625,
+      "norm_2": 112.14849853515625,
+      "norm_inf": 1.46875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 291,
+      "name": "41.mlp.gate_proj",
+      "norm_1": 2787399.25,
+      "norm_2": 228.68472290039062,
+      "norm_inf": 0.41015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 292,
+      "name": "41.mlp.up_proj",
+      "norm_1": 2664625.75,
+      "norm_2": 217.9309539794922,
+      "norm_inf": 0.380859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 293,
+      "name": "41.mlp.down_proj",
+      "norm_1": 2698993.75,
+      "norm_2": 220.750244140625,
+      "norm_inf": 0.703125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 294,
+      "name": "42.self_attn.q_proj",
+      "norm_1": 709197.25,
+      "norm_2": 115.41620635986328,
+      "norm_inf": 0.419921875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 295,
+      "name": "42.self_attn.k_proj",
+      "norm_1": 126211.5546875,
+      "norm_2": 59.980194091796875,
+      "norm_inf": 0.3984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 296,
+      "name": "42.self_attn.v_proj",
+      "norm_1": 98298.171875,
+      "norm_2": 42.984989166259766,
+      "norm_inf": 0.08984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 297,
+      "name": "42.self_attn.o_proj",
+      "norm_1": 725056.3125,
+      "norm_2": 112.90241241455078,
+      "norm_inf": 1.640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 298,
+      "name": "42.mlp.gate_proj",
+      "norm_1": 2821187.5,
+      "norm_2": 231.33860778808594,
+      "norm_inf": 0.4296875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 299,
+      "name": "42.mlp.up_proj",
+      "norm_1": 2653570.75,
+      "norm_2": 217.0162353515625,
+      "norm_inf": 0.3828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 300,
+      "name": "42.mlp.down_proj",
+      "norm_1": 2693658.75,
+      "norm_2": 220.2958526611328,
+      "norm_inf": 0.5078125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 301,
+      "name": "43.self_attn.q_proj",
+      "norm_1": 678580.1875,
+      "norm_2": 112.05543518066406,
+      "norm_inf": 0.498046875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 302,
+      "name": "43.self_attn.k_proj",
+      "norm_1": 128710.5390625,
+      "norm_2": 60.38996124267578,
+      "norm_inf": 0.40234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 303,
+      "name": "43.self_attn.v_proj",
+      "norm_1": 97733.6796875,
+      "norm_2": 42.65521240234375,
+      "norm_inf": 0.08642578125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 304,
+      "name": "43.self_attn.o_proj",
+      "norm_1": 714150.0,
+      "norm_2": 110.18572998046875,
+      "norm_inf": 0.5625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 305,
+      "name": "43.mlp.gate_proj",
+      "norm_1": 2840721.25,
+      "norm_2": 233.0594940185547,
+      "norm_inf": 0.671875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 306,
+      "name": "43.mlp.up_proj",
+      "norm_1": 2653750.0,
+      "norm_2": 217.08078002929688,
+      "norm_inf": 0.365234375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 307,
+      "name": "43.mlp.down_proj",
+      "norm_1": 2694150.5,
+      "norm_2": 220.38751220703125,
+      "norm_inf": 0.9140625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 308,
+      "name": "44.self_attn.q_proj",
+      "norm_1": 734042.8125,
+      "norm_2": 120.22892761230469,
+      "norm_inf": 0.486328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 309,
+      "name": "44.self_attn.k_proj",
+      "norm_1": 124117.578125,
+      "norm_2": 59.693302154541016,
+      "norm_inf": 0.32421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 310,
+      "name": "44.self_attn.v_proj",
+      "norm_1": 101797.3671875,
+      "norm_2": 44.384620666503906,
+      "norm_inf": 0.10791015625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 311,
+      "name": "44.self_attn.o_proj",
+      "norm_1": 770332.25,
+      "norm_2": 118.91561889648438,
+      "norm_inf": 1.0078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 312,
+      "name": "44.mlp.gate_proj",
+      "norm_1": 2888596.5,
+      "norm_2": 236.76797485351562,
+      "norm_inf": 0.388671875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 313,
+      "name": "44.mlp.up_proj",
+      "norm_1": 2629876.75,
+      "norm_2": 215.0390625,
+      "norm_inf": 0.2890625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 314,
+      "name": "44.mlp.down_proj",
+      "norm_1": 2682196.75,
+      "norm_2": 219.3177032470703,
+      "norm_inf": 0.4921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 315,
+      "name": "45.self_attn.q_proj",
+      "norm_1": 643000.625,
+      "norm_2": 104.75447082519531,
+      "norm_inf": 0.2431640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 316,
+      "name": "45.self_attn.k_proj",
+      "norm_1": 119516.5859375,
+      "norm_2": 56.01533889770508,
+      "norm_inf": 0.45703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 317,
+      "name": "45.self_attn.v_proj",
+      "norm_1": 105510.296875,
+      "norm_2": 45.9583625793457,
+      "norm_inf": 0.11669921875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 318,
+      "name": "45.self_attn.o_proj",
+      "norm_1": 737091.1875,
+      "norm_2": 113.74404907226562,
+      "norm_inf": 0.890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 319,
+      "name": "45.mlp.gate_proj",
+      "norm_1": 2909950.25,
+      "norm_2": 238.42825317382812,
+      "norm_inf": 0.40234375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 320,
+      "name": "45.mlp.up_proj",
+      "norm_1": 2628360.5,
+      "norm_2": 214.91036987304688,
+      "norm_inf": 0.3203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 321,
+      "name": "45.mlp.down_proj",
+      "norm_1": 2678971.75,
+      "norm_2": 219.04989624023438,
+      "norm_inf": 0.6953125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 322,
+      "name": "46.self_attn.q_proj",
+      "norm_1": 628725.4375,
+      "norm_2": 102.54095458984375,
+      "norm_inf": 0.2255859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 323,
+      "name": "46.self_attn.k_proj",
+      "norm_1": 116398.0234375,
+      "norm_2": 54.90850830078125,
+      "norm_inf": 0.419921875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 324,
+      "name": "46.self_attn.v_proj",
+      "norm_1": 105539.296875,
+      "norm_2": 45.802452087402344,
+      "norm_inf": 0.0908203125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 325,
+      "name": "46.self_attn.o_proj",
+      "norm_1": 742352.125,
+      "norm_2": 114.072509765625,
+      "norm_inf": 0.98828125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 326,
+      "name": "46.mlp.gate_proj",
+      "norm_1": 2928758.75,
+      "norm_2": 239.97682189941406,
+      "norm_inf": 0.40234375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 327,
+      "name": "46.mlp.up_proj",
+      "norm_1": 2625055.75,
+      "norm_2": 214.62864685058594,
+      "norm_inf": 0.25,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 328,
+      "name": "46.mlp.down_proj",
+      "norm_1": 2672673.75,
+      "norm_2": 218.51644897460938,
+      "norm_inf": 0.5859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 329,
+      "name": "47.self_attn.q_proj",
+      "norm_1": 700473.1875,
+      "norm_2": 113.7735366821289,
+      "norm_inf": 0.61328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 330,
+      "name": "47.self_attn.k_proj",
+      "norm_1": 133334.1875,
+      "norm_2": 62.493438720703125,
+      "norm_inf": 0.458984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 331,
+      "name": "47.self_attn.v_proj",
+      "norm_1": 100651.46875,
+      "norm_2": 44.15928649902344,
+      "norm_inf": 0.111328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 332,
+      "name": "47.self_attn.o_proj",
+      "norm_1": 726086.0,
+      "norm_2": 113.65837860107422,
+      "norm_inf": 1.3984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 333,
+      "name": "47.mlp.gate_proj",
+      "norm_1": 2946604.0,
+      "norm_2": 241.42337036132812,
+      "norm_inf": 0.3828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 334,
+      "name": "47.mlp.up_proj",
+      "norm_1": 2619205.5,
+      "norm_2": 214.1373291015625,
+      "norm_inf": 0.3203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 335,
+      "name": "47.mlp.down_proj",
+      "norm_1": 2668829.5,
+      "norm_2": 218.21267700195312,
+      "norm_inf": 1.0859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 336,
+      "name": "48.self_attn.q_proj",
+      "norm_1": 580798.5,
+      "norm_2": 96.79269409179688,
+      "norm_inf": 0.421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 337,
+      "name": "48.self_attn.k_proj",
+      "norm_1": 106784.609375,
+      "norm_2": 52.40510177612305,
+      "norm_inf": 0.330078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 338,
+      "name": "48.self_attn.v_proj",
+      "norm_1": 107352.921875,
+      "norm_2": 46.73878860473633,
+      "norm_inf": 0.095703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 339,
+      "name": "48.self_attn.o_proj",
+      "norm_1": 738070.25,
+      "norm_2": 113.5654525756836,
+      "norm_inf": 1.4453125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 340,
+      "name": "48.mlp.gate_proj",
+      "norm_1": 2952656.75,
+      "norm_2": 241.88739013671875,
+      "norm_inf": 0.38671875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 341,
+      "name": "48.mlp.up_proj",
+      "norm_1": 2622241.5,
+      "norm_2": 214.38272094726562,
+      "norm_inf": 0.298828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 342,
+      "name": "48.mlp.down_proj",
+      "norm_1": 2667764.0,
+      "norm_2": 218.1123504638672,
+      "norm_inf": 1.109375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 343,
+      "name": "49.self_attn.q_proj",
+      "norm_1": 528101.625,
+      "norm_2": 88.02680969238281,
+      "norm_inf": 0.255859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 344,
+      "name": "49.self_attn.k_proj",
+      "norm_1": 105456.8984375,
+      "norm_2": 50.789817810058594,
+      "norm_inf": 0.369140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 345,
+      "name": "49.self_attn.v_proj",
+      "norm_1": 105207.671875,
+      "norm_2": 45.82111740112305,
+      "norm_inf": 0.0859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 346,
+      "name": "49.self_attn.o_proj",
+      "norm_1": 697606.1875,
+      "norm_2": 107.61356353759766,
+      "norm_inf": 0.88671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 347,
+      "name": "49.mlp.gate_proj",
+      "norm_1": 2956018.0,
+      "norm_2": 242.15907287597656,
+      "norm_inf": 0.451171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 348,
+      "name": "49.mlp.up_proj",
+      "norm_1": 2627787.25,
+      "norm_2": 214.81971740722656,
+      "norm_inf": 0.306640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 349,
+      "name": "49.mlp.down_proj",
+      "norm_1": 2668504.25,
+      "norm_2": 218.17233276367188,
+      "norm_inf": 0.9140625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 350,
+      "name": "50.self_attn.q_proj",
+      "norm_1": 547096.3125,
+      "norm_2": 91.4106674194336,
+      "norm_inf": 0.2265625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 351,
+      "name": "50.self_attn.k_proj",
+      "norm_1": 99485.84375,
+      "norm_2": 48.708984375,
+      "norm_inf": 0.330078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 352,
+      "name": "50.self_attn.v_proj",
+      "norm_1": 107198.640625,
+      "norm_2": 46.802093505859375,
+      "norm_inf": 0.08935546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 353,
+      "name": "50.self_attn.o_proj",
+      "norm_1": 719490.4375,
+      "norm_2": 110.98821258544922,
+      "norm_inf": 0.53515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 354,
+      "name": "50.mlp.gate_proj",
+      "norm_1": 2960139.75,
+      "norm_2": 242.48681640625,
+      "norm_inf": 0.466796875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 355,
+      "name": "50.mlp.up_proj",
+      "norm_1": 2630635.0,
+      "norm_2": 215.04806518554688,
+      "norm_inf": 0.259765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 356,
+      "name": "50.mlp.down_proj",
+      "norm_1": 2668271.75,
+      "norm_2": 218.138671875,
+      "norm_inf": 0.5390625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 357,
+      "name": "51.self_attn.q_proj",
+      "norm_1": 585209.625,
+      "norm_2": 97.05694580078125,
+      "norm_inf": 0.287109375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 358,
+      "name": "51.self_attn.k_proj",
+      "norm_1": 109583.9921875,
+      "norm_2": 51.841026306152344,
+      "norm_inf": 0.357421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 359,
+      "name": "51.self_attn.v_proj",
+      "norm_1": 109621.140625,
+      "norm_2": 47.895790100097656,
+      "norm_inf": 0.1015625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 360,
+      "name": "51.self_attn.o_proj",
+      "norm_1": 708505.125,
+      "norm_2": 110.01497650146484,
+      "norm_inf": 0.5,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 361,
+      "name": "51.mlp.gate_proj",
+      "norm_1": 2958778.75,
+      "norm_2": 242.302001953125,
+      "norm_inf": 0.388671875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 362,
+      "name": "51.mlp.up_proj",
+      "norm_1": 2637268.75,
+      "norm_2": 215.5799102783203,
+      "norm_inf": 0.30859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 363,
+      "name": "51.mlp.down_proj",
+      "norm_1": 2671317.0,
+      "norm_2": 218.3834991455078,
+      "norm_inf": 0.9453125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 364,
+      "name": "52.self_attn.q_proj",
+      "norm_1": 645964.5625,
+      "norm_2": 106.26712036132812,
+      "norm_inf": 0.6484375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 365,
+      "name": "52.self_attn.k_proj",
+      "norm_1": 110648.0234375,
+      "norm_2": 53.31888198852539,
+      "norm_inf": 0.494140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 366,
+      "name": "52.self_attn.v_proj",
+      "norm_1": 107696.171875,
+      "norm_2": 47.091064453125,
+      "norm_inf": 0.0966796875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 367,
+      "name": "52.self_attn.o_proj",
+      "norm_1": 728157.875,
+      "norm_2": 113.2482681274414,
+      "norm_inf": 1.2578125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 368,
+      "name": "52.mlp.gate_proj",
+      "norm_1": 2961526.75,
+      "norm_2": 242.5275115966797,
+      "norm_inf": 0.498046875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 369,
+      "name": "52.mlp.up_proj",
+      "norm_1": 2639894.75,
+      "norm_2": 215.78114318847656,
+      "norm_inf": 0.58203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 370,
+      "name": "52.mlp.down_proj",
+      "norm_1": 2671468.0,
+      "norm_2": 218.38978576660156,
+      "norm_inf": 1.1796875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 371,
+      "name": "53.self_attn.q_proj",
+      "norm_1": 516323.03125,
+      "norm_2": 86.6868896484375,
+      "norm_inf": 0.33984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 372,
+      "name": "53.self_attn.k_proj",
+      "norm_1": 95312.6484375,
+      "norm_2": 47.17129898071289,
+      "norm_inf": 0.353515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 373,
+      "name": "53.self_attn.v_proj",
+      "norm_1": 111177.953125,
+      "norm_2": 48.518672943115234,
+      "norm_inf": 0.1123046875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 374,
+      "name": "53.self_attn.o_proj",
+      "norm_1": 726564.5625,
+      "norm_2": 111.6270751953125,
+      "norm_inf": 0.6171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 375,
+      "name": "53.mlp.gate_proj",
+      "norm_1": 2961257.0,
+      "norm_2": 242.5065460205078,
+      "norm_inf": 0.408203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 376,
+      "name": "53.mlp.up_proj",
+      "norm_1": 2645505.75,
+      "norm_2": 216.2332763671875,
+      "norm_inf": 0.25,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 377,
+      "name": "53.mlp.down_proj",
+      "norm_1": 2673709.25,
+      "norm_2": 218.5626983642578,
+      "norm_inf": 0.546875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 378,
+      "name": "54.self_attn.q_proj",
+      "norm_1": 527931.625,
+      "norm_2": 88.3892593383789,
+      "norm_inf": 0.25390625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 379,
+      "name": "54.self_attn.k_proj",
+      "norm_1": 94120.6796875,
+      "norm_2": 46.255210876464844,
+      "norm_inf": 0.3671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 380,
+      "name": "54.self_attn.v_proj",
+      "norm_1": 109404.1640625,
+      "norm_2": 48.011802673339844,
+      "norm_inf": 0.1015625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 381,
+      "name": "54.self_attn.o_proj",
+      "norm_1": 706696.9375,
+      "norm_2": 109.44732666015625,
+      "norm_inf": 1.234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 382,
+      "name": "54.mlp.gate_proj",
+      "norm_1": 2958806.25,
+      "norm_2": 242.30462646484375,
+      "norm_inf": 0.2890625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 383,
+      "name": "54.mlp.up_proj",
+      "norm_1": 2651021.0,
+      "norm_2": 216.6829376220703,
+      "norm_inf": 0.26171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 384,
+      "name": "54.mlp.down_proj",
+      "norm_1": 2675524.25,
+      "norm_2": 218.70860290527344,
+      "norm_inf": 0.359375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 385,
+      "name": "55.self_attn.q_proj",
+      "norm_1": 599251.375,
+      "norm_2": 99.11902618408203,
+      "norm_inf": 0.26953125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 386,
+      "name": "55.self_attn.k_proj",
+      "norm_1": 109583.0859375,
+      "norm_2": 52.89396286010742,
+      "norm_inf": 0.318359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 387,
+      "name": "55.self_attn.v_proj",
+      "norm_1": 114518.7734375,
+      "norm_2": 49.81217575073242,
+      "norm_inf": 0.1025390625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 388,
+      "name": "55.self_attn.o_proj",
+      "norm_1": 758539.25,
+      "norm_2": 116.35335540771484,
+      "norm_inf": 0.5546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 389,
+      "name": "55.mlp.gate_proj",
+      "norm_1": 2952081.0,
+      "norm_2": 241.75294494628906,
+      "norm_inf": 0.31640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 390,
+      "name": "55.mlp.up_proj",
+      "norm_1": 2660425.75,
+      "norm_2": 217.45033264160156,
+      "norm_inf": 0.29296875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 391,
+      "name": "55.mlp.down_proj",
+      "norm_1": 2681162.0,
+      "norm_2": 219.1741485595703,
+      "norm_inf": 0.80859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 392,
+      "name": "56.self_attn.q_proj",
+      "norm_1": 558641.6875,
+      "norm_2": 93.24595642089844,
+      "norm_inf": 0.65234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 393,
+      "name": "56.self_attn.k_proj",
+      "norm_1": 107802.3671875,
+      "norm_2": 52.799198150634766,
+      "norm_inf": 0.359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 394,
+      "name": "56.self_attn.v_proj",
+      "norm_1": 109089.5625,
+      "norm_2": 47.92813491821289,
+      "norm_inf": 0.0966796875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 395,
+      "name": "56.self_attn.o_proj",
+      "norm_1": 708102.5,
+      "norm_2": 110.51066589355469,
+      "norm_inf": 1.328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 396,
+      "name": "56.mlp.gate_proj",
+      "norm_1": 2949462.75,
+      "norm_2": 241.5741729736328,
+      "norm_inf": 0.3359375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 397,
+      "name": "56.mlp.up_proj",
+      "norm_1": 2664778.5,
+      "norm_2": 217.80630493164062,
+      "norm_inf": 0.2060546875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 398,
+      "name": "56.mlp.down_proj",
+      "norm_1": 2682619.75,
+      "norm_2": 219.28958129882812,
+      "norm_inf": 0.890625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 399,
+      "name": "57.self_attn.q_proj",
+      "norm_1": 547503.375,
+      "norm_2": 90.05343627929688,
+      "norm_inf": 0.208984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 400,
+      "name": "57.self_attn.k_proj",
+      "norm_1": 98841.9375,
+      "norm_2": 48.070804595947266,
+      "norm_inf": 0.353515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 401,
+      "name": "57.self_attn.v_proj",
+      "norm_1": 114580.4453125,
+      "norm_2": 49.851558685302734,
+      "norm_inf": 0.10595703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 402,
+      "name": "57.self_attn.o_proj",
+      "norm_1": 742887.1875,
+      "norm_2": 113.87460327148438,
+      "norm_inf": 0.3515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 403,
+      "name": "57.mlp.gate_proj",
+      "norm_1": 2947557.5,
+      "norm_2": 241.46058654785156,
+      "norm_inf": 0.419921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 404,
+      "name": "57.mlp.up_proj",
+      "norm_1": 2670196.25,
+      "norm_2": 218.26275634765625,
+      "norm_inf": 0.326171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 405,
+      "name": "57.mlp.down_proj",
+      "norm_1": 2684418.5,
+      "norm_2": 219.44949340820312,
+      "norm_inf": 0.9921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 406,
+      "name": "58.self_attn.q_proj",
+      "norm_1": 510818.0,
+      "norm_2": 86.19820404052734,
+      "norm_inf": 0.2421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 407,
+      "name": "58.self_attn.k_proj",
+      "norm_1": 95922.09375,
+      "norm_2": 47.9555549621582,
+      "norm_inf": 0.38671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 408,
+      "name": "58.self_attn.v_proj",
+      "norm_1": 109768.359375,
+      "norm_2": 47.75864028930664,
+      "norm_inf": 0.11279296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 409,
+      "name": "58.self_attn.o_proj",
+      "norm_1": 714787.125,
+      "norm_2": 109.88497924804688,
+      "norm_inf": 1.140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 410,
+      "name": "58.mlp.gate_proj",
+      "norm_1": 2945406.5,
+      "norm_2": 241.33934020996094,
+      "norm_inf": 0.474609375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 411,
+      "name": "58.mlp.up_proj",
+      "norm_1": 2674146.25,
+      "norm_2": 218.57925415039062,
+      "norm_inf": 0.267578125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 412,
+      "name": "58.mlp.down_proj",
+      "norm_1": 2684849.75,
+      "norm_2": 219.486328125,
+      "norm_inf": 0.6796875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 413,
+      "name": "59.self_attn.q_proj",
+      "norm_1": 516821.53125,
+      "norm_2": 85.56202697753906,
+      "norm_inf": 0.3828125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 414,
+      "name": "59.self_attn.k_proj",
+      "norm_1": 96965.2890625,
+      "norm_2": 47.548583984375,
+      "norm_inf": 0.3671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 415,
+      "name": "59.self_attn.v_proj",
+      "norm_1": 111122.09375,
+      "norm_2": 48.42822265625,
+      "norm_inf": 0.09423828125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 416,
+      "name": "59.self_attn.o_proj",
+      "norm_1": 710001.8125,
+      "norm_2": 109.27538299560547,
+      "norm_inf": 0.71875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 417,
+      "name": "59.mlp.gate_proj",
+      "norm_1": 2943343.75,
+      "norm_2": 241.19627380371094,
+      "norm_inf": 0.357421875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 418,
+      "name": "59.mlp.up_proj",
+      "norm_1": 2678591.0,
+      "norm_2": 218.9636688232422,
+      "norm_inf": 0.357421875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 419,
+      "name": "59.mlp.down_proj",
+      "norm_1": 2686348.5,
+      "norm_2": 219.61038208007812,
+      "norm_inf": 1.1796875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 420,
+      "name": "60.self_attn.q_proj",
+      "norm_1": 409909.78125,
+      "norm_2": 69.18133544921875,
+      "norm_inf": 0.232421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 421,
+      "name": "60.self_attn.k_proj",
+      "norm_1": 80764.9921875,
+      "norm_2": 41.41622543334961,
+      "norm_inf": 0.57421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 422,
+      "name": "60.self_attn.v_proj",
+      "norm_1": 110706.84375,
+      "norm_2": 48.331241607666016,
+      "norm_inf": 0.095703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 423,
+      "name": "60.self_attn.o_proj",
+      "norm_1": 687777.75,
+      "norm_2": 106.0755386352539,
+      "norm_inf": 0.4609375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 424,
+      "name": "60.mlp.gate_proj",
+      "norm_1": 2940202.25,
+      "norm_2": 240.94639587402344,
+      "norm_inf": 0.5703125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 425,
+      "name": "60.mlp.up_proj",
+      "norm_1": 2685542.75,
+      "norm_2": 219.52432250976562,
+      "norm_inf": 0.283203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 426,
+      "name": "60.mlp.down_proj",
+      "norm_1": 2689659.25,
+      "norm_2": 219.88482666015625,
+      "norm_inf": 0.87890625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 427,
+      "name": "61.self_attn.q_proj",
+      "norm_1": 485563.96875,
+      "norm_2": 80.78936767578125,
+      "norm_inf": 0.2470703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 428,
+      "name": "61.self_attn.k_proj",
+      "norm_1": 93069.8359375,
+      "norm_2": 46.316307067871094,
+      "norm_inf": 0.455078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 429,
+      "name": "61.self_attn.v_proj",
+      "norm_1": 113830.9375,
+      "norm_2": 49.524566650390625,
+      "norm_inf": 0.09521484375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 430,
+      "name": "61.self_attn.o_proj",
+      "norm_1": 720002.6875,
+      "norm_2": 110.52748107910156,
+      "norm_inf": 0.54296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 431,
+      "name": "61.mlp.gate_proj",
+      "norm_1": 2936090.0,
+      "norm_2": 240.6322021484375,
+      "norm_inf": 0.41015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 432,
+      "name": "61.mlp.up_proj",
+      "norm_1": 2691648.0,
+      "norm_2": 220.03369140625,
+      "norm_inf": 0.28515625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 433,
+      "name": "61.mlp.down_proj",
+      "norm_1": 2692800.75,
+      "norm_2": 220.13963317871094,
+      "norm_inf": 0.5234375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 434,
+      "name": "62.self_attn.q_proj",
+      "norm_1": 487748.5625,
+      "norm_2": 82.24258422851562,
+      "norm_inf": 0.23828125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 435,
+      "name": "62.self_attn.k_proj",
+      "norm_1": 93331.8984375,
+      "norm_2": 46.974708557128906,
+      "norm_inf": 0.388671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 436,
+      "name": "62.self_attn.v_proj",
+      "norm_1": 112550.2265625,
+      "norm_2": 48.914424896240234,
+      "norm_inf": 0.09326171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 437,
+      "name": "62.self_attn.o_proj",
+      "norm_1": 709546.3125,
+      "norm_2": 108.93546295166016,
+      "norm_inf": 0.4140625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 438,
+      "name": "62.mlp.gate_proj",
+      "norm_1": 2932522.75,
+      "norm_2": 240.35960388183594,
+      "norm_inf": 0.703125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 439,
+      "name": "62.mlp.up_proj",
+      "norm_1": 2697604.25,
+      "norm_2": 220.51483154296875,
+      "norm_inf": 0.2119140625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 440,
+      "name": "62.mlp.down_proj",
+      "norm_1": 2695949.25,
+      "norm_2": 220.39955139160156,
+      "norm_inf": 1.3203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 441,
+      "name": "63.self_attn.q_proj",
+      "norm_1": 474571.40625,
+      "norm_2": 80.64982604980469,
+      "norm_inf": 0.361328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 442,
+      "name": "63.self_attn.k_proj",
+      "norm_1": 90665.9375,
+      "norm_2": 45.982662200927734,
+      "norm_inf": 0.470703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 443,
+      "name": "63.self_attn.v_proj",
+      "norm_1": 109204.5625,
+      "norm_2": 47.80231857299805,
+      "norm_inf": 0.1025390625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 444,
+      "name": "63.self_attn.o_proj",
+      "norm_1": 678879.75,
+      "norm_2": 105.03724670410156,
+      "norm_inf": 1.359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 445,
+      "name": "63.mlp.gate_proj",
+      "norm_1": 2928977.0,
+      "norm_2": 240.1298828125,
+      "norm_inf": 0.48828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 446,
+      "name": "63.mlp.up_proj",
+      "norm_1": 2701570.25,
+      "norm_2": 220.84861755371094,
+      "norm_inf": 0.31640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 447,
+      "name": "63.mlp.down_proj",
+      "norm_1": 2696597.25,
+      "norm_2": 220.47076416015625,
+      "norm_inf": 1.25,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 448,
+      "name": "64.self_attn.q_proj",
+      "norm_1": 536431.8125,
+      "norm_2": 88.84945678710938,
+      "norm_inf": 0.2578125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 449,
+      "name": "64.self_attn.k_proj",
+      "norm_1": 104652.6875,
+      "norm_2": 51.547218322753906,
+      "norm_inf": 0.421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 450,
+      "name": "64.self_attn.v_proj",
+      "norm_1": 115373.0546875,
+      "norm_2": 50.09096145629883,
+      "norm_inf": 0.0966796875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 451,
+      "name": "64.self_attn.o_proj",
+      "norm_1": 734570.75,
+      "norm_2": 112.83020782470703,
+      "norm_inf": 0.404296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 452,
+      "name": "64.mlp.gate_proj",
+      "norm_1": 2925920.25,
+      "norm_2": 239.93218994140625,
+      "norm_inf": 0.416015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 453,
+      "name": "64.mlp.up_proj",
+      "norm_1": 2706065.0,
+      "norm_2": 221.2242889404297,
+      "norm_inf": 0.59765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 454,
+      "name": "64.mlp.down_proj",
+      "norm_1": 2697873.25,
+      "norm_2": 220.57028198242188,
+      "norm_inf": 1.125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 455,
+      "name": "65.self_attn.q_proj",
+      "norm_1": 424769.09375,
+      "norm_2": 72.4667739868164,
+      "norm_inf": 0.234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 456,
+      "name": "65.self_attn.k_proj",
+      "norm_1": 85058.453125,
+      "norm_2": 44.09107208251953,
+      "norm_inf": 0.53125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 457,
+      "name": "65.self_attn.v_proj",
+      "norm_1": 106886.0546875,
+      "norm_2": 46.88589859008789,
+      "norm_inf": 0.103515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 458,
+      "name": "65.self_attn.o_proj",
+      "norm_1": 658836.9375,
+      "norm_2": 101.94790649414062,
+      "norm_inf": 0.29296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 459,
+      "name": "65.mlp.gate_proj",
+      "norm_1": 2922354.75,
+      "norm_2": 239.61544799804688,
+      "norm_inf": 0.388671875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 460,
+      "name": "65.mlp.up_proj",
+      "norm_1": 2712678.25,
+      "norm_2": 221.7751007080078,
+      "norm_inf": 0.322265625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 461,
+      "name": "65.mlp.down_proj",
+      "norm_1": 2702318.25,
+      "norm_2": 220.93759155273438,
+      "norm_inf": 0.46484375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 462,
+      "name": "66.self_attn.q_proj",
+      "norm_1": 511336.78125,
+      "norm_2": 85.716064453125,
+      "norm_inf": 0.2236328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 463,
+      "name": "66.self_attn.k_proj",
+      "norm_1": 96370.8984375,
+      "norm_2": 48.16204071044922,
+      "norm_inf": 0.39453125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 464,
+      "name": "66.self_attn.v_proj",
+      "norm_1": 110439.390625,
+      "norm_2": 48.01194763183594,
+      "norm_inf": 0.09130859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 465,
+      "name": "66.self_attn.o_proj",
+      "norm_1": 713651.8125,
+      "norm_2": 109.74346160888672,
+      "norm_inf": 0.55078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 466,
+      "name": "66.mlp.gate_proj",
+      "norm_1": 2916520.75,
+      "norm_2": 239.1529998779297,
+      "norm_inf": 0.41015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 467,
+      "name": "66.mlp.up_proj",
+      "norm_1": 2718972.25,
+      "norm_2": 222.29998779296875,
+      "norm_inf": 0.298828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 468,
+      "name": "66.mlp.down_proj",
+      "norm_1": 2706908.5,
+      "norm_2": 221.32553100585938,
+      "norm_inf": 1.171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 469,
+      "name": "67.self_attn.q_proj",
+      "norm_1": 428994.15625,
+      "norm_2": 76.04388427734375,
+      "norm_inf": 0.515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 470,
+      "name": "67.self_attn.k_proj",
+      "norm_1": 91339.4609375,
+      "norm_2": 48.69450759887695,
+      "norm_inf": 0.62109375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 471,
+      "name": "67.self_attn.v_proj",
+      "norm_1": 101616.7734375,
+      "norm_2": 45.761680603027344,
+      "norm_inf": 0.09814453125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 472,
+      "name": "67.self_attn.o_proj",
+      "norm_1": 610369.625,
+      "norm_2": 97.51336669921875,
+      "norm_inf": 1.6171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 473,
+      "name": "67.mlp.gate_proj",
+      "norm_1": 2910324.0,
+      "norm_2": 238.6236114501953,
+      "norm_inf": 0.6171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 474,
+      "name": "67.mlp.up_proj",
+      "norm_1": 2726588.5,
+      "norm_2": 222.92584228515625,
+      "norm_inf": 0.384765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 475,
+      "name": "67.mlp.down_proj",
+      "norm_1": 2712460.75,
+      "norm_2": 221.78453063964844,
+      "norm_inf": 0.9921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 476,
+      "name": "68.self_attn.q_proj",
+      "norm_1": 562025.9375,
+      "norm_2": 91.55079650878906,
+      "norm_inf": 0.2197265625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 477,
+      "name": "68.self_attn.k_proj",
+      "norm_1": 107258.828125,
+      "norm_2": 50.835655212402344,
+      "norm_inf": 0.34375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 478,
+      "name": "68.self_attn.v_proj",
+      "norm_1": 120553.1640625,
+      "norm_2": 52.7607536315918,
+      "norm_inf": 0.1171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 479,
+      "name": "68.self_attn.o_proj",
+      "norm_1": 738264.125,
+      "norm_2": 113.74080657958984,
+      "norm_inf": 0.47265625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 480,
+      "name": "68.mlp.gate_proj",
+      "norm_1": 2903768.0,
+      "norm_2": 238.13919067382812,
+      "norm_inf": 0.455078125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 481,
+      "name": "68.mlp.up_proj",
+      "norm_1": 2732284.75,
+      "norm_2": 223.41726684570312,
+      "norm_inf": 0.52734375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 482,
+      "name": "68.mlp.down_proj",
+      "norm_1": 2716239.5,
+      "norm_2": 222.10975646972656,
+      "norm_inf": 0.69921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 483,
+      "name": "69.self_attn.q_proj",
+      "norm_1": 624085.0,
+      "norm_2": 100.29776763916016,
+      "norm_inf": 0.47265625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 484,
+      "name": "69.self_attn.k_proj",
+      "norm_1": 120648.1015625,
+      "norm_2": 55.3994140625,
+      "norm_inf": 0.310546875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 485,
+      "name": "69.self_attn.v_proj",
+      "norm_1": 127452.203125,
+      "norm_2": 55.52433776855469,
+      "norm_inf": 0.11572265625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 486,
+      "name": "69.self_attn.o_proj",
+      "norm_1": 774010.125,
+      "norm_2": 119.32538604736328,
+      "norm_inf": 0.3125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 487,
+      "name": "69.mlp.gate_proj",
+      "norm_1": 2895849.0,
+      "norm_2": 237.41432189941406,
+      "norm_inf": 0.62890625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 488,
+      "name": "69.mlp.up_proj",
+      "norm_1": 2743473.5,
+      "norm_2": 224.32972717285156,
+      "norm_inf": 0.287109375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 489,
+      "name": "69.mlp.down_proj",
+      "norm_1": 2727378.25,
+      "norm_2": 223.02828979492188,
+      "norm_inf": 1.2734375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 490,
+      "name": "70.self_attn.q_proj",
+      "norm_1": 603917.625,
+      "norm_2": 98.09912872314453,
+      "norm_inf": 0.3359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 491,
+      "name": "70.self_attn.k_proj",
+      "norm_1": 114310.125,
+      "norm_2": 53.33946990966797,
+      "norm_inf": 0.3046875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 492,
+      "name": "70.self_attn.v_proj",
+      "norm_1": 118807.59375,
+      "norm_2": 51.76618957519531,
+      "norm_inf": 0.10595703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 493,
+      "name": "70.self_attn.o_proj",
+      "norm_1": 729873.1875,
+      "norm_2": 112.62140655517578,
+      "norm_inf": 0.4296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 494,
+      "name": "70.mlp.gate_proj",
+      "norm_1": 2891378.25,
+      "norm_2": 237.0599822998047,
+      "norm_inf": 0.443359375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 495,
+      "name": "70.mlp.up_proj",
+      "norm_1": 2750563.75,
+      "norm_2": 224.93212890625,
+      "norm_inf": 0.369140625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 496,
+      "name": "70.mlp.down_proj",
+      "norm_1": 2734153.75,
+      "norm_2": 223.60018920898438,
+      "norm_inf": 0.609375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 497,
+      "name": "71.self_attn.q_proj",
+      "norm_1": 637847.5625,
+      "norm_2": 102.96543884277344,
+      "norm_inf": 0.20703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 498,
+      "name": "71.self_attn.k_proj",
+      "norm_1": 121348.0,
+      "norm_2": 55.98695755004883,
+      "norm_inf": 0.34765625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 499,
+      "name": "71.self_attn.v_proj",
+      "norm_1": 117493.125,
+      "norm_2": 51.24100875854492,
+      "norm_inf": 0.11279296875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 500,
+      "name": "71.self_attn.o_proj",
+      "norm_1": 746280.5,
+      "norm_2": 114.75447845458984,
+      "norm_inf": 0.5234375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 501,
+      "name": "71.mlp.gate_proj",
+      "norm_1": 2887916.75,
+      "norm_2": 236.81312561035156,
+      "norm_inf": 0.44921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 502,
+      "name": "71.mlp.up_proj",
+      "norm_1": 2753103.5,
+      "norm_2": 225.16464233398438,
+      "norm_inf": 0.3125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 503,
+      "name": "71.mlp.down_proj",
+      "norm_1": 2734620.0,
+      "norm_2": 223.65809631347656,
+      "norm_inf": 0.48046875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 504,
+      "name": "72.self_attn.q_proj",
+      "norm_1": 673432.875,
+      "norm_2": 107.6458740234375,
+      "norm_inf": 0.248046875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 505,
+      "name": "72.self_attn.k_proj",
+      "norm_1": 127055.640625,
+      "norm_2": 58.55780029296875,
+      "norm_inf": 0.314453125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 506,
+      "name": "72.self_attn.v_proj",
+      "norm_1": 116861.15625,
+      "norm_2": 50.86933135986328,
+      "norm_inf": 0.10205078125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 507,
+      "name": "72.self_attn.o_proj",
+      "norm_1": 750248.75,
+      "norm_2": 115.1376724243164,
+      "norm_inf": 0.37890625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 508,
+      "name": "72.mlp.gate_proj",
+      "norm_1": 2882949.75,
+      "norm_2": 236.38526916503906,
+      "norm_inf": 0.400390625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 509,
+      "name": "72.mlp.up_proj",
+      "norm_1": 2759365.0,
+      "norm_2": 225.6880645751953,
+      "norm_inf": 0.24609375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 510,
+      "name": "72.mlp.down_proj",
+      "norm_1": 2740200.75,
+      "norm_2": 224.13575744628906,
+      "norm_inf": 0.640625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 511,
+      "name": "73.self_attn.q_proj",
+      "norm_1": 641391.875,
+      "norm_2": 102.63320922851562,
+      "norm_inf": 0.4609375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 512,
+      "name": "73.self_attn.k_proj",
+      "norm_1": 120943.5,
+      "norm_2": 55.59822082519531,
+      "norm_inf": 0.30859375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 513,
+      "name": "73.self_attn.v_proj",
+      "norm_1": 124612.703125,
+      "norm_2": 54.231441497802734,
+      "norm_inf": 0.1103515625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 514,
+      "name": "73.self_attn.o_proj",
+      "norm_1": 743833.75,
+      "norm_2": 114.43425750732422,
+      "norm_inf": 0.48828125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 515,
+      "name": "73.mlp.gate_proj",
+      "norm_1": 2880153.5,
+      "norm_2": 236.17442321777344,
+      "norm_inf": 0.796875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 516,
+      "name": "73.mlp.up_proj",
+      "norm_1": 2765625.5,
+      "norm_2": 226.21376037597656,
+      "norm_inf": 0.404296875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 517,
+      "name": "73.mlp.down_proj",
+      "norm_1": 2745694.75,
+      "norm_2": 224.607666015625,
+      "norm_inf": 1.15625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 518,
+      "name": "74.self_attn.q_proj",
+      "norm_1": 682721.4375,
+      "norm_2": 110.33582305908203,
+      "norm_inf": 0.333984375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 519,
+      "name": "74.self_attn.k_proj",
+      "norm_1": 124759.8359375,
+      "norm_2": 57.45404052734375,
+      "norm_inf": 0.373046875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 520,
+      "name": "74.self_attn.v_proj",
+      "norm_1": 116482.1640625,
+      "norm_2": 50.94226837158203,
+      "norm_inf": 0.10693359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 521,
+      "name": "74.self_attn.o_proj",
+      "norm_1": 742726.8125,
+      "norm_2": 114.7239990234375,
+      "norm_inf": 0.43359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 522,
+      "name": "74.mlp.gate_proj",
+      "norm_1": 2876703.5,
+      "norm_2": 235.88792419433594,
+      "norm_inf": 0.443359375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 523,
+      "name": "74.mlp.up_proj",
+      "norm_1": 2767617.0,
+      "norm_2": 226.4187774658203,
+      "norm_inf": 0.322265625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 524,
+      "name": "74.mlp.down_proj",
+      "norm_1": 2746171.0,
+      "norm_2": 224.67379760742188,
+      "norm_inf": 0.6015625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 525,
+      "name": "75.self_attn.q_proj",
+      "norm_1": 657400.5625,
+      "norm_2": 105.1436996459961,
+      "norm_inf": 0.3203125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 526,
+      "name": "75.self_attn.k_proj",
+      "norm_1": 117710.6484375,
+      "norm_2": 53.98017883300781,
+      "norm_inf": 0.3046875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 527,
+      "name": "75.self_attn.v_proj",
+      "norm_1": 126681.6015625,
+      "norm_2": 55.54705047607422,
+      "norm_inf": 0.1181640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 528,
+      "name": "75.self_attn.o_proj",
+      "norm_1": 740688.75,
+      "norm_2": 115.07684326171875,
+      "norm_inf": 0.57421875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 529,
+      "name": "75.mlp.gate_proj",
+      "norm_1": 2876671.75,
+      "norm_2": 235.98365783691406,
+      "norm_inf": 0.498046875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 530,
+      "name": "75.mlp.up_proj",
+      "norm_1": 2767449.75,
+      "norm_2": 226.4717254638672,
+      "norm_inf": 0.71875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 531,
+      "name": "75.mlp.down_proj",
+      "norm_1": 2742663.0,
+      "norm_2": 224.4963836669922,
+      "norm_inf": 1.3515625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 532,
+      "name": "76.self_attn.q_proj",
+      "norm_1": 723603.5,
+      "norm_2": 114.82544708251953,
+      "norm_inf": 0.359375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 533,
+      "name": "76.self_attn.k_proj",
+      "norm_1": 124860.5390625,
+      "norm_2": 56.5521354675293,
+      "norm_inf": 0.31640625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 534,
+      "name": "76.self_attn.v_proj",
+      "norm_1": 133025.59375,
+      "norm_2": 58.521480560302734,
+      "norm_inf": 0.138671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 535,
+      "name": "76.self_attn.o_proj",
+      "norm_1": 803842.25,
+      "norm_2": 124.7939224243164,
+      "norm_inf": 0.49609375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 536,
+      "name": "76.mlp.gate_proj",
+      "norm_1": 2891139.5,
+      "norm_2": 237.29702758789062,
+      "norm_inf": 0.380859375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 537,
+      "name": "76.mlp.up_proj",
+      "norm_1": 2768621.5,
+      "norm_2": 226.66688537597656,
+      "norm_inf": 0.408203125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 538,
+      "name": "76.mlp.down_proj",
+      "norm_1": 2734772.25,
+      "norm_2": 223.95721435546875,
+      "norm_inf": 1.09375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 539,
+      "name": "77.self_attn.q_proj",
+      "norm_1": 675441.8125,
+      "norm_2": 108.55653381347656,
+      "norm_inf": 0.36328125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 540,
+      "name": "77.self_attn.k_proj",
+      "norm_1": 120366.0078125,
+      "norm_2": 55.1139030456543,
+      "norm_inf": 0.345703125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 541,
+      "name": "77.self_attn.v_proj",
+      "norm_1": 127406.1328125,
+      "norm_2": 56.13499450683594,
+      "norm_inf": 0.11669921875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 542,
+      "name": "77.self_attn.o_proj",
+      "norm_1": 755367.8125,
+      "norm_2": 117.82166290283203,
+      "norm_inf": 0.765625,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 543,
+      "name": "77.mlp.gate_proj",
+      "norm_1": 2902753.5,
+      "norm_2": 238.2801055908203,
+      "norm_inf": 0.48828125,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 544,
+      "name": "77.mlp.up_proj",
+      "norm_1": 2782813.0,
+      "norm_2": 227.87161254882812,
+      "norm_inf": 0.43359375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 545,
+      "name": "77.mlp.down_proj",
+      "norm_1": 2742631.5,
+      "norm_2": 225.00845336914062,
+      "norm_inf": 1.1171875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 546,
+      "name": "78.self_attn.q_proj",
+      "norm_1": 650247.75,
+      "norm_2": 105.5833740234375,
+      "norm_inf": 0.271484375,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 547,
+      "name": "78.self_attn.k_proj",
+      "norm_1": 120269.4453125,
+      "norm_2": 55.16482162475586,
+      "norm_inf": 0.298828125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 548,
+      "name": "78.self_attn.v_proj",
+      "norm_1": 117603.4375,
+      "norm_2": 51.693111419677734,
+      "norm_inf": 0.138671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 549,
+      "name": "78.self_attn.o_proj",
+      "norm_1": 704736.0,
+      "norm_2": 110.64956665039062,
+      "norm_inf": 1.1171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 550,
+      "name": "78.mlp.gate_proj",
+      "norm_1": 2934839.0,
+      "norm_2": 241.22593688964844,
+      "norm_inf": 0.396484375,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 551,
+      "name": "78.mlp.up_proj",
+      "norm_1": 2805238.5,
+      "norm_2": 229.82244873046875,
+      "norm_inf": 0.84765625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 552,
+      "name": "78.mlp.down_proj",
+      "norm_1": 2743615.5,
+      "norm_2": 225.67652893066406,
+      "norm_inf": 1.5390625,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 553,
+      "name": "79.self_attn.q_proj",
+      "norm_1": 620257.5625,
+      "norm_2": 101.83561706542969,
+      "norm_inf": 0.314453125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 554,
+      "name": "79.self_attn.k_proj",
+      "norm_1": 122690.4453125,
+      "norm_2": 56.44944381713867,
+      "norm_inf": 0.38671875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 555,
+      "name": "79.self_attn.v_proj",
+      "norm_1": 94954.109375,
+      "norm_2": 42.40840530395508,
+      "norm_inf": 0.1142578125,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 556,
+      "name": "79.self_attn.o_proj",
+      "norm_1": 588112.375,
+      "norm_2": 93.88277435302734,
+      "norm_inf": 0.51171875,
+      "num_parameters": 67108864
+    },
+    {
+      "index": 557,
+      "name": "79.mlp.gate_proj",
+      "norm_1": 2989409.25,
+      "norm_2": 246.20359802246094,
+      "norm_inf": 0.41796875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 558,
+      "name": "79.mlp.up_proj",
+      "norm_1": 2861252.0,
+      "norm_2": 235.42654418945312,
+      "norm_inf": 0.69921875,
+      "num_parameters": 180355072
+    },
+    {
+      "index": 559,
+      "name": "79.mlp.down_proj",
+      "norm_1": 2728027.75,
+      "norm_2": 226.242431640625,
+      "norm_inf": 1.5625,
+      "num_parameters": 180355072
+    }
+  ]
+}

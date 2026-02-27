@@ -1,0 +1,340 @@
+{
+  "model_name": "facebook/opt-1.3b",
+  "prompt": "Which city has the best tiramisu place?",
+  "generated_text": "\nI'm not sure if it's a city, but I'm in the UK and I've",
+  "conversion": {
+    "scale_factor": 16,
+    "quantize_pct": 50.0,
+    "truncated_digits": 8,
+    "effective_scale": 8,
+    "formula": "integer = round(float_value * 10^effective_scale)",
+    "reverse": "float_approx = integer / 10^effective_scale"
+  },
+  "layers": [
+    {
+      "layer": "embedding",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "embedding.npy",
+      "sample_original": -0.048828125,
+      "sample_converted": -4882812
+    },
+    {
+      "layer": "layer_0",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_0.npy",
+      "sample_original": -0.04278564453125,
+      "sample_converted": -4278564
+    },
+    {
+      "layer": "layer_1",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_1.npy",
+      "sample_original": -0.050537109375,
+      "sample_converted": -5053711
+    },
+    {
+      "layer": "layer_2",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_2.npy",
+      "sample_original": 0.00433349609375,
+      "sample_converted": 433350
+    },
+    {
+      "layer": "layer_3",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_3.npy",
+      "sample_original": 0.0260162353515625,
+      "sample_converted": 2601624
+    },
+    {
+      "layer": "layer_4",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_4.npy",
+      "sample_original": 0.06591796875,
+      "sample_converted": 6591797
+    },
+    {
+      "layer": "layer_5",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_5.npy",
+      "sample_original": 0.07281494140625,
+      "sample_converted": 7281494
+    },
+    {
+      "layer": "layer_6",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_6.npy",
+      "sample_original": 0.06805419921875,
+      "sample_converted": 6805420
+    },
+    {
+      "layer": "layer_7",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_7.npy",
+      "sample_original": 0.07061767578125,
+      "sample_converted": 7061768
+    },
+    {
+      "layer": "layer_8",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_8.npy",
+      "sample_original": 0.0760498046875,
+      "sample_converted": 7604980
+    },
+    {
+      "layer": "layer_9",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_9.npy",
+      "sample_original": 0.058074951171875,
+      "sample_converted": 5807495
+    },
+    {
+      "layer": "layer_10",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_10.npy",
+      "sample_original": 0.061920166015625,
+      "sample_converted": 6192017
+    },
+    {
+      "layer": "layer_11",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_11.npy",
+      "sample_original": 0.06085205078125,
+      "sample_converted": 6085205
+    },
+    {
+      "layer": "layer_12",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_12.npy",
+      "sample_original": 0.06622314453125,
+      "sample_converted": 6622314
+    },
+    {
+      "layer": "layer_13",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_13.npy",
+      "sample_original": 0.07171630859375,
+      "sample_converted": 7171631
+    },
+    {
+      "layer": "layer_14",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_14.npy",
+      "sample_original": 0.047515869140625,
+      "sample_converted": 4751587
+    },
+    {
+      "layer": "layer_15",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_15.npy",
+      "sample_original": 0.040863037109375,
+      "sample_converted": 4086304
+    },
+    {
+      "layer": "layer_16",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_16.npy",
+      "sample_original": 0.0175628662109375,
+      "sample_converted": 1756287
+    },
+    {
+      "layer": "layer_17",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_17.npy",
+      "sample_original": 0.02032470703125,
+      "sample_converted": 2032471
+    },
+    {
+      "layer": "layer_18",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_18.npy",
+      "sample_original": 0.036865234375,
+      "sample_converted": 3686523
+    },
+    {
+      "layer": "layer_19",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_19.npy",
+      "sample_original": 0.00272369384765625,
+      "sample_converted": 272369
+    },
+    {
+      "layer": "layer_20",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_20.npy",
+      "sample_original": 0.033966064453125,
+      "sample_converted": 3396606
+    },
+    {
+      "layer": "layer_21",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_21.npy",
+      "sample_original": 0.059906005859375,
+      "sample_converted": 5990601
+    },
+    {
+      "layer": "layer_22",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_22.npy",
+      "sample_original": -0.056182861328125,
+      "sample_converted": -5618286
+    },
+    {
+      "layer": "layer_23",
+      "original_shape": [
+        1,
+        31,
+        2048
+      ],
+      "num_elements": 63488,
+      "original_dtype": "torch.float16",
+      "npy_file": "layer_23.npy",
+      "sample_original": -0.189453125,
+      "sample_converted": -18945312
+    }
+  ]
+}

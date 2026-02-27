@@ -1,0 +1,10 @@
+*.pt
+*coefficients.json
+*.npy
+*target*
+*__pycache__*
+*layerSelectionLib/layer_selection_integration/llm_weights/*
+*AlphaPruning/data
+*.pyc
+*benchmark/results/
+merkle/python_demo/final_prover_verifier

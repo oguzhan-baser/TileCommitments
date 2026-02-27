@@ -1,0 +1,2090 @@
+{
+  "source_file": "results/filtered_applied/llama2_7b_filtered_applied.json",
+  "source_model": "llama2_7b",
+  "num_original_cases": 13,
+  "num_perturbations_per_case": 10,
+  "perturbation_factor": 0.1,
+  "total_perturbed_cases": 130,
+  "cases": [
+    {
+      "case_id": 1,
+      "original_case_id": 3,
+      "perturbation_index": 0,
+      "budgets": [
+        252605273.3116359,
+        23534547.426927827,
+        324467698.4533564
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 2,
+      "original_case_id": 3,
+      "perturbation_index": 1,
+      "budgets": [
+        277589340.6648901,
+        25720986.641063616,
+        349702376.48041344
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 3,
+      "original_case_id": 3,
+      "perturbation_index": 2,
+      "budgets": [
+        282066503.9862237,
+        23350217.70018816,
+        362691622.811423
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 4,
+      "original_case_id": 3,
+      "perturbation_index": 3,
+      "budgets": [
+        249820313.8801684,
+        25843049.84418789,
+        375741760.4408914
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 5,
+      "original_case_id": 3,
+      "perturbation_index": 4,
+      "budgets": [
+        251904067.24593604,
+        23946606.381889146,
+        334960014.39775693
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 6,
+      "original_case_id": 3,
+      "perturbation_index": 5,
+      "budgets": [
+        239229084.6855487,
+        22954244.57274679,
+        380335923.44768065
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 7,
+      "original_case_id": 3,
+      "perturbation_index": 6,
+      "budgets": [
+        260726897.28557718,
+        22566400.628568955,
+        343285318.26416785
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 8,
+      "original_case_id": 3,
+      "perturbation_index": 7,
+      "budgets": [
+        245191744.33960292,
+        23488126.576773427,
+        364014042.1288561
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 9,
+      "original_case_id": 3,
+      "perturbation_index": 8,
+      "budgets": [
+        247708205.8029113,
+        27126684.598474257,
+        334957481.56854707
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 10,
+      "original_case_id": 3,
+      "perturbation_index": 9,
+      "budgets": [
+        253660138.15997195,
+        25901918.517140217,
+        358773703.0023867
+      ],
+      "original_budgets": [
+        258473327.49203953,
+        24877479.515704066,
+        347440833.40937656
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 11,
+      "original_case_id": 22,
+      "perturbation_index": 0,
+      "budgets": [
+        93528759.7254365,
+        91648830.87798767,
+        198642906.1708424
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 12,
+      "original_case_id": 22,
+      "perturbation_index": 1,
+      "budgets": [
+        95269306.51885092,
+        87229974.56344831,
+        183456688.49125978
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 13,
+      "original_case_id": 22,
+      "perturbation_index": 2,
+      "budgets": [
+        97948232.27764529,
+        88480902.56002963,
+        190170114.89225924
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 14,
+      "original_case_id": 22,
+      "perturbation_index": 3,
+      "budgets": [
+        93403687.60903096,
+        83847896.6236048,
+        204492523.76780617
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 15,
+      "original_case_id": 22,
+      "perturbation_index": 4,
+      "budgets": [
+        92643286.14092839,
+        85128128.45396098,
+        181638407.58142588
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 16,
+      "original_case_id": 22,
+      "perturbation_index": 5,
+      "budgets": [
+        82261082.65318137,
+        95826669.52815282,
+        184771708.24376515
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 17,
+      "original_case_id": 22,
+      "perturbation_index": 6,
+      "budgets": [
+        91316908.47637673,
+        85354767.90730917,
+        198495645.20806983
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 18,
+      "original_case_id": 22,
+      "perturbation_index": 7,
+      "budgets": [
+        91603420.66417006,
+        98759714.02163959,
+        186699689.48779947
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 19,
+      "original_case_id": 22,
+      "perturbation_index": 8,
+      "budgets": [
+        89263416.04111435,
+        89540175.01720957,
+        196057649.30038264
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 20,
+      "original_case_id": 22,
+      "perturbation_index": 9,
+      "budgets": [
+        87915085.44189095,
+        89378543.0020813,
+        188218838.36203876
+      ],
+      "original_budgets": [
+        89819905.100059,
+        89819905.100059,
+        188621800.71074614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 21,
+      "original_case_id": 24,
+      "perturbation_index": 0,
+      "budgets": [
+        129414419.15440074,
+        258339030.4545588,
+        119593321.08904342
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 22,
+      "original_case_id": 24,
+      "perturbation_index": 1,
+      "budgets": [
+        130196823.13696094,
+        243346787.51649904,
+        126685107.96567737
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 23,
+      "original_case_id": 24,
+      "perturbation_index": 2,
+      "budgets": [
+        137787685.34653977,
+        244800564.66272336,
+        129792605.588228
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 24,
+      "original_case_id": 24,
+      "perturbation_index": 3,
+      "budgets": [
+        122605921.37486064,
+        261863509.2295427,
+        128971066.5097024
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 25,
+      "original_case_id": 24,
+      "perturbation_index": 4,
+      "budgets": [
+        125006021.94805868,
+        266230205.58594233,
+        138942027.67973736
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 26,
+      "original_case_id": 24,
+      "perturbation_index": 5,
+      "budgets": [
+        122289048.15609637,
+        245673580.3866061,
+        114658290.04405653
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 27,
+      "original_case_id": 24,
+      "perturbation_index": 6,
+      "budgets": [
+        131958114.15407419,
+        266425894.68135706,
+        116875707.39915548
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 28,
+      "original_case_id": 24,
+      "perturbation_index": 7,
+      "budgets": [
+        139570018.0125888,
+        276646738.0367997,
+        118099133.10821499
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 29,
+      "original_case_id": 24,
+      "perturbation_index": 8,
+      "budgets": [
+        124868827.39108114,
+        273144310.74273,
+        130037907.73296176
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 30,
+      "original_case_id": 24,
+      "perturbation_index": 9,
+      "budgets": [
+        130311215.33033103,
+        251635998.92783114,
+        126846861.65292916
+      ],
+      "original_budgets": [
+        127375703.344703,
+        267488977.02337214,
+        127375703.344703
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 31,
+      "original_case_id": 26,
+      "perturbation_index": 0,
+      "budgets": [
+        96219481.48019347,
+        90097821.73516704,
+        197435689.87108234
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 32,
+      "original_case_id": 26,
+      "perturbation_index": 1,
+      "budgets": [
+        96884200.5772121,
+        90470675.13294238,
+        192552805.89516243
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 33,
+      "original_case_id": 26,
+      "perturbation_index": 2,
+      "budgets": [
+        96710622.9474063,
+        95626616.39958242,
+        206769786.5947796
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 34,
+      "original_case_id": 26,
+      "perturbation_index": 3,
+      "budgets": [
+        88453165.59320012,
+        84401229.811104,
+        205752098.43636215
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 35,
+      "original_case_id": 26,
+      "perturbation_index": 4,
+      "budgets": [
+        92655798.93581927,
+        90185872.28438641,
+        194888974.8938462
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 36,
+      "original_case_id": 26,
+      "perturbation_index": 5,
+      "budgets": [
+        95664885.37377389,
+        83555134.05378836,
+        183199641.5257543
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 37,
+      "original_case_id": 26,
+      "perturbation_index": 6,
+      "budgets": [
+        91474468.78109822,
+        82440567.97298366,
+        202994142.79871392
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 38,
+      "original_case_id": 26,
+      "perturbation_index": 7,
+      "budgets": [
+        90906830.44176884,
+        86338559.41213156,
+        177060454.08178994
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 39,
+      "original_case_id": 26,
+      "perturbation_index": 8,
+      "budgets": [
+        91367049.78188202,
+        90294589.70297551,
+        208072095.5506189
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 40,
+      "original_case_id": 26,
+      "perturbation_index": 9,
+      "budgets": [
+        95441528.73145701,
+        95120862.85466729,
+        171918816.9043021
+      ],
+      "original_budgets": [
+        90471540.77170572,
+        90471540.77170572,
+        189990235.62003636
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 41,
+      "original_case_id": 33,
+      "perturbation_index": 0,
+      "budgets": [
+        71707975.96654251,
+        69119681.22473483,
+        165335983.14910462
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 42,
+      "original_case_id": 33,
+      "perturbation_index": 1,
+      "budgets": [
+        74060033.93089212,
+        76208748.52335352,
+        160113138.44605845
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 43,
+      "original_case_id": 33,
+      "perturbation_index": 2,
+      "budgets": [
+        71452421.66423717,
+        67847637.0950696,
+        145939763.81447268
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 44,
+      "original_case_id": 33,
+      "perturbation_index": 3,
+      "budgets": [
+        78404518.0380616,
+        77747059.71423669,
+        145954145.62028807
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 45,
+      "original_case_id": 33,
+      "perturbation_index": 4,
+      "budgets": [
+        64882523.73561492,
+        77689158.57526775,
+        153014791.29693374
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 46,
+      "original_case_id": 33,
+      "perturbation_index": 5,
+      "budgets": [
+        72808056.39766856,
+        67818365.9650105,
+        151671900.63381743
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 47,
+      "original_case_id": 33,
+      "perturbation_index": 6,
+      "budgets": [
+        65941145.96834045,
+        66193014.1985189,
+        165208720.92388445
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 48,
+      "original_case_id": 33,
+      "perturbation_index": 7,
+      "budgets": [
+        74011400.54780725,
+        72531590.84100765,
+        142424295.88832656
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 49,
+      "original_case_id": 33,
+      "perturbation_index": 8,
+      "budgets": [
+        68399415.24327232,
+        75765654.44550197,
+        156819394.67247823
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 50,
+      "original_case_id": 33,
+      "perturbation_index": 9,
+      "budgets": [
+        78292763.73766597,
+        73857530.68018135,
+        161259411.00506836
+      ],
+      "original_budgets": [
+        71658381.58025937,
+        71658381.58025937,
+        150482601.3189922
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 51,
+      "original_case_id": 36,
+      "perturbation_index": 0,
+      "budgets": [
+        93828305.72716302,
+        92000706.38850474,
+        173064825.33907664
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 52,
+      "original_case_id": 36,
+      "perturbation_index": 1,
+      "budgets": [
+        90369152.27419211,
+        80314478.4832706,
+        185429612.92920017
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 53,
+      "original_case_id": 36,
+      "perturbation_index": 2,
+      "budgets": [
+        93928121.1020706,
+        91996892.97732466,
+        190475782.79459766
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 54,
+      "original_case_id": 36,
+      "perturbation_index": 3,
+      "budgets": [
+        95670700.23454186,
+        90748147.28197657,
+        172090858.888106
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 55,
+      "original_case_id": 36,
+      "perturbation_index": 4,
+      "budgets": [
+        95887334.8528257,
+        81142863.37822767,
+        195673484.81030506
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 56,
+      "original_case_id": 36,
+      "perturbation_index": 5,
+      "budgets": [
+        85144369.86972927,
+        89012127.32869558,
+        176556851.82485038
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 57,
+      "original_case_id": 36,
+      "perturbation_index": 6,
+      "budgets": [
+        95623075.3903201,
+        86736517.76532868,
+        166943167.38070008
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 58,
+      "original_case_id": 36,
+      "perturbation_index": 7,
+      "budgets": [
+        84796004.52404019,
+        80927361.28947316,
+        183098174.88590375
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 59,
+      "original_case_id": 36,
+      "perturbation_index": 8,
+      "budgets": [
+        90244027.99439639,
+        83831973.46893175,
+        195075854.22951788
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 60,
+      "original_case_id": 36,
+      "perturbation_index": 9,
+      "budgets": [
+        92243074.0736059,
+        94050057.33280417,
+        184213537.28391936
+      ],
+      "original_budgets": [
+        88200880.02793005,
+        88200880.02793005,
+        185221848.05758825
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 61,
+      "original_case_id": 37,
+      "perturbation_index": 0,
+      "budgets": [
+        104291621.85872878,
+        94373349.87998426,
+        194364927.14864314
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 62,
+      "original_case_id": 37,
+      "perturbation_index": 1,
+      "budgets": [
+        95632149.8037065,
+        97388842.47239543,
+        226344719.5310777
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 63,
+      "original_case_id": 37,
+      "perturbation_index": 2,
+      "budgets": [
+        95062049.75281186,
+        103474613.89821059,
+        207379122.78985456
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 64,
+      "original_case_id": 37,
+      "perturbation_index": 3,
+      "budgets": [
+        91440126.10577604,
+        92291239.07968588,
+        219945317.9405114
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 65,
+      "original_case_id": 37,
+      "perturbation_index": 4,
+      "budgets": [
+        95317605.00273415,
+        100880707.18147032,
+        197451036.5324067
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 66,
+      "original_case_id": 37,
+      "perturbation_index": 5,
+      "budgets": [
+        108123139.49382289,
+        95765187.0491564,
+        204436954.11488998
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 67,
+      "original_case_id": 37,
+      "perturbation_index": 6,
+      "budgets": [
+        107664506.95456491,
+        96821864.22572216,
+        198880531.9818997
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 68,
+      "original_case_id": 37,
+      "perturbation_index": 7,
+      "budgets": [
+        97389852.21209542,
+        98424035.93218161,
+        222334203.06695387
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 69,
+      "original_case_id": 37,
+      "perturbation_index": 8,
+      "budgets": [
+        90527858.46439156,
+        110267801.96490775,
+        209719054.2387745
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 70,
+      "original_case_id": 37,
+      "perturbation_index": 9,
+      "budgets": [
+        103543199.16835846,
+        104251649.67359257,
+        198618753.28554147
+      ],
+      "original_budgets": [
+        100403461.35314114,
+        100403461.35314114,
+        210847268.84151193
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 71,
+      "original_case_id": 39,
+      "perturbation_index": 0,
+      "budgets": [
+        83922831.00263113,
+        72830595.24541682,
+        181805472.2666756
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 72,
+      "original_case_id": 39,
+      "perturbation_index": 1,
+      "budgets": [
+        78756996.66281241,
+        79307391.38723727,
+        150577991.21550745
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 73,
+      "original_case_id": 39,
+      "perturbation_index": 2,
+      "budgets": [
+        76090763.99479033,
+        82465018.94974189,
+        178047584.92626196
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 74,
+      "original_case_id": 39,
+      "perturbation_index": 3,
+      "budgets": [
+        86278477.0066436,
+        81571816.65498608,
+        168192955.95551422
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 75,
+      "original_case_id": 39,
+      "perturbation_index": 4,
+      "budgets": [
+        75150430.52583426,
+        84905062.37722,
+        170415655.90572977
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 76,
+      "original_case_id": 39,
+      "perturbation_index": 5,
+      "budgets": [
+        81870809.04259162,
+        71521071.80654319,
+        163084173.75395548
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 77,
+      "original_case_id": 39,
+      "perturbation_index": 6,
+      "budgets": [
+        81228475.67858775,
+        83903468.0160009,
+        174507711.13330445
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 78,
+      "original_case_id": 39,
+      "perturbation_index": 7,
+      "budgets": [
+        71201577.14711799,
+        75928959.28519827,
+        171806341.27499443
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 79,
+      "original_case_id": 39,
+      "perturbation_index": 8,
+      "budgets": [
+        72584932.74412659,
+        84639542.06445827,
+        160085046.2662105
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 80,
+      "original_case_id": 39,
+      "perturbation_index": 9,
+      "budgets": [
+        73511558.55484492,
+        73157009.26479453,
+        173446748.22908586
+      ],
+      "original_budgets": [
+        79027275.00968392,
+        79027275.00968392,
+        165957277.52033627
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 81,
+      "original_case_id": 47,
+      "perturbation_index": 0,
+      "budgets": [
+        467896586.5797393,
+        179513884.0806824,
+        54212298.07115455
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 82,
+      "original_case_id": 47,
+      "perturbation_index": 1,
+      "budgets": [
+        454241159.47190243,
+        169149144.5066165,
+        56989254.4943915
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 83,
+      "original_case_id": 47,
+      "perturbation_index": 2,
+      "budgets": [
+        449295611.83577216,
+        147518081.6452444,
+        61445794.4002314
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 84,
+      "original_case_id": 47,
+      "perturbation_index": 3,
+      "budgets": [
+        413989781.24729127,
+        164006109.4286319,
+        65388334.25173856
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 85,
+      "original_case_id": 47,
+      "perturbation_index": 4,
+      "budgets": [
+        467285276.24233156,
+        156340485.8912761,
+        57221955.3348157
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 86,
+      "original_case_id": 47,
+      "perturbation_index": 5,
+      "budgets": [
+        438636797.2690311,
+        173924350.91477877,
+        60877733.17890147
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 87,
+      "original_case_id": 47,
+      "perturbation_index": 6,
+      "budgets": [
+        431118204.3180521,
+        150775231.5192245,
+        61985706.61249315
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 88,
+      "original_case_id": 47,
+      "perturbation_index": 7,
+      "budgets": [
+        431630873.22878027,
+        171502967.95290053,
+        62184642.75740911
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 89,
+      "original_case_id": 47,
+      "perturbation_index": 8,
+      "budgets": [
+        470793362.7886386,
+        150756187.72471017,
+        57755023.2605022
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 90,
+      "original_case_id": 47,
+      "perturbation_index": 9,
+      "budgets": [
+        455779717.3733158,
+        155228789.663778,
+        62194523.812983975
+      ],
+      "original_budgets": [
+        444298526.8613595,
+        163448293.77511877,
+        60129266.974144824
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 91,
+      "original_case_id": 81,
+      "perturbation_index": 0,
+      "budgets": [
+        225018307.37534112,
+        255710563.69105643,
+        238953946.75407836
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 92,
+      "original_case_id": 81,
+      "perturbation_index": 1,
+      "budgets": [
+        260803046.6176403,
+        221427510.15048358,
+        236676173.7812325
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 93,
+      "original_case_id": 81,
+      "perturbation_index": 2,
+      "budgets": [
+        233725709.7897399,
+        233891362.44523138,
+        236666380.41168833
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 94,
+      "original_case_id": 81,
+      "perturbation_index": 3,
+      "budgets": [
+        254255186.7486947,
+        246921143.2609373,
+        245658889.53244126
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 95,
+      "original_case_id": 81,
+      "perturbation_index": 4,
+      "budgets": [
+        246611298.00856805,
+        261097057.45380956,
+        238485897.51624763
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 96,
+      "original_case_id": 81,
+      "perturbation_index": 5,
+      "budgets": [
+        232766924.59639803,
+        261068129.41863137,
+        228795814.34802327
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 97,
+      "original_case_id": 81,
+      "perturbation_index": 6,
+      "budgets": [
+        265674128.30213714,
+        263041782.15326536,
+        257050684.4589051
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 98,
+      "original_case_id": 81,
+      "perturbation_index": 7,
+      "budgets": [
+        241195233.56998748,
+        220358269.18637574,
+        223225103.36254948
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 99,
+      "original_case_id": 81,
+      "perturbation_index": 8,
+      "budgets": [
+        244456105.0963466,
+        256937460.69138175,
+        252923381.58703256
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 100,
+      "original_case_id": 81,
+      "perturbation_index": 9,
+      "budgets": [
+        253621597.12096754,
+        258960410.45711353,
+        252259504.07689154
+      ],
+      "original_budgets": [
+        244363908.42844218,
+        244363908.42844218,
+        244363908.42844218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 101,
+      "original_case_id": 84,
+      "perturbation_index": 0,
+      "budgets": [
+        254165397.69194895,
+        246898836.47032297,
+        269134109.0927944
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 102,
+      "original_case_id": 84,
+      "perturbation_index": 1,
+      "budgets": [
+        258750071.02423388,
+        268956258.216553,
+        244513514.0446286
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 103,
+      "original_case_id": 84,
+      "perturbation_index": 2,
+      "budgets": [
+        256937856.58057985,
+        263228646.8871865,
+        230846441.15448645
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 104,
+      "original_case_id": 84,
+      "perturbation_index": 3,
+      "budgets": [
+        260795952.1455697,
+        230745841.06917438,
+        270172034.245113
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 105,
+      "original_case_id": 84,
+      "perturbation_index": 4,
+      "budgets": [
+        258196996.89633074,
+        235303181.12088853,
+        241935873.1014746
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 106,
+      "original_case_id": 84,
+      "perturbation_index": 5,
+      "budgets": [
+        266382125.96734717,
+        227859158.8004248,
+        237638758.57286733
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 107,
+      "original_case_id": 84,
+      "perturbation_index": 6,
+      "budgets": [
+        259441099.90187842,
+        244958316.26629153,
+        248921772.23615092
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 108,
+      "original_case_id": 84,
+      "perturbation_index": 7,
+      "budgets": [
+        248268829.9142284,
+        252892591.46908942,
+        235030885.6733511
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 109,
+      "original_case_id": 84,
+      "perturbation_index": 8,
+      "budgets": [
+        226436057.60670722,
+        244288016.13296276,
+        245350941.07222828
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 110,
+      "original_case_id": 84,
+      "perturbation_index": 9,
+      "budgets": [
+        243958450.50028098,
+        260498813.5928783,
+        245720956.9538337
+      ],
+      "original_budgets": [
+        245837317.48526266,
+        245837317.48526266,
+        245837317.48526266
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 111,
+      "original_case_id": 92,
+      "perturbation_index": 0,
+      "budgets": [
+        188621806.3245963,
+        188660836.6871046,
+        182270873.39066336
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 112,
+      "original_case_id": 92,
+      "perturbation_index": 1,
+      "budgets": [
+        184967925.37358195,
+        161664622.0601099,
+        162628620.96337977
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 113,
+      "original_case_id": 92,
+      "perturbation_index": 2,
+      "budgets": [
+        162615742.7342205,
+        189731557.0046654,
+        189643227.05964142
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 114,
+      "original_case_id": 92,
+      "perturbation_index": 3,
+      "budgets": [
+        161141953.5011371,
+        183832826.6361202,
+        176115923.99305928
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 115,
+      "original_case_id": 92,
+      "perturbation_index": 4,
+      "budgets": [
+        192476017.02769512,
+        169199015.1239228,
+        167080206.3577471
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 116,
+      "original_case_id": 92,
+      "perturbation_index": 5,
+      "budgets": [
+        158866918.36334544,
+        178408808.4026882,
+        168405888.9706631
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 117,
+      "original_case_id": 92,
+      "perturbation_index": 6,
+      "budgets": [
+        161087509.97323307,
+        170047195.3977856,
+        183967694.67069888
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 118,
+      "original_case_id": 92,
+      "perturbation_index": 7,
+      "budgets": [
+        165953456.24978602,
+        177684848.0826323,
+        172604384.63168487
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 119,
+      "original_case_id": 92,
+      "perturbation_index": 8,
+      "budgets": [
+        187503845.64785945,
+        169280641.25756705,
+        179587340.91294125
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 120,
+      "original_case_id": 92,
+      "perturbation_index": 9,
+      "budgets": [
+        166689652.3318717,
+        165848347.37870932,
+        168463136.74807715
+      ],
+      "original_budgets": [
+        175756747.69222218,
+        175756747.69222218,
+        175756747.69222218
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 121,
+      "original_case_id": 93,
+      "perturbation_index": 0,
+      "budgets": [
+        169207654.45144877,
+        183636839.50641352,
+        169249125.51214674
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 122,
+      "original_case_id": 93,
+      "perturbation_index": 1,
+      "budgets": [
+        159010012.34024778,
+        157746924.11178547,
+        177807716.30577853
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 123,
+      "original_case_id": 93,
+      "perturbation_index": 2,
+      "budgets": [
+        185444453.58602875,
+        182613096.19144377,
+        183178467.47226638
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 124,
+      "original_case_id": 93,
+      "perturbation_index": 3,
+      "budgets": [
+        179179938.9691799,
+        182027172.71735832,
+        166924387.685666
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 125,
+      "original_case_id": 93,
+      "perturbation_index": 4,
+      "budgets": [
+        183018506.9214988,
+        155758079.91071218,
+        184887234.92563397
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 126,
+      "original_case_id": 93,
+      "perturbation_index": 5,
+      "budgets": [
+        188841834.97164288,
+        188172855.98479414,
+        169771276.1090265
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 127,
+      "original_case_id": 93,
+      "perturbation_index": 6,
+      "budgets": [
+        169618712.07913688,
+        166571337.0415839,
+        182899879.75411108
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 128,
+      "original_case_id": 93,
+      "perturbation_index": 7,
+      "budgets": [
+        156553580.40753147,
+        181624786.53731677,
+        170368664.33205178
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 129,
+      "original_case_id": 93,
+      "perturbation_index": 8,
+      "budgets": [
+        158898329.15807274,
+        178737247.0499235,
+        158939164.74910766
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    },
+    {
+      "case_id": 130,
+      "original_case_id": 93,
+      "perturbation_index": 9,
+      "budgets": [
+        184929687.83178335,
+        159780256.70270163,
+        173122168.37591112
+      ],
+      "original_budgets": [
+        172409462.8483614,
+        172409462.8483614,
+        172409462.8483614
+      ],
+      "perturbation_factor": 0.1
+    }
+  ]
+}

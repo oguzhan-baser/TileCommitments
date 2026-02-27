@@ -1,0 +1,10 @@
+[package]
+name = "poly_interp_bn254_fast_parallel"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ark-ff = "0.4"
+ark-bn254 = "0.4"
+rand = "0.8"
+rayon = "1.10"

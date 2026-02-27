@@ -1,0 +1,9 @@
+# Python requirements for PST library usage
+setuptools-rust>=1.5.0
+maturin
+numpy
+matplotlib
+seaborn
+torch
+datasets
+transformers

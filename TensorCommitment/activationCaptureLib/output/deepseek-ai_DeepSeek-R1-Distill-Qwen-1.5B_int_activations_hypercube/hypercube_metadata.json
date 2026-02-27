@@ -1,0 +1,364 @@
+{
+  "source_dir": "/home/ob3942/repos/theseuskgz/finalcode/activationCaptureLib/output/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations",
+  "model_name": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+  "conversion_params": {
+    "scale_factor": 16,
+    "quantize_pct": 50.0,
+    "truncated_digits": 8,
+    "effective_scale": 8,
+    "formula": "integer = round(float_value * 10^effective_scale)",
+    "reverse": "float_approx = integer / 10^effective_scale"
+  },
+  "hypercube": {
+    "dimensions": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "num_dimensions": 8,
+    "product": 1679616,
+    "total_real_elements": 1336320,
+    "padding_elements": 343296,
+    "sparsity_pct": 20.439,
+    "pad_fill": "random (sampled from real activations)",
+    "pad_seed": 42,
+    "dim_range": [
+      4,
+      10
+    ],
+    "flatten_order": "C (row-major)"
+  },
+  "layer_map": [
+    {
+      "layer": "embedding",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 0,
+      "flat_end": 46080
+    },
+    {
+      "layer": "layer_0",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 46080,
+      "flat_end": 92160
+    },
+    {
+      "layer": "layer_1",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 92160,
+      "flat_end": 138240
+    },
+    {
+      "layer": "layer_2",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 138240,
+      "flat_end": 184320
+    },
+    {
+      "layer": "layer_3",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 184320,
+      "flat_end": 230400
+    },
+    {
+      "layer": "layer_4",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 230400,
+      "flat_end": 276480
+    },
+    {
+      "layer": "layer_5",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 276480,
+      "flat_end": 322560
+    },
+    {
+      "layer": "layer_6",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 322560,
+      "flat_end": 368640
+    },
+    {
+      "layer": "layer_7",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 368640,
+      "flat_end": 414720
+    },
+    {
+      "layer": "layer_8",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 414720,
+      "flat_end": 460800
+    },
+    {
+      "layer": "layer_9",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 460800,
+      "flat_end": 506880
+    },
+    {
+      "layer": "layer_10",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 506880,
+      "flat_end": 552960
+    },
+    {
+      "layer": "layer_11",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 552960,
+      "flat_end": 599040
+    },
+    {
+      "layer": "layer_12",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 599040,
+      "flat_end": 645120
+    },
+    {
+      "layer": "layer_13",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 645120,
+      "flat_end": 691200
+    },
+    {
+      "layer": "layer_14",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 691200,
+      "flat_end": 737280
+    },
+    {
+      "layer": "layer_15",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 737280,
+      "flat_end": 783360
+    },
+    {
+      "layer": "layer_16",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 783360,
+      "flat_end": 829440
+    },
+    {
+      "layer": "layer_17",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 829440,
+      "flat_end": 875520
+    },
+    {
+      "layer": "layer_18",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 875520,
+      "flat_end": 921600
+    },
+    {
+      "layer": "layer_19",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 921600,
+      "flat_end": 967680
+    },
+    {
+      "layer": "layer_20",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 967680,
+      "flat_end": 1013760
+    },
+    {
+      "layer": "layer_21",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 1013760,
+      "flat_end": 1059840
+    },
+    {
+      "layer": "layer_22",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 1059840,
+      "flat_end": 1105920
+    },
+    {
+      "layer": "layer_23",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 1105920,
+      "flat_end": 1152000
+    },
+    {
+      "layer": "layer_24",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 1152000,
+      "flat_end": 1198080
+    },
+    {
+      "layer": "layer_25",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 1198080,
+      "flat_end": 1244160
+    },
+    {
+      "layer": "layer_26",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 1244160,
+      "flat_end": 1290240
+    },
+    {
+      "layer": "layer_27",
+      "original_shape": [
+        1,
+        30,
+        1536
+      ],
+      "num_elements": 46080,
+      "flat_offset": 1290240,
+      "flat_end": 1336320
+    }
+  ],
+  "recovery": {
+    "description": "All indices use C-order (row-major) flattening. Layers are concatenated in the order listed in layer_map. Positions with flat_index >= total_real_elements are padding.",
+    "flat_to_hypercube": "coords = numpy.unravel_index(flat_index, dimensions)",
+    "hypercube_to_flat": "flat_index = numpy.ravel_multi_index(coords, dimensions)",
+    "flat_to_layer": "Find the entry in layer_map where flat_offset <= flat_index < flat_end. position_in_layer = flat_index - flat_offset. Use numpy.unravel_index(position_in_layer, original_shape) to recover the multi-dimensional index within that layer.",
+    "is_padding": "flat_index >= 1336320"
+  }
+}

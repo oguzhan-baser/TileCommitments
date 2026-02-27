@@ -1,0 +1,57 @@
+{
+  "model_name": "sshleifer/tiny-gpt2",
+  "prompt": "Where is the capital of France?",
+  "generated_text": " stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs",
+  "size_summary": {
+    "min_size": 214,
+    "max_size": 214,
+    "avg_size": 214.0
+  },
+  "layer_stats": [
+    {
+      "model": "sshleifer/tiny-gpt2",
+      "layer": "embedding",
+      "shape": [
+        1,
+        107,
+        2
+      ],
+      "num_elements": 214,
+      "min": -0.0859375,
+      "max": 0.1474609375,
+      "mean": 0.030094539746642113,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "sshleifer/tiny-gpt2",
+      "layer": "layer_0",
+      "shape": [
+        1,
+        107,
+        2
+      ],
+      "num_elements": 214,
+      "min": -0.08465576171875,
+      "max": 0.148193359375,
+      "mean": 0.031067829579114914,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "sshleifer/tiny-gpt2",
+      "layer": "layer_1",
+      "shape": [
+        1,
+        107,
+        2
+      ],
+      "num_elements": 214,
+      "min": -0.99951171875,
+      "max": 0.99951171875,
+      "mean": 0.0,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    }
+  ]
+}

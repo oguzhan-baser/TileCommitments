@@ -1,0 +1,122 @@
+{
+  "commitment_hex": "e875b7a04dbd40ed3ae0582fd263b4990093412312aec97115b9882df10a128c",
+  "num_variables": 8,
+  "degree_bound": 6,
+  "proofs": [
+    {
+      "point": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evaluation": 5908203,
+      "proof_hex": [
+        "8c7ec39cc86c80812d2f5425cb8e409399648ba51026c1cab97c5b12d5507d02",
+        "caa14d2c8357fcc71692d92e33e9f86320e5dada7ed186d09c3c12f5918a7294",
+        "fa8a9e16672f5630db663947f802e28ea39e9f5e89ef439e09844a75bb7c3c12",
+        "76b219fdae4c238c68fa6951a0f01bc5acf053803ed2a0452943bb20a1ca9aa5",
+        "d5e7675e335e3f4f297c30fbd0f0bfb8658a7ed34c22f53258e1ac0a7ea12f99",
+        "4df6aacd03cdb1b2a5dcc10bdc788aace857a441db9c9749db9e508920064c30",
+        "326a5469e2ce987cf00db7b86a192f0ca4b0af79d79991426221941eb97f2384",
+        "45c00053b4aed29df821da7e84fb2d126c40f35484f0fc91c6e489bb8d329d9b"
+      ]
+    },
+    {
+      "point": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "evaluation": 299218750,
+      "proof_hex": [
+        "5df1f383be2f5967d5a2d6e29ccb13a30f78f0de71d38d1f587165b6d965c71f",
+        "765c7cca64c6187ae171094eed23c97bce09d12a69a0804a29a8c477c9a2cf0f",
+        "e2977bef66c031d64abce441a95478494bab4941d9ac7679c2f40fd4cc545dae",
+        "520e48268202c064ebd55b5f567115237b5607307f501bc52944eb2e88568c86",
+        "a9849fd4cacc9471c1def6e6d3be463aa2434146a11e8809442958ed8f5b9a28",
+        "21bec868ff19f56f5ed8fee81a5b5e3897b861ff70d6fdd3ad5f9b19fc3d0f2f",
+        "3523d80560d3a962fe3d0c61955f634f8153652b127521b0d64fb6ec1c3960b0",
+        "814b05312fb4e7cb7f82c82b16085fdb5378e915ed1ba0a9802d797a08abc302"
+      ]
+    },
+    {
+      "point": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "evaluation": 95703125,
+      "proof_hex": [
+        "abf3324fd4b11f980107818d95fa3d0b6fdd75759a51d826ecf4b472a51348a7",
+        "7f8f1538bdd209ddd9ef2beb4083a4bb5e71a4a4ec0545c095debbd6d9f36508",
+        "b8a9c4e4e8cae567186a2416cf165081189ba14dbe1017dcedb9043ab933b383",
+        "34072d810c6b916883c52bc57ba0ff62d6df13ad965ba6cf1089bc7475e58384",
+        "1316b808ea2eb399a746e18e8b5c9f332a851da541823ebbba0320fef8043bad",
+        "4b370da06287e860d2558192d234694ac89a57c5de1caccb859dc64f960d1c12",
+        "2d16034c85cd71e28ed3e8959bff580ef292b946dca7665f0c007948aa819595",
+        "70cdafbc809a3cb6f92f605e47f64231c23bc2abfee648b7aab165729c52bf18"
+      ]
+    },
+    {
+      "point": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "evaluation": 75000000,
+      "proof_hex": [
+        "c8b0c7d60173a603f439993841530e2b927f07b566276b2c2c31c0224b35ff26",
+        "e64e4c622b6a56f4535695db7577456c477b612d77efc6d06eb1d87f2961039c",
+        "abc4464938ff5986e745c285f19ddc6b14da451d8b08f701e4c77a28476b2c1d",
+        "e507bb832e845b69de47135bdde8a9207418fc63d00472e0e1d24e63295a3e8b",
+        "d65840bbcd3c80c45403db96e316224961ce88fa408a2ab359c50df14e730994",
+        "a79fbebd594bfe5558e9979a31fbe54255b3395daf559f8ae7eb208664872ca2",
+        "74e134a237561855a3d4cc70f037e50175d52df4247fee4abaa96347a461f585",
+        "0903ad0c7129a8837fef9b8528b1425cd5c2974771e806a569933fff77f33da8"
+      ]
+    },
+    {
+      "point": [
+        5,
+        0,
+        0,
+        5,
+        2,
+        1,
+        1,
+        1
+      ],
+      "evaluation": 21888242871839275222246405745257275088548364400416034343698204186575775634289,
+      "proof_hex": [
+        "5df1f383be2f5967d5a2d6e29ccb13a30f78f0de71d38d1f587165b6d965c71f",
+        "3af63e7b62a232c7529d8f52802088f59c26bf51833d227fe3141649e7e02114",
+        "7b5b5eec0efab2cf4814658fac7d51f297218cff70018a12fb5afe40fca18b0e",
+        "8efe0bd1d6225e31baee200756751621f1f33ab69ff16dee6b8774bd0f62eaa5",
+        "d008d4845b2e6d8a680c9f4d32e83224b9007c23a6a73e38bd497033e81c7d08",
+        "51046bffb8036df83944e007e2d067d9bd984a1bac4c860dcce1e732b2f98c94",
+        "c1e0cd4faf63f551134cc6aba1bd51b343e0d352e78c277656abde2ac0b784a1",
+        "2545fea93576885ad77a46b0809e7546d6ea7018de223cdc936f1f45a5307624"
+      ]
+    }
+  ]
+}

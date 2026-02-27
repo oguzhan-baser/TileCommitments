@@ -1,0 +1,387 @@
+{
+  "model_name": "facebook/opt-350m",
+  "prompt": "Which city has the best tiramisu place?",
+  "generated_text": "\nI'm not sure, but I think it's in the city of San Francisco.",
+  "size_summary": {
+    "min_size": 15360,
+    "max_size": 30720,
+    "avg_size": 30105.6
+  },
+  "layer_stats": [
+    {
+      "model": "facebook/opt-350m",
+      "layer": "embedding",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -1.158203125,
+      "max": 1.140625,
+      "mean": 0.000993303838185966,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_0",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -21.375,
+      "max": 20.328125,
+      "mean": 0.00701384712010622,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_1",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -22.59375,
+      "max": 20.71875,
+      "mean": 0.008647876791656017,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_2",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -25.109375,
+      "max": 21.578125,
+      "mean": 0.009144761599600315,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_3",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -29.9375,
+      "max": 21.84375,
+      "mean": 0.006555548403412104,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_4",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.328125,
+      "max": 21.578125,
+      "mean": 0.002550648059695959,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_5",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.703125,
+      "max": 21.03125,
+      "mean": 0.0004157018556725234,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_6",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.859375,
+      "max": 19.546875,
+      "mean": -0.00013580384256783873,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_7",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.90625,
+      "max": 18.640625,
+      "mean": -0.0015535802813246846,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_8",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.96875,
+      "max": 17.359375,
+      "mean": -0.0032436379697173834,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_9",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -32.0,
+      "max": 15.6171875,
+      "mean": -0.008034287951886654,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_10",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -32.03125,
+      "max": 14.2109375,
+      "mean": -0.009373512119054794,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_11",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -32.03125,
+      "max": 13.1171875,
+      "mean": -0.01454387791454792,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_12",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.125,
+      "max": 11.4375,
+      "mean": -0.015295791439712048,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_13",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -28.34375,
+      "max": 9.6875,
+      "mean": -0.023402046412229538,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_14",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -27.46875,
+      "max": 8.78125,
+      "mean": -0.021709445863962173,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_15",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -29.53125,
+      "max": 8.953125,
+      "mean": -0.0208965465426445,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_16",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -30.34375,
+      "max": 10.546875,
+      "mean": -0.017045987769961357,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_17",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.1875,
+      "max": 10.6328125,
+      "mean": -0.0136337298899889,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_18",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.515625,
+      "max": 10.546875,
+      "mean": -0.012385880574584007,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_19",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.6875,
+      "max": 10.546875,
+      "mean": -0.009251351468265057,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_20",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.6875,
+      "max": 10.5859375,
+      "mean": -0.009149123914539814,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_21",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -31.375,
+      "max": 12.1796875,
+      "mean": -0.005772126838564873,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_22",
+      "shape": [
+        1,
+        30,
+        1024
+      ],
+      "num_elements": 30720,
+      "min": -30.703125,
+      "max": 13.234375,
+      "mean": -0.004784100688993931,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-350m",
+      "layer": "layer_23",
+      "shape": [
+        1,
+        30,
+        512
+      ],
+      "num_elements": 15360,
+      "min": -46.21875,
+      "max": 57.15625,
+      "mean": -0.04113885015249252,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    }
+  ]
+}

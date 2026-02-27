@@ -1,0 +1,28 @@
+[build-system]
+requires = ["maturin>=1.5"]
+build-backend = "maturin"
+
+[project]
+name = "pegasus-verkle"
+version = "0.1.0"
+description = "Python bindings for the CleanPegasus Verkle tree experiments."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "CleanPegasus Contributors" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Rust",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.maturin]
+manifest-path = "../../verkle-tree/Cargo.toml"
+features = ["python"]
+module-name = "pegasus_verkle._verkle"
+python-source = "src"
+python-packages = ["pegasus_verkle"]
+

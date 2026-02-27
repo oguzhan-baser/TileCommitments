@@ -1,0 +1,274 @@
+{
+  "input": {
+    "scores_file": "scores/smoke_opt125m_scores.json",
+    "model_name": "facebook/opt-125m",
+    "num_layers": 72,
+    "budgets": [
+      10000000.0,
+      20000000.0,
+      15000000.0
+    ],
+    "num_verifiers": 3
+  },
+  "results": {
+    "optimal_benefit": 21.15145033597946,
+    "computed_benefit": 21.15145033597946,
+    "is_valid": true,
+    "total_cost": 43057152.0,
+    "total_benefit": 21.15145033597946,
+    "assignments": [
+      {
+        "verifier": 1,
+        "start_layer": 0,
+        "end_layer": 9,
+        "budget": 10000000.0,
+        "cost": 9437184.0,
+        "benefit": 8.168789267539978,
+        "layers": [
+          {
+            "index": 0,
+            "name": "0.self_attn.q_proj",
+            "value": 0.9130425453186035,
+            "cost": 589824.0
+          },
+          {
+            "index": 1,
+            "name": "0.self_attn.k_proj",
+            "value": 0.9130425453186035,
+            "cost": 589824.0
+          },
+          {
+            "index": 2,
+            "name": "0.self_attn.v_proj",
+            "value": 0.9130425453186035,
+            "cost": 589824.0
+          },
+          {
+            "index": 3,
+            "name": "0.self_attn.out_proj",
+            "value": 0.9130425453186035,
+            "cost": 589824.0
+          },
+          {
+            "index": 4,
+            "name": "0.fc1",
+            "value": 0.9130425453186035,
+            "cost": 2359296.0
+          },
+          {
+            "index": 5,
+            "name": "0.fc2",
+            "value": 0.9130425453186035,
+            "cost": 2359296.0
+          },
+          {
+            "index": 6,
+            "name": "1.self_attn.q_proj",
+            "value": 0.6726334989070892,
+            "cost": 589824.0
+          },
+          {
+            "index": 7,
+            "name": "1.self_attn.k_proj",
+            "value": 0.6726334989070892,
+            "cost": 589824.0
+          },
+          {
+            "index": 8,
+            "name": "1.self_attn.v_proj",
+            "value": 0.6726334989070892,
+            "cost": 589824.0
+          },
+          {
+            "index": 9,
+            "name": "1.self_attn.out_proj",
+            "value": 0.6726334989070892,
+            "cost": 589824.0
+          }
+        ]
+      },
+      {
+        "verifier": 2,
+        "start_layer": 10,
+        "end_layer": 23,
+        "budget": 20000000.0,
+        "cost": 18874368.0,
+        "benefit": 7.5021034479141235,
+        "layers": [
+          {
+            "index": 10,
+            "name": "1.fc1",
+            "value": 0.6726334989070892,
+            "cost": 2359296.0
+          },
+          {
+            "index": 11,
+            "name": "1.fc2",
+            "value": 0.6726334989070892,
+            "cost": 2359296.0
+          },
+          {
+            "index": 12,
+            "name": "2.self_attn.q_proj",
+            "value": 0.5708082616329193,
+            "cost": 589824.0
+          },
+          {
+            "index": 13,
+            "name": "2.self_attn.k_proj",
+            "value": 0.5708082616329193,
+            "cost": 589824.0
+          },
+          {
+            "index": 14,
+            "name": "2.self_attn.v_proj",
+            "value": 0.5708082616329193,
+            "cost": 589824.0
+          },
+          {
+            "index": 15,
+            "name": "2.self_attn.out_proj",
+            "value": 0.5708082616329193,
+            "cost": 589824.0
+          },
+          {
+            "index": 16,
+            "name": "2.fc1",
+            "value": 0.5708082616329193,
+            "cost": 2359296.0
+          },
+          {
+            "index": 17,
+            "name": "2.fc2",
+            "value": 0.5708082616329193,
+            "cost": 2359296.0
+          },
+          {
+            "index": 18,
+            "name": "3.self_attn.q_proj",
+            "value": 0.45533114671707153,
+            "cost": 589824.0
+          },
+          {
+            "index": 19,
+            "name": "3.self_attn.k_proj",
+            "value": 0.45533114671707153,
+            "cost": 589824.0
+          },
+          {
+            "index": 20,
+            "name": "3.self_attn.v_proj",
+            "value": 0.45533114671707153,
+            "cost": 589824.0
+          },
+          {
+            "index": 21,
+            "name": "3.self_attn.out_proj",
+            "value": 0.45533114671707153,
+            "cost": 589824.0
+          },
+          {
+            "index": 22,
+            "name": "3.fc1",
+            "value": 0.45533114671707153,
+            "cost": 2359296.0
+          },
+          {
+            "index": 23,
+            "name": "3.fc2",
+            "value": 0.45533114671707153,
+            "cost": 2359296.0
+          }
+        ]
+      },
+      {
+        "verifier": 3,
+        "start_layer": 36,
+        "end_layer": 48,
+        "budget": 15000000.0,
+        "cost": 14745600.0,
+        "benefit": 5.48055762052536,
+        "layers": [
+          {
+            "index": 36,
+            "name": "6.self_attn.q_proj",
+            "value": 0.4693351984024048,
+            "cost": 589824.0
+          },
+          {
+            "index": 37,
+            "name": "6.self_attn.k_proj",
+            "value": 0.4693351984024048,
+            "cost": 589824.0
+          },
+          {
+            "index": 38,
+            "name": "6.self_attn.v_proj",
+            "value": 0.4693351984024048,
+            "cost": 589824.0
+          },
+          {
+            "index": 39,
+            "name": "6.self_attn.out_proj",
+            "value": 0.4693351984024048,
+            "cost": 589824.0
+          },
+          {
+            "index": 40,
+            "name": "6.fc1",
+            "value": 0.4693351984024048,
+            "cost": 2359296.0
+          },
+          {
+            "index": 41,
+            "name": "6.fc2",
+            "value": 0.4693351984024048,
+            "cost": 2359296.0
+          },
+          {
+            "index": 42,
+            "name": "7.self_attn.q_proj",
+            "value": 0.38372594118118286,
+            "cost": 589824.0
+          },
+          {
+            "index": 43,
+            "name": "7.self_attn.k_proj",
+            "value": 0.38372594118118286,
+            "cost": 589824.0
+          },
+          {
+            "index": 44,
+            "name": "7.self_attn.v_proj",
+            "value": 0.38372594118118286,
+            "cost": 589824.0
+          },
+          {
+            "index": 45,
+            "name": "7.self_attn.out_proj",
+            "value": 0.38372594118118286,
+            "cost": 589824.0
+          },
+          {
+            "index": 46,
+            "name": "7.fc1",
+            "value": 0.38372594118118286,
+            "cost": 2359296.0
+          },
+          {
+            "index": 47,
+            "name": "7.fc2",
+            "value": 0.38372594118118286,
+            "cost": 2359296.0
+          },
+          {
+            "index": 48,
+            "name": "8.self_attn.q_proj",
+            "value": 0.36219078302383423,
+            "cost": 589824.0
+          }
+        ]
+      }
+    ]
+  }
+}

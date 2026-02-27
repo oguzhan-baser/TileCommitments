@@ -1,0 +1,582 @@
+{
+  "model_name": "facebook/opt-125m",
+  "num_layers": 72,
+  "layers": [
+    {
+      "index": 0,
+      "name": "0.self_attn.q_proj",
+      "norm_1": 33811.45703125,
+      "norm_2": 60.42283248901367,
+      "norm_inf": 0.79931640625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 1,
+      "name": "0.self_attn.k_proj",
+      "norm_1": 30966.6328125,
+      "norm_2": 55.71818161010742,
+      "norm_inf": 0.76806640625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 2,
+      "name": "0.self_attn.v_proj",
+      "norm_1": 5801.0341796875,
+      "norm_2": 9.809913635253906,
+      "norm_inf": 0.1865234375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 3,
+      "name": "0.self_attn.out_proj",
+      "norm_1": 5122.35888671875,
+      "norm_2": 10.002979278564453,
+      "norm_inf": 0.77783203125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 4,
+      "name": "0.fc1",
+      "norm_1": 48665.89453125,
+      "norm_2": 45.344947814941406,
+      "norm_inf": 0.99755859375,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 5,
+      "name": "0.fc2",
+      "norm_1": 46325.29296875,
+      "norm_2": 40.24859619140625,
+      "norm_inf": 1.0029296875,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 6,
+      "name": "1.self_attn.q_proj",
+      "norm_1": 24490.443359375,
+      "norm_2": 47.18941879272461,
+      "norm_inf": 0.595703125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 7,
+      "name": "1.self_attn.k_proj",
+      "norm_1": 29995.3125,
+      "norm_2": 54.17343521118164,
+      "norm_inf": 0.74853515625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 8,
+      "name": "1.self_attn.v_proj",
+      "norm_1": 7085.18505859375,
+      "norm_2": 12.06429386138916,
+      "norm_inf": 0.1617431640625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 9,
+      "name": "1.self_attn.out_proj",
+      "norm_1": 5870.703125,
+      "norm_2": 11.827542304992676,
+      "norm_inf": 0.89892578125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 10,
+      "name": "1.fc1",
+      "norm_1": 55378.37109375,
+      "norm_2": 47.79477310180664,
+      "norm_inf": 0.6376953125,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 11,
+      "name": "1.fc2",
+      "norm_1": 54807.9765625,
+      "norm_2": 48.063148498535156,
+      "norm_inf": 1.2021484375,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 12,
+      "name": "2.self_attn.q_proj",
+      "norm_1": 26757.572265625,
+      "norm_2": 47.55999755859375,
+      "norm_inf": 0.6435546875,
+      "num_parameters": 589824
+    },
+    {
+      "index": 13,
+      "name": "2.self_attn.k_proj",
+      "norm_1": 27558.697265625,
+      "norm_2": 49.10029983520508,
+      "norm_inf": 0.828125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 14,
+      "name": "2.self_attn.v_proj",
+      "norm_1": 8109.330078125,
+      "norm_2": 13.679469108581543,
+      "norm_inf": 0.1654052734375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 15,
+      "name": "2.self_attn.out_proj",
+      "norm_1": 6470.85888671875,
+      "norm_2": 11.175405502319336,
+      "norm_inf": 0.4111328125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 16,
+      "name": "2.fc1",
+      "norm_1": 51172.546875,
+      "norm_2": 46.8396110534668,
+      "norm_inf": 0.9130859375,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 17,
+      "name": "2.fc2",
+      "norm_1": 51118.14453125,
+      "norm_2": 45.71263122558594,
+      "norm_inf": 1.1416015625,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 18,
+      "name": "3.self_attn.q_proj",
+      "norm_1": 26268.3125,
+      "norm_2": 46.211978912353516,
+      "norm_inf": 0.56396484375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 19,
+      "name": "3.self_attn.k_proj",
+      "norm_1": 26569.439453125,
+      "norm_2": 47.24541091918945,
+      "norm_inf": 0.45849609375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 20,
+      "name": "3.self_attn.v_proj",
+      "norm_1": 9390.8037109375,
+      "norm_2": 15.828866004943848,
+      "norm_inf": 0.266845703125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 21,
+      "name": "3.self_attn.out_proj",
+      "norm_1": 7909.0595703125,
+      "norm_2": 13.342180252075195,
+      "norm_inf": 0.50048828125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 22,
+      "name": "3.fc1",
+      "norm_1": 40930.765625,
+      "norm_2": 38.355255126953125,
+      "norm_inf": 0.859375,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 23,
+      "name": "3.fc2",
+      "norm_1": 41198.08984375,
+      "norm_2": 40.83378982543945,
+      "norm_inf": 1.064453125,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 24,
+      "name": "4.self_attn.q_proj",
+      "norm_1": 27909.318359375,
+      "norm_2": 47.3641471862793,
+      "norm_inf": 0.49853515625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 25,
+      "name": "4.self_attn.k_proj",
+      "norm_1": 27035.87109375,
+      "norm_2": 46.13007736206055,
+      "norm_inf": 0.53955078125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 26,
+      "name": "4.self_attn.v_proj",
+      "norm_1": 9076.23046875,
+      "norm_2": 15.22714900970459,
+      "norm_inf": 0.264892578125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 27,
+      "name": "4.self_attn.out_proj",
+      "norm_1": 7295.21142578125,
+      "norm_2": 12.190781593322754,
+      "norm_inf": 0.276123046875,
+      "num_parameters": 589824
+    },
+    {
+      "index": 28,
+      "name": "4.fc1",
+      "norm_1": 52158.69140625,
+      "norm_2": 44.999000549316406,
+      "norm_inf": 0.90283203125,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 29,
+      "name": "4.fc2",
+      "norm_1": 56113.6328125,
+      "norm_2": 49.392765045166016,
+      "norm_inf": 1.0517578125,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 30,
+      "name": "5.self_attn.q_proj",
+      "norm_1": 29287.6640625,
+      "norm_2": 49.31155014038086,
+      "norm_inf": 0.60107421875,
+      "num_parameters": 589824
+    },
+    {
+      "index": 31,
+      "name": "5.self_attn.k_proj",
+      "norm_1": 27623.484375,
+      "norm_2": 47.19822692871094,
+      "norm_inf": 0.583984375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 32,
+      "name": "5.self_attn.v_proj",
+      "norm_1": 8486.021484375,
+      "norm_2": 14.23397159576416,
+      "norm_inf": 0.1368408203125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 33,
+      "name": "5.self_attn.out_proj",
+      "norm_1": 7539.6767578125,
+      "norm_2": 12.620929718017578,
+      "norm_inf": 0.2052001953125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 34,
+      "name": "5.fc1",
+      "norm_1": 51651.5390625,
+      "norm_2": 43.20835494995117,
+      "norm_inf": 0.78466796875,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 35,
+      "name": "5.fc2",
+      "norm_1": 55462.32421875,
+      "norm_2": 48.28087615966797,
+      "norm_inf": 1.04296875,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 36,
+      "name": "6.self_attn.q_proj",
+      "norm_1": 27807.0234375,
+      "norm_2": 46.7947883605957,
+      "norm_inf": 0.49560546875,
+      "num_parameters": 589824
+    },
+    {
+      "index": 37,
+      "name": "6.self_attn.k_proj",
+      "norm_1": 27173.6796875,
+      "norm_2": 46.13016128540039,
+      "norm_inf": 0.63427734375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 38,
+      "name": "6.self_attn.v_proj",
+      "norm_1": 9513.4931640625,
+      "norm_2": 15.978998184204102,
+      "norm_inf": 0.1448974609375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 39,
+      "name": "6.self_attn.out_proj",
+      "norm_1": 8298.60546875,
+      "norm_2": 13.944585800170898,
+      "norm_inf": 0.26416015625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 40,
+      "name": "6.fc1",
+      "norm_1": 50822.61328125,
+      "norm_2": 42.42798614501953,
+      "norm_inf": 0.60400390625,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 41,
+      "name": "6.fc2",
+      "norm_1": 53657.7265625,
+      "norm_2": 46.805721282958984,
+      "norm_inf": 1.0087890625,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 42,
+      "name": "7.self_attn.q_proj",
+      "norm_1": 27240.451171875,
+      "norm_2": 45.903968811035156,
+      "norm_inf": 0.5400390625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 43,
+      "name": "7.self_attn.k_proj",
+      "norm_1": 27328.720703125,
+      "norm_2": 46.25419235229492,
+      "norm_inf": 0.7392578125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 44,
+      "name": "7.self_attn.v_proj",
+      "norm_1": 9286.20703125,
+      "norm_2": 15.507272720336914,
+      "norm_inf": 0.143798828125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 45,
+      "name": "7.self_attn.out_proj",
+      "norm_1": 8088.10595703125,
+      "norm_2": 13.551994323730469,
+      "norm_inf": 0.19140625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 46,
+      "name": "7.fc1",
+      "norm_1": 50876.1640625,
+      "norm_2": 42.412681579589844,
+      "norm_inf": 0.59423828125,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 47,
+      "name": "7.fc2",
+      "norm_1": 52985.359375,
+      "norm_2": 45.941463470458984,
+      "norm_inf": 1.0,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 48,
+      "name": "8.self_attn.q_proj",
+      "norm_1": 27930.203125,
+      "norm_2": 47.078792572021484,
+      "norm_inf": 0.55859375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 49,
+      "name": "8.self_attn.k_proj",
+      "norm_1": 26182.642578125,
+      "norm_2": 44.0955696105957,
+      "norm_inf": 0.77734375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 50,
+      "name": "8.self_attn.v_proj",
+      "norm_1": 10540.6044921875,
+      "norm_2": 17.540023803710938,
+      "norm_inf": 0.27294921875,
+      "num_parameters": 589824
+    },
+    {
+      "index": 51,
+      "name": "8.self_attn.out_proj",
+      "norm_1": 9332.458984375,
+      "norm_2": 15.577410697937012,
+      "norm_inf": 0.29638671875,
+      "num_parameters": 589824
+    },
+    {
+      "index": 52,
+      "name": "8.fc1",
+      "norm_1": 51637.53125,
+      "norm_2": 42.993408203125,
+      "norm_inf": 0.5751953125,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 53,
+      "name": "8.fc2",
+      "norm_1": 54847.96875,
+      "norm_2": 47.39360809326172,
+      "norm_inf": 0.89453125,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 54,
+      "name": "9.self_attn.q_proj",
+      "norm_1": 27957.888671875,
+      "norm_2": 46.47329330444336,
+      "norm_inf": 0.5830078125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 55,
+      "name": "9.self_attn.k_proj",
+      "norm_1": 26724.49609375,
+      "norm_2": 44.59613037109375,
+      "norm_inf": 0.75634765625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 56,
+      "name": "9.self_attn.v_proj",
+      "norm_1": 11043.7890625,
+      "norm_2": 18.42273712158203,
+      "norm_inf": 0.279052734375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 57,
+      "name": "9.self_attn.out_proj",
+      "norm_1": 10481.681640625,
+      "norm_2": 17.54240608215332,
+      "norm_inf": 0.343505859375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 58,
+      "name": "9.fc1",
+      "norm_1": 52119.30859375,
+      "norm_2": 43.19930648803711,
+      "norm_inf": 0.9990234375,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 59,
+      "name": "9.fc2",
+      "norm_1": 55552.9140625,
+      "norm_2": 47.530113220214844,
+      "norm_inf": 0.63818359375,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 60,
+      "name": "10.self_attn.q_proj",
+      "norm_1": 25840.708984375,
+      "norm_2": 43.013587951660156,
+      "norm_inf": 0.67041015625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 61,
+      "name": "10.self_attn.k_proj",
+      "norm_1": 25893.8046875,
+      "norm_2": 43.43590545654297,
+      "norm_inf": 0.65087890625,
+      "num_parameters": 589824
+    },
+    {
+      "index": 62,
+      "name": "10.self_attn.v_proj",
+      "norm_1": 12254.533203125,
+      "norm_2": 20.468721389770508,
+      "norm_inf": 0.33740234375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 63,
+      "name": "10.self_attn.out_proj",
+      "norm_1": 12113.173828125,
+      "norm_2": 20.344789505004883,
+      "norm_inf": 0.345703125,
+      "num_parameters": 589824
+    },
+    {
+      "index": 64,
+      "name": "10.fc1",
+      "norm_1": 53044.203125,
+      "norm_2": 43.91201400756836,
+      "norm_inf": 0.6083984375,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 65,
+      "name": "10.fc2",
+      "norm_1": 55781.95703125,
+      "norm_2": 47.74871826171875,
+      "norm_inf": 0.7822265625,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 66,
+      "name": "11.self_attn.q_proj",
+      "norm_1": 25752.01953125,
+      "norm_2": 42.74443054199219,
+      "norm_inf": 0.50146484375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 67,
+      "name": "11.self_attn.k_proj",
+      "norm_1": 24989.783203125,
+      "norm_2": 41.80366897583008,
+      "norm_inf": 0.52734375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 68,
+      "name": "11.self_attn.v_proj",
+      "norm_1": 13483.087890625,
+      "norm_2": 22.642663955688477,
+      "norm_inf": 0.499755859375,
+      "num_parameters": 589824
+    },
+    {
+      "index": 69,
+      "name": "11.self_attn.out_proj",
+      "norm_1": 13628.162109375,
+      "norm_2": 24.176254272460938,
+      "norm_inf": 0.89404296875,
+      "num_parameters": 589824
+    },
+    {
+      "index": 70,
+      "name": "11.fc1",
+      "norm_1": 52706.078125,
+      "norm_2": 43.9650993347168,
+      "norm_inf": 1.0400390625,
+      "num_parameters": 2359296
+    },
+    {
+      "index": 71,
+      "name": "11.fc2",
+      "norm_1": 56970.390625,
+      "norm_2": 49.59135437011719,
+      "norm_inf": 1.560546875,
+      "num_parameters": 2359296
+    }
+  ]
+}

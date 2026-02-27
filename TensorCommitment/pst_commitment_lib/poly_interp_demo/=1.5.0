@@ -1,0 +1,10 @@
+Collecting setuptools-rust
+  Downloading setuptools_rust-1.12.0-py3-none-any.whl.metadata (9.6 kB)
+Requirement already satisfied: setuptools>=62.4 in /home/ob3942/miniconda3/envs/tc/lib/python3.10/site-packages (from setuptools-rust) (81.0.0)
+Collecting semantic_version<3,>=2.8.2 (from setuptools-rust)
+  Downloading semantic_version-2.10.0-py2.py3-none-any.whl.metadata (9.7 kB)
+Downloading setuptools_rust-1.12.0-py3-none-any.whl (28 kB)
+Downloading semantic_version-2.10.0-py2.py3-none-any.whl (15 kB)
+Installing collected packages: semantic_version, setuptools-rust
+
+Successfully installed semantic_version-2.10.0 setuptools-rust-1.12.0

@@ -1,0 +1,507 @@
+{
+  "model_name": "facebook/opt-2.7b",
+  "prompt": "Which city has the best tiramisu place?",
+  "generated_text": "\n\nI'm looking for a good tiramisu place in the city. I've been to",
+  "size_summary": {
+    "min_size": 79360,
+    "max_size": 79360,
+    "avg_size": 79360.0
+  },
+  "layer_stats": [
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "embedding",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -0.33056640625,
+      "max": 0.3173828125,
+      "mean": -0.0015045846812427044,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_0",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -75.1875,
+      "max": 5.48828125,
+      "mean": -0.010453129187226295,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_1",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -108.625,
+      "max": 6.34375,
+      "mean": -0.013822878710925579,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_2",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -130.0,
+      "max": 6.80859375,
+      "mean": -0.015670444816350937,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_3",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -139.625,
+      "max": 7.46484375,
+      "mean": -0.016065556555986404,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_4",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -145.125,
+      "max": 7.98828125,
+      "mean": -0.01677033305168152,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_5",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -147.5,
+      "max": 8.53125,
+      "mean": -0.01702585443854332,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_6",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -149.0,
+      "max": 8.8046875,
+      "mean": -0.016974998638033867,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_7",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -150.125,
+      "max": 8.9375,
+      "mean": -0.016779862344264984,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_8",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -151.375,
+      "max": 8.921875,
+      "mean": -0.016523737460374832,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_9",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -152.875,
+      "max": 8.953125,
+      "mean": -0.01633954420685768,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_10",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -154.5,
+      "max": 9.4765625,
+      "mean": -0.01643550395965576,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_11",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -156.75,
+      "max": 10.640625,
+      "mean": -0.016160588711500168,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_12",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -159.0,
+      "max": 11.75,
+      "mean": -0.015949292108416557,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_13",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -161.75,
+      "max": 13.5,
+      "mean": -0.015976274386048317,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_14",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -164.625,
+      "max": 15.1796875,
+      "mean": -0.01603824645280838,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_15",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -167.375,
+      "max": 16.9375,
+      "mean": -0.015640107914805412,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_16",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -170.875,
+      "max": 18.734375,
+      "mean": -0.014940734021365643,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_17",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -174.125,
+      "max": 20.53125,
+      "mean": -0.0138397216796875,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_18",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -177.75,
+      "max": 22.203125,
+      "mean": -0.012947285547852516,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_19",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -182.0,
+      "max": 23.609375,
+      "mean": -0.01227054838091135,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_20",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -186.75,
+      "max": 25.0,
+      "mean": -0.012419269420206547,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_21",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -192.0,
+      "max": 25.859375,
+      "mean": -0.011691931635141373,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_22",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -198.875,
+      "max": 26.578125,
+      "mean": -0.011059182696044445,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_23",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -204.375,
+      "max": 27.3125,
+      "mean": -0.012076209299266338,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_24",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -210.75,
+      "max": 28.296875,
+      "mean": -0.011784709990024567,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_25",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -215.5,
+      "max": 28.84375,
+      "mean": -0.01233585923910141,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_26",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -218.25,
+      "max": 29.25,
+      "mean": -0.013674027286469936,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_27",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -220.125,
+      "max": 29.828125,
+      "mean": -0.01599043980240822,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_28",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -218.375,
+      "max": 30.25,
+      "mean": -0.017989905551075935,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_29",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -208.875,
+      "max": 41.28125,
+      "mean": -0.018537715077400208,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_30",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -186.25,
+      "max": 51.46875,
+      "mean": -0.016525013372302055,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "facebook/opt-2.7b",
+      "layer": "layer_31",
+      "shape": [
+        1,
+        31,
+        2560
+      ],
+      "num_elements": 79360,
+      "min": -24.34375,
+      "max": 15.7890625,
+      "mean": -0.005574964918196201,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    }
+  ]
+}
