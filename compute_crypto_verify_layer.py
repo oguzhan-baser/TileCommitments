@@ -112,7 +112,7 @@ def parse_args() -> argparse.Namespace:
         required=True,
         help="Layer to verify: 'embedding' or integer block id (e.g. 0, 1, ...)",
     )
-    parser.add_argument("--device", type=str, default=None, help="Torch device (default: cuda if available, else cpu)")
+    parser.add_argument("--device", type=str, default="cuda", help="Torch device (default: cuda). Use --device cpu to force CPU.")
     parser.add_argument(
         "--dtype",
         type=str,

@@ -1,0 +1,51 @@
+{
+  "format_version": 1,
+  "created_at_utc": "2026-02-27T15:30:49.402753+00:00",
+  "model_name": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+  "layer_index": 13,
+  "layer_label": "layer_13",
+  "layer_flat_index": 30396,
+  "tensor_index": [
+    0,
+    19,
+    1212
+  ],
+  "global_flat_index": 589500,
+  "hypercube_index": [
+    2,
+    0,
+    3,
+    4,
+    5,
+    1,
+    0,
+    0
+  ],
+  "value_int": "-83251953",
+  "saved_scaled_value_int": "-83251953",
+  "proof_hex": [
+    "9ef0b371fe761a1564e311bc73248d9abb1a2f1e86d30056d70b466309817c8a",
+    "626d07cdb16afa963a0ff3eb94511740476b40ad89b1b67012741b24ef692c85",
+    "5b390b9ffc80b1b7c1f8db15852d15e151be3edffb936bd3e046c5413980e129",
+    "48454b267ef13fccb0920ad91b1ba144faf8e43eeb164921f022741a3a9a252c",
+    "00cfea0568520c971d23cd3d38abee011b14b799084267b16ed199c0b2eb6b9b",
+    "38f5e6491100d35ffbb0b5657815d4829e13808c9518a4d4d8653a390776c193",
+    "5e3083c0695a932500825cc82e9737a0ecdf67e2e169f3e8aa77c731ff0e9ba2",
+    "a958a6a5311c7424b7ee88b7cb768159aaf43b9e77b084f5cd54d68f911dbda4"
+  ],
+  "commitment_hex": "5595e5224e70727e32a972d44809d57df9131750c35ab6cea47ef4554fafeb81",
+  "dims": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6
+  ],
+  "degree_bound": 6,
+  "poly_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial",
+  "coefficients_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial/coefficients.json",
+  "commitment_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_commitment/commitment.txt"
+}
