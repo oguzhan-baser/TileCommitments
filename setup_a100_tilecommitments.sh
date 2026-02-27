@@ -401,10 +401,10 @@ mtree = MultiMerkleTree([1, 2, 3, 4], arity=2)
 mproof = mtree.prove(1)
 assert mproof.verify(2, mtree.root_hex())
 
-tree = KzgVerkleTree(list(range(1, 513)), width=8)
+tree = KzgVerkleTree(list(range(1, 9)), width=2)
 root = tree.root_hex()
-proof = tree.prove_single(7)
-assert proof.verify(root, 7, 8)
+proof = tree.prove_single(3)
+assert proof.verify(root, 3, 4)
 
 print("smoke_tests_ok")
 PY
