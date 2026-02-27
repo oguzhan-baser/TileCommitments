@@ -1,0 +1,49 @@
+{
+  "format_version": 1,
+  "created_at_utc": "2026-02-27T14:41:18.671619+00:00",
+  "poly_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial",
+  "coefficients_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial/coefficients.json",
+  "commitment_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_commitment/commitment.txt",
+  "commitment_hex": "5595e5224e70727e32a972d44809d57df9131750c35ab6cea47ef4554fafeb81",
+  "dims": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6
+  ],
+  "num_variables": 8,
+  "degree_bound": 6,
+  "index": [
+    0,
+    1,
+    4,
+    1,
+    3,
+    4,
+    3,
+    5
+  ],
+  "flat_index": 79871,
+  "value_int": "12475586",
+  "value_source": "committed_hypercube:layer_0",
+  "proof_hex": [
+    "aceb35e40223102622cc3e56b71955ab4e4e794da5a78e0a363597c2c8ddeaa7",
+    "b25cf114f3bf6ca1694bf89b9552818ba4e0265fce744d01476e09e42605aea2",
+    "296eca5f158d14b5d957676293a2c48ea6042ae90e4185b486b4b72185d64409",
+    "db0042e178e3fe946630fa66d68eec3a11fed03ac720caf1b2282a866b01ca98",
+    "9cf38fbfac1f66fff4644246e6b2c46c76e8ff7b9e36d5c83bfa66fc261d2d8e",
+    "5d69bb4755d1de20e07880117dd48fc19eec05f2ca352a70704b5a67fef95319",
+    "208ef221f2bea613a9b6da7b7a0f3db2f9962998c2fcd3fc48bf7f15d7e5b1a9",
+    "a3a9154842aebde7a4bb4510dd96ab028ee30a102ffedb7f0f84b6ea75131f86"
+  ],
+  "layer_label": "layer_0",
+  "layer_flat_index": 39935,
+  "hypercube_value_int": "12475586",
+  "saved_scaled_value_int": "12475586",
+  "computed_scaled_value_int": "12463379",
+  "polynomial_eval_int": "12475586"
+}

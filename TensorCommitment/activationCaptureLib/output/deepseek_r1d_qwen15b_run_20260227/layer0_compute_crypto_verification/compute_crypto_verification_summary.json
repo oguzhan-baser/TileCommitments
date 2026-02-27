@@ -1,0 +1,137 @@
+{
+  "run_at_utc": "2026-02-27T14:41:18.691641+00:00",
+  "inputs": {
+    "activations_pt": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_activations.pt",
+    "hypercube_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube",
+    "poly_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial",
+    "commitment_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_commitment/commitment.txt",
+    "layer": "layer_0",
+    "proof_mode": "sample",
+    "num_proofs": 3,
+    "positions": null,
+    "rtol": 0.01,
+    "atol": 0.01,
+    "allow_approx_commitment": true
+  },
+  "compute_verification": {
+    "matched": true,
+    "max_abs_diff": 0.0078125,
+    "mean_abs_diff": 0.00037597602931782603,
+    "layer_shape": [
+      1,
+      26,
+      1536
+    ],
+    "effective_scale": 8
+  },
+  "proof_generation": {
+    "count": 3,
+    "approx_mismatch_count": 1,
+    "proof_records": [
+      {
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/layer0_compute_crypto_verification/proof_bundles/proof_0000_flat_41124.json",
+        "index": [
+          0,
+          0,
+          5,
+          1,
+          4,
+          2,
+          2,
+          0
+        ],
+        "flat_index": 41124,
+        "layer_flat_index": 1188,
+        "value_int": "-84619141",
+        "saved_scaled_value_int": "-84619141",
+        "computed_scaled_value_int": "-84619141",
+        "proof_elements": 8
+      },
+      {
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/layer0_compute_crypto_verification/proof_bundles/proof_0001_flat_70205.json",
+        "index": [
+          0,
+          1,
+          3,
+          0,
+          1,
+          0,
+          0,
+          5
+        ],
+        "flat_index": 70205,
+        "layer_flat_index": 30269,
+        "value_int": "-92285156",
+        "saved_scaled_value_int": "-92285156",
+        "computed_scaled_value_int": "-92285156",
+        "proof_elements": 8
+      },
+      {
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/layer0_compute_crypto_verification/proof_bundles/proof_0002_flat_79871.json",
+        "index": [
+          0,
+          1,
+          4,
+          1,
+          3,
+          4,
+          3,
+          5
+        ],
+        "flat_index": 79871,
+        "layer_flat_index": 39935,
+        "value_int": "12475586",
+        "saved_scaled_value_int": "12475586",
+        "computed_scaled_value_int": "12463379",
+        "proof_elements": 8
+      }
+    ]
+  },
+  "crypto_verification": {
+    "all_verified": true,
+    "records": [
+      {
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/layer0_compute_crypto_verification/proof_bundles/proof_0000_flat_41124.json",
+        "index": [
+          0,
+          0,
+          5,
+          1,
+          4,
+          2,
+          2,
+          0
+        ],
+        "verified": true
+      },
+      {
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/layer0_compute_crypto_verification/proof_bundles/proof_0001_flat_70205.json",
+        "index": [
+          0,
+          1,
+          3,
+          0,
+          1,
+          0,
+          0,
+          5
+        ],
+        "verified": true
+      },
+      {
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/layer0_compute_crypto_verification/proof_bundles/proof_0002_flat_79871.json",
+        "index": [
+          0,
+          1,
+          4,
+          1,
+          3,
+          4,
+          3,
+          5
+        ],
+        "verified": true
+      }
+    ]
+  }
+}
