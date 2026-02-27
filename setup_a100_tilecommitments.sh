@@ -314,7 +314,7 @@ create_or_update_env() {
   fi
 
   local sanitized_env
-  sanitized_env="$(mktemp)"
+  sanitized_env="$(mktemp --suffix=.yml)"
   awk '
     !/^[[:space:]]*-[[:space:]]*(theseus|multibranch-merkle|pegasus-verkle|tensorcommitments)==/ &&
     !/^[[:space:]]*prefix:[[:space:]]*/
@@ -322,10 +322,10 @@ create_or_update_env() {
 
   if conda env list | awk '{print $1}' | grep -qx "$ENV_NAME"; then
     log "Updating conda env: $ENV_NAME"
-    conda env update -n "$ENV_NAME" -f "$sanitized_env" --prune
+    conda env update -n "$ENV_NAME" --file "$sanitized_env" --prune
   else
     log "Creating conda env: $ENV_NAME"
-    conda env create -n "$ENV_NAME" -f "$sanitized_env"
+    conda env create -n "$ENV_NAME" --file "$sanitized_env"
   fi
 
   rm -f "$sanitized_env"
