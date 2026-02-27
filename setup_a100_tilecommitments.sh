@@ -3,6 +3,8 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TC_DIR="$REPO_ROOT/TensorCommitment"
+MAIN_ENV_FILE="$REPO_ROOT/environment.yml"
+TC_ENV_FILE="$TC_DIR/environment.yml"
 ENV_NAME="${ENV_NAME:-tilecommitments}"
 SKIP_GPU_INSTALL="${SKIP_GPU_INSTALL:-0}"
 NVIDIA_DRIVER_PKG="${NVIDIA_DRIVER_PKG:-}"
@@ -301,12 +303,22 @@ ensure_rust_toolchain() {
 }
 
 create_or_update_env() {
-  require_file "$TC_DIR/environment.yml"
+  local env_file=""
+  if [[ -f "$MAIN_ENV_FILE" ]]; then
+    env_file="$MAIN_ENV_FILE"
+    log "Using main environment file: $env_file"
+  else
+    env_file="$TC_ENV_FILE"
+    require_file "$env_file"
+    log "Main environment file not found. Falling back to: $env_file"
+  fi
 
   local sanitized_env
   sanitized_env="$(mktemp)"
-  awk '!/^[[:space:]]*-[[:space:]]*theseus==0\.1\.0[[:space:]]*$/' \
-    "$TC_DIR/environment.yml" > "$sanitized_env"
+  awk '
+    !/^[[:space:]]*-[[:space:]]*(theseus|multibranch-merkle|pegasus-verkle|tensorcommitments)==/ &&
+    !/^[[:space:]]*prefix:[[:space:]]*/
+  ' "$env_file" > "$sanitized_env"
 
   if conda env list | awk '{print $1}' | grep -qx "$ENV_NAME"; then
     log "Updating conda env: $ENV_NAME"
@@ -330,7 +342,7 @@ build_python_bindings_and_cargo_targets() {
   log "Installing build tools inside conda env..."
   python -m pip install maturin setuptools-rust
 
-  log "Building tensorcommitments binding..."
+  log "Building tensorcommitments (TensorCommitment core) Python binding..."
   (
     cd "$TC_DIR/pst_commitment_lib"
     maturin develop --features python --release
@@ -432,3 +444,6 @@ main() {
 }
 
 main "$@"
+# source ~/miniconda3/etc/profile.d/conda.sh
+# conda env create -n tilecommitments -f TensorCommitment/environment.yml
+# conda activate tilecommitments
