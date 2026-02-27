@@ -5,8 +5,11 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TC_DIR="$REPO_ROOT/TensorCommitment"
 ENV_NAME="${ENV_NAME:-tilecommitments}"
 SKIP_GPU_INSTALL="${SKIP_GPU_INSTALL:-0}"
-NVIDIA_DRIVER_PKG="${NVIDIA_DRIVER_PKG:-nvidia-driver-550}"
-CUDA_TOOLKIT_PKG="${CUDA_TOOLKIT_PKG:-cuda-toolkit-12-4}"
+NVIDIA_DRIVER_PKG="${NVIDIA_DRIVER_PKG:-}"
+CUDA_TOOLKIT_PKG="${CUDA_TOOLKIT_PKG:-}"
+MIN_FREE_MB_FOR_CUDA_PKG="${MIN_FREE_MB_FOR_CUDA_PKG:-6000}"
+DETECTED_OS_ID=""
+DETECTED_OS_VERSION_ID=""
 
 log() {
   echo "[setup] $*"
@@ -32,6 +35,42 @@ as_root() {
 require_file() {
   local path="$1"
   [[ -f "$path" ]] || die "Required file not found: $path"
+}
+
+detect_os() {
+  if [[ -f /etc/os-release ]]; then
+    # shellcheck disable=SC1091
+    source /etc/os-release
+    DETECTED_OS_ID="${ID:-unknown}"
+    DETECTED_OS_VERSION_ID="${VERSION_ID:-unknown}"
+  else
+    DETECTED_OS_ID="unknown"
+    DETECTED_OS_VERSION_ID="unknown"
+  fi
+  log "Detected OS: ${DETECTED_OS_ID} ${DETECTED_OS_VERSION_ID}"
+}
+
+set_gpu_package_defaults() {
+  if [[ -n "$NVIDIA_DRIVER_PKG" && -n "$CUDA_TOOLKIT_PKG" ]]; then
+    return
+  fi
+
+  case "${DETECTED_OS_ID}:${DETECTED_OS_VERSION_ID}" in
+    ubuntu:22.04|ubuntu:24.04)
+      NVIDIA_DRIVER_PKG="${NVIDIA_DRIVER_PKG:-nvidia-driver-550}"
+      CUDA_TOOLKIT_PKG="${CUDA_TOOLKIT_PKG:-cuda-runtime-12-4}"
+      ;;
+    debian:12)
+      NVIDIA_DRIVER_PKG="${NVIDIA_DRIVER_PKG:-cuda-drivers}"
+      # Default to driver-only on Debian to avoid very large toolkit installs on small boot disks.
+      CUDA_TOOLKIT_PKG="${CUDA_TOOLKIT_PKG:-}"
+      ;;
+    *)
+      warn "Unknown distro/version for GPU package defaults: ${DETECTED_OS_ID} ${DETECTED_OS_VERSION_ID}."
+      NVIDIA_DRIVER_PKG="${NVIDIA_DRIVER_PKG:-nvidia-driver}"
+      CUDA_TOOLKIT_PKG="${CUDA_TOOLKIT_PKG:-}"
+      ;;
+  esac
 }
 
 install_system_packages() {
@@ -60,24 +99,13 @@ install_system_packages() {
 }
 
 install_cuda_repo_if_needed() {
-  if [[ ! -f /etc/os-release ]]; then
-    warn "Cannot detect Linux distro; skipping CUDA repo setup."
-    return
-  fi
-
-  # shellcheck disable=SC1091
-  source /etc/os-release
-  if [[ "${ID:-}" != "ubuntu" ]]; then
-    warn "Detected non-Ubuntu distro (${ID:-unknown}); skipping CUDA repo setup."
-    return
-  fi
-
   local repo_tag
-  case "${VERSION_ID:-}" in
-    "22.04") repo_tag="ubuntu2204" ;;
-    "24.04") repo_tag="ubuntu2404" ;;
+  case "${DETECTED_OS_ID}:${DETECTED_OS_VERSION_ID}" in
+    ubuntu:22.04) repo_tag="ubuntu2204" ;;
+    ubuntu:24.04) repo_tag="ubuntu2404" ;;
+    debian:12) repo_tag="debian12" ;;
     *)
-      warn "Unsupported Ubuntu version ${VERSION_ID:-unknown} for automatic CUDA repo setup."
+      warn "Unsupported distro/version for automatic CUDA repo setup: ${DETECTED_OS_ID} ${DETECTED_OS_VERSION_ID}."
       return
       ;;
   esac
@@ -97,23 +125,123 @@ install_cuda_repo_if_needed() {
   as_root apt-get update
 }
 
+install_kernel_prereqs_if_needed() {
+  case "${DETECTED_OS_ID}" in
+    ubuntu)
+      as_root apt-get install -y --no-install-recommends \
+        "linux-headers-$(uname -r)" \
+        "linux-modules-extra-$(uname -r)" || true
+      ;;
+    debian)
+      as_root apt-get install -y --no-install-recommends \
+        "linux-headers-$(uname -r)" || true
+      ;;
+    *)
+      as_root apt-get install -y --no-install-recommends \
+        "linux-headers-$(uname -r)" || true
+      ;;
+  esac
+}
+
+cleanup_apt_artifacts() {
+  as_root apt-get clean || true
+  as_root rm -rf /tmp/apt-dpkg-install-* /var/tmp/apt-dpkg-install-* || true
+}
+
+recover_dpkg_state() {
+  cleanup_apt_artifacts
+  as_root dpkg --configure -a || true
+  as_root apt-get -f install -y || true
+}
+
+free_mb_on_rootfs() {
+  df -Pm / | awk 'NR==2 {print $4}'
+}
+
+install_nvidia_cuda_packages() {
+  local -a driver_attempts=()
+  driver_attempts+=("${NVIDIA_DRIVER_PKG}")
+  if [[ "${DETECTED_OS_ID}" == "debian" ]]; then
+    driver_attempts+=("cuda-drivers")
+    driver_attempts+=("nvidia-driver")
+  fi
+
+  local driver_installed=0
+  local driver_pkg
+  for driver_pkg in "${driver_attempts[@]}"; do
+    [[ -n "$driver_pkg" ]] || continue
+    log "Installing GPU driver package: ${driver_pkg}"
+    recover_dpkg_state
+    as_root apt-get update || true
+    if as_root apt-get install -y --no-install-recommends "$driver_pkg"; then
+      NVIDIA_DRIVER_PKG="$driver_pkg"
+      driver_installed=1
+      break
+    fi
+    warn "Install attempt failed for GPU driver package: ${driver_pkg}"
+  done
+
+  if [[ "$driver_installed" -ne 1 ]]; then
+    die "Failed to install NVIDIA driver package on ${DETECTED_OS_ID} ${DETECTED_OS_VERSION_ID}."
+  fi
+
+  if [[ -z "$CUDA_TOOLKIT_PKG" ]]; then
+    warn "CUDA_TOOLKIT_PKG is empty; continuing with driver-only setup."
+    return
+  fi
+
+  local free_mb
+  free_mb="$(free_mb_on_rootfs)"
+  if [[ "$free_mb" -lt "$MIN_FREE_MB_FOR_CUDA_PKG" ]]; then
+    warn "Only ${free_mb} MB free on '/'; skipping CUDA package '${CUDA_TOOLKIT_PKG}'."
+    warn "Set CUDA_TOOLKIT_PKG explicitly and/or increase disk if you need full toolkit."
+    CUDA_TOOLKIT_PKG=""
+    return
+  fi
+
+  local -a cuda_attempts=()
+  cuda_attempts+=("${CUDA_TOOLKIT_PKG}")
+  if [[ "${DETECTED_OS_ID}" == "debian" ]]; then
+    cuda_attempts+=("cuda-runtime-12-4")
+    cuda_attempts+=("")
+  fi
+
+  local cuda_pkg
+  for cuda_pkg in "${cuda_attempts[@]}"; do
+    if [[ -z "$cuda_pkg" ]]; then
+      warn "Continuing without CUDA user-space packages."
+      CUDA_TOOLKIT_PKG=""
+      return
+    fi
+    log "Installing CUDA package: ${cuda_pkg}"
+    recover_dpkg_state
+    as_root apt-get update || true
+    if as_root apt-get install -y --no-install-recommends "$cuda_pkg"; then
+      CUDA_TOOLKIT_PKG="$cuda_pkg"
+      return
+    fi
+    warn "Install attempt failed for CUDA package: ${cuda_pkg}"
+  done
+
+  warn "Failed to install CUDA package(s); continuing with driver-only setup."
+  CUDA_TOOLKIT_PKG=""
+}
+
 ensure_gpu_driver_and_cuda() {
   if [[ "$SKIP_GPU_INSTALL" == "1" ]]; then
     warn "SKIP_GPU_INSTALL=1, skipping NVIDIA driver/CUDA installation."
     return
   fi
 
+  set_gpu_package_defaults
+
   if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1; then
     log "NVIDIA driver already available."
   else
     log "Installing NVIDIA driver (${NVIDIA_DRIVER_PKG}) and CUDA toolkit (${CUDA_TOOLKIT_PKG})..."
     install_cuda_repo_if_needed
-    as_root apt-get install -y --no-install-recommends \
-      "linux-headers-$(uname -r)" \
-      "linux-modules-extra-$(uname -r)" || true
-    as_root apt-get install -y --no-install-recommends \
-      "$NVIDIA_DRIVER_PKG" \
-      "$CUDA_TOOLKIT_PKG"
+    install_kernel_prereqs_if_needed
+    install_nvidia_cuda_packages
     as_root modprobe nvidia || true
   fi
 
@@ -291,6 +419,7 @@ EOF
 main() {
   [[ -d "$TC_DIR" ]] || die "TensorCommitment directory not found under $REPO_ROOT"
 
+  detect_os
   install_system_packages
   ensure_gpu_driver_and_cuda
   ensure_miniconda
