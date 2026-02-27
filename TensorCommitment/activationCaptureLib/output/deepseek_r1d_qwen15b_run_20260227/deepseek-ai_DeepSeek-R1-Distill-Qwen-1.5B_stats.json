@@ -1,0 +1,447 @@
+{
+  "model_name": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+  "prompt": "Explain verifiable inference in one short paragraph.",
+  "generated_text": " (Include the term \"verify\" in your explanation.)\n\nVerifiable inference is a",
+  "size_summary": {
+    "min_size": 39936,
+    "max_size": 39936,
+    "avg_size": 39936.0
+  },
+  "layer_stats": [
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "embedding",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -0.2001953125,
+      "max": 0.1689453125,
+      "mean": 0.00019454072753433138,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_0",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -13.390625,
+      "max": 12.96875,
+      "mean": 0.013108694925904274,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_1",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -987.0,
+      "max": 1053.0,
+      "mean": 0.04566052928566933,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_2",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2372.0,
+      "max": 2328.0,
+      "mean": 0.03547493740916252,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_3",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2398.0,
+      "max": 2348.0,
+      "mean": 0.03956207260489464,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_4",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2464.0,
+      "max": 2406.0,
+      "mean": 0.033442333340644836,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_5",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2486.0,
+      "max": 2422.0,
+      "mean": 0.03530818969011307,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_6",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2510.0,
+      "max": 2438.0,
+      "mean": 0.03774483874440193,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_7",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2532.0,
+      "max": 2454.0,
+      "mean": 0.026910904794931412,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_8",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2562.0,
+      "max": 2476.0,
+      "mean": 0.03187035396695137,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_9",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2584.0,
+      "max": 2488.0,
+      "mean": 0.015417058020830154,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_10",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2604.0,
+      "max": 2500.0,
+      "mean": 0.015478907153010368,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_11",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2622.0,
+      "max": 2510.0,
+      "mean": 0.00752229942008853,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_12",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2634.0,
+      "max": 2518.0,
+      "mean": 0.008233434520661831,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_13",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2652.0,
+      "max": 2526.0,
+      "mean": 0.0099025322124362,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_14",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2660.0,
+      "max": 2528.0,
+      "mean": 0.01770506054162979,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_15",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2664.0,
+      "max": 2528.0,
+      "mean": 0.018228594213724136,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_16",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2660.0,
+      "max": 2526.0,
+      "mean": 0.011466712690889835,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_17",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2658.0,
+      "max": 2524.0,
+      "mean": 0.03537744656205177,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_18",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2656.0,
+      "max": 2522.0,
+      "mean": 0.04291849210858345,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_19",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2660.0,
+      "max": 2526.0,
+      "mean": 0.06515918672084808,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_20",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2652.0,
+      "max": 2520.0,
+      "mean": 0.08907058835029602,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_21",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2648.0,
+      "max": 2522.0,
+      "mean": 0.1402188092470169,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_22",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2628.0,
+      "max": 2496.0,
+      "mean": 0.1575305163860321,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_23",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2592.0,
+      "max": 2458.0,
+      "mean": 0.16635750234127045,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_24",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2516.0,
+      "max": 2382.0,
+      "mean": 0.19363057613372803,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_25",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -2246.0,
+      "max": 2110.0,
+      "mean": 0.18411000072956085,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_26",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -1285.0,
+      "max": 1189.0,
+      "mean": 0.27157533168792725,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+      "layer": "layer_27",
+      "shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "min": -95.9375,
+      "max": 66.0,
+      "mean": 0.04005575552582741,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    }
+  ]
+}

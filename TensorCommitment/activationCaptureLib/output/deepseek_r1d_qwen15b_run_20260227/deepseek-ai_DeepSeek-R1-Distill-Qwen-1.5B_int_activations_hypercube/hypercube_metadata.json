@@ -1,0 +1,364 @@
+{
+  "source_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations",
+  "model_name": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+  "conversion_params": {
+    "scale_factor": 16,
+    "quantize_pct": 50.0,
+    "truncated_digits": 8,
+    "effective_scale": 8,
+    "formula": "integer = round(float_value * 10^effective_scale)",
+    "reverse": "float_approx = integer / 10^effective_scale"
+  },
+  "hypercube": {
+    "dimensions": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "num_dimensions": 8,
+    "product": 1679616,
+    "total_real_elements": 1158144,
+    "padding_elements": 521472,
+    "sparsity_pct": 31.0471,
+    "pad_fill": "random (sampled from real activations)",
+    "pad_seed": 42,
+    "dim_range": [
+      4,
+      10
+    ],
+    "flatten_order": "C (row-major)"
+  },
+  "layer_map": [
+    {
+      "layer": "embedding",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 0,
+      "flat_end": 39936
+    },
+    {
+      "layer": "layer_0",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 39936,
+      "flat_end": 79872
+    },
+    {
+      "layer": "layer_1",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 79872,
+      "flat_end": 119808
+    },
+    {
+      "layer": "layer_2",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 119808,
+      "flat_end": 159744
+    },
+    {
+      "layer": "layer_3",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 159744,
+      "flat_end": 199680
+    },
+    {
+      "layer": "layer_4",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 199680,
+      "flat_end": 239616
+    },
+    {
+      "layer": "layer_5",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 239616,
+      "flat_end": 279552
+    },
+    {
+      "layer": "layer_6",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 279552,
+      "flat_end": 319488
+    },
+    {
+      "layer": "layer_7",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 319488,
+      "flat_end": 359424
+    },
+    {
+      "layer": "layer_8",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 359424,
+      "flat_end": 399360
+    },
+    {
+      "layer": "layer_9",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 399360,
+      "flat_end": 439296
+    },
+    {
+      "layer": "layer_10",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 439296,
+      "flat_end": 479232
+    },
+    {
+      "layer": "layer_11",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 479232,
+      "flat_end": 519168
+    },
+    {
+      "layer": "layer_12",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 519168,
+      "flat_end": 559104
+    },
+    {
+      "layer": "layer_13",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 559104,
+      "flat_end": 599040
+    },
+    {
+      "layer": "layer_14",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 599040,
+      "flat_end": 638976
+    },
+    {
+      "layer": "layer_15",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 638976,
+      "flat_end": 678912
+    },
+    {
+      "layer": "layer_16",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 678912,
+      "flat_end": 718848
+    },
+    {
+      "layer": "layer_17",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 718848,
+      "flat_end": 758784
+    },
+    {
+      "layer": "layer_18",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 758784,
+      "flat_end": 798720
+    },
+    {
+      "layer": "layer_19",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 798720,
+      "flat_end": 838656
+    },
+    {
+      "layer": "layer_20",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 838656,
+      "flat_end": 878592
+    },
+    {
+      "layer": "layer_21",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 878592,
+      "flat_end": 918528
+    },
+    {
+      "layer": "layer_22",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 918528,
+      "flat_end": 958464
+    },
+    {
+      "layer": "layer_23",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 958464,
+      "flat_end": 998400
+    },
+    {
+      "layer": "layer_24",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 998400,
+      "flat_end": 1038336
+    },
+    {
+      "layer": "layer_25",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 1038336,
+      "flat_end": 1078272
+    },
+    {
+      "layer": "layer_26",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 1078272,
+      "flat_end": 1118208
+    },
+    {
+      "layer": "layer_27",
+      "original_shape": [
+        1,
+        26,
+        1536
+      ],
+      "num_elements": 39936,
+      "flat_offset": 1118208,
+      "flat_end": 1158144
+    }
+  ],
+  "recovery": {
+    "description": "All indices use C-order (row-major) flattening. Layers are concatenated in the order listed in layer_map. Positions with flat_index >= total_real_elements are padding.",
+    "flat_to_hypercube": "coords = numpy.unravel_index(flat_index, dimensions)",
+    "hypercube_to_flat": "flat_index = numpy.ravel_multi_index(coords, dimensions)",
+    "flat_to_layer": "Find the entry in layer_map where flat_offset <= flat_index < flat_end. position_in_layer = flat_index - flat_offset. Use numpy.unravel_index(position_in_layer, original_shape) to recover the multi-dimensional index within that layer.",
+    "is_padding": "flat_index >= 1158144"
+  }
+}
