@@ -1,0 +1,994 @@
+{
+  "run_at_utc": "2026-02-27T15:52:36.877804+00:00",
+  "inputs": {
+    "activations_pt": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_activations.pt",
+    "hypercube_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube",
+    "poly_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial",
+    "commitment_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_commitment/commitment.txt",
+    "model_name": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    "seed": 42,
+    "num_layers": 28,
+    "rtol": 0.001,
+    "atol": 0.05,
+    "device": "cuda",
+    "dtype": "torch.float16",
+    "device_map": null,
+    "max_memory": null
+  },
+  "model_placement": {
+    "is_sharded": false,
+    "hf_device_map_entries": 0,
+    "module_count_by_device": {
+      "cuda:0": 1
+    }
+  },
+  "selected_entries_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/selected_entries.json",
+  "proof_generation": {
+    "expected_count": 28,
+    "generated_count": 28,
+    "proof_records": [
+      {
+        "layer_label": "layer_0",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_0.json",
+        "hypercube_index": [
+          0,
+          0,
+          5,
+          3,
+          3,
+          2,
+          2,
+          0
+        ],
+        "value_int": "10058594"
+      },
+      {
+        "layer_label": "layer_1",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_1.json",
+        "hypercube_index": [
+          0,
+          2,
+          2,
+          1,
+          2,
+          5,
+          1,
+          2
+        ],
+        "value_int": "30273438"
+      },
+      {
+        "layer_label": "layer_2",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_2.json",
+        "hypercube_index": [
+          0,
+          3,
+          0,
+          4,
+          3,
+          4,
+          0,
+          4
+        ],
+        "value_int": "-123632812"
+      },
+      {
+        "layer_label": "layer_3",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_3.json",
+        "hypercube_index": [
+          0,
+          3,
+          4,
+          4,
+          4,
+          4,
+          1,
+          1
+        ],
+        "value_int": "-196679688"
+      },
+      {
+        "layer_label": "layer_4",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_4.json",
+        "hypercube_index": [
+          0,
+          4,
+          3,
+          5,
+          2,
+          3,
+          0,
+          0
+        ],
+        "value_int": "81542969"
+      },
+      {
+        "layer_label": "layer_5",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_5.json",
+        "hypercube_index": [
+          0,
+          5,
+          5,
+          1,
+          2,
+          0,
+          2,
+          4
+        ],
+        "value_int": "111523438"
+      },
+      {
+        "layer_label": "layer_6",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_6.json",
+        "hypercube_index": [
+          1,
+          0,
+          0,
+          2,
+          2,
+          0,
+          4,
+          0
+        ],
+        "value_int": "40673828"
+      },
+      {
+        "layer_label": "layer_7",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_7.json",
+        "hypercube_index": [
+          1,
+          1,
+          2,
+          4,
+          0,
+          0,
+          1,
+          4
+        ],
+        "value_int": "-114550781"
+      },
+      {
+        "layer_label": "layer_8",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_8.json",
+        "hypercube_index": [
+          1,
+          1,
+          5,
+          1,
+          3,
+          1,
+          2,
+          5
+        ],
+        "value_int": "-92871094"
+      },
+      {
+        "layer_label": "layer_9",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_9.json",
+        "hypercube_index": [
+          1,
+          2,
+          3,
+          5,
+          0,
+          1,
+          4,
+          5
+        ],
+        "value_int": "12573242"
+      },
+      {
+        "layer_label": "layer_10",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_10.json",
+        "hypercube_index": [
+          1,
+          3,
+          5,
+          1,
+          1,
+          0,
+          4,
+          1
+        ],
+        "value_int": "31542969"
+      },
+      {
+        "layer_label": "layer_11",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_11.json",
+        "hypercube_index": [
+          1,
+          5,
+          0,
+          3,
+          5,
+          0,
+          1,
+          4
+        ],
+        "value_int": "61328125"
+      },
+      {
+        "layer_label": "layer_12",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_12.json",
+        "hypercube_index": [
+          1,
+          5,
+          4,
+          3,
+          1,
+          3,
+          3,
+          1
+        ],
+        "value_int": "-585937500"
+      },
+      {
+        "layer_label": "layer_13",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_13.json",
+        "hypercube_index": [
+          2,
+          0,
+          3,
+          4,
+          5,
+          1,
+          0,
+          0
+        ],
+        "value_int": "-83251953"
+      },
+      {
+        "layer_label": "layer_14",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_14.json",
+        "hypercube_index": [
+          2,
+          1,
+          2,
+          4,
+          1,
+          5,
+          5,
+          3
+        ],
+        "value_int": "115527344"
+      },
+      {
+        "layer_label": "layer_15",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_15.json",
+        "hypercube_index": [
+          2,
+          2,
+          2,
+          1,
+          1,
+          3,
+          2,
+          0
+        ],
+        "value_int": "198437500"
+      },
+      {
+        "layer_label": "layer_16",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_16.json",
+        "hypercube_index": [
+          2,
+          2,
+          5,
+          5,
+          4,
+          0,
+          0,
+          0
+        ],
+        "value_int": "57714844"
+      },
+      {
+        "layer_label": "layer_17",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_17.json",
+        "hypercube_index": [
+          2,
+          3,
+          3,
+          0,
+          3,
+          4,
+          0,
+          4
+        ],
+        "value_int": "52783203"
+      },
+      {
+        "layer_label": "layer_18",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_18.json",
+        "hypercube_index": [
+          2,
+          4,
+          5,
+          5,
+          2,
+          0,
+          5,
+          2
+        ],
+        "value_int": "-270507812"
+      },
+      {
+        "layer_label": "layer_19",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_19.json",
+        "hypercube_index": [
+          2,
+          5,
+          3,
+          0,
+          1,
+          0,
+          1,
+          4
+        ],
+        "value_int": "-290625000"
+      },
+      {
+        "layer_label": "layer_20",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_20.json",
+        "hypercube_index": [
+          3,
+          0,
+          2,
+          2,
+          3,
+          1,
+          0,
+          2
+        ],
+        "value_int": "-260156250"
+      },
+      {
+        "layer_label": "layer_21",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_21.json",
+        "hypercube_index": [
+          3,
+          1,
+          0,
+          5,
+          2,
+          0,
+          4,
+          0
+        ],
+        "value_int": "82568359"
+      },
+      {
+        "layer_label": "layer_22",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_22.json",
+        "hypercube_index": [
+          3,
+          1,
+          5,
+          0,
+          2,
+          1,
+          1,
+          0
+        ],
+        "value_int": "120312500"
+      },
+      {
+        "layer_label": "layer_23",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_23.json",
+        "hypercube_index": [
+          3,
+          3,
+          2,
+          0,
+          0,
+          4,
+          0,
+          3
+        ],
+        "value_int": "-892968750"
+      },
+      {
+        "layer_label": "layer_24",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_24.json",
+        "hypercube_index": [
+          3,
+          4,
+          0,
+          2,
+          2,
+          4,
+          2,
+          0
+        ],
+        "value_int": "672265625"
+      },
+      {
+        "layer_label": "layer_25",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_25.json",
+        "hypercube_index": [
+          3,
+          4,
+          4,
+          5,
+          0,
+          0,
+          5,
+          3
+        ],
+        "value_int": "-209765625"
+      },
+      {
+        "layer_label": "layer_26",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_26.json",
+        "hypercube_index": [
+          3,
+          5,
+          2,
+          4,
+          2,
+          2,
+          2,
+          2
+        ],
+        "value_int": "-385156250"
+      },
+      {
+        "layer_label": "layer_27",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_27.json",
+        "hypercube_index": [
+          4,
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        "value_int": "-222070312"
+      }
+    ]
+  },
+  "crypto_verification": {
+    "all_verified": true,
+    "records": [
+      {
+        "layer_label": "layer_0",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_0.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_1",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_1.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_2",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_2.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_3",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_3.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_4",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_4.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_5",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_5.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_6",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_6.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_7",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_7.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_8",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_8.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_9",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_9.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_10",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_10.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_11",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_11.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_12",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_12.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_13",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_13.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_14",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_14.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_15",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_15.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_16",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_16.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_17",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_17.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_18",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_18.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_19",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_19.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_20",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_20.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_21",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_21.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_22",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_22.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_23",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_23.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_24",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_24.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_25",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_25.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_26",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_26.json",
+        "verified": true
+      },
+      {
+        "layer_label": "layer_27",
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/full_coverage_verification_gpu_regression_after_mgpu_patch/proof_bundles/proof_layer_27.json",
+        "verified": true
+      }
+    ]
+  },
+  "compute_verification": {
+    "all_matched": true,
+    "records": [
+      {
+        "layer_index": 0,
+        "layer_label": "layer_0",
+        "layer_flat_index": 3564,
+        "tensor_index": [
+          0,
+          2,
+          492
+        ],
+        "saved_value_float": 0.1005859375,
+        "computed_value_float": 0.1005859375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 1,
+        "layer_label": "layer_1",
+        "layer_flat_index": 30908,
+        "tensor_index": [
+          0,
+          20,
+          188
+        ],
+        "saved_value_float": 0.302734375,
+        "computed_value_float": 0.302734375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 2,
+        "layer_label": "layer_2",
+        "layer_flat_index": 26140,
+        "tensor_index": [
+          0,
+          17,
+          28
+        ],
+        "saved_value_float": -1.236328125,
+        "computed_value_float": -1.236328125,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 3,
+        "layer_label": "layer_3",
+        "layer_flat_index": 17527,
+        "tensor_index": [
+          0,
+          11,
+          631
+        ],
+        "saved_value_float": -1.966796875,
+        "computed_value_float": -1.966796875,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 4,
+        "layer_label": "layer_4",
+        "layer_flat_index": 17292,
+        "tensor_index": [
+          0,
+          11,
+          396
+        ],
+        "saved_value_float": 0.8154296875,
+        "computed_value_float": 0.8154296875,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 5,
+        "layer_label": "layer_5",
+        "layer_flat_index": 34288,
+        "tensor_index": [
+          0,
+          22,
+          496
+        ],
+        "saved_value_float": 1.115234375,
+        "computed_value_float": 1.115234375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 6,
+        "layer_label": "layer_6",
+        "layer_flat_index": 3432,
+        "tensor_index": [
+          0,
+          2,
+          360
+        ],
+        "saved_value_float": 0.40673828125,
+        "computed_value_float": 0.40673828125,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 7,
+        "layer_label": "layer_7",
+        "layer_flat_index": 27850,
+        "tensor_index": [
+          0,
+          18,
+          202
+        ],
+        "saved_value_float": -1.1455078125,
+        "computed_value_float": -1.1455078125,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 8,
+        "layer_label": "layer_8",
+        "layer_flat_index": 8045,
+        "tensor_index": [
+          0,
+          5,
+          365
+        ],
+        "saved_value_float": -0.9287109375,
+        "computed_value_float": -0.9287109375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 9,
+        "layer_label": "layer_9",
+        "layer_flat_index": 3761,
+        "tensor_index": [
+          0,
+          2,
+          689
+        ],
+        "saved_value_float": 0.125732421875,
+        "computed_value_float": 0.125732421875,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 10,
+        "layer_label": "layer_10",
+        "layer_flat_index": 21025,
+        "tensor_index": [
+          0,
+          13,
+          1057
+        ],
+        "saved_value_float": 0.3154296875,
+        "computed_value_float": 0.3154296875,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 11,
+        "layer_label": "layer_11",
+        "layer_flat_index": 38962,
+        "tensor_index": [
+          0,
+          25,
+          562
+        ],
+        "saved_value_float": 0.61328125,
+        "computed_value_float": 0.61328125,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 12,
+        "layer_label": "layer_12",
+        "layer_flat_index": 29383,
+        "tensor_index": [
+          0,
+          19,
+          199
+        ],
+        "saved_value_float": -5.859375,
+        "computed_value_float": -5.859375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 13,
+        "layer_label": "layer_13",
+        "layer_flat_index": 30396,
+        "tensor_index": [
+          0,
+          19,
+          1212
+        ],
+        "saved_value_float": -0.83251953125,
+        "computed_value_float": -0.83251953125,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 14,
+        "layer_label": "layer_14",
+        "layer_flat_index": 28653,
+        "tensor_index": [
+          0,
+          18,
+          1005
+        ],
+        "saved_value_float": 1.1552734375,
+        "computed_value_float": 1.1552734375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 15,
+        "layer_label": "layer_15",
+        "layer_flat_index": 31392,
+        "tensor_index": [
+          0,
+          20,
+          672
+        ],
+        "saved_value_float": 1.984375,
+        "computed_value_float": 1.984375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 16,
+        "layer_label": "layer_16",
+        "layer_flat_index": 20496,
+        "tensor_index": [
+          0,
+          13,
+          528
+        ],
+        "saved_value_float": 0.5771484375,
+        "computed_value_float": 0.5771484375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 17,
+        "layer_label": "layer_17",
+        "layer_flat_index": 5116,
+        "tensor_index": [
+          0,
+          3,
+          508
+        ],
+        "saved_value_float": 0.52783203125,
+        "computed_value_float": 0.52783203125,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 18,
+        "layer_label": "layer_18",
+        "layer_flat_index": 33536,
+        "tensor_index": [
+          0,
+          21,
+          1280
+        ],
+        "saved_value_float": -2.705078125,
+        "computed_value_float": -2.705078125,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 19,
+        "layer_label": "layer_19",
+        "layer_flat_index": 17986,
+        "tensor_index": [
+          0,
+          11,
+          1090
+        ],
+        "saved_value_float": -2.90625,
+        "computed_value_float": -2.90625,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 20,
+        "layer_label": "layer_20",
+        "layer_flat_index": 19982,
+        "tensor_index": [
+          0,
+          13,
+          14
+        ],
+        "saved_value_float": -2.6015625,
+        "computed_value_float": -2.6015625,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 21,
+        "layer_label": "layer_21",
+        "layer_flat_index": 14808,
+        "tensor_index": [
+          0,
+          9,
+          984
+        ],
+        "saved_value_float": 0.82568359375,
+        "computed_value_float": 0.82568359375,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 22,
+        "layer_label": "layer_22",
+        "layer_flat_index": 7290,
+        "tensor_index": [
+          0,
+          4,
+          1146
+        ],
+        "saved_value_float": 1.203125,
+        "computed_value_float": 1.203125,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 23,
+        "layer_label": "layer_23",
+        "layer_flat_index": 37011,
+        "tensor_index": [
+          0,
+          24,
+          147
+        ],
+        "saved_value_float": -8.9296875,
+        "computed_value_float": -8.9296875,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 24,
+        "layer_label": "layer_24",
+        "layer_flat_index": 31212,
+        "tensor_index": [
+          0,
+          20,
+          492
+        ],
+        "saved_value_float": 6.72265625,
+        "computed_value_float": 6.72265625,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 25,
+        "layer_label": "layer_25",
+        "layer_flat_index": 25713,
+        "tensor_index": [
+          0,
+          16,
+          1137
+        ],
+        "saved_value_float": -2.09765625,
+        "computed_value_float": -2.09765625,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 26,
+        "layer_label": "layer_26",
+        "layer_flat_index": 16070,
+        "tensor_index": [
+          0,
+          10,
+          710
+        ],
+        "saved_value_float": -3.8515625,
+        "computed_value_float": -3.8515625,
+        "abs_diff": 0.0,
+        "matches": true
+      },
+      {
+        "layer_index": 27,
+        "layer_label": "layer_27",
+        "layer_flat_index": 32857,
+        "tensor_index": [
+          0,
+          21,
+          601
+        ],
+        "saved_value_float": -2.220703125,
+        "computed_value_float": -2.220703125,
+        "abs_diff": 0.0,
+        "matches": true
+      }
+    ]
+  }
+}

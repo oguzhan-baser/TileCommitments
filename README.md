@@ -27,6 +27,36 @@ Outputs:
 - proof bundles: `$RUN_DIR/full_coverage_verification/proof_bundles/`
 - summary: `$RUN_DIR/full_coverage_verification/full_coverage_summary.json`
 
+## Multi-GPU (Large Models)
+
+For models that do not fit on one GPU, enable Hugging Face sharding:
+
+```bash
+source /home/ob3942/miniconda3/etc/profile.d/conda.sh
+conda activate tilecommitments
+cd /home/ob3942/repos/TileCommitments
+RUN_DIR=TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227
+python compute_crypto_verify_layer.py \
+  --activations-pt "$RUN_DIR/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_activations.pt" \
+  --hypercube-dir "$RUN_DIR/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube" \
+  --poly-dir "$RUN_DIR/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial" \
+  --commitment-file "$RUN_DIR/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_commitment/commitment.txt" \
+  --layer 0 \
+  --proof-mode sample \
+  --num-proofs 1 \
+  --device cuda \
+  --dtype float16 \
+  --device-map auto \
+  --max-memory-per-gpu 700MiB \
+  --max-memory-cpu 64GiB \
+  --output-dir "$RUN_DIR/multigpu_probe_layer0_700mib"
+```
+
+`full_coverage_verify.py` and `capture_activations.py` support the same flags:
+- `--device-map` (`none|auto|balanced|balanced_low_0|sequential`)
+- `--max-memory-per-gpu` (example: `20GiB`)
+- `--max-memory-cpu` (example: `128GiB`)
+
 ## Layer Drift Example
 
 - Rerun for `layer_5` (DeepSeek-R1-Distill-Qwen-1.5B, CPU `float16`) showed:

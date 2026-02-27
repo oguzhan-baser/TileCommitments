@@ -42,6 +42,25 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Model dtype (default: float16 on CUDA, float32 on CPU).",
     )
+    parser.add_argument(
+        "--device-map",
+        type=str,
+        default="none",
+        choices=["none", "auto", "balanced", "balanced_low_0", "sequential"],
+        help="Transformers device_map for model sharding (default: none).",
+    )
+    parser.add_argument(
+        "--max-memory-per-gpu",
+        type=str,
+        default=None,
+        help="Per-GPU memory budget (e.g. 20GiB) used when device-map is enabled.",
+    )
+    parser.add_argument(
+        "--max-memory-cpu",
+        type=str,
+        default=None,
+        help="CPU RAM budget (e.g. 128GiB) used with device-map max_memory.",
+    )
     parser.add_argument("--rtol", type=float, default=1e-3, help="Compute verification rtol (entry-level)")
     parser.add_argument("--atol", type=float, default=5e-2, help="Compute verification atol (entry-level)")
     parser.add_argument(
@@ -111,9 +130,13 @@ def compute_single_layer_output(
     dtype: torch.dtype,
     include_final_norm: bool = False,
 ) -> torch.Tensor:
-    layer_input = layer_input.to(device=model.device, dtype=dtype)
+    fallback_device = layer_utils.get_model_input_device(model, torch.device("cpu"))
+    decoder_layer = model.model.layers[layer_idx]
+    layer_device = layer_utils.infer_module_device(decoder_layer, fallback_device)
+
+    layer_input = layer_input.to(device=layer_device, dtype=dtype)
     sequence_len = layer_input.shape[1]
-    cache_position = torch.arange(sequence_len, device=model.device)
+    cache_position = torch.arange(sequence_len, device=layer_device)
     position_ids = cache_position.unsqueeze(0)
 
     mask_kwargs = {
@@ -129,7 +152,6 @@ def compute_single_layer_output(
         causal_masks["sliding_attention"] = create_sliding_window_causal_mask(**mask_kwargs)
 
     position_embeddings = model.model.rotary_emb(layer_input, position_ids)
-    decoder_layer = model.model.layers[layer_idx]
     mask = causal_masks[decoder_layer.attention_type]
 
     with torch.no_grad():
@@ -149,6 +171,8 @@ def compute_single_layer_output(
     if include_final_norm:
         if not hasattr(model.model, "norm") or model.model.norm is None:
             raise ValueError("Model does not expose model.norm required for final hidden-state verification")
+        norm_device = layer_utils.infer_module_device(model.model.norm, layer_device)
+        output = output.to(device=norm_device, dtype=dtype)
         with torch.no_grad():
             output = model.model.norm(output)
 
@@ -308,7 +332,21 @@ def main() -> None:
     print("[INFO] Stage 4/5 - per-layer compute verification for selected entry in each layer")
     device = layer_utils.capture_lib.resolve_device(args.device)
     dtype = layer_utils.capture_lib.resolve_dtype(args.dtype, device)
-    model = layer_utils.load_model_for_compute_verification(model_name, device, dtype)
+    device_map = layer_utils.normalize_device_map(args.device_map)
+    if device.type != "cuda":
+        if device_map is not None:
+            print("[WARN] --device-map ignored because --device is not CUDA")
+        device_map = None
+    max_memory = layer_utils.build_max_memory_map(device, args.max_memory_per_gpu, args.max_memory_cpu)
+    model = layer_utils.load_model_for_compute_verification(
+        model_name,
+        device,
+        dtype,
+        device_map=device_map,
+        max_memory=max_memory,
+    )
+    placement = layer_utils.describe_model_placement(model)
+    print(f"[INFO] Model placement: {placement['module_count_by_device']}")
 
     compute_records: List[Dict[str, Any]] = []
     all_compute_match = True
@@ -365,7 +403,10 @@ def main() -> None:
             "atol": args.atol,
             "device": str(device),
             "dtype": str(dtype),
+            "device_map": device_map,
+            "max_memory": max_memory,
         },
+        "model_placement": placement,
         "selected_entries_file": str(selections_path),
         "proof_generation": {
             "expected_count": num_layers,

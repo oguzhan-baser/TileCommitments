@@ -73,9 +73,23 @@ def load_model_for_compute_verification(
     model_name: str,
     device: torch.device,
     dtype: torch.dtype,
+    device_map: str | None = None,
+    max_memory: Dict[int | str, str] | None = None,
 ) -> torch.nn.Module:
+    load_kwargs: Dict[str, Any] = {"torch_dtype": dtype}
+    if device_map is not None:
+        load_kwargs["device_map"] = device_map
+    if max_memory is not None:
+        load_kwargs["max_memory"] = max_memory
+
     try:
-        model, _ = capture_lib.load_model_and_tokenizer(model_name, device, dtype)
+        model, _ = capture_lib.load_model_and_tokenizer(
+            model_name,
+            device,
+            dtype,
+            device_map=device_map,
+            max_memory=max_memory,
+        )
         return model
     except Exception as exc:
         local_snapshot = resolve_local_hf_snapshot(model_name)
@@ -90,12 +104,94 @@ def load_model_for_compute_verification(
         )
         model = AutoModelForCausalLM.from_pretrained(
             str(local_snapshot),
-            torch_dtype=dtype,
             local_files_only=True,
+            **load_kwargs,
         )
-        model.to(device)
+        if device_map is None:
+            model.to(device)
         model.eval()
         return model
+
+
+def normalize_device_map(device_map_arg: str | None) -> str | None:
+    if device_map_arg is None:
+        return None
+    value = device_map_arg.strip().lower()
+    if value in {"none", "", "null"}:
+        return None
+    return value
+
+
+def build_max_memory_map(
+    device: torch.device,
+    per_gpu: str | None,
+    cpu_memory: str | None,
+) -> Dict[int | str, str] | None:
+    if per_gpu is None and cpu_memory is None:
+        return None
+
+    max_memory: Dict[int | str, str] = {}
+    if per_gpu is not None:
+        if device.type != "cuda":
+            raise ValueError("--max-memory-per-gpu can only be used with CUDA devices")
+        gpu_count = torch.cuda.device_count()
+        if gpu_count <= 0:
+            raise ValueError("--max-memory-per-gpu set but no CUDA devices were detected")
+        for gpu_idx in range(gpu_count):
+            max_memory[gpu_idx] = per_gpu
+    if cpu_memory is not None:
+        max_memory["cpu"] = cpu_memory
+    return max_memory
+
+
+def get_model_input_device(model: torch.nn.Module, fallback: torch.device) -> torch.device:
+    try:
+        input_embeddings = model.get_input_embeddings()  # type: ignore[attr-defined]
+        if input_embeddings is not None and hasattr(input_embeddings, "weight"):
+            embedding_device = input_embeddings.weight.device
+            if embedding_device.type != "meta":
+                return embedding_device
+    except Exception:
+        pass
+
+    for param in model.parameters():
+        if param.device.type != "meta":
+            return param.device
+    for buffer in model.buffers():
+        if buffer.device.type != "meta":
+            return buffer.device
+    return fallback
+
+
+def infer_module_device(module: torch.nn.Module, fallback: torch.device) -> torch.device:
+    for param in module.parameters(recurse=True):
+        if param.device.type != "meta":
+            return param.device
+    for buffer in module.buffers(recurse=True):
+        if buffer.device.type != "meta":
+            return buffer.device
+    return fallback
+
+
+def describe_model_placement(model: torch.nn.Module) -> Dict[str, Any]:
+    hf_device_map = getattr(model, "hf_device_map", None)
+    if isinstance(hf_device_map, dict) and len(hf_device_map) > 0:
+        counts: Dict[str, int] = {}
+        for _, device_name in hf_device_map.items():
+            key = str(device_name)
+            counts[key] = counts.get(key, 0) + 1
+        return {
+            "is_sharded": len(counts) > 1,
+            "hf_device_map_entries": len(hf_device_map),
+            "module_count_by_device": counts,
+        }
+
+    input_device = get_model_input_device(model, torch.device("cpu"))
+    return {
+        "is_sharded": False,
+        "hf_device_map_entries": 0,
+        "module_count_by_device": {str(input_device): 1},
+    }
 
 
 def parse_args() -> argparse.Namespace:
@@ -119,6 +215,25 @@ def parse_args() -> argparse.Namespace:
         choices=["float32", "float16", "bfloat16"],
         default=None,
         help="Model dtype (default: float16 on CUDA, float32 on CPU).",
+    )
+    parser.add_argument(
+        "--device-map",
+        type=str,
+        default="none",
+        choices=["none", "auto", "balanced", "balanced_low_0", "sequential"],
+        help="Transformers device_map for model sharding (default: none).",
+    )
+    parser.add_argument(
+        "--max-memory-per-gpu",
+        type=str,
+        default=None,
+        help="Per-GPU memory budget (e.g. 20GiB) used when device-map is enabled.",
+    )
+    parser.add_argument(
+        "--max-memory-cpu",
+        type=str,
+        default=None,
+        help="CPU RAM budget (e.g. 128GiB) used with device-map max_memory.",
     )
     parser.add_argument("--rtol", type=float, default=1e-3, help="allclose rtol for compute verification")
     parser.add_argument("--atol", type=float, default=1e-3, help="allclose atol for compute verification")
@@ -264,12 +379,22 @@ def main() -> None:
 
     device = capture_lib.resolve_device(args.device)
     dtype = capture_lib.resolve_dtype(args.dtype, device)
+    device_map = normalize_device_map(args.device_map)
+    if device.type != "cuda":
+        if device_map is not None:
+            print("[WARN] --device-map ignored because --device is not CUDA")
+        device_map = None
+    max_memory = build_max_memory_map(device, args.max_memory_per_gpu, args.max_memory_cpu)
 
     print(f"[INFO] Stage 1 - compute verification for {layer_label}")
     print(f"[INFO] Model: {model_name}")
-    print(f"[INFO] Device: {device}, dtype: {dtype}")
+    print(f"[INFO] Device: {device}, dtype: {dtype}, device_map={device_map or 'none'}")
+    if max_memory is not None:
+        print(f"[INFO] max_memory={max_memory}")
 
-    model = load_model_for_compute_verification(model_name, device, dtype)
+    model = load_model_for_compute_verification(model_name, device, dtype, device_map=device_map, max_memory=max_memory)
+    placement = describe_model_placement(model)
+    print(f"[INFO] Model placement: {placement['module_count_by_device']}")
     computed_hidden_states = capture_lib.capture_hidden_states(model, token_sequence)
     computed_layer = computed_hidden_states[hidden_index].cpu()
     del model
@@ -474,7 +599,12 @@ def main() -> None:
             "rtol": args.rtol,
             "atol": args.atol,
             "allow_approx_commitment": args.allow_approx_commitment,
+            "device": str(device),
+            "dtype": str(dtype),
+            "device_map": device_map,
+            "max_memory": max_memory,
         },
+        "model_placement": placement,
         "compute_verification": {
             "matched": compute_match,
             "max_abs_diff": max_abs_diff,

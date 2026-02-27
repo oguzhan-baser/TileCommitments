@@ -1,0 +1,99 @@
+{
+  "run_at_utc": "2026-02-27T15:48:19.985968+00:00",
+  "inputs": {
+    "activations_pt": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_activations.pt",
+    "hypercube_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube",
+    "poly_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial",
+    "commitment_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_commitment/commitment.txt",
+    "layer": "layer_0",
+    "proof_mode": "sample",
+    "num_proofs": 1,
+    "positions": null,
+    "rtol": 0.001,
+    "atol": 0.01,
+    "allow_approx_commitment": false,
+    "device": "cuda",
+    "dtype": "torch.float16",
+    "device_map": "balanced",
+    "max_memory": {
+      "0": 629145600,
+      "1": 629145600,
+      "2": 629145600,
+      "3": 629145600,
+      "4": 629145600,
+      "5": 629145600,
+      "6": 629145600,
+      "7": 629145600,
+      "cpu": 68719476736
+    }
+  },
+  "model_placement": {
+    "is_sharded": true,
+    "hf_device_map_entries": 32,
+    "module_count_by_device": {
+      "1": 2,
+      "2": 5,
+      "3": 5,
+      "4": 5,
+      "5": 5,
+      "6": 5,
+      "7": 4,
+      "cpu": 1
+    }
+  },
+  "compute_verification": {
+    "matched": true,
+    "max_abs_diff": 0.0,
+    "mean_abs_diff": 0.0,
+    "layer_shape": [
+      1,
+      26,
+      1536
+    ],
+    "effective_scale": 8
+  },
+  "proof_generation": {
+    "count": 1,
+    "approx_mismatch_count": 0,
+    "proof_records": [
+      {
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/multigpu_probe_layer0_balanced_600mib/proof_bundles/proof_0000_flat_43500.json",
+        "index": [
+          0,
+          0,
+          5,
+          3,
+          3,
+          2,
+          2,
+          0
+        ],
+        "flat_index": 43500,
+        "layer_flat_index": 3564,
+        "value_int": "10058594",
+        "saved_scaled_value_int": "10058594",
+        "computed_scaled_value_int": "10058594",
+        "proof_elements": 8
+      }
+    ]
+  },
+  "crypto_verification": {
+    "all_verified": true,
+    "records": [
+      {
+        "bundle_path": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/multigpu_probe_layer0_balanced_600mib/proof_bundles/proof_0000_flat_43500.json",
+        "index": [
+          0,
+          0,
+          5,
+          3,
+          3,
+          2,
+          2,
+          0
+        ],
+        "verified": true
+      }
+    ]
+  }
+}

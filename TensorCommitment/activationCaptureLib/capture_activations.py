@@ -89,6 +89,25 @@ def parse_args() -> argparse.Namespace:
         help="Model precision (default: float16 on CUDA, float32 on CPU).",
     )
     p.add_argument(
+        "--device-map",
+        type=str,
+        default="none",
+        choices=["none", "auto", "balanced", "balanced_low_0", "sequential"],
+        help="Transformers device_map for model sharding (default: none).",
+    )
+    p.add_argument(
+        "--max-memory-per-gpu",
+        type=str,
+        default=None,
+        help="Per-GPU memory budget (e.g. 20GiB) used when device-map is enabled.",
+    )
+    p.add_argument(
+        "--max-memory-cpu",
+        type=str,
+        default=None,
+        help="CPU RAM budget (e.g. 128GiB) used with device-map max_memory.",
+    )
+    p.add_argument(
         "--output-dir",
         type=str,
         default="./output",
@@ -125,6 +144,53 @@ def resolve_dtype(dtype_arg: str | None, device: torch.device) -> torch.dtype:
     if dtype_arg is not None:
         return {"float16": torch.float16, "float32": torch.float32, "bfloat16": torch.bfloat16}[dtype_arg]
     return torch.float16 if device.type == "cuda" else torch.float32
+
+
+def normalize_device_map(device_map_arg: str | None) -> str | None:
+    if device_map_arg is None:
+        return None
+    value = device_map_arg.strip().lower()
+    if value in {"none", "", "null"}:
+        return None
+    return value
+
+
+def build_max_memory_map(
+    device: torch.device,
+    per_gpu: str | None,
+    cpu_memory: str | None,
+) -> Dict[int | str, str] | None:
+    if per_gpu is None and cpu_memory is None:
+        return None
+
+    max_memory: Dict[int | str, str] = {}
+    if per_gpu is not None:
+        if device.type != "cuda":
+            raise ValueError("--max-memory-per-gpu can only be used with CUDA devices")
+        gpu_count = torch.cuda.device_count()
+        if gpu_count <= 0:
+            raise ValueError("--max-memory-per-gpu set but no CUDA devices were detected")
+        for gpu_idx in range(gpu_count):
+            max_memory[gpu_idx] = per_gpu
+    if cpu_memory is not None:
+        max_memory["cpu"] = cpu_memory
+    return max_memory
+
+
+def get_model_input_device(model: AutoModelForCausalLM, fallback: torch.device) -> torch.device:
+    embeddings = model.get_input_embeddings()
+    if embeddings is not None and hasattr(embeddings, "weight"):
+        embedding_device = embeddings.weight.device
+        if embedding_device.type != "meta":
+            return embedding_device
+
+    for param in model.parameters():
+        if param.device.type != "meta":
+            return param.device
+    for buffer in model.buffers():
+        if buffer.device.type != "meta":
+            return buffer.device
+    return fallback
 
 
 def sanitize_model_name(model_name: str) -> str:
@@ -188,6 +254,8 @@ def load_model_and_tokenizer(
     model_name: str,
     device: torch.device,
     dtype: torch.dtype,
+    device_map: str | None = None,
+    max_memory: Dict[int | str, str] | None = None,
 ) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
     """Download / load a causal LM and its tokenizer from Hugging Face."""
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -195,11 +263,15 @@ def load_model_and_tokenizer(
         tokenizer.pad_token = tokenizer.eos_token or tokenizer.bos_token
     tokenizer.padding_side = "left"
 
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        torch_dtype=dtype,          # NOTE: correct kwarg is torch_dtype, not dtype
-    )
-    model.to(device)
+    load_kwargs: Dict[str, object] = {"torch_dtype": dtype}
+    if device_map is not None:
+        load_kwargs["device_map"] = device_map
+    if max_memory is not None:
+        load_kwargs["max_memory"] = max_memory
+
+    model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
+    if device_map is None:
+        model.to(device)
     model.eval()
     return model, tokenizer
 
@@ -213,8 +285,9 @@ def run_generation(
     temperature: float,
 ) -> Tuple[torch.Tensor, str]:
     """Generate a continuation and return the full sequence + decoded text."""
+    model_input_device = get_model_input_device(model, torch.device("cpu"))
     inputs = tokenizer(prompt, return_tensors="pt")
-    inputs = {k: v.to(model.device) for k, v in inputs.items()}
+    inputs = {k: v.to(model_input_device) for k, v in inputs.items()}
 
     gen_kwargs = {
         "max_new_tokens": max_new_tokens,
@@ -248,10 +321,12 @@ def capture_hidden_states(
       index i  = output of transformer block i-1
     Each tensor has shape (batch, seq_len, hidden_dim).
     """
-    attention_mask = torch.ones_like(token_sequences, device=model.device)
+    model_input_device = get_model_input_device(model, torch.device("cpu"))
+    token_sequences = token_sequences.to(model_input_device)
+    attention_mask = torch.ones_like(token_sequences, device=model_input_device)
     with torch.no_grad():
         outputs = model(
-            input_ids=token_sequences.to(model.device),
+            input_ids=token_sequences,
             attention_mask=attention_mask,
             output_hidden_states=True,
             use_cache=False,
@@ -347,13 +422,23 @@ def process_model(
     device: torch.device,
     dtype: torch.dtype,
     output_dir: Path,
+    device_map: str | None = None,
+    max_memory: Dict[int | str, str] | None = None,
 ) -> Dict[str, object] | None:
     """End-to-end pipeline for a single model. Returns a report dict or None on failure."""
+    model: AutoModelForCausalLM | None = None
+    tokenizer: AutoTokenizer | None = None
     try:
         print(f"\n{'='*60}")
         print(f"[INFO] Loading model: {model_name}")
         print(f"{'='*60}")
-        model, tokenizer = load_model_and_tokenizer(model_name, device, dtype)
+        model, tokenizer = load_model_and_tokenizer(
+            model_name,
+            device,
+            dtype,
+            device_map=device_map,
+            max_memory=max_memory,
+        )
 
         # --- Generate ---
         sequences, generated_text = run_generation(
@@ -400,6 +485,13 @@ def process_model(
     except Exception as exc:  # noqa: BLE001
         print(f"[ERROR] {model_name}: {exc}")
         return None
+    finally:
+        if model is not None:
+            del model
+        if tokenizer is not None:
+            del tokenizer
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
 
 # ---------------------------------------------------------------------------
 # Entry point
@@ -421,15 +513,35 @@ def main() -> None:
 
     device = resolve_device(args.device)
     dtype = resolve_dtype(args.dtype, device)
+    device_map = normalize_device_map(args.device_map)
+    if device.type != "cuda":
+        if device_map is not None:
+            print("[WARN] --device-map ignored because --device is not CUDA")
+        device_map = None
+    max_memory = build_max_memory_map(device, args.max_memory_per_gpu, args.max_memory_cpu)
     output_dir = Path(args.output_dir)
 
-    print(f"[INFO] device={device}  dtype={dtype}  deterministic={args.deterministic}")
+    print(
+        f"[INFO] device={device}  dtype={dtype}  deterministic={args.deterministic}  "
+        f"device_map={device_map or 'none'}"
+    )
+    if max_memory is not None:
+        print(f"[INFO] max_memory={max_memory}")
     print(f"[INFO] output -> {output_dir.resolve()}")
 
     report: List[Dict[str, object]] = []
     for name in args.models:
-        entry = process_model(name, args.prompt, args, device, dtype, output_dir)
-        if entry:
+        entry = process_model(
+            name,
+            args.prompt,
+            args,
+            device,
+            dtype,
+            output_dir,
+            device_map=device_map,
+            max_memory=max_memory,
+        )
+        if entry is not None:
             report.append(entry)
 
     # Print consolidated report

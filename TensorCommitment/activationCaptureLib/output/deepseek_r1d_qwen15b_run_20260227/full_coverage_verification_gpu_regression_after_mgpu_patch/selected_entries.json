@@ -1,0 +1,764 @@
+{
+  "created_at_utc": "2026-02-27T15:49:53.077905+00:00",
+  "model_name": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+  "seed": 42,
+  "num_layers": 28,
+  "entries": [
+    {
+      "layer_index": 0,
+      "layer_label": "layer_0",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 3564,
+      "tensor_index": [
+        0,
+        2,
+        492
+      ],
+      "global_flat_index": 43500,
+      "hypercube_index": [
+        0,
+        0,
+        5,
+        3,
+        3,
+        2,
+        2,
+        0
+      ],
+      "saved_value_float": 0.1005859375
+    },
+    {
+      "layer_index": 1,
+      "layer_label": "layer_1",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 30908,
+      "tensor_index": [
+        0,
+        20,
+        188
+      ],
+      "global_flat_index": 110780,
+      "hypercube_index": [
+        0,
+        2,
+        2,
+        1,
+        2,
+        5,
+        1,
+        2
+      ],
+      "saved_value_float": 0.302734375
+    },
+    {
+      "layer_index": 2,
+      "layer_label": "layer_2",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 26140,
+      "tensor_index": [
+        0,
+        17,
+        28
+      ],
+      "global_flat_index": 145948,
+      "hypercube_index": [
+        0,
+        3,
+        0,
+        4,
+        3,
+        4,
+        0,
+        4
+      ],
+      "saved_value_float": -1.236328125
+    },
+    {
+      "layer_index": 3,
+      "layer_label": "layer_3",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 17527,
+      "tensor_index": [
+        0,
+        11,
+        631
+      ],
+      "global_flat_index": 177271,
+      "hypercube_index": [
+        0,
+        3,
+        4,
+        4,
+        4,
+        4,
+        1,
+        1
+      ],
+      "saved_value_float": -1.966796875
+    },
+    {
+      "layer_index": 4,
+      "layer_label": "layer_4",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 17292,
+      "tensor_index": [
+        0,
+        11,
+        396
+      ],
+      "global_flat_index": 216972,
+      "hypercube_index": [
+        0,
+        4,
+        3,
+        5,
+        2,
+        3,
+        0,
+        0
+      ],
+      "saved_value_float": 0.8154296875
+    },
+    {
+      "layer_index": 5,
+      "layer_label": "layer_5",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 34288,
+      "tensor_index": [
+        0,
+        22,
+        496
+      ],
+      "global_flat_index": 273904,
+      "hypercube_index": [
+        0,
+        5,
+        5,
+        1,
+        2,
+        0,
+        2,
+        4
+      ],
+      "saved_value_float": 1.115234375
+    },
+    {
+      "layer_index": 6,
+      "layer_label": "layer_6",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 3432,
+      "tensor_index": [
+        0,
+        2,
+        360
+      ],
+      "global_flat_index": 282984,
+      "hypercube_index": [
+        1,
+        0,
+        0,
+        2,
+        2,
+        0,
+        4,
+        0
+      ],
+      "saved_value_float": 0.40673828125
+    },
+    {
+      "layer_index": 7,
+      "layer_label": "layer_7",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 27850,
+      "tensor_index": [
+        0,
+        18,
+        202
+      ],
+      "global_flat_index": 347338,
+      "hypercube_index": [
+        1,
+        1,
+        2,
+        4,
+        0,
+        0,
+        1,
+        4
+      ],
+      "saved_value_float": -1.1455078125
+    },
+    {
+      "layer_index": 8,
+      "layer_label": "layer_8",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 8045,
+      "tensor_index": [
+        0,
+        5,
+        365
+      ],
+      "global_flat_index": 367469,
+      "hypercube_index": [
+        1,
+        1,
+        5,
+        1,
+        3,
+        1,
+        2,
+        5
+      ],
+      "saved_value_float": -0.9287109375
+    },
+    {
+      "layer_index": 9,
+      "layer_label": "layer_9",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 3761,
+      "tensor_index": [
+        0,
+        2,
+        689
+      ],
+      "global_flat_index": 403121,
+      "hypercube_index": [
+        1,
+        2,
+        3,
+        5,
+        0,
+        1,
+        4,
+        5
+      ],
+      "saved_value_float": 0.125732421875
+    },
+    {
+      "layer_index": 10,
+      "layer_label": "layer_10",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 21025,
+      "tensor_index": [
+        0,
+        13,
+        1057
+      ],
+      "global_flat_index": 460321,
+      "hypercube_index": [
+        1,
+        3,
+        5,
+        1,
+        1,
+        0,
+        4,
+        1
+      ],
+      "saved_value_float": 0.3154296875
+    },
+    {
+      "layer_index": 11,
+      "layer_label": "layer_11",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 38962,
+      "tensor_index": [
+        0,
+        25,
+        562
+      ],
+      "global_flat_index": 518194,
+      "hypercube_index": [
+        1,
+        5,
+        0,
+        3,
+        5,
+        0,
+        1,
+        4
+      ],
+      "saved_value_float": 0.61328125
+    },
+    {
+      "layer_index": 12,
+      "layer_label": "layer_12",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 29383,
+      "tensor_index": [
+        0,
+        19,
+        199
+      ],
+      "global_flat_index": 548551,
+      "hypercube_index": [
+        1,
+        5,
+        4,
+        3,
+        1,
+        3,
+        3,
+        1
+      ],
+      "saved_value_float": -5.859375
+    },
+    {
+      "layer_index": 13,
+      "layer_label": "layer_13",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 30396,
+      "tensor_index": [
+        0,
+        19,
+        1212
+      ],
+      "global_flat_index": 589500,
+      "hypercube_index": [
+        2,
+        0,
+        3,
+        4,
+        5,
+        1,
+        0,
+        0
+      ],
+      "saved_value_float": -0.83251953125
+    },
+    {
+      "layer_index": 14,
+      "layer_label": "layer_14",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 28653,
+      "tensor_index": [
+        0,
+        18,
+        1005
+      ],
+      "global_flat_index": 627693,
+      "hypercube_index": [
+        2,
+        1,
+        2,
+        4,
+        1,
+        5,
+        5,
+        3
+      ],
+      "saved_value_float": 1.1552734375
+    },
+    {
+      "layer_index": 15,
+      "layer_label": "layer_15",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 31392,
+      "tensor_index": [
+        0,
+        20,
+        672
+      ],
+      "global_flat_index": 670368,
+      "hypercube_index": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        3,
+        2,
+        0
+      ],
+      "saved_value_float": 1.984375
+    },
+    {
+      "layer_index": 16,
+      "layer_label": "layer_16",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 20496,
+      "tensor_index": [
+        0,
+        13,
+        528
+      ],
+      "global_flat_index": 699408,
+      "hypercube_index": [
+        2,
+        2,
+        5,
+        5,
+        4,
+        0,
+        0,
+        0
+      ],
+      "saved_value_float": 0.5771484375
+    },
+    {
+      "layer_index": 17,
+      "layer_label": "layer_17",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 5116,
+      "tensor_index": [
+        0,
+        3,
+        508
+      ],
+      "global_flat_index": 723964,
+      "hypercube_index": [
+        2,
+        3,
+        3,
+        0,
+        3,
+        4,
+        0,
+        4
+      ],
+      "saved_value_float": 0.52783203125
+    },
+    {
+      "layer_index": 18,
+      "layer_label": "layer_18",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 33536,
+      "tensor_index": [
+        0,
+        21,
+        1280
+      ],
+      "global_flat_index": 792320,
+      "hypercube_index": [
+        2,
+        4,
+        5,
+        5,
+        2,
+        0,
+        5,
+        2
+      ],
+      "saved_value_float": -2.705078125
+    },
+    {
+      "layer_index": 19,
+      "layer_label": "layer_19",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 17986,
+      "tensor_index": [
+        0,
+        11,
+        1090
+      ],
+      "global_flat_index": 816706,
+      "hypercube_index": [
+        2,
+        5,
+        3,
+        0,
+        1,
+        0,
+        1,
+        4
+      ],
+      "saved_value_float": -2.90625
+    },
+    {
+      "layer_index": 20,
+      "layer_label": "layer_20",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 19982,
+      "tensor_index": [
+        0,
+        13,
+        14
+      ],
+      "global_flat_index": 858638,
+      "hypercube_index": [
+        3,
+        0,
+        2,
+        2,
+        3,
+        1,
+        0,
+        2
+      ],
+      "saved_value_float": -2.6015625
+    },
+    {
+      "layer_index": 21,
+      "layer_label": "layer_21",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 14808,
+      "tensor_index": [
+        0,
+        9,
+        984
+      ],
+      "global_flat_index": 893400,
+      "hypercube_index": [
+        3,
+        1,
+        0,
+        5,
+        2,
+        0,
+        4,
+        0
+      ],
+      "saved_value_float": 0.82568359375
+    },
+    {
+      "layer_index": 22,
+      "layer_label": "layer_22",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 7290,
+      "tensor_index": [
+        0,
+        4,
+        1146
+      ],
+      "global_flat_index": 925818,
+      "hypercube_index": [
+        3,
+        1,
+        5,
+        0,
+        2,
+        1,
+        1,
+        0
+      ],
+      "saved_value_float": 1.203125
+    },
+    {
+      "layer_index": 23,
+      "layer_label": "layer_23",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 37011,
+      "tensor_index": [
+        0,
+        24,
+        147
+      ],
+      "global_flat_index": 995475,
+      "hypercube_index": [
+        3,
+        3,
+        2,
+        0,
+        0,
+        4,
+        0,
+        3
+      ],
+      "saved_value_float": -8.9296875
+    },
+    {
+      "layer_index": 24,
+      "layer_label": "layer_24",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 31212,
+      "tensor_index": [
+        0,
+        20,
+        492
+      ],
+      "global_flat_index": 1029612,
+      "hypercube_index": [
+        3,
+        4,
+        0,
+        2,
+        2,
+        4,
+        2,
+        0
+      ],
+      "saved_value_float": 6.72265625
+    },
+    {
+      "layer_index": 25,
+      "layer_label": "layer_25",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 25713,
+      "tensor_index": [
+        0,
+        16,
+        1137
+      ],
+      "global_flat_index": 1064049,
+      "hypercube_index": [
+        3,
+        4,
+        4,
+        5,
+        0,
+        0,
+        5,
+        3
+      ],
+      "saved_value_float": -2.09765625
+    },
+    {
+      "layer_index": 26,
+      "layer_label": "layer_26",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 16070,
+      "tensor_index": [
+        0,
+        10,
+        710
+      ],
+      "global_flat_index": 1094342,
+      "hypercube_index": [
+        3,
+        5,
+        2,
+        4,
+        2,
+        2,
+        2,
+        2
+      ],
+      "saved_value_float": -3.8515625
+    },
+    {
+      "layer_index": 27,
+      "layer_label": "layer_27",
+      "layer_shape": [
+        1,
+        26,
+        1536
+      ],
+      "layer_flat_index": 32857,
+      "tensor_index": [
+        0,
+        21,
+        601
+      ],
+      "global_flat_index": 1151065,
+      "hypercube_index": [
+        4,
+        0,
+        4,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "saved_value_float": -2.220703125
+    }
+  ]
+}
