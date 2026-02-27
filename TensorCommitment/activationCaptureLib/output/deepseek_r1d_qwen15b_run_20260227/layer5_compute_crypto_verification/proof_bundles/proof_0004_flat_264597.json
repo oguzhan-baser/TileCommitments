@@ -1,0 +1,49 @@
+{
+  "format_version": 1,
+  "created_at_utc": "2026-02-27T14:55:53.959842+00:00",
+  "poly_dir": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial",
+  "coefficients_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_polynomial/coefficients.json",
+  "commitment_file": "/home/ob3942/repos/TileCommitments/TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227/deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_int_activations_hypercube_commitment/commitment.txt",
+  "commitment_hex": "5595e5224e70727e32a972d44809d57df9131750c35ab6cea47ef4554fafeb81",
+  "dims": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6
+  ],
+  "num_variables": 8,
+  "degree_bound": 6,
+  "index": [
+    0,
+    5,
+    4,
+    0,
+    0,
+    5,
+    5,
+    3
+  ],
+  "flat_index": 264597,
+  "value_int": "-141015625",
+  "value_source": "committed_hypercube:layer_5",
+  "proof_hex": [
+    "aceb35e40223102622cc3e56b71955ab4e4e794da5a78e0a363597c2c8ddeaa7",
+    "3b0d60968d18a7815b6b2327424b9d583329725ca7201cb935645943e97a6da2",
+    "5c676a65309140fb2dd8f8d57db5e6e74b51ff1712fe9a0ff1d4b664e411f684",
+    "f263870a37141448056d5f4c1b8538ecae6c554a12b2b1fb91bb01f17c6dd293",
+    "efbe8aeed1bc2641c76f21fd4de858ad93a61a96341ba6dadf45969dee7a9307",
+    "c96b1349f8c146f9bf1e20ad65d467f82b32b0527c6c5634eb3d1ec93d075392",
+    "60cce35821fd99a229c7d3f93e6177263581cddf9a47a2b75026e42d11956621",
+    "28ea134dae88594254408188e9afd7f5c1bd2763382beaf69528141d1b9a7092"
+  ],
+  "layer_label": "layer_5",
+  "layer_flat_index": 24981,
+  "hypercube_value_int": "-141015625",
+  "saved_scaled_value_int": "-141015625",
+  "computed_scaled_value_int": "-141113281",
+  "polynomial_eval_int": "21888242871839275222246405745257275088548364400416034343698204186575667479992"
+}

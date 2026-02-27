@@ -20,3 +20,13 @@
   - **Compute consistency** (approximate numeric agreement with saved activations),
   - **Commitment consistency** (exact cryptographic validity of committed values).
 - This avoids false cryptographic failures caused by benign numeric drift while preserving strict commitment correctness.
+
+## Observed Layer_5 Drift (DeepSeek-R1-Distill-Qwen-1.5B)
+
+- On CPU (`float16`), `layer_5` failed compute verification with `rtol=0.01`, `atol=0.01` because `max_abs_diff=1.0`.
+- Re-running the same layer with `atol=2` passed compute verification and kept crypto verification valid (`all_verified=true` for sampled proofs).
+- Example max-diff point from rerun:
+  - tensor index: `(0, 0, 940)`
+  - saved activation: `1977.0`
+  - recomputed activation: `1978.0`
+  - absolute difference: `1.0`
