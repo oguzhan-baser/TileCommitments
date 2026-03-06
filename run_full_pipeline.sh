@@ -221,6 +221,7 @@ POLY_DIR="${HC_DIR}_polynomial"
 COMMIT_DIR="${HC_DIR}_commitment"
 LAYER_VERIFY_DIR="$RUN_DIR/layer${LAYER}_compute_crypto"
 FULL_COVERAGE_DIR="$RUN_DIR/full_coverage_verification"
+METRICS_FILE="$RUN_DIR/run_metrics.json"
 
 activate_conda_env
 detect_free_gpu_budget
@@ -314,8 +315,16 @@ run_stage "full_coverage_verify" \
     --output-dir "$FULL_COVERAGE_DIR"
 require_file "$FULL_COVERAGE_DIR/full_coverage_summary.json"
 
+run_stage "summarize_run_metrics" \
+  python summarize_run_metrics.py \
+    --run-dir "$RUN_DIR" \
+    --layer-summary "$LAYER_VERIFY_DIR/compute_crypto_verification_summary.json" \
+    --output "$METRICS_FILE"
+require_file "$METRICS_FILE"
+
 log "Pipeline completed successfully."
 log "Run dir: $RUN_DIR"
 log "Commitment: $COMMIT_DIR/commitment.txt"
 log "Layer verification summary: $LAYER_VERIFY_DIR/compute_crypto_verification_summary.json"
 log "Full-coverage summary: $FULL_COVERAGE_DIR/full_coverage_summary.json"
+log "Run metrics: $METRICS_FILE"
