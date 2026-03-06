@@ -148,11 +148,12 @@ def compute_single_layer_output(
         "position_ids": position_ids,
     }
     causal_masks = {"full_attention": create_causal_mask(**mask_kwargs)}
-    if model.model.has_sliding_layers:
+    if getattr(model.model, "has_sliding_layers", False):
         causal_masks["sliding_attention"] = create_sliding_window_causal_mask(**mask_kwargs)
 
     position_embeddings = model.model.rotary_emb(layer_input, position_ids)
-    mask = causal_masks[decoder_layer.attention_type]
+    attention_type = getattr(decoder_layer, "attention_type", "full_attention")
+    mask = causal_masks.get(attention_type, causal_masks["full_attention"])
 
     with torch.no_grad():
         output = decoder_layer(
