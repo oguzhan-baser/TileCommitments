@@ -54,6 +54,7 @@ python compute_crypto_verify_layer.py \
 
 `full_coverage_verify.py` and `capture_activations.py` support the same flags:
 - `--device-map` (`none|auto|balanced|balanced_low_0|sequential`)
+- `--mxfp4-mode` (`auto|native|dequantize`, where `auto` dequantizes GPT-OSS on pre-sm89 GPUs like A100)
 - `--max-memory-per-gpu` (example: `20GiB`)
 - `--max-memory-cpu` (example: `128GiB`)
 

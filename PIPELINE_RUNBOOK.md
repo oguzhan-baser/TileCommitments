@@ -27,6 +27,7 @@ cd /home/ob3942/repos/TileCommitments
 Most useful CLI knobs in `run_full_pipeline.sh`:
 - `--dtype`: `float16|float32|bfloat16`
 - `--device-map`: `none|auto|balanced|balanced_low_0|sequential`
+- `--mxfp4-mode`: `auto|native|dequantize` (`auto` switches GPT-OSS to dequantized bf16 on pre-sm89 GPUs such as A100)
 - `--min-free-gpu-pct`: GPU inclusion threshold
 - `--gpu-memory-spread-pct`: tighter per-GPU cap to force wider sharding
 - `--build-interp`: rebuild interpolation binary instead of `--skip-build`
@@ -69,6 +70,7 @@ python TensorCommitment/activationCaptureLib/capture_activations.py \
   --device cuda \
   --dtype float16 \
   --device-map balanced \
+  --mxfp4-mode auto \
   --max-memory-per-gpu 20GiB \
   --max-memory-cpu 128GiB \
   --seed 42

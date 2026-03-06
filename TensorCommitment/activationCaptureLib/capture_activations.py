@@ -35,7 +35,7 @@ from pathlib import Path
 from typing import Dict, List, Sequence, Tuple
 
 import torch
-from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, AwqConfig
+from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, AwqConfig, Mxfp4Config
 from transformers.utils.quantization_config import AwqBackend
 
 # ---------------------------------------------------------------------------
@@ -107,6 +107,18 @@ def parse_args() -> argparse.Namespace:
         type=str,
         default=None,
         help="CPU RAM budget (e.g. 128GiB) used with device-map max_memory.",
+    )
+    p.add_argument(
+        "--mxfp4-mode",
+        type=str,
+        choices=["auto", "native", "dequantize"],
+        default="auto",
+        help=(
+            "MXFP4 handling mode for checkpoints that ship MXFP4 quantization configs. "
+            "'auto' forces dequantize on pre-sm89 GPUs, "
+            "'native' keeps MXFP4 kernels, "
+            "'dequantize' always falls back to bf16."
+        ),
     )
     p.add_argument(
         "--output-dir",
@@ -234,6 +246,28 @@ def get_precision_bits(tensor: torch.Tensor) -> int:
         return torch.finfo(tensor.dtype).bits
     return torch.iinfo(tensor.dtype).bits
 
+
+def get_cuda_compute_capabilities() -> List[Tuple[int, int]]:
+    """Return compute capabilities for all visible CUDA devices."""
+    if not torch.cuda.is_available():
+        return []
+    return [torch.cuda.get_device_capability(i) for i in range(torch.cuda.device_count())]
+
+
+def format_cuda_compute_capabilities(capabilities: Sequence[Tuple[int, int]]) -> str:
+    """Format visible GPU capabilities (e.g. cuda:0=sm80; cuda:1=sm80)."""
+    return "; ".join(f"cuda:{idx}=sm{major}{minor}" for idx, (major, minor) in enumerate(capabilities))
+
+
+def is_mxfp4_arch_error(exc: Exception) -> bool:
+    """Detect MXFP4/FP8 kernel architecture mismatch errors."""
+    err = str(exc).lower()
+    return (
+        "requires .target sm_89 or higher" in err
+        or "e4m3x2/.e5m2x2" in err
+        or ("ptxas" in err and "sm_80" in err and ("e4m3" in err or "e5m2" in err))
+    )
+
 # ---------------------------------------------------------------------------
 # Data container
 # ---------------------------------------------------------------------------
@@ -257,6 +291,7 @@ def load_model_and_tokenizer(
     dtype: torch.dtype,
     device_map: str | None = None,
     max_memory: Dict[int | str, str] | None = None,
+    mxfp4_mode: str = "auto",
 ) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
     """Download / load a causal LM and its tokenizer from Hugging Face."""
     load_kwargs: Dict[str, object] = {"torch_dtype": dtype}
@@ -264,6 +299,19 @@ def load_model_and_tokenizer(
         load_kwargs["device_map"] = device_map
     if max_memory is not None:
         load_kwargs["max_memory"] = max_memory
+    quant_cfg_cache: Dict[bool, Dict[str, object] | None] = {}
+
+    def _load_quant_cfg(trust_remote_code: bool) -> Dict[str, object] | None:
+        if trust_remote_code in quant_cfg_cache:
+            return quant_cfg_cache[trust_remote_code]
+        try:
+            config = AutoConfig.from_pretrained(model_name, trust_remote_code=trust_remote_code)
+            quant_cfg = getattr(config, "quantization_config", None)
+            quant_cfg_cache[trust_remote_code] = quant_cfg if isinstance(quant_cfg, dict) else None
+            return quant_cfg_cache[trust_remote_code]
+        except Exception:
+            quant_cfg_cache[trust_remote_code] = None
+            return None
 
     def _is_awq_kernel_error(exc: Exception) -> bool:
         err = str(exc)
@@ -279,8 +327,7 @@ def load_model_and_tokenizer(
         backend: str,
     ) -> AwqConfig | None:
         try:
-            config = AutoConfig.from_pretrained(model_name, trust_remote_code=trust_remote_code)
-            quant_cfg = getattr(config, "quantization_config", None)
+            quant_cfg = _load_quant_cfg(trust_remote_code)
             if not isinstance(quant_cfg, dict):
                 return None
             quant_method = str(quant_cfg.get("quant_method", "")).lower()
@@ -299,9 +346,40 @@ def load_model_and_tokenizer(
             )
             return None
 
+    def _is_mxfp4_quantized(trust_remote_code: bool) -> bool:
+        quant_cfg = _load_quant_cfg(trust_remote_code)
+        if not isinstance(quant_cfg, dict):
+            return False
+        quant_method = str(quant_cfg.get("quant_method", "")).lower()
+        quant_version = str(quant_cfg.get("version", "")).lower()
+        quant_format = str(quant_cfg.get("format", "")).lower()
+        return (
+            "mxfp4" in quant_method
+            or "mxfp4" in quant_version
+            or "mxfp4" in quant_format
+            or ("fp4" in quant_method and "mx" in quant_method)
+        )
+
+    def _should_force_mxfp4_dequantize(trust_remote_code: bool) -> Tuple[bool, str]:
+        if mxfp4_mode == "native":
+            return False, ""
+        if not _is_mxfp4_quantized(trust_remote_code):
+            return False, ""
+        if mxfp4_mode == "dequantize":
+            return True, "requested by --mxfp4-mode=dequantize"
+        if device.type != "cuda":
+            return True, f"device={device} is not CUDA"
+        capabilities = get_cuda_compute_capabilities()
+        if not capabilities:
+            return False, ""
+        if any(capability < (8, 9) for capability in capabilities):
+            details = format_cuda_compute_capabilities(capabilities)
+            return True, f"detected pre-sm89 GPU(s): {details}"
+        return False, ""
+
     def _load(
         trust_remote_code: bool,
-        quantization_config: AwqConfig | None = None,
+        quantization_config: object | None = None,
     ) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
         tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=trust_remote_code)
         if tokenizer.pad_token is None:
@@ -354,8 +432,18 @@ def load_model_and_tokenizer(
                     continue
             raise last_error
 
+    def _load_with_quant_fallbacks(trust_remote_code: bool) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
+        should_dequantize, reason = _should_force_mxfp4_dequantize(trust_remote_code)
+        if should_dequantize:
+            print(f"[INFO] MXFP4 fallback: forcing dequantized bf16 load ({reason})")
+            return _load(
+                trust_remote_code=trust_remote_code,
+                quantization_config=Mxfp4Config(dequantize=True),
+            )
+        return _load_with_awq_fallback(trust_remote_code=trust_remote_code)
+
     try:
-        return _load_with_awq_fallback(trust_remote_code=False)
+        return _load_with_quant_fallbacks(trust_remote_code=False)
     except Exception as exc:
         err = str(exc)
         should_retry_remote_code = (
@@ -369,7 +457,7 @@ def load_model_and_tokenizer(
             "[WARN] Standard model load failed; retrying with trust_remote_code=True "
             f"(reason: {type(exc).__name__}: {exc})"
         )
-        return _load_with_awq_fallback(trust_remote_code=True)
+        return _load_with_quant_fallbacks(trust_remote_code=True)
 
 
 def run_generation(
@@ -522,72 +610,84 @@ def process_model(
     max_memory: Dict[int | str, str] | None = None,
 ) -> Dict[str, object] | None:
     """End-to-end pipeline for a single model. Returns a report dict or None on failure."""
-    model: AutoModelForCausalLM | None = None
-    tokenizer: AutoTokenizer | None = None
-    try:
-        print(f"\n{'='*60}")
-        print(f"[INFO] Loading model: {model_name}")
-        print(f"{'='*60}")
-        model, tokenizer = load_model_and_tokenizer(
-            model_name,
-            device,
-            dtype,
-            device_map=device_map,
-            max_memory=max_memory,
-        )
-
-        # --- Generate ---
-        sequences, generated_text = run_generation(
-            model, tokenizer, prompt,
-            max_new_tokens=args.max_new_tokens,
-            do_sample=args.do_sample,
-            temperature=args.temperature,
-        )
-        print(f"[INFO] Generated text: {generated_text!r}")
-
-        # --- Capture activations ---
-        hidden_states = capture_hidden_states(model, sequences)
-
-        for idx, tensor in enumerate(hidden_states):
-            label = "embedding" if idx == 0 else f"layer_{idx - 1}"
-            print(
-                f"  [SHAPE] {label:>12s}  shape={str(tuple(tensor.shape)):>24s}  "
-                f"dtype={tensor.dtype}  elements={tensor.numel()}"
+    def _run_once(effective_mxfp4_mode: str) -> Dict[str, object]:
+        model: AutoModelForCausalLM | None = None
+        tokenizer: AutoTokenizer | None = None
+        try:
+            print(f"\n{'='*60}")
+            print(f"[INFO] Loading model: {model_name} (mxfp4_mode={effective_mxfp4_mode})")
+            print(f"{'='*60}")
+            model, tokenizer = load_model_and_tokenizer(
+                model_name,
+                device,
+                dtype,
+                device_map=device_map,
+                max_memory=max_memory,
+                mxfp4_mode=effective_mxfp4_mode,
             )
 
-        # --- Summarize & save ---
-        layer_stats, size_summary = summarize_hidden_states(model_name, hidden_states)
+            sequences, generated_text = run_generation(
+                model, tokenizer, prompt,
+                max_new_tokens=args.max_new_tokens,
+                do_sample=args.do_sample,
+                temperature=args.temperature,
+            )
+            print(f"[INFO] Generated text: {generated_text!r}")
 
-        save_artifacts(
-            output_dir,
-            ModelArtifacts(
-                model_name=model_name,
-                prompt=prompt,
-                generated_text=generated_text,
-                token_sequence=sequences.cpu(),
-                hidden_states=hidden_states,
-            ),
-            layer_stats,
-            size_summary,
-        )
+            hidden_states = capture_hidden_states(model, sequences)
 
-        return {
-            "model_name": model_name,
-            "generated_text": generated_text,
-            "size_summary": size_summary,
-            "layer_stats": layer_stats,
-        }
+            for idx, tensor in enumerate(hidden_states):
+                label = "embedding" if idx == 0 else f"layer_{idx - 1}"
+                print(
+                    f"  [SHAPE] {label:>12s}  shape={str(tuple(tensor.shape)):>24s}  "
+                    f"dtype={tensor.dtype}  elements={tensor.numel()}"
+                )
 
+            layer_stats, size_summary = summarize_hidden_states(model_name, hidden_states)
+
+            save_artifacts(
+                output_dir,
+                ModelArtifacts(
+                    model_name=model_name,
+                    prompt=prompt,
+                    generated_text=generated_text,
+                    token_sequence=sequences.cpu(),
+                    hidden_states=hidden_states,
+                ),
+                layer_stats,
+                size_summary,
+            )
+
+            return {
+                "model_name": model_name,
+                "generated_text": generated_text,
+                "size_summary": size_summary,
+                "layer_stats": layer_stats,
+            }
+        finally:
+            if model is not None:
+                del model
+            if tokenizer is not None:
+                del tokenizer
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+
+    try:
+        return _run_once(args.mxfp4_mode)
     except Exception as exc:  # noqa: BLE001
+        should_retry_dequantized = args.mxfp4_mode != "dequantize" and is_mxfp4_arch_error(exc)
+        if should_retry_dequantized:
+            print(
+                "[WARN] Runtime MXFP4 kernel architecture mismatch detected; "
+                "retrying with --mxfp4-mode=dequantize"
+            )
+            try:
+                return _run_once("dequantize")
+            except Exception as retry_exc:  # noqa: BLE001
+                print(f"[ERROR] {model_name}: {retry_exc}")
+                return None
         print(f"[ERROR] {model_name}: {exc}")
         return None
-    finally:
-        if model is not None:
-            del model
-        if tokenizer is not None:
-            del tokenizer
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()
 
 # ---------------------------------------------------------------------------
 # Entry point
@@ -619,7 +719,7 @@ def main() -> None:
 
     print(
         f"[INFO] device={device}  dtype={dtype}  deterministic={args.deterministic}  "
-        f"device_map={device_map or 'none'}"
+        f"device_map={device_map or 'none'}  mxfp4_mode={args.mxfp4_mode}"
     )
     if max_memory is not None:
         print(f"[INFO] max_memory={max_memory}")

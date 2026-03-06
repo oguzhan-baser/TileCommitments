@@ -11,6 +11,7 @@ RUN_TAG=""
 MAX_NEW_TOKENS=16
 DTYPE="float16"
 DEVICE_MAP="balanced"
+MXFP4_MODE="auto"
 SCALE_FACTOR=16
 QUANTIZE=50
 MIN_FREE_GPU_PCT=75
@@ -49,6 +50,7 @@ Options:
   --max-new-tokens        Generation tokens (default: 16)
   --dtype                 float16|float32|bfloat16 (default: float16)
   --device-map            none|auto|balanced|balanced_low_0|sequential (default: balanced)
+  --mxfp4-mode            auto|native|dequantize (default: auto)
   --min-free-gpu-pct      Min free GPU memory percent to select a GPU (default: 75)
   --gpu-memory-spread-pct Extra per-GPU cap shrink factor to force wider multi-GPU sharding (default: 85)
   --scale-factor          Integer conversion scale factor (default: 16)
@@ -157,6 +159,46 @@ detect_free_gpu_budget() {
   log "Derived --max-memory-cpu: ${CPU_LIMIT_GIB}GiB"
 }
 
+adjust_mxfp4_mode_for_model() {
+  local lower_model
+  lower_model="$(echo "$MODEL" | tr '[:upper:]' '[:lower:]')"
+  if [[ "$lower_model" != *"gpt-oss"* ]] && [[ "$lower_model" != *"gpt_oss"* ]]; then
+    return
+  fi
+
+  local probe_output state details
+  probe_output="$(
+    python - <<'PY'
+import torch
+
+if not torch.cuda.is_available():
+    print("none|cuda_unavailable")
+    raise SystemExit(0)
+
+caps = [torch.cuda.get_device_capability(i) for i in range(torch.cuda.device_count())]
+details = "; ".join(f"cuda:{idx}=sm{major}{minor}" for idx, (major, minor) in enumerate(caps))
+has_pre_sm89 = any(capability < (8, 9) for capability in caps)
+print(("low" if has_pre_sm89 else "ok") + "|" + details)
+PY
+  )"
+
+  state="${probe_output%%|*}"
+  details="${probe_output#*|}"
+
+  if [[ "$state" == "low" ]]; then
+    if [[ "$MXFP4_MODE" == "auto" ]]; then
+      MXFP4_MODE="dequantize"
+      log "Detected pre-sm89 GPUs for GPT-OSS (${details}); forcing --mxfp4-mode=dequantize."
+    elif [[ "$MXFP4_MODE" == "native" ]]; then
+      die "Selected GPUs are pre-sm89 (${details}) and --mxfp4-mode=native was requested. Use --mxfp4-mode=dequantize on A100."
+    fi
+  elif [[ "$state" == "ok" ]]; then
+    log "GPT-OSS capability check: ${details}"
+  else
+    log "GPT-OSS capability check unavailable (${details}); keeping --mxfp4-mode=${MXFP4_MODE}."
+  fi
+}
+
 require_file() {
   [[ -f "$1" ]] || die "Expected file not found: $1"
 }
@@ -177,6 +219,7 @@ while [[ $# -gt 0 ]]; do
     --max-new-tokens) MAX_NEW_TOKENS="$2"; shift 2 ;;
     --dtype) DTYPE="$2"; shift 2 ;;
     --device-map) DEVICE_MAP="$2"; shift 2 ;;
+    --mxfp4-mode) MXFP4_MODE="$2"; shift 2 ;;
     --min-free-gpu-pct) MIN_FREE_GPU_PCT="$2"; shift 2 ;;
     --gpu-memory-spread-pct) GPU_MEMORY_SPREAD_PCT="$2"; shift 2 ;;
     --scale-factor) SCALE_FACTOR="$2"; shift 2 ;;
@@ -205,6 +248,10 @@ case "$DEVICE_MAP" in
   none|auto|balanced|balanced_low_0|sequential) ;;
   *) die "--device-map must be one of: none|auto|balanced|balanced_low_0|sequential" ;;
 esac
+case "$MXFP4_MODE" in
+  auto|native|dequantize) ;;
+  *) die "--mxfp4-mode must be one of: auto|native|dequantize" ;;
+esac
 
 if [[ -z "$RUN_TAG" ]]; then
   RUN_TAG="run_$(date -u +%Y%m%d_%H%M%S)_utc"
@@ -225,6 +272,7 @@ METRICS_FILE="$RUN_DIR/run_metrics.json"
 
 activate_conda_env
 detect_free_gpu_budget
+adjust_mxfp4_mode_for_model
 mkdir -p "$RUN_DIR"
 
 INTERP_BUILD_ARGS=()
@@ -241,6 +289,7 @@ run_stage "capture_activations" \
     --device cuda \
     --dtype "$DTYPE" \
     --device-map "$DEVICE_MAP" \
+    --mxfp4-mode "$MXFP4_MODE" \
     --max-memory-per-gpu "${PER_GPU_LIMIT_MIB}MiB" \
     --max-memory-cpu "${CPU_LIMIT_GIB}GiB" \
     --seed "$SEED"
