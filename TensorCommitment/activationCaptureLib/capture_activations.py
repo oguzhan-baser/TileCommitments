@@ -35,7 +35,8 @@ from pathlib import Path
 from typing import Dict, List, Sequence, Tuple
 
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, AwqConfig
+from transformers.utils.quantization_config import AwqBackend
 
 # ---------------------------------------------------------------------------
 # CLI
@@ -258,22 +259,96 @@ def load_model_and_tokenizer(
     max_memory: Dict[int | str, str] | None = None,
 ) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
     """Download / load a causal LM and its tokenizer from Hugging Face."""
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token or tokenizer.bos_token
-    tokenizer.padding_side = "left"
-
     load_kwargs: Dict[str, object] = {"torch_dtype": dtype}
     if device_map is not None:
         load_kwargs["device_map"] = device_map
     if max_memory is not None:
         load_kwargs["max_memory"] = max_memory
 
-    model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
-    if device_map is None:
-        model.to(device)
-    model.eval()
-    return model, tokenizer
+    def _is_exllama_kernel_error(exc: Exception) -> bool:
+        err = str(exc)
+        return (
+            "External ExLlama kernels are not properly installed" in err
+            or "External ExLlamaV2 kernels are not properly installed" in err
+            or "gptqmodel_exllamav2_awq_kernels" in err
+        )
+
+    def _awq_fallback_quant_config(trust_remote_code: bool) -> AwqConfig | None:
+        try:
+            config = AutoConfig.from_pretrained(model_name, trust_remote_code=trust_remote_code)
+            quant_cfg = getattr(config, "quantization_config", None)
+            if not isinstance(quant_cfg, dict):
+                return None
+            quant_method = str(quant_cfg.get("quant_method", "")).lower()
+            if "awq" not in quant_method and "awq" not in str(quant_cfg.get("version", "")).lower():
+                return None
+
+            override = dict(quant_cfg)
+            override["backend"] = AwqBackend.GEMM.value
+            override["version"] = "gemm"
+            override["format"] = "gemm"
+            return AwqConfig.from_dict(override)
+        except Exception as cfg_exc:  # noqa: BLE001
+            print(
+                "[WARN] Failed to build AWQ fallback quantization config "
+                f"(reason: {type(cfg_exc).__name__}: {cfg_exc})"
+            )
+            return None
+
+    def _load(
+        trust_remote_code: bool,
+        quantization_config: AwqConfig | None = None,
+    ) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
+        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=trust_remote_code)
+        if tokenizer.pad_token is None:
+            tokenizer.pad_token = tokenizer.eos_token or tokenizer.bos_token
+        tokenizer.padding_side = "left"
+
+        model_kwargs = dict(load_kwargs)
+        if trust_remote_code:
+            model_kwargs["trust_remote_code"] = True
+        if quantization_config is not None:
+            model_kwargs["quantization_config"] = quantization_config
+        model = AutoModelForCausalLM.from_pretrained(model_name, **model_kwargs)
+        if device_map is None:
+            model.to(device)
+        model.eval()
+        return model, tokenizer
+
+    def _load_with_awq_fallback(trust_remote_code: bool) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
+        try:
+            return _load(trust_remote_code=trust_remote_code)
+        except Exception as exc:
+            if not _is_exllama_kernel_error(exc):
+                raise
+            quantization_config = _awq_fallback_quant_config(trust_remote_code=trust_remote_code)
+            if quantization_config is None:
+                raise
+            print(
+                "[WARN] AWQ ExLlama kernels are missing; retrying with AWQ backend='gemm' "
+                f"(reason: {type(exc).__name__}: {exc})"
+            )
+            return _load(
+                trust_remote_code=trust_remote_code,
+                quantization_config=quantization_config,
+            )
+
+    try:
+        return _load_with_awq_fallback(trust_remote_code=False)
+    except Exception as exc:
+        err = str(exc)
+        should_retry_remote_code = (
+            "trust_remote_code" in err
+            or "Could not import module" in err
+            or "requires you to execute the configuration file" in err
+        )
+        if not should_retry_remote_code:
+            raise
+        print(
+            "[WARN] Standard model load failed; retrying with trust_remote_code=True "
+            f"(reason: {type(exc).__name__}: {exc})"
+        )
+        return _load_with_awq_fallback(trust_remote_code=True)
 
 
 def run_generation(

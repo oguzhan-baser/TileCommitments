@@ -102,11 +102,31 @@ def load_model_for_compute_verification(
             "[WARN] Falling back to local snapshot model load without tokenizer "
             f"(reason: {type(exc).__name__}: {exc})"
         )
-        model = AutoModelForCausalLM.from_pretrained(
-            str(local_snapshot),
-            local_files_only=True,
-            **load_kwargs,
-        )
+        try:
+            model = AutoModelForCausalLM.from_pretrained(
+                str(local_snapshot),
+                local_files_only=True,
+                **load_kwargs,
+            )
+        except Exception as local_exc:
+            err = str(local_exc)
+            should_retry_remote_code = (
+                "trust_remote_code" in err
+                or "Could not import module" in err
+                or "requires you to execute the configuration file" in err
+            )
+            if not should_retry_remote_code:
+                raise
+            print(
+                "[WARN] Local snapshot load failed; retrying with trust_remote_code=True "
+                f"(reason: {type(local_exc).__name__}: {local_exc})"
+            )
+            model = AutoModelForCausalLM.from_pretrained(
+                str(local_snapshot),
+                local_files_only=True,
+                trust_remote_code=True,
+                **load_kwargs,
+            )
         if device_map is None:
             model.to(device)
         model.eval()

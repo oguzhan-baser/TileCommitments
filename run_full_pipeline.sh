@@ -10,8 +10,11 @@ PROMPT=""
 RUN_TAG=""
 MAX_NEW_TOKENS=16
 DTYPE="float16"
+DEVICE_MAP="balanced"
 SCALE_FACTOR=16
 QUANTIZE=50
+MIN_FREE_GPU_PCT=75
+GPU_MEMORY_SPREAD_PCT=85
 MIN_DIM=4
 MAX_DIM=10
 NUM_QUERIES=10
@@ -45,6 +48,9 @@ Options:
   --run-tag               Output run tag (default: run_YYYYmmdd_HHMMSS_utc)
   --max-new-tokens        Generation tokens (default: 16)
   --dtype                 float16|float32|bfloat16 (default: float16)
+  --device-map            none|auto|balanced|balanced_low_0|sequential (default: balanced)
+  --min-free-gpu-pct      Min free GPU memory percent to select a GPU (default: 75)
+  --gpu-memory-spread-pct Extra per-GPU cap shrink factor to force wider multi-GPU sharding (default: 85)
   --scale-factor          Integer conversion scale factor (default: 16)
   --quantize              Quantize percent for conversion (default: 50)
   --min-dim               Hypercube min dimension size (default: 4)
@@ -80,29 +86,18 @@ activate_conda_env() {
 detect_free_gpu_budget() {
   command -v nvidia-smi >/dev/null 2>&1 || die "nvidia-smi not found"
 
-  local -a busy_uuids=()
-  if mapfile -t busy_uuids < <(
-    nvidia-smi --query-compute-apps=gpu_uuid --format=csv,noheader,nounits 2>/dev/null \
-      | sed '/^[[:space:]]*$/d' \
-      | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' \
-      | sort -u
-  ); then
-    :
-  else
-    busy_uuids=()
-  fi
-
   local gpu_query
-  gpu_query="$(nvidia-smi --query-gpu=index,uuid,memory.total,memory.used --format=csv,noheader,nounits)"
+  gpu_query="$(nvidia-smi --query-gpu=index,memory.total,memory.used --format=csv,noheader,nounits)"
   [[ -n "$gpu_query" ]] || die "Failed to read GPU information from nvidia-smi"
 
   local -a free_gpu_indices=()
+  local -a selected_info=()
+  local -a skipped_info=()
   local min_free_mib=0
 
-  while IFS=',' read -r raw_idx raw_uuid raw_total raw_used; do
-    local idx uuid total used busy free_mib free_pct
+  while IFS=',' read -r raw_idx raw_total raw_used; do
+    local idx total used free_mib free_pct
     idx="$(echo "$raw_idx" | xargs)"
-    uuid="$(echo "$raw_uuid" | xargs)"
     total="$(echo "$raw_total" | xargs)"
     used="$(echo "$raw_used" | xargs)"
 
@@ -111,28 +106,22 @@ detect_free_gpu_budget() {
     [[ "$used" =~ ^[0-9]+$ ]] || continue
     (( total > 0 )) || continue
 
-    busy=0
-    local b
-    for b in "${busy_uuids[@]}"; do
-      if [[ "$uuid" == "$b" ]]; then
-        busy=1
-        break
-      fi
-    done
-
     free_mib=$(( total - used ))
     free_pct=$(( free_mib * 100 / total ))
 
-    if (( free_pct >= 75 )) && (( busy == 0 )); then
+    if (( free_pct >= MIN_FREE_GPU_PCT )); then
       free_gpu_indices+=("$idx")
+      selected_info+=("gpu${idx}: ${free_mib}/${total}MiB free (${free_pct}%)")
       if (( min_free_mib == 0 || free_mib < min_free_mib )); then
         min_free_mib="$free_mib"
       fi
+    else
+      skipped_info+=("gpu${idx}: ${free_mib}/${total}MiB free (${free_pct}%)")
     fi
   done <<< "$gpu_query"
 
   if (( ${#free_gpu_indices[@]} == 0 )); then
-    die "No GPUs found with >=75% free memory and no active compute-app process."
+    die "No GPUs found with >=${MIN_FREE_GPU_PCT}% free memory."
   fi
 
   FREE_GPU_CSV="$(IFS=,; echo "${free_gpu_indices[*]}")"
@@ -141,6 +130,9 @@ detect_free_gpu_budget() {
 
   local safety_margin_mib=1024
   PER_GPU_LIMIT_MIB=$(( min_free_mib - safety_margin_mib ))
+  if (( FREE_GPU_COUNT > 1 )); then
+    PER_GPU_LIMIT_MIB=$(( PER_GPU_LIMIT_MIB * GPU_MEMORY_SPREAD_PCT / 100 ))
+  fi
   if (( PER_GPU_LIMIT_MIB < 2048 )); then
     die "Derived per-GPU memory budget (${PER_GPU_LIMIT_MIB}MiB) is too low."
   fi
@@ -153,7 +145,14 @@ detect_free_gpu_budget() {
     CPU_LIMIT_GIB=8
   fi
 
-  log "Selected GPUs (>=75% free memory): ${FREE_GPU_CSV} (count=${FREE_GPU_COUNT})"
+  log "Selected GPUs (>=${MIN_FREE_GPU_PCT}% free memory): ${FREE_GPU_CSV} (count=${FREE_GPU_COUNT})"
+  if (( ${#selected_info[@]} > 0 )); then
+    log "Selection details: ${selected_info[*]}"
+  fi
+  if (( ${#skipped_info[@]} > 0 )); then
+    log "Skipped GPUs: ${skipped_info[*]}"
+  fi
+  log "Applied gpu-memory-spread-pct: ${GPU_MEMORY_SPREAD_PCT}%"
   log "Derived --max-memory-per-gpu: ${PER_GPU_LIMIT_MIB}MiB"
   log "Derived --max-memory-cpu: ${CPU_LIMIT_GIB}GiB"
 }
@@ -177,6 +176,9 @@ while [[ $# -gt 0 ]]; do
     --run-tag) RUN_TAG="$2"; shift 2 ;;
     --max-new-tokens) MAX_NEW_TOKENS="$2"; shift 2 ;;
     --dtype) DTYPE="$2"; shift 2 ;;
+    --device-map) DEVICE_MAP="$2"; shift 2 ;;
+    --min-free-gpu-pct) MIN_FREE_GPU_PCT="$2"; shift 2 ;;
+    --gpu-memory-spread-pct) GPU_MEMORY_SPREAD_PCT="$2"; shift 2 ;;
     --scale-factor) SCALE_FACTOR="$2"; shift 2 ;;
     --quantize) QUANTIZE="$2"; shift 2 ;;
     --min-dim) MIN_DIM="$2"; shift 2 ;;
@@ -195,6 +197,14 @@ done
 
 [[ -n "$MODEL" ]] || die "--model is required"
 [[ -n "$PROMPT" ]] || die "--prompt is required"
+[[ "$MIN_FREE_GPU_PCT" =~ ^[0-9]+$ ]] || die "--min-free-gpu-pct must be an integer in [1,100]"
+(( MIN_FREE_GPU_PCT >= 1 && MIN_FREE_GPU_PCT <= 100 )) || die "--min-free-gpu-pct must be in [1,100]"
+[[ "$GPU_MEMORY_SPREAD_PCT" =~ ^[0-9]+$ ]] || die "--gpu-memory-spread-pct must be an integer in [10,100]"
+(( GPU_MEMORY_SPREAD_PCT >= 10 && GPU_MEMORY_SPREAD_PCT <= 100 )) || die "--gpu-memory-spread-pct must be in [10,100]"
+case "$DEVICE_MAP" in
+  none|auto|balanced|balanced_low_0|sequential) ;;
+  *) die "--device-map must be one of: none|auto|balanced|balanced_low_0|sequential" ;;
+esac
 
 if [[ -z "$RUN_TAG" ]]; then
   RUN_TAG="run_$(date -u +%Y%m%d_%H%M%S)_utc"
@@ -229,7 +239,7 @@ run_stage "capture_activations" \
     --output-dir "$RUN_DIR" \
     --device cuda \
     --dtype "$DTYPE" \
-    --device-map auto \
+    --device-map "$DEVICE_MAP" \
     --max-memory-per-gpu "${PER_GPU_LIMIT_MIB}MiB" \
     --max-memory-cpu "${CPU_LIMIT_GIB}GiB" \
     --seed "$SEED"
@@ -279,7 +289,7 @@ run_stage "compute_crypto_verify_layer" \
     --num-proofs "$NUM_PROOFS" \
     --device cuda \
     --dtype "$DTYPE" \
-    --device-map auto \
+    --device-map "$DEVICE_MAP" \
     --max-memory-per-gpu "${PER_GPU_LIMIT_MIB}MiB" \
     --max-memory-cpu "${CPU_LIMIT_GIB}GiB" \
     --rtol "$RTOL" \
@@ -296,7 +306,7 @@ run_stage "full_coverage_verify" \
     --seed "$SEED" \
     --device cuda \
     --dtype "$DTYPE" \
-    --device-map auto \
+    --device-map "$DEVICE_MAP" \
     --max-memory-per-gpu "${PER_GPU_LIMIT_MIB}MiB" \
     --max-memory-cpu "${CPU_LIMIT_GIB}GiB" \
     --rtol "$RTOL" \
