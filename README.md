@@ -58,7 +58,7 @@ python compute_crypto_verify_layer.py \
 - `--max-memory-per-gpu` (example: `20GiB`)
 - `--max-memory-cpu` (example: `128GiB`)
 
-For GPT-OSS on A100, the pipeline auto-adds GPU runtime headroom and prefers `device_map=auto` in dequantized mode to reduce post-load OOM risk.
+For GPT-OSS on A100, the pipeline auto-adds GPU runtime headroom, prefers `device_map=auto`, and uses `bfloat16` in dequantized mode to reduce OOM and dtype-mismatch risk.
 
 ## Layer Drift Example
 

@@ -422,6 +422,7 @@ def load_model_and_tokenizer(
     def _load(
         trust_remote_code: bool,
         quantization_config: object | None = None,
+        forced_dtype: torch.dtype | None = None,
     ) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
         tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=trust_remote_code)
         if tokenizer.pad_token is None:
@@ -429,6 +430,8 @@ def load_model_and_tokenizer(
         tokenizer.padding_side = "left"
 
         model_kwargs = dict(load_kwargs)
+        if forced_dtype is not None:
+            model_kwargs["dtype"] = forced_dtype
         if trust_remote_code:
             model_kwargs["trust_remote_code"] = True
         if quantization_config is not None:
@@ -481,6 +484,7 @@ def load_model_and_tokenizer(
             return _load(
                 trust_remote_code=trust_remote_code,
                 quantization_config=Mxfp4Config(dequantize=True),
+                forced_dtype=torch.bfloat16,
             )
         return _load_with_awq_fallback(trust_remote_code=trust_remote_code)
 

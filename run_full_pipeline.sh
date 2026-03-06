@@ -199,6 +199,11 @@ PY
   fi
 
   if [[ "$MXFP4_MODE" == "dequantize" ]]; then
+    if [[ "$DTYPE" == "float16" ]]; then
+      DTYPE="bfloat16"
+      log "Switched --dtype to bfloat16 for GPT-OSS dequantized MXFP4 compatibility."
+    fi
+
     local original_limit_mib
     original_limit_mib="$PER_GPU_LIMIT_MIB"
     PER_GPU_LIMIT_MIB=$(( PER_GPU_LIMIT_MIB * 80 / 100 ))
