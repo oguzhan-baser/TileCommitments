@@ -265,15 +265,19 @@ def load_model_and_tokenizer(
     if max_memory is not None:
         load_kwargs["max_memory"] = max_memory
 
-    def _is_exllama_kernel_error(exc: Exception) -> bool:
+    def _is_awq_kernel_error(exc: Exception) -> bool:
         err = str(exc)
         return (
             "External ExLlama kernels are not properly installed" in err
             or "External ExLlamaV2 kernels are not properly installed" in err
             or "gptqmodel_exllamav2_awq_kernels" in err
+            or "gptqmodel_awq_kernels" in err
         )
 
-    def _awq_fallback_quant_config(trust_remote_code: bool) -> AwqConfig | None:
+    def _awq_fallback_quant_config(
+        trust_remote_code: bool,
+        backend: str,
+    ) -> AwqConfig | None:
         try:
             config = AutoConfig.from_pretrained(model_name, trust_remote_code=trust_remote_code)
             quant_cfg = getattr(config, "quantization_config", None)
@@ -284,7 +288,7 @@ def load_model_and_tokenizer(
                 return None
 
             override = dict(quant_cfg)
-            override["backend"] = AwqBackend.GEMM.value
+            override["backend"] = backend
             override["version"] = "gemm"
             override["format"] = "gemm"
             return AwqConfig.from_dict(override)
@@ -319,19 +323,36 @@ def load_model_and_tokenizer(
         try:
             return _load(trust_remote_code=trust_remote_code)
         except Exception as exc:
-            if not _is_exllama_kernel_error(exc):
+            if not _is_awq_kernel_error(exc):
                 raise
-            quantization_config = _awq_fallback_quant_config(trust_remote_code=trust_remote_code)
-            if quantization_config is None:
-                raise
-            print(
-                "[WARN] AWQ ExLlama kernels are missing; retrying with AWQ backend='gemm' "
-                f"(reason: {type(exc).__name__}: {exc})"
-            )
-            return _load(
-                trust_remote_code=trust_remote_code,
-                quantization_config=quantization_config,
-            )
+
+            fallback_backends = [
+                AwqBackend.GEMM.value,
+                AwqBackend.TORCH_AWQ.value,
+            ]
+            last_error: Exception = exc
+            for backend in fallback_backends:
+                quantization_config = _awq_fallback_quant_config(
+                    trust_remote_code=trust_remote_code,
+                    backend=backend,
+                )
+                if quantization_config is None:
+                    continue
+                print(
+                    "[WARN] AWQ kernel backend unavailable; retrying with "
+                    f"AWQ backend='{backend}' (reason: {type(last_error).__name__}: {last_error})"
+                )
+                try:
+                    return _load(
+                        trust_remote_code=trust_remote_code,
+                        quantization_config=quantization_config,
+                    )
+                except Exception as inner_exc:
+                    if not _is_awq_kernel_error(inner_exc):
+                        raise
+                    last_error = inner_exc
+                    continue
+            raise last_error
 
     try:
         return _load_with_awq_fallback(trust_remote_code=False)
