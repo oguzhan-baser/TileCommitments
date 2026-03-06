@@ -68,3 +68,4 @@ python compute_crypto_verify_layer.py \
 
 - Add a strict mode for `compute_crypto_verify_layer.py` that fails the run whenever `computed_scaled_value_int != committed_hypercube_value_int` (even when tensor-level tolerance checks pass).
 - Add a per-layer tolerance profile (or auto-calibrated tolerance) and automatic logging of top activation drift indices/values for reproducible compute-verification diagnostics.
+- Add an explicit CLI quantization mode (for example `int8` via bitsandbytes for non-AWQ models) in `run_full_pipeline.sh`, and document how inference precision/quantization settings map to commitment scaling (`--scale-factor`, `--quantize`).
