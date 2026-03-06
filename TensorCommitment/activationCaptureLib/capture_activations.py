@@ -37,7 +37,15 @@ from typing import Dict, List, Sequence, Tuple
 
 import torch
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, AwqConfig, Mxfp4Config
-from transformers.utils.quantization_config import AwqBackend
+
+try:
+    from transformers.utils.quantization_config import AwqBackend
+
+    AWQ_BACKEND_GEMM = AwqBackend.GEMM.value
+    AWQ_BACKEND_TORCH_AWQ = AwqBackend.TORCH_AWQ.value
+except ImportError:
+    AWQ_BACKEND_GEMM = "gemm"
+    AWQ_BACKEND_TORCH_AWQ = "torch_awq"
 
 # ---------------------------------------------------------------------------
 # CLI
@@ -450,8 +458,8 @@ def load_model_and_tokenizer(
                 raise
 
             fallback_backends = [
-                AwqBackend.GEMM.value,
-                AwqBackend.TORCH_AWQ.value,
+                AWQ_BACKEND_GEMM,
+                AWQ_BACKEND_TORCH_AWQ,
             ]
             last_error: Exception = exc
             for backend in fallback_backends:
