@@ -197,6 +197,21 @@ PY
   else
     log "GPT-OSS capability check unavailable (${details}); keeping --mxfp4-mode=${MXFP4_MODE}."
   fi
+
+  if [[ "$MXFP4_MODE" == "dequantize" ]]; then
+    local original_limit_mib
+    original_limit_mib="$PER_GPU_LIMIT_MIB"
+    PER_GPU_LIMIT_MIB=$(( PER_GPU_LIMIT_MIB * 80 / 100 ))
+    if (( PER_GPU_LIMIT_MIB < 12288 )); then
+      PER_GPU_LIMIT_MIB=12288
+    fi
+    log "Applied GPT-OSS dequantized runtime headroom: --max-memory-per-gpu ${original_limit_mib}MiB -> ${PER_GPU_LIMIT_MIB}MiB"
+
+    if [[ "$DEVICE_MAP" == "balanced" ]]; then
+      DEVICE_MAP="auto"
+      log "Switched --device-map to auto for GPT-OSS dequantized loading."
+    fi
+  fi
 }
 
 require_file() {

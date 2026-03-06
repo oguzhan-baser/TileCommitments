@@ -30,6 +30,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Sequence, Tuple
@@ -268,6 +269,47 @@ def is_mxfp4_arch_error(exc: Exception) -> bool:
         or ("ptxas" in err and "sm_80" in err and ("e4m3" in err or "e5m2" in err))
     )
 
+
+def is_cuda_oom_error(exc: Exception) -> bool:
+    err = str(exc).lower()
+    return "cuda out of memory" in err or "cuda error: out of memory" in err
+
+
+def parse_memory_to_mib(spec: str) -> int | None:
+    match = re.fullmatch(r"\s*(\d+)\s*(mib|gib)\s*", spec.lower())
+    if match is None:
+        return None
+    value = int(match.group(1))
+    unit = match.group(2)
+    if unit == "gib":
+        return value * 1024
+    return value
+
+
+def format_memory_mib(mib: int) -> str:
+    return f"{mib}MiB"
+
+
+def shrink_max_memory_for_oom_retry(
+    max_memory: Dict[int | str, str] | None,
+    ratio_pct: int = 80,
+    min_gpu_mib: int = 8192,
+) -> Dict[int | str, str] | None:
+    if max_memory is None:
+        return None
+    shrunk: Dict[int | str, str] = {}
+    for dev, spec in max_memory.items():
+        if isinstance(dev, int):
+            current_mib = parse_memory_to_mib(spec)
+            if current_mib is None:
+                shrunk[dev] = spec
+                continue
+            target_mib = max(min_gpu_mib, current_mib * ratio_pct // 100)
+            shrunk[dev] = format_memory_mib(target_mib)
+        else:
+            shrunk[dev] = spec
+    return shrunk
+
 # ---------------------------------------------------------------------------
 # Data container
 # ---------------------------------------------------------------------------
@@ -294,7 +336,7 @@ def load_model_and_tokenizer(
     mxfp4_mode: str = "auto",
 ) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
     """Download / load a causal LM and its tokenizer from Hugging Face."""
-    load_kwargs: Dict[str, object] = {"torch_dtype": dtype}
+    load_kwargs: Dict[str, object] = {"dtype": dtype}
     if device_map is not None:
         load_kwargs["device_map"] = device_map
     if max_memory is not None:
@@ -610,19 +652,26 @@ def process_model(
     max_memory: Dict[int | str, str] | None = None,
 ) -> Dict[str, object] | None:
     """End-to-end pipeline for a single model. Returns a report dict or None on failure."""
-    def _run_once(effective_mxfp4_mode: str) -> Dict[str, object]:
+    def _run_once(
+        effective_mxfp4_mode: str,
+        effective_device_map: str | None,
+        effective_max_memory: Dict[int | str, str] | None,
+    ) -> Dict[str, object]:
         model: AutoModelForCausalLM | None = None
         tokenizer: AutoTokenizer | None = None
         try:
             print(f"\n{'='*60}")
-            print(f"[INFO] Loading model: {model_name} (mxfp4_mode={effective_mxfp4_mode})")
+            print(
+                f"[INFO] Loading model: {model_name} "
+                f"(mxfp4_mode={effective_mxfp4_mode}, device_map={effective_device_map or 'none'})"
+            )
             print(f"{'='*60}")
             model, tokenizer = load_model_and_tokenizer(
                 model_name,
                 device,
                 dtype,
-                device_map=device_map,
-                max_memory=max_memory,
+                device_map=effective_device_map,
+                max_memory=effective_max_memory,
                 mxfp4_mode=effective_mxfp4_mode,
             )
 
@@ -673,7 +722,7 @@ def process_model(
                 torch.cuda.empty_cache()
 
     try:
-        return _run_once(args.mxfp4_mode)
+        return _run_once(args.mxfp4_mode, device_map, max_memory)
     except Exception as exc:  # noqa: BLE001
         should_retry_dequantized = args.mxfp4_mode != "dequantize" and is_mxfp4_arch_error(exc)
         if should_retry_dequantized:
@@ -682,10 +731,30 @@ def process_model(
                 "retrying with --mxfp4-mode=dequantize"
             )
             try:
-                return _run_once("dequantize")
+                return _run_once("dequantize", device_map, max_memory)
             except Exception as retry_exc:  # noqa: BLE001
                 print(f"[ERROR] {model_name}: {retry_exc}")
                 return None
+
+        should_retry_oom = (
+            device.type == "cuda"
+            and is_cuda_oom_error(exc)
+            and device_map is not None
+            and max_memory is not None
+        )
+        if should_retry_oom:
+            shrunk_max_memory = shrink_max_memory_for_oom_retry(max_memory)
+            retry_device_map = "auto" if device_map != "auto" else device_map
+            print(
+                "[WARN] CUDA OOM during activation capture; retrying once with tighter GPU budgets "
+                f"and device_map={retry_device_map}. max_memory={shrunk_max_memory}"
+            )
+            try:
+                return _run_once(args.mxfp4_mode, retry_device_map, shrunk_max_memory)
+            except Exception as retry_exc:  # noqa: BLE001
+                print(f"[ERROR] {model_name}: {retry_exc}")
+                return None
+
         print(f"[ERROR] {model_name}: {exc}")
         return None
 
@@ -708,6 +777,9 @@ def main() -> None:
     seed_everything(args.seed)
 
     device = resolve_device(args.device)
+    if device.type == "cuda" and "PYTORCH_CUDA_ALLOC_CONF" not in os.environ:
+        os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+        print("[INFO] PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True")
     dtype = resolve_dtype(args.dtype, device)
     device_map = normalize_device_map(args.device_map)
     if device.type != "cuda":

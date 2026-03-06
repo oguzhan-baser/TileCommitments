@@ -32,6 +32,8 @@ Most useful CLI knobs in `run_full_pipeline.sh`:
 - `--gpu-memory-spread-pct`: tighter per-GPU cap to force wider sharding
 - `--build-interp`: rebuild interpolation binary instead of `--skip-build`
 
+For GPT-OSS on A100, `run_full_pipeline.sh` also applies extra per-GPU runtime headroom and switches `device_map` from `balanced` to `auto` when dequantized mode is active.
+
 ## 0) Environment (one time per machine)
 
 ```bash
