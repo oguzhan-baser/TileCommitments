@@ -180,8 +180,9 @@ def run_layer_range(
     end: int,
     device: torch.device,
     dtype: torch.dtype,
-) -> Tuple[torch.Tensor, List[torch.Tensor]]:
+) -> Tuple[torch.Tensor, List[torch.Tensor], float]:
     outputs_cpu: List[torch.Tensor] = []
+    t_start = time.perf_counter()
     rotary_emb = model.model.rotary_emb.to(device=device)
 
     for layer_idx in range(start, end):
@@ -226,7 +227,8 @@ def run_layer_range(
     rotary_emb.to("cpu")
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
-    return hidden, outputs_cpu
+    wall_seconds = time.perf_counter() - t_start
+    return hidden, outputs_cpu, wall_seconds
 
 
 def run_partitioned_inference(
@@ -251,10 +253,11 @@ def run_partitioned_inference(
 
     per_prover: List[Dict[str, Any]] = []
     all_layer_outputs_cpu: List[torch.Tensor] = []
+    exchange_records: List[Dict[str, Any]] = []
 
     for prover_idx, ((start, end), device) in enumerate(zip(ranges, devices)):
         prover_input_cpu = hidden.detach().cpu()
-        hidden, layer_outputs = run_layer_range(
+        hidden, layer_outputs, range_wall_seconds = run_layer_range(
             model=model,
             hidden=hidden,
             start=start,
@@ -271,9 +274,23 @@ def run_partitioned_inference(
                 "layer_end_exclusive": end,
                 "input_tensor_cpu": prover_input_cpu,
                 "layer_outputs_cpu": layer_outputs,
+                "compute_seconds": float(range_wall_seconds),
             }
         )
         if prover_idx + 1 < len(devices):
+            exchange_bytes = int(hidden.numel() * hidden.element_size())
+            exchange_records.append(
+                {
+                    "from_prover_index": prover_idx,
+                    "to_prover_index": prover_idx + 1,
+                    "from_device": str(device),
+                    "to_device": str(devices[prover_idx + 1]),
+                    "tensor_shape": list(hidden.shape),
+                    "tensor_dtype": str(hidden.dtype),
+                    "payload_bytes": exchange_bytes,
+                    "payload_mib": float(exchange_bytes / (1024.0 * 1024.0)),
+                }
+            )
             hidden = hidden.to(devices[prover_idx + 1])
 
     last_device = devices[-1]
@@ -307,6 +324,7 @@ def run_partitioned_inference(
         "embedding_output_cpu": embedding_output_cpu,
         "all_layer_outputs_cpu": all_layer_outputs_cpu,
         "per_prover": per_prover,
+        "exchange_records": exchange_records,
         "final_hidden_cpu": final_hidden.detach().cpu(),
         "logits_cpu": logits.detach().cpu(),
         "next_token_id": next_token_id,
@@ -460,6 +478,7 @@ def to_jsonable_prover_records(records: Sequence[Dict[str, Any]]) -> List[Dict[s
                 "input_shape": list(rec["input_tensor_cpu"].shape),
                 "num_layer_outputs": len(rec["layer_outputs_cpu"]),
                 "layer_output_shapes": [list(t.shape) for t in rec["layer_outputs_cpu"]],
+                "compute_seconds": float(rec.get("compute_seconds", 0.0)),
             }
         )
     return out
@@ -585,7 +604,14 @@ def main() -> None:
         save_activation_artifact(artifact_path, args.model, args.prompt, token_sequence, part_hidden_states)
         prover_artifacts.append(artifact_path)
     with (output_dir / "multiprover_compute_layout.json").open("w", encoding="utf-8") as handle:
-        json.dump({"per_prover": to_jsonable_prover_records(multi_result["per_prover"])}, handle, indent=2)
+        json.dump(
+            {
+                "per_prover": to_jsonable_prover_records(multi_result["per_prover"]),
+                "embedding_exchanges": multi_result.get("exchange_records", []),
+            },
+            handle,
+            indent=2,
+        )
     print(f"[stage3] Saved per-prover compute layout: {output_dir / 'multiprover_compute_layout.json'}")
 
     print("[stage3] Running one-prover commitment pipeline")
@@ -630,6 +656,11 @@ def main() -> None:
     one_commit_total = float(one_commit["pipeline_wall_seconds"])
     one_total = one_compute_seconds + one_commit_total
     multi_total = multi_compute_seconds + multi_commit_total
+    per_prover_compute_seconds = [float(rec.get("compute_seconds", 0.0)) for rec in multi_result["per_prover"]]
+    exchange_records = multi_result.get("exchange_records", [])
+    total_exchange_bytes = int(sum(int(item.get("payload_bytes", 0)) for item in exchange_records))
+    num_exchanges = int(len(exchange_records))
+    avg_exchange_bytes = float(total_exchange_bytes / num_exchanges) if num_exchanges > 0 else 0.0
 
     overhead = {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -650,6 +681,25 @@ def main() -> None:
             "multi_prover_commit_pipeline_total": multi_commit_total,
             "one_prover_total_compute_plus_commit": one_total,
             "multi_prover_total_compute_plus_commit": multi_total,
+        },
+        "multi_prover_compute_summary": {
+            "per_prover_compute_seconds": per_prover_compute_seconds,
+            "avg_inference_time_across_agents_seconds": (
+                float(sum(per_prover_compute_seconds) / len(per_prover_compute_seconds))
+                if per_prover_compute_seconds
+                else None
+            ),
+            "max_inference_time_across_agents_seconds": (
+                float(max(per_prover_compute_seconds)) if per_prover_compute_seconds else None
+            ),
+        },
+        "embedding_exchange_summary": {
+            "num_exchanges": num_exchanges,
+            "total_exchange_bytes": total_exchange_bytes,
+            "total_exchange_mib": float(total_exchange_bytes / (1024.0 * 1024.0)),
+            "average_exchange_bytes": avg_exchange_bytes,
+            "average_exchange_mib": float(avg_exchange_bytes / (1024.0 * 1024.0)),
+            "exchanges": exchange_records,
         },
         "overhead": {
             "compute_delta_seconds": multi_compute_seconds - one_compute_seconds,

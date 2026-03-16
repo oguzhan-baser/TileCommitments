@@ -1,0 +1,170 @@
+{
+  "per_prover": [
+    {
+      "prover_index": 0,
+      "device": "cuda:0",
+      "layer_start": 0,
+      "layer_end_exclusive": 12,
+      "input_shape": [
+        1,
+        8,
+        896
+      ],
+      "num_layer_outputs": 12,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ]
+      ],
+      "compute_seconds": 0.8302457239478827
+    },
+    {
+      "prover_index": 1,
+      "device": "cuda:1",
+      "layer_start": 12,
+      "layer_end_exclusive": 24,
+      "input_shape": [
+        1,
+        8,
+        896
+      ],
+      "num_layer_outputs": 12,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ]
+      ],
+      "compute_seconds": 0.47825833200477064
+    }
+  ],
+  "embedding_exchanges": [
+    {
+      "from_prover_index": 0,
+      "to_prover_index": 1,
+      "from_device": "cuda:0",
+      "to_device": "cuda:1",
+      "tensor_shape": [
+        1,
+        8,
+        896
+      ],
+      "tensor_dtype": "torch.bfloat16",
+      "payload_bytes": 14336,
+      "payload_mib": 0.013671875
+    }
+  ]
+}

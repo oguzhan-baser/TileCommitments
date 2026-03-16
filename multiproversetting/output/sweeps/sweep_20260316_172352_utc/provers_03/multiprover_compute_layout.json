@@ -1,0 +1,199 @@
+{
+  "per_prover": [
+    {
+      "prover_index": 0,
+      "device": "cuda:0",
+      "layer_start": 0,
+      "layer_end_exclusive": 8,
+      "input_shape": [
+        1,
+        8,
+        896
+      ],
+      "num_layer_outputs": 8,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ]
+      ],
+      "compute_seconds": 0.684393767034635
+    },
+    {
+      "prover_index": 1,
+      "device": "cuda:1",
+      "layer_start": 8,
+      "layer_end_exclusive": 16,
+      "input_shape": [
+        1,
+        8,
+        896
+      ],
+      "num_layer_outputs": 8,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ]
+      ],
+      "compute_seconds": 0.3461327910190448
+    },
+    {
+      "prover_index": 2,
+      "device": "cuda:2",
+      "layer_start": 16,
+      "layer_end_exclusive": 24,
+      "input_shape": [
+        1,
+        8,
+        896
+      ],
+      "num_layer_outputs": 8,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ],
+        [
+          1,
+          8,
+          896
+        ]
+      ],
+      "compute_seconds": 0.34263037401251495
+    }
+  ],
+  "embedding_exchanges": [
+    {
+      "from_prover_index": 0,
+      "to_prover_index": 1,
+      "from_device": "cuda:0",
+      "to_device": "cuda:1",
+      "tensor_shape": [
+        1,
+        8,
+        896
+      ],
+      "tensor_dtype": "torch.bfloat16",
+      "payload_bytes": 14336,
+      "payload_mib": 0.013671875
+    },
+    {
+      "from_prover_index": 1,
+      "to_prover_index": 2,
+      "from_device": "cuda:1",
+      "to_device": "cuda:2",
+      "tensor_shape": [
+        1,
+        8,
+        896
+      ],
+      "tensor_dtype": "torch.bfloat16",
+      "payload_bytes": 14336,
+      "payload_mib": 0.013671875
+    }
+  ]
+}

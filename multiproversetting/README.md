@@ -13,6 +13,10 @@ This folder contains an isolated implementation of a multi-prover setting where:
 
 - `multiprover_pipeline.py`: full 5-stage pipeline.
 - `run_multiprover_pipeline.sh`: convenience wrapper (activates `tilecommitments` if available).
+- `sweep_multiprover_experiments.py`: runs prover-count sweep (e.g., 1..10), saves per-run summaries.
+- `run_multiprover_sweep.sh`: convenience wrapper for sweep script.
+- `plot_multiprover_sweep.py`: builds 3-panel seaborn figure(s) from one or more sweep results files.
+- `run_multiprover_plot.sh`: convenience wrapper for plotting script.
 
 ## Example
 
@@ -46,8 +50,44 @@ Key files:
 - `multi_prover/prover_XX/`:
   - prover-local `activations.pt` and commitment pipeline artifacts.
 - `overhead_report.json`: compute/commit timing deltas and ratios (`one` vs `multi`).
+  - includes `multi_prover_compute_summary` with per-agent compute times.
+  - includes `embedding_exchange_summary` with total/average exchanged embedding payload sizes.
+
+## Sweep experiments (1..10 provers)
+
+```bash
+cd /home/ob3942/repos/TileCommitments
+bash multiproversetting/run_multiprover_sweep.sh \
+  --model "Qwen/Qwen2-0.5B" \
+  --prompt "Where is the capital of the world?" \
+  --min-provers 1 \
+  --max-provers 10 \
+  --skip-interp-build
+```
+
+Sweep outputs:
+
+- `.../sweep_results.json`: full per-run status + extracted metrics.
+- `.../sweep_results.csv`: tabular version of the same results.
+
+## Plotting sweep results
+
+```bash
+cd /home/ob3942/repos/TileCommitments
+bash multiproversetting/run_multiprover_plot.sh \
+  --sweep-json multiproversetting/output/sweeps/<sweep_run>/sweep_results.json \
+  --outdir multiproversetting/output/sweeps/<sweep_run>/plots \
+  --title-prefix "Qwen/Qwen2-0.5B"
+```
+
+Generated figure (`multiprover_sweep_three_panel.png`) shows, side by side:
+
+1. Number of provers vs average inference time across agents.
+2. Number of provers vs average commitment/proving/verification times across agents.
+3. Number of provers vs average embedding payload exchanged between adjacent provers.
 
 ## Notes
 
 - This implementation targets decoder-only models exposing `model.layers` and `model.rotary_emb`.
 - Commit/prove/verify reuse existing scripts in `TensorCommitment/*` without modifying those files.
+- For prover count `N`, this implementation requires at least `N` distinct visible GPUs. Sweep points with insufficient GPUs are recorded as `skipped`.

@@ -1,0 +1,29 @@
+{
+  "model_name": "Qwen/Qwen2-0.5B",
+  "prompt": "Where is the capital of the world?",
+  "num_layers": 24,
+  "num_provers": 3,
+  "dtype": "bfloat16",
+  "devices": [
+    "cuda:0",
+    "cuda:1",
+    "cuda:2"
+  ],
+  "layer_ranges": [
+    {
+      "prover_index": 0,
+      "start": 0,
+      "end_exclusive": 8
+    },
+    {
+      "prover_index": 1,
+      "start": 8,
+      "end_exclusive": 16
+    },
+    {
+      "prover_index": 2,
+      "start": 16,
+      "end_exclusive": 24
+    }
+  ]
+}
