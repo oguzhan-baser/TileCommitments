@@ -423,7 +423,15 @@ def run_commitment_pipeline_for_part(
     with commitment_results_path.open("r", encoding="utf-8") as handle:
         commitment_results = json.load(handle)
 
-    if not bool(commitment_results.get("all_verified", False)):
+    verification_summary = commitment_results.get("verification_summary", {})
+    all_verified = bool(
+        commitment_results.get("all_verified", verification_summary.get("all_proofs_verified", False))
+    )
+    all_ground_truth = commitment_results.get(
+        "all_ground_truth_match",
+        verification_summary.get("all_ground_truth_matched", None),
+    )
+    if not all_verified:
         raise RuntimeError(f"Random-sample crypto verification failed for {part_dir.name}")
 
     return {
@@ -434,6 +442,8 @@ def run_commitment_pipeline_for_part(
         "commitment_dir": str(commitment_dir),
         "commitment_results_json": str(commitment_results_path),
         "pipeline_wall_seconds": total_wall_s,
+        "all_verified": all_verified,
+        "all_ground_truth_match": all_ground_truth,
         "commitment_results": commitment_results,
     }
 
@@ -608,10 +618,10 @@ def main() -> None:
         per_prover_commit.append(commit_info)
 
     print("[stage4] Verifying sampled commitment proofs for all provers")
-    if not bool(one_commit["commitment_results"].get("all_verified", False)):
+    if not bool(one_commit.get("all_verified", False)):
         raise RuntimeError("One-prover sampled proof verification failed.")
     for idx, info in enumerate(per_prover_commit):
-        if not bool(info["commitment_results"].get("all_verified", False)):
+        if not bool(info.get("all_verified", False)):
             raise RuntimeError(f"Prover {idx} sampled proof verification failed.")
     print("[stage4] Sampled proof verification succeeded for one-prover and all multi-prover parts.")
 
@@ -651,7 +661,8 @@ def main() -> None:
         },
         "one_vs_multi_match": comparison,
         "one_prover_commit_summary": {
-            "all_verified": bool(one_commit["commitment_results"].get("all_verified", False)),
+            "all_verified": bool(one_commit.get("all_verified", False)),
+            "all_ground_truth_match": one_commit.get("all_ground_truth_match", None),
             "timing": one_commit["commitment_results"].get("timing", {}),
             "proof_stats": one_commit["commitment_results"].get("proof_stats", {}),
             "pipeline_wall_seconds": one_commit_total,
@@ -659,7 +670,8 @@ def main() -> None:
         "multi_prover_commit_summary": [
             {
                 "prover_index": idx,
-                "all_verified": bool(info["commitment_results"].get("all_verified", False)),
+                "all_verified": bool(info.get("all_verified", False)),
+                "all_ground_truth_match": info.get("all_ground_truth_match", None),
                 "timing": info["commitment_results"].get("timing", {}),
                 "proof_stats": info["commitment_results"].get("proof_stats", {}),
                 "pipeline_wall_seconds": float(info["pipeline_wall_seconds"]),

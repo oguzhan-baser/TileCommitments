@@ -1,0 +1,132 @@
+{
+  "generated_at_utc": "2026-03-16T16:43:53.788826+00:00",
+  "config": {
+    "model": "Qwen/Qwen2-0.5B",
+    "prompt": "Where is the capital of the world?",
+    "num_provers": 3,
+    "devices": [
+      "cuda:0",
+      "cuda:1",
+      "cuda:2"
+    ],
+    "dtype": "bfloat16",
+    "scale_factor": 16,
+    "quantize": 50.0,
+    "num_queries": 10
+  },
+  "stage_timings_seconds": {
+    "one_prover_compute": 1.1386682599550113,
+    "multi_prover_compute": 2.90667450602632,
+    "one_prover_commit_pipeline_total": 15.553421983029693,
+    "multi_prover_commit_pipeline_total": 19.515018068952486,
+    "one_prover_total_compute_plus_commit": 16.692090242984705,
+    "multi_prover_total_compute_plus_commit": 22.421692574978806
+  },
+  "overhead": {
+    "compute_delta_seconds": 1.7680062460713089,
+    "compute_ratio_multi_over_one": 2.5526965212336408,
+    "commit_pipeline_delta_seconds": 3.9615960859227926,
+    "commit_pipeline_ratio_multi_over_one": 1.2547089695274314,
+    "total_delta_seconds": 5.729602331994101,
+    "total_ratio_multi_over_one": 1.3432525374946447
+  },
+  "one_vs_multi_match": {
+    "hidden_allclose": true,
+    "logits_allclose": true,
+    "one_prover_next_token_id": 14566,
+    "multi_prover_next_token_id": 14566,
+    "next_token_match": true,
+    "hidden_max_abs_diff": 0.0,
+    "hidden_mean_abs_diff": 0.0,
+    "logits_max_abs_diff": 0.0,
+    "logits_mean_abs_diff": 0.0,
+    "rtol": 0.001,
+    "atol": 0.05
+  },
+  "one_prover_commit_summary": {
+    "all_verified": true,
+    "all_ground_truth_match": true,
+    "timing": {
+      "setup_time_s": 0.304,
+      "commit_time_s": 0.315,
+      "total_eval_time_s": 1.239,
+      "total_prove_time_s": 9.855,
+      "total_verify_time_s": 0.072,
+      "avg_prove_time_s": 0.986,
+      "avg_verify_time_s": 0.0072
+    },
+    "proof_stats": {
+      "avg_proof_bytes": 288.0,
+      "proof_elements_per_query": 9
+    },
+    "pipeline_wall_seconds": 15.553421983029693
+  },
+  "multi_prover_commit_summary": [
+    {
+      "prover_index": 0,
+      "all_verified": true,
+      "all_ground_truth_match": true,
+      "timing": {
+        "setup_time_s": 0.093,
+        "commit_time_s": 0.098,
+        "total_eval_time_s": 0.453,
+        "total_prove_time_s": 3.112,
+        "total_verify_time_s": 0.08,
+        "avg_prove_time_s": 0.311,
+        "avg_verify_time_s": 0.008
+      },
+      "proof_stats": {
+        "avg_proof_bytes": 256.0,
+        "proof_elements_per_query": 8
+      },
+      "pipeline_wall_seconds": 6.532788579002954,
+      "part_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/run_20260316_164312_utc/multi_prover/prover_00"
+    },
+    {
+      "prover_index": 1,
+      "all_verified": true,
+      "all_ground_truth_match": true,
+      "timing": {
+        "setup_time_s": 0.087,
+        "commit_time_s": 0.097,
+        "total_eval_time_s": 0.431,
+        "total_prove_time_s": 3.126,
+        "total_verify_time_s": 0.083,
+        "avg_prove_time_s": 0.313,
+        "avg_verify_time_s": 0.0083
+      },
+      "proof_stats": {
+        "avg_proof_bytes": 256.0,
+        "proof_elements_per_query": 8
+      },
+      "pipeline_wall_seconds": 6.5133021619403735,
+      "part_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/run_20260316_164312_utc/multi_prover/prover_01"
+    },
+    {
+      "prover_index": 2,
+      "all_verified": true,
+      "all_ground_truth_match": true,
+      "timing": {
+        "setup_time_s": 0.09,
+        "commit_time_s": 0.103,
+        "total_eval_time_s": 0.43,
+        "total_prove_time_s": 3.093,
+        "total_verify_time_s": 0.079,
+        "avg_prove_time_s": 0.309,
+        "avg_verify_time_s": 0.0079
+      },
+      "proof_stats": {
+        "avg_proof_bytes": 256.0,
+        "proof_elements_per_query": 8
+      },
+      "pipeline_wall_seconds": 6.468927328009158,
+      "part_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/run_20260316_164312_utc/multi_prover/prover_02"
+    }
+  ],
+  "artifacts": {
+    "output_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/run_20260316_164312_utc",
+    "prover_assignment_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/run_20260316_164312_utc/prover_assignment.json",
+    "comparison_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/run_20260316_164312_utc/one_vs_multi_comparison.json",
+    "layout_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/run_20260316_164312_utc/multiprover_compute_layout.json"
+  }
+}
