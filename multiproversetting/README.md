@@ -80,11 +80,13 @@ bash multiproversetting/run_multiprover_plot.sh \
   --title-prefix "Qwen/Qwen2-0.5B"
 ```
 
-Generated figure (`multiprover_sweep_three_panel.png`) shows, side by side:
+Generated figures:
 
-1. Number of provers vs average inference time across agents.
-2. Number of provers vs average commitment/proving/verification times across agents.
-3. Number of provers vs average embedding payload exchanged between adjacent provers.
+1. `multiprover_sweep_a_avg_agent_inference_time.png`: number of provers vs average inference time across agents.
+2. `multiprover_sweep_b_avg_agent_commit_time.png`: number of provers vs average commitment time across agents.
+3. `multiprover_sweep_c_avg_agent_prove_time.png`: number of provers vs average proving time across agents.
+4. `multiprover_sweep_d_avg_agent_verify_time.png`: number of provers vs average verification time across agents.
+5. `multiprover_sweep_e_avg_embedding_exchange_size.png`: number of provers vs average embedding payload exchanged between adjacent provers.
 
 ## Notes
 

@@ -1,0 +1,257 @@
+{
+  "commitment_hex": "94a6915f50a213479e7f3ff77663946fc83ddc8771b14759ea8082278642a70a",
+  "num_variables": 9,
+  "degree_bound": 4,
+  "proofs": [
+    {
+      "point": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evaluation": 21888242871839275222246405745257275088548364400416034343698204186575725683117,
+      "proof_hex": [
+        "298f954bfe343ff083ab2d4f726dd03d3825e345210c95a759c3272a60902fab",
+        "28a983ffddf03220dfb304bcf870de6a9032e2931d1f51588006318fe7e23717",
+        "26708b1c2218572f124d272c3d6e1c563e7c68099b134968cb26468e24388883",
+        "6cb4dd4dbe2833c8d7f0e3f16e30c85f6da35cc3682194c443cc2a454f33ab22",
+        "012e97bb8f01297ea91caf2590e6d20f3782f0e1fc16577346eb8eea696e0e2b",
+        "990408443aba4e66976a4800ef51b02c226449d38fe787bbbae69daa049fce2d",
+        "43be1a15a95c18104cc946018be5e48e5d93305dce08fffa63b0f081b3a26dac",
+        "dff2e1de23de37e27f20e1a46b64cbbd01dd0a0df2def90d0011667ec5879310",
+        "0e13a656d220edc1bfc9ad45743b9e34d3b4a773ec719f9e2aca779f0913c383"
+      ]
+    },
+    {
+      "point": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "evaluation": 29296875,
+      "proof_hex": [
+        "519df687803caefff003bdcf4da8787eaba3f97c4b85d190a3e7dc89bc36d40b",
+        "10f78109d2c0f5e9bb21a8d1abbad66fda9c2c77798f788b3d0317f1cec3fb99",
+        "3eea602007ebffd512dc4befe82d5ac1a95fc0c6560c6c38a36cc19b6351632f",
+        "7dc2b2429b5dd7f58cbd9a627dde0e176cc172845f2ed62e74e8f04ffb7f5618",
+        "1261afaa9ac3fd3f7859d9b59ff79882de2a8af3713eb547fcf69d055a680980",
+        "60225a0a281652c46b7d20f3a8a768e46c158436dfcb781b77611328fe246c2d",
+        "cd09bba0568b8e186476b06c67f565793615783891cbf427004d32e7c4e1d9a4",
+        "a780cf5d9c5e4d579c237c5bed0ece32cc8e5bdd5150e5c39918fd0645b8c189",
+        "dc4e1a0e93acbb1e2841ac10077a2807620be020fbc7dadd930331aa4c834686"
+      ]
+    },
+    {
+      "point": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "evaluation": 428125000,
+      "proof_hex": [
+        "cb146d5b3fa7f89b089cc2136f19338639ab2b5d2b2035ff81fb8ea67c037617",
+        "21549706a7a7d9713c36314feeded10b42d2ce75cdbca1d75901cffe26615d85",
+        "7b3f8ed004e9a5f438d9ba21b32ebd8cfff2248b0718183978acb186547d5a9e",
+        "cda8aee4eb72c5e01b469e3e71ac72c73d9de350bcad258477e446e396e008a2",
+        "be8b892afa30a8cf3fe1d8ca39b314c3ed0ce3bbcd203b389095b56e6ace739a",
+        "07f7b7b2f2cb5ff32f7bcd6a5da0fc33485a3bdf320d947af5a3513cb2cd391e",
+        "8e162e2f8c35fbab7d827f02d790e9604ecdee220ee3739b7e71b945d9510e05",
+        "47023a36b90157eb1af2dc5cc2570a0fcfffeda1df6c0bd2c7dbe20a1f7ba1a6",
+        "5ae7d2d5f76dfcb02a7bf3a1c5ea7da62814c8381c99a4208908d86ace0bf298"
+      ]
+    },
+    {
+      "point": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "evaluation": 625000000,
+      "proof_hex": [
+        "0f57920ef816687bf54937c670d98aabf988076a0c0a57d4f39a64c746bcb524",
+        "2f29b21a26453df87d9b3439fe3c89c843e5cb36d45b58cdeab79f9261ae1099",
+        "36e3f166336320123d9d1589161c536acf40df480d8264c6e006068a26017f20",
+        "63000c9d42869e26f0002063c4bb8fcf9f979efe4e6386ec129992802c7ac528",
+        "ac39000c94db80a5b505bfdee23900598b8234a01d7ac0f9368b4c9c4960a687",
+        "aca2ad96921e027c2ddd9044207dd33f70394bc59e830c25d57919980bcf6687",
+        "df71b0512823cc8fda745f1083be4d3525216e253f1f2d382215ecf13c9de511",
+        "21b29f503da73c57620d46a41c1b16581a08d2a557dfc018aed2cae2b00eb522",
+        "d155991b945cd1f786e1d10ba29dc807179b5b43a6a1859709182a8a356ef12c"
+      ]
+    },
+    {
+      "point": [
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0,
+        0,
+        3
+      ],
+      "evaluation": 162500000,
+      "proof_hex": [
+        "298f954bfe343ff083ab2d4f726dd03d3825e345210c95a759c3272a60902fab",
+        "28a983ffddf03220dfb304bcf870de6a9032e2931d1f51588006318fe7e23717",
+        "6a9a611481d4dfd4d61314da047125cfcc79be67b94f914802a9238080c1799c",
+        "40387868added28b1cff97458b4838a5841e29fdb261e3f45c302e2724fccf2b",
+        "658aedfb1f0b54c66e9cf0e1ad56d15e23cb7bba637d62ab7b4b29b628a17d05",
+        "fa6bf8e9ba9c7c6dd288cb6060bde6314edbdb3cf3d981dfdaa5c16fd8eaa712",
+        "512993f80e29afcc2d25f63ec1719eeca76d53cd2267785ec97d3d39bfc10109",
+        "9fae8a33f0597366e413244a817a702de365f8798531c7918ba56a79e4c5269d",
+        "961f5388ae40d6e3ec0b434a6ca80f17b388560892dd4a2a79d68e80cc9c16aa"
+      ]
+    },
+    {
+      "point": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        3,
+        1
+      ],
+      "evaluation": 125781250,
+      "proof_hex": [
+        "298f954bfe343ff083ab2d4f726dd03d3825e345210c95a759c3272a60902fab",
+        "28a983ffddf03220dfb304bcf870de6a9032e2931d1f51588006318fe7e23717",
+        "26708b1c2218572f124d272c3d6e1c563e7c68099b134968cb26468e24388883",
+        "3ebf8d689be8a1964dd0802302bd2c7f442a5897a113b6480881e142cf322a88",
+        "425ef1ed332eeeee23d649e72cf536005461e0c56048dad09ff601c9003abf99",
+        "616c14693f2778e395e2a2d97b5af35c537b6639ee1f799ef8ea2546354495a2",
+        "ddde7a306f7f64a817b6433a7d3c9419accac45b967af6bc7eda4b2de873569b",
+        "2e2bf9fed3e5b271f0e4f80c1d67e40f82d956d94c13c33729d938724f9d2d8b",
+        "5ca03646a7ab473e90778014d124834699e9643fb4c694d445f105ce16c949a9"
+      ]
+    },
+    {
+      "point": [
+        3,
+        2,
+        0,
+        1,
+        3,
+        2,
+        2,
+        1,
+        1
+      ],
+      "evaluation": 21888242871839275222246405745257275088548364400416034343698204186575706933117,
+      "proof_hex": [
+        "519df687803caefff003bdcf4da8787eaba3f97c4b85d190a3e7dc89bc36d40b",
+        "028b0f19c0c5126226ddb422a6ce9f56da0cb6d4986910241815c8252784e325",
+        "1670b32560e580b5bd679083e5eb1dfe9221184f77308ac308dae81ac283dc19",
+        "5f38eaaae6873ff7786ff4e4d3276b3a2aee2f07046a2a4b2b277bfd61b0f783",
+        "f8f9c74e26b58e94c126dd527f526926a92ccecc3bc728f0c0a9f44196b46705",
+        "fd3b474c8f2e35fbfada905e61323e355ccf7d911835d7e1c43416db4de10527",
+        "c7e5981da849a10bb3e7de31a2328bc0e189be6f673e3b9b78ff00c27bd99600",
+        "803e21a0199b0efce8ec6b5f04c094984cd01b4ed571f6f250010469caf5f229",
+        "1bf809f82bb96a101dff10f48e93266828c69800ea755e0f6a2f404845cea323"
+      ]
+    },
+    {
+      "point": [
+        2,
+        0,
+        0,
+        3,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      "evaluation": 21888242871839275222246405745257275088548364400416034343698204186575538183117,
+      "proof_hex": [
+        "cb146d5b3fa7f89b089cc2136f19338639ab2b5d2b2035ff81fb8ea67c037617",
+        "685107136c41a36d3f4d0092228901b8acc04d4f9c75f630b8d64eb85ccae38f",
+        "7ad0947e9c71d37f92c1da675ae7f7afd579b7ffd93cef383ef0e86996c4ca85",
+        "d4ca2d934d2cbb16c8f08fa16f86fc044badc1057417c68397e0d5df987c781c",
+        "8bb68ca6fc202a67d9b90701cc0f00e8eb2c69b6d9cef436c9a4a1e58e234395",
+        "75da0c4ca847be9cdddb711ccd3ea50f19e717074e9aef54b030b33bca352a81",
+        "9f313f8a592dfbdd4e9c5093d2cdfd4f68426c0391b627bbe2cb69d70bb49415",
+        "85ba3f4998af309b7e66b58dfd9df5039128db471438e02cc0c0b12a63006289",
+        "adc20809d5e3b16f3a7a35f0bd3474d61f4f10922e52e60017581fb7b3d7332b"
+      ]
+    },
+    {
+      "point": [
+        3,
+        0,
+        3,
+        0,
+        2,
+        2,
+        1,
+        0,
+        0
+      ],
+      "evaluation": 21888242871839275222246405745257275088548364400416034343698204186575785058117,
+      "proof_hex": [
+        "519df687803caefff003bdcf4da8787eaba3f97c4b85d190a3e7dc89bc36d40b",
+        "7c41e0696d770f25522f65f0657db25dedfc4b64e9655f39d301e301faa20498",
+        "59b5d75e56189a0ce36bddd8a9f6dc813760b0ad456ac53bf1576fc27c22fa05",
+        "71d5148279d7bb936b86668a0ed6571e539522f6a97e3864e6c312514b50b823",
+        "ab7005cd08b1ba72fed5e6997d90ffee6ba7a8bd870c0512054b37bd10761baa",
+        "3438beccf244a579c36d99d4e005b341a0fb85642150e75f7eddf5d41a36488a",
+        "bf7338b37948ab807d998201d1ac2b39cbc00da93761097c714d522a728e069e",
+        "ea2e32c50f31aef9fd34d14700a372c04afe87b6ca4634084b89663473758fa8",
+        "c4858a6c06125b73a12fea34030c31996d2349dd65bb18c5b8d6d5612cb7b1a8"
+      ]
+    },
+    {
+      "point": [
+        1,
+        2,
+        0,
+        1,
+        0,
+        3,
+        2,
+        3,
+        2
+      ],
+      "evaluation": 207812500,
+      "proof_hex": [
+        "0f57920ef816687bf54937c670d98aabf988076a0c0a57d4f39a64c746bcb524",
+        "808a8be6c9c033f185965182df6a04c2715478a70d9cd1dfbe9faac7c0ca2fad",
+        "5aad057be70524fef276078b50d76c6ec84fd86e32e56056cee4a22af0f55f84",
+        "6a3382d7d3d5576609743add2b1f1b49020f52c0d41a3c3f80c79c42f4ddec16",
+        "fa74aa16140bdac450c19ba56e92bb1e2de0279a177bbba1bafce05d3ebb27a9",
+        "92bb93a69a1b16f17fb7003bba9291cac70a7c0dcf71f6987f4afb973ef53818",
+        "db73636aec57572e1d97b8d56579d4e9a26368bd52840aed3a16a18735f3eb2f",
+        "0f6a13d183bd16eed4fd958bb9b6a74834d4d124869640813a91491cd43dda12",
+        "7e09c20a8997c8fdc8a47acf75fab5c23ee361baadf01258f4554b271ff07504"
+      ]
+    }
+  ]
+}

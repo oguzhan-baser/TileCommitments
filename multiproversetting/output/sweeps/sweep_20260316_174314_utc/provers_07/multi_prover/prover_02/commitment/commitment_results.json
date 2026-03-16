@@ -1,0 +1,331 @@
+{
+  "commitment_hex": "bb00b09ff632389ee0569c12e5c70c61c1ec6a868e281606aebd5092cb12a6af",
+  "commitment_bytes": 32,
+  "polynomial": {
+    "num_variables": 8,
+    "degree_bound": 4,
+    "num_coefficients": 65536,
+    "source_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_07/multi_prover/prover_02/polynomial"
+  },
+  "hypercube_source": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_07/multi_prover/prover_02/hypercube",
+  "verification_summary": {
+    "num_queries": 10,
+    "all_proofs_verified": true,
+    "all_ground_truth_matched": true
+  },
+  "timing": {
+    "setup_time_s": 0.099,
+    "commit_time_s": 0.105,
+    "total_eval_time_s": 0.449,
+    "total_prove_time_s": 3.155,
+    "total_verify_time_s": 0.081,
+    "avg_prove_time_s": 0.315,
+    "avg_verify_time_s": 0.0081
+  },
+  "proof_stats": {
+    "avg_proof_bytes": 256.0,
+    "proof_elements_per_query": 8
+  },
+  "point_results": [
+    {
+      "point": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evaluation": 99218750,
+      "proof_hex": [
+        "c939d337c6e97222d0315d430bc971b546c6f19526d68615c9537f8894d1fcaf",
+        "ce7c99453cf263182c3d41cb764e35c4a09b0b1b08f191ca32070fbc6888b4ac",
+        "e7cbf09690bcdfc7260229a5ca53194e9176ff26de7b1e6a864350dae124ac1c",
+        "abe9f70bc67c96df407e72b98058807746dafff80cd786775f6055f1d912a59a",
+        "a7f2d619c91c984c7499bfe7d16d8d9ecc4209534a83b3922a1ce7535e2fb521",
+        "0c93ca7228b72aac70683c608c839a14aa220323fd078cb0c4c5c0290265770c",
+        "15678bf978fd0b5840d52b6000c9cf785a618dbc626f4a2ab611295230724c9c",
+        "59959616ce1a440711d0e80bedef775796e1783e3355888d66e685a2cf611695"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": 99218750,
+      "ground_truth_match": true,
+      "eval_time_s": 0.0447,
+      "prove_time_s": 0.3216,
+      "verify_time_s": 0.0077
+    },
+    {
+      "point": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "evaluation": 18945312,
+      "proof_hex": [
+        "0c709fe667deea40d8502ee321027d64150e39aeff7893bd21fe7701ebea4811",
+        "274d088567b96688e6d0b67d7a9de82fc0e98fdc42b8a0c1b221be34d363fc84",
+        "c0f94ea1146f0933162d54acefa40d780d67fa106e996542902b93610c062730",
+        "520c27f716a988291bc3bfee2a9da684b5f7ea1fcf904950253bb96ac5f95019",
+        "5708996edf2e1d7d46a2bd9c82c1d2e91590baa43881dc1107d0cb507757b919",
+        "958ee14947922c142734e8e54853d910e1ed6a0d6265437f3d81bb3fd130fe08",
+        "ae0c1c3e9708c1392a7d41032639b1dc4df0609c819c23506b7321f48cff76ad",
+        "8dc2288ea150b55bb86875948b6a99a7452fe761832632b491a108ff6af60418"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": 18945312,
+      "ground_truth_match": true,
+      "eval_time_s": 0.0441,
+      "prove_time_s": 0.3009,
+      "verify_time_s": 0.0073
+    },
+    {
+      "point": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "evaluation": 251562500,
+      "proof_hex": [
+        "5bb83a88957d05224af2e574bb00217f8e555ff5fb09a57cb84dcb058baaac02",
+        "8509e0e34c83d05c7e1bdab268eca38034fa93852d391582c9e3391c44f7c6a5",
+        "649242ebf52a960a4007bd220d070b33d8efc1f1f5aacb0b90ba46753958afa6",
+        "ff2cc106c1a390297268740ecd6be1600de506c17c42bd2d823d75a02f981210",
+        "b33298cc0fef9f7d8469cbae301f43167eaac85d695cc55788f480f71998a705",
+        "504df7acf06cafbd7f5c99d77371ec1feee4b37433faf726f9a3e05b0c957281",
+        "071481035c48fac2b67e646f00fbe25609d65fc084c098a42cb2119b23468e96",
+        "5dc38d045dc63cc579e652ff82444afd01f4d2d80776cefb19ad3c2f76917b91"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": 251562500,
+      "ground_truth_match": true,
+      "eval_time_s": 0.043,
+      "prove_time_s": 0.3049,
+      "verify_time_s": 0.0082
+    },
+    {
+      "point": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "evaluation": 30664062,
+      "proof_hex": [
+        "f8cbed255c0ea636fe3362789cdf77f444f63aebc368d3089ebe4c24ce528aa5",
+        "428bee732823378af10c887c864a68ca58b8570876542c0f39074de74578601b",
+        "14b882c0a4cf5c61a9f3e13392211db54d5ab2e11cf3e44abf73a237edacaa10",
+        "00c6bb0d05d80f9643564f17f0a65aa92ca8de59a1a5094d9265ffb92981a319",
+        "68b3c3c5fafde1b6a0c3cb6b2fdbece6de9219f395deb4e5d10ffdca61b3529d",
+        "174a090e00f08837eead2a9de30891193a260ebe19b4eb8e7d252aabd63a108e",
+        "801ba69b5c8bf5bf5003ddf079ac4db70c92696f8d59165ac23c1e8affdf12a7",
+        "4c763d2138a02fb88d9ae242f2d0638276cb1aaf48c9193c028f195e3e4b8b9d"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": 30664062,
+      "ground_truth_match": true,
+      "eval_time_s": 0.0451,
+      "prove_time_s": 0.307,
+      "verify_time_s": 0.0089
+    },
+    {
+      "point": [
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "evaluation": 83593750,
+      "proof_hex": [
+        "c939d337c6e97222d0315d430bc971b546c6f19526d68615c9537f8894d1fcaf",
+        "ce7c99453cf263182c3d41cb764e35c4a09b0b1b08f191ca32070fbc6888b4ac",
+        "4b31d0382ef9619f4c5e93c937f30419fb45455577c38eb8da8068c5982aab0f",
+        "b9a5fbb21ff9e075ebdc8db596e00f8af8ef09b227eecc4acc6fa8be19148003",
+        "e4ea7158235d589cfb688016b2769653a9489d0d96529e78aa297a5e4229a308",
+        "7878f398e866bed5a3a607b536b01759422e9346302e55eba1909bec871dd180",
+        "1b1f460d88cf0a168362b5aa654f3d58d22f2f113eab5f1d66a72882061b3990",
+        "ff451e3f9505a544fa17d3b3a52b1fe6dcb4d6059c355ecb636c7a8b77fb1289"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": 83593750,
+      "ground_truth_match": true,
+      "eval_time_s": 0.0446,
+      "prove_time_s": 0.3661,
+      "verify_time_s": 0.0079
+    },
+    {
+      "point": [
+        3,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "evaluation": 28515625,
+      "proof_hex": [
+        "0c709fe667deea40d8502ee321027d64150e39aeff7893bd21fe7701ebea4811",
+        "a8b604aba7238ae8d1957fb6bb91965897a77e9db25276dbd19c8ee3295081ab",
+        "bfe6221980ee5cfbc2c3a55b3b45532a564e0f4ede1e102bd85c9e1cd097072a",
+        "b40a4504dfe5caceb763e4a862f63914291b52c362b01e49431075b99822d20a",
+        "5bf431179b719eeb72bc3107bbca351ae568f30797e4aaa82ba1188bc6ce4782",
+        "68f8221d2a77004bcb8c380629ab60ce4401b4787da872bff5ded5092baf690c",
+        "bbf07eba2026d307bf6e8d08d04f22e4ef5c4388a2a53ca6772d26196a1a6d9f",
+        "29a48629912eccd16c856cdd50a9cccf8f06385bc973ec23535507270f89fcad"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": 28515625,
+      "ground_truth_match": true,
+      "eval_time_s": 0.0478,
+      "prove_time_s": 0.3241,
+      "verify_time_s": 0.008
+    },
+    {
+      "point": [
+        3,
+        1,
+        3,
+        2,
+        0,
+        1,
+        3,
+        2
+      ],
+      "evaluation": 61718750,
+      "proof_hex": [
+        "0c709fe667deea40d8502ee321027d64150e39aeff7893bd21fe7701ebea4811",
+        "201d0fb849cfdabaabb664600fa6b4f31a4e69e1719b8fe391007ec11f392780",
+        "ac26b61a49dd2fb2ee8fcffd4fcc1d05b105a7700783c9aa1fbfdcd3d5bb8180",
+        "bd2e584ec9b164fcc814a704fc4752f22efc43679832609f99d310d93e74af98",
+        "93bc5504468ca192c3cf3f9a52e4a3e93616b4fb81c99a209b45cc076b12b29a",
+        "f70f22641a91af0f8c3ac55f8a01b271400c8354ff16c95969dced3ae21b171d",
+        "e9eb9b7e08a7f343929f563a2310a19b4d06df5aab939e381c1cf6060388f402",
+        "5198118c39a615e5d3cfac76aad520ae065769918ae16c52234a309ac083420f"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": 61718750,
+      "ground_truth_match": true,
+      "eval_time_s": 0.0476,
+      "prove_time_s": 0.3021,
+      "verify_time_s": 0.0082
+    },
+    {
+      "point": [
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        3,
+        0
+      ],
+      "evaluation": 21888242871839275222246405745257275088548364400416034343698204186575806444836,
+      "proof_hex": [
+        "5bb83a88957d05224af2e574bb00217f8e555ff5fb09a57cb84dcb058baaac02",
+        "463941133a3c7cf8739216e7b7c568d9725ab76ea7f81029da4582c3cd5d5fa8",
+        "199cc1a927c180ce77034fcdc74c81fc8a4b9211c98e39a075b4329f95846323",
+        "56d2c2f6ba6907d7637ecb6f8ba5c3344e2dfd9c6e117bb40f12d558d293479c",
+        "f07b089d62b442151003df9ed24289f121b57d7f2303cf118bfa12990ec86484",
+        "4dac570fa9d23823b76ae7aba557d785773fb6847cb6849fbd0139618cb95610",
+        "3626219bc6e4ee57bcefe7eabb2d88d30bf824b42aa845ef018a4aafdf558c94",
+        "d58d4d0a263b6aaad93991b4b3946891c67b2e2590b61bc40e39bf22b03a7d87"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": -2050781,
+      "ground_truth_match": true,
+      "eval_time_s": 0.0435,
+      "prove_time_s": 0.3114,
+      "verify_time_s": 0.0085
+    },
+    {
+      "point": [
+        2,
+        2,
+        2,
+        0,
+        3,
+        0,
+        3,
+        0
+      ],
+      "evaluation": 17382812,
+      "proof_hex": [
+        "5bb83a88957d05224af2e574bb00217f8e555ff5fb09a57cb84dcb058baaac02",
+        "8509e0e34c83d05c7e1bdab268eca38034fa93852d391582c9e3391c44f7c6a5",
+        "649242ebf52a960a4007bd220d070b33d8efc1f1f5aacb0b90ba46753958afa6",
+        "164d8ef05b1f1b3022d240d699b91597ac1941e6bdacca1fd1fba7373d500714",
+        "498a42eea71e3eb37edd93c7edb1cf538d01fe08aef4920f6653f90c99704580",
+        "59a01ca22ab9dc5da5f9118056242e03f2834e2e257409922755c542a2d2611e",
+        "f12c3db67dbbe0cd4d7188e30afd28f431ee771e30587da6c144e70584b717a2",
+        "a4294f0c17ecc8013692738810c5a058ff364c8989a9f66c486423ed1d23da8c"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": 17382812,
+      "ground_truth_match": true,
+      "eval_time_s": 0.044,
+      "prove_time_s": 0.3122,
+      "verify_time_s": 0.0084
+    },
+    {
+      "point": [
+        2,
+        2,
+        1,
+        0,
+        0,
+        1,
+        2,
+        0
+      ],
+      "evaluation": 21888242871839275222246405745257275088548364400416034343698204186575800097179,
+      "proof_hex": [
+        "5bb83a88957d05224af2e574bb00217f8e555ff5fb09a57cb84dcb058baaac02",
+        "8509e0e34c83d05c7e1bdab268eca38034fa93852d391582c9e3391c44f7c6a5",
+        "0e43ec389e4a1c52d8ad7ba6273034f932c78064767943d049bc8430954d0e82",
+        "587579ed6e201ae9441dd1f3308e32bc1de67a51292cdc4b54fdec3637f83c95",
+        "b384176c4d19b076444ed5852cdc6e9174a38978661260e470f188fa012aeba3",
+        "afd988b81f82b144e3fcc4863e47745f1a722fd7c923808e1db05c61fd784e2d",
+        "e406ee25dc467f2ba1d8a105abe7658f938b8357d9485cb6571302feece45bac",
+        "f499f259f0dd6feb2c7020d9324fb554fdd77a6c7012935bd3e1a7dd223d3eaa"
+      ],
+      "proof_bytes": 256,
+      "verified": true,
+      "ground_truth_int": -8398438,
+      "ground_truth_match": true,
+      "eval_time_s": 0.0446,
+      "prove_time_s": 0.3044,
+      "verify_time_s": 0.0077
+    }
+  ]
+}

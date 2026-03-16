@@ -1,0 +1,392 @@
+{
+  "model_name": "Qwen/Qwen2-7B",
+  "prompt": "Where is the capital of the world?",
+  "generated_text": "",
+  "conversion": {
+    "scale_factor": 16,
+    "quantize_pct": 50.0,
+    "truncated_digits": 8,
+    "effective_scale": 8,
+    "formula": "integer = round(float_value * 10^effective_scale)",
+    "reverse": "float_approx = integer / 10^effective_scale"
+  },
+  "layers": [
+    {
+      "layer": "embedding",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "embedding.npy",
+      "sample_original": 0.004425048828125,
+      "sample_converted": 442505
+    },
+    {
+      "layer": "layer_0",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_0.npy",
+      "sample_original": -0.23828125,
+      "sample_converted": -23828125
+    },
+    {
+      "layer": "layer_1",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_1.npy",
+      "sample_original": -0.1796875,
+      "sample_converted": -17968750
+    },
+    {
+      "layer": "layer_2",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_2.npy",
+      "sample_original": -0.0263671875,
+      "sample_converted": -2636719
+    },
+    {
+      "layer": "layer_3",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_3.npy",
+      "sample_original": 0.359375,
+      "sample_converted": 35937500
+    },
+    {
+      "layer": "layer_4",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_4.npy",
+      "sample_original": -0.9609375,
+      "sample_converted": -96093750
+    },
+    {
+      "layer": "layer_5",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_5.npy",
+      "sample_original": -0.9921875,
+      "sample_converted": -99218750
+    },
+    {
+      "layer": "layer_6",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_6.npy",
+      "sample_original": -0.51953125,
+      "sample_converted": -51953125
+    },
+    {
+      "layer": "layer_7",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_7.npy",
+      "sample_original": -0.072265625,
+      "sample_converted": -7226562
+    },
+    {
+      "layer": "layer_8",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_8.npy",
+      "sample_original": -0.3671875,
+      "sample_converted": -36718750
+    },
+    {
+      "layer": "layer_9",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_9.npy",
+      "sample_original": -0.4921875,
+      "sample_converted": -49218750
+    },
+    {
+      "layer": "layer_10",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_10.npy",
+      "sample_original": -0.734375,
+      "sample_converted": -73437500
+    },
+    {
+      "layer": "layer_11",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_11.npy",
+      "sample_original": -1.0,
+      "sample_converted": -100000000
+    },
+    {
+      "layer": "layer_12",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_12.npy",
+      "sample_original": -1.2421875,
+      "sample_converted": -124218750
+    },
+    {
+      "layer": "layer_13",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_13.npy",
+      "sample_original": -1.34375,
+      "sample_converted": -134375000
+    },
+    {
+      "layer": "layer_14",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_14.npy",
+      "sample_original": -0.98046875,
+      "sample_converted": -98046875
+    },
+    {
+      "layer": "layer_15",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_15.npy",
+      "sample_original": -1.0703125,
+      "sample_converted": -107031250
+    },
+    {
+      "layer": "layer_16",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_16.npy",
+      "sample_original": -0.93359375,
+      "sample_converted": -93359375
+    },
+    {
+      "layer": "layer_17",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_17.npy",
+      "sample_original": -0.765625,
+      "sample_converted": -76562500
+    },
+    {
+      "layer": "layer_18",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_18.npy",
+      "sample_original": -0.703125,
+      "sample_converted": -70312500
+    },
+    {
+      "layer": "layer_19",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_19.npy",
+      "sample_original": -0.6640625,
+      "sample_converted": -66406250
+    },
+    {
+      "layer": "layer_20",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_20.npy",
+      "sample_original": -1.0,
+      "sample_converted": -100000000
+    },
+    {
+      "layer": "layer_21",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_21.npy",
+      "sample_original": -1.21875,
+      "sample_converted": -121875000
+    },
+    {
+      "layer": "layer_22",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_22.npy",
+      "sample_original": -0.828125,
+      "sample_converted": -82812500
+    },
+    {
+      "layer": "layer_23",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_23.npy",
+      "sample_original": -1.4375,
+      "sample_converted": -143750000
+    },
+    {
+      "layer": "layer_24",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_24.npy",
+      "sample_original": -0.9921875,
+      "sample_converted": -99218750
+    },
+    {
+      "layer": "layer_25",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_25.npy",
+      "sample_original": -5.78125,
+      "sample_converted": -578125000
+    },
+    {
+      "layer": "layer_26",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_26.npy",
+      "sample_original": 2.96875,
+      "sample_converted": 296875000
+    },
+    {
+      "layer": "layer_27",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_27.npy",
+      "sample_original": 5.1875,
+      "sample_converted": 518750000
+    }
+  ]
+}

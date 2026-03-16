@@ -1,0 +1,214 @@
+{
+  "generated_at_utc": "2026-03-16T17:47:39.212492+00:00",
+  "config": {
+    "model": "Qwen/Qwen2-1.5B",
+    "prompt": "Where is the capital of the world?",
+    "num_provers": 4,
+    "devices": [
+      "cuda:0",
+      "cuda:1",
+      "cuda:2",
+      "cuda:3"
+    ],
+    "dtype": "bfloat16",
+    "scale_factor": 16,
+    "quantize": 50.0,
+    "num_queries": 10
+  },
+  "stage_timings_seconds": {
+    "one_prover_compute": 2.8322822030168027,
+    "multi_prover_compute": 5.153568087029271,
+    "one_prover_commit_pipeline_total": 19.454260822967626,
+    "multi_prover_commit_pipeline_total": 27.11834722897038,
+    "one_prover_total_compute_plus_commit": 22.28654302598443,
+    "multi_prover_total_compute_plus_commit": 32.27191531599965
+  },
+  "multi_prover_compute_summary": {
+    "per_prover_compute_seconds": [
+      1.0526277750032023,
+      0.7084799279691651,
+      0.7100125920260325,
+      0.7122404470574111
+    ],
+    "avg_inference_time_across_agents_seconds": 0.7958401855139527,
+    "max_inference_time_across_agents_seconds": 1.0526277750032023
+  },
+  "embedding_exchange_summary": {
+    "num_exchanges": 3,
+    "total_exchange_bytes": 73728,
+    "total_exchange_mib": 0.0703125,
+    "average_exchange_bytes": 24576.0,
+    "average_exchange_mib": 0.0234375,
+    "exchanges": [
+      {
+        "from_prover_index": 0,
+        "to_prover_index": 1,
+        "from_device": "cuda:0",
+        "to_device": "cuda:1",
+        "tensor_shape": [
+          1,
+          8,
+          1536
+        ],
+        "tensor_dtype": "torch.bfloat16",
+        "payload_bytes": 24576,
+        "payload_mib": 0.0234375
+      },
+      {
+        "from_prover_index": 1,
+        "to_prover_index": 2,
+        "from_device": "cuda:1",
+        "to_device": "cuda:2",
+        "tensor_shape": [
+          1,
+          8,
+          1536
+        ],
+        "tensor_dtype": "torch.bfloat16",
+        "payload_bytes": 24576,
+        "payload_mib": 0.0234375
+      },
+      {
+        "from_prover_index": 2,
+        "to_prover_index": 3,
+        "from_device": "cuda:2",
+        "to_device": "cuda:3",
+        "tensor_shape": [
+          1,
+          8,
+          1536
+        ],
+        "tensor_dtype": "torch.bfloat16",
+        "payload_bytes": 24576,
+        "payload_mib": 0.0234375
+      }
+    ]
+  },
+  "overhead": {
+    "compute_delta_seconds": 2.321285884012468,
+    "compute_ratio_multi_over_one": 1.819581425021826,
+    "commit_pipeline_delta_seconds": 7.6640864060027525,
+    "commit_pipeline_ratio_multi_over_one": 1.3939541304470722,
+    "total_delta_seconds": 9.98537229001522,
+    "total_ratio_multi_over_one": 1.448044915641382
+  },
+  "one_vs_multi_match": {
+    "hidden_allclose": true,
+    "logits_allclose": true,
+    "one_prover_next_token_id": 14566,
+    "multi_prover_next_token_id": 14566,
+    "next_token_match": true,
+    "hidden_max_abs_diff": 0.0,
+    "hidden_mean_abs_diff": 0.0,
+    "logits_max_abs_diff": 0.0,
+    "logits_mean_abs_diff": 0.0,
+    "rtol": 0.001,
+    "atol": 0.05
+  },
+  "one_prover_commit_summary": {
+    "all_verified": true,
+    "all_ground_truth_match": true,
+    "timing": {
+      "setup_time_s": 0.439,
+      "commit_time_s": 0.442,
+      "total_eval_time_s": 1.775,
+      "total_prove_time_s": 12.194,
+      "total_verify_time_s": 0.064,
+      "avg_prove_time_s": 1.219,
+      "avg_verify_time_s": 0.0064
+    },
+    "proof_stats": {
+      "avg_proof_bytes": 256.0,
+      "proof_elements_per_query": 8
+    },
+    "pipeline_wall_seconds": 19.454260822967626
+  },
+  "multi_prover_commit_summary": [
+    {
+      "prover_index": 0,
+      "all_verified": true,
+      "all_ground_truth_match": true,
+      "timing": {
+        "setup_time_s": 0.123,
+        "commit_time_s": 0.158,
+        "total_eval_time_s": 0.561,
+        "total_prove_time_s": 2.984,
+        "total_verify_time_s": 0.064,
+        "avg_prove_time_s": 0.298,
+        "avg_verify_time_s": 0.0064
+      },
+      "proof_stats": {
+        "avg_proof_bytes": 160.0,
+        "proof_elements_per_query": 5
+      },
+      "pipeline_wall_seconds": 6.919581577996723,
+      "part_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_04/multi_prover/prover_00"
+    },
+    {
+      "prover_index": 1,
+      "all_verified": true,
+      "all_ground_truth_match": true,
+      "timing": {
+        "setup_time_s": 0.109,
+        "commit_time_s": 0.153,
+        "total_eval_time_s": 0.571,
+        "total_prove_time_s": 2.961,
+        "total_verify_time_s": 0.061,
+        "avg_prove_time_s": 0.296,
+        "avg_verify_time_s": 0.0061
+      },
+      "proof_stats": {
+        "avg_proof_bytes": 160.0,
+        "proof_elements_per_query": 5
+      },
+      "pipeline_wall_seconds": 6.737982684979215,
+      "part_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_04/multi_prover/prover_01"
+    },
+    {
+      "prover_index": 2,
+      "all_verified": true,
+      "all_ground_truth_match": true,
+      "timing": {
+        "setup_time_s": 0.12,
+        "commit_time_s": 0.153,
+        "total_eval_time_s": 0.563,
+        "total_prove_time_s": 2.988,
+        "total_verify_time_s": 0.064,
+        "avg_prove_time_s": 0.299,
+        "avg_verify_time_s": 0.0064
+      },
+      "proof_stats": {
+        "avg_proof_bytes": 160.0,
+        "proof_elements_per_query": 5
+      },
+      "pipeline_wall_seconds": 6.713885255972855,
+      "part_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_04/multi_prover/prover_02"
+    },
+    {
+      "prover_index": 3,
+      "all_verified": true,
+      "all_ground_truth_match": true,
+      "timing": {
+        "setup_time_s": 0.116,
+        "commit_time_s": 0.158,
+        "total_eval_time_s": 0.56,
+        "total_prove_time_s": 2.96,
+        "total_verify_time_s": 0.059,
+        "avg_prove_time_s": 0.296,
+        "avg_verify_time_s": 0.0059
+      },
+      "proof_stats": {
+        "avg_proof_bytes": 160.0,
+        "proof_elements_per_query": 5
+      },
+      "pipeline_wall_seconds": 6.746897710021585,
+      "part_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_04/multi_prover/prover_03"
+    }
+  ],
+  "artifacts": {
+    "output_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_04",
+    "prover_assignment_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_04/prover_assignment.json",
+    "comparison_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_04/one_vs_multi_comparison.json",
+    "layout_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_174314_utc/provers_04/multiprover_compute_layout.json"
+  }
+}

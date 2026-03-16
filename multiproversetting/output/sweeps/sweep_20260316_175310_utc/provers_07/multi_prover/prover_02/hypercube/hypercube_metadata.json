@@ -1,0 +1,101 @@
+{
+  "source_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_175310_utc/provers_07/multi_prover/prover_02/int_activations",
+  "model_name": "Qwen/Qwen2-7B",
+  "conversion_params": {
+    "scale_factor": 16,
+    "quantize_pct": 50.0,
+    "truncated_digits": 8,
+    "effective_scale": 8,
+    "formula": "integer = round(float_value * 10^effective_scale)",
+    "reverse": "float_approx = integer / 10^effective_scale"
+  },
+  "hypercube": {
+    "dimensions": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "num_dimensions": 9,
+    "product": 262144,
+    "total_real_elements": 143360,
+    "padding_elements": 118784,
+    "sparsity_pct": 45.3125,
+    "pad_fill": "random (sampled from real activations)",
+    "pad_seed": 42,
+    "dim_range": [
+      4,
+      10
+    ],
+    "flatten_order": "C (row-major)"
+  },
+  "layer_map": [
+    {
+      "layer": "embedding",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "flat_offset": 0,
+      "flat_end": 28672
+    },
+    {
+      "layer": "layer_0",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "flat_offset": 28672,
+      "flat_end": 57344
+    },
+    {
+      "layer": "layer_1",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "flat_offset": 57344,
+      "flat_end": 86016
+    },
+    {
+      "layer": "layer_2",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "flat_offset": 86016,
+      "flat_end": 114688
+    },
+    {
+      "layer": "layer_3",
+      "original_shape": [
+        1,
+        8,
+        3584
+      ],
+      "num_elements": 28672,
+      "flat_offset": 114688,
+      "flat_end": 143360
+    }
+  ],
+  "recovery": {
+    "description": "All indices use C-order (row-major) flattening. Layers are concatenated in the order listed in layer_map. Positions with flat_index >= total_real_elements are padding.",
+    "flat_to_hypercube": "coords = numpy.unravel_index(flat_index, dimensions)",
+    "hypercube_to_flat": "flat_index = numpy.ravel_multi_index(coords, dimensions)",
+    "flat_to_layer": "Find the entry in layer_map where flat_offset <= flat_index < flat_end. position_in_layer = flat_index - flat_offset. Use numpy.unravel_index(position_in_layer, original_shape) to recover the multi-dimensional index within that layer.",
+    "is_padding": "flat_index >= 143360"
+  }
+}

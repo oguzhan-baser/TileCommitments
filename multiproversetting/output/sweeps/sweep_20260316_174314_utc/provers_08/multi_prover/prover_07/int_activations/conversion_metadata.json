@@ -1,0 +1,80 @@
+{
+  "model_name": "Qwen/Qwen2-1.5B",
+  "prompt": "Where is the capital of the world?",
+  "generated_text": "",
+  "conversion": {
+    "scale_factor": 16,
+    "quantize_pct": 50.0,
+    "truncated_digits": 8,
+    "effective_scale": 8,
+    "formula": "integer = round(float_value * 10^effective_scale)",
+    "reverse": "float_approx = integer / 10^effective_scale"
+  },
+  "layers": [
+    {
+      "layer": "embedding",
+      "original_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_elements": 12288,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "embedding.npy",
+      "sample_original": 1.15625,
+      "sample_converted": 115625000
+    },
+    {
+      "layer": "layer_0",
+      "original_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_elements": 12288,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_0.npy",
+      "sample_original": 1.0546875,
+      "sample_converted": 105468750
+    },
+    {
+      "layer": "layer_1",
+      "original_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_elements": 12288,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_1.npy",
+      "sample_original": 0.0703125,
+      "sample_converted": 7031250
+    },
+    {
+      "layer": "layer_2",
+      "original_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_elements": 12288,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_2.npy",
+      "sample_original": -1.609375,
+      "sample_converted": -160937500
+    },
+    {
+      "layer": "layer_3",
+      "original_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_elements": 12288,
+      "original_dtype": "torch.bfloat16",
+      "npy_file": "layer_3.npy",
+      "sample_original": -1.3046875,
+      "sample_converted": -130468750
+    }
+  ]
+}

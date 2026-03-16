@@ -1,0 +1,277 @@
+{
+  "per_prover": [
+    {
+      "prover_index": 0,
+      "device": "cuda:0",
+      "layer_start": 0,
+      "layer_end_exclusive": 5,
+      "input_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_layer_outputs": 5,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ]
+      ],
+      "compute_seconds": 0.8853971268981695
+    },
+    {
+      "prover_index": 1,
+      "device": "cuda:1",
+      "layer_start": 5,
+      "layer_end_exclusive": 11,
+      "input_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_layer_outputs": 6,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ]
+      ],
+      "compute_seconds": 0.6314302259124815
+    },
+    {
+      "prover_index": 2,
+      "device": "cuda:2",
+      "layer_start": 11,
+      "layer_end_exclusive": 16,
+      "input_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_layer_outputs": 5,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ]
+      ],
+      "compute_seconds": 0.536657989025116
+    },
+    {
+      "prover_index": 3,
+      "device": "cuda:3",
+      "layer_start": 16,
+      "layer_end_exclusive": 22,
+      "input_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_layer_outputs": 6,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ]
+      ],
+      "compute_seconds": 0.6238838189747185
+    },
+    {
+      "prover_index": 4,
+      "device": "cuda:4",
+      "layer_start": 22,
+      "layer_end_exclusive": 28,
+      "input_shape": [
+        1,
+        8,
+        1536
+      ],
+      "num_layer_outputs": 6,
+      "layer_output_shapes": [
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ],
+        [
+          1,
+          8,
+          1536
+        ]
+      ],
+      "compute_seconds": 0.6244570780545473
+    }
+  ],
+  "embedding_exchanges": [
+    {
+      "from_prover_index": 0,
+      "to_prover_index": 1,
+      "from_device": "cuda:0",
+      "to_device": "cuda:1",
+      "tensor_shape": [
+        1,
+        8,
+        1536
+      ],
+      "tensor_dtype": "torch.bfloat16",
+      "payload_bytes": 24576,
+      "payload_mib": 0.0234375
+    },
+    {
+      "from_prover_index": 1,
+      "to_prover_index": 2,
+      "from_device": "cuda:1",
+      "to_device": "cuda:2",
+      "tensor_shape": [
+        1,
+        8,
+        1536
+      ],
+      "tensor_dtype": "torch.bfloat16",
+      "payload_bytes": 24576,
+      "payload_mib": 0.0234375
+    },
+    {
+      "from_prover_index": 2,
+      "to_prover_index": 3,
+      "from_device": "cuda:2",
+      "to_device": "cuda:3",
+      "tensor_shape": [
+        1,
+        8,
+        1536
+      ],
+      "tensor_dtype": "torch.bfloat16",
+      "payload_bytes": 24576,
+      "payload_mib": 0.0234375
+    },
+    {
+      "from_prover_index": 3,
+      "to_prover_index": 4,
+      "from_device": "cuda:3",
+      "to_device": "cuda:4",
+      "tensor_shape": [
+        1,
+        8,
+        1536
+      ],
+      "tensor_dtype": "torch.bfloat16",
+      "payload_bytes": 24576,
+      "payload_mib": 0.0234375
+    }
+  ]
+}

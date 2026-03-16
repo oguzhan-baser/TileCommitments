@@ -14,8 +14,9 @@ import seaborn as sns
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Plot multiprover sweep results as a three-panel figure: "
-            "agent inference time, agent commit/prove/verify times, and exchanged embedding size."
+            "Plot multiprover sweep results as 5 separate figures: "
+            "agent inference time, agent commit time, agent prove time, "
+            "agent verify time, and exchanged embedding size."
         )
     )
     parser.add_argument(
@@ -85,73 +86,115 @@ def main() -> None:
     df.to_csv(merged_csv, index=False)
 
     sns.set_theme(style="darkgrid")
-    fig, axes = plt.subplots(1, 3, figsize=(22, 6))
+    x_ticks = sorted(df["num_provers"].unique())
 
+    fig, ax = plt.subplots(figsize=(7, 5))
     sns.lineplot(
         data=df,
         x="num_provers",
         y="avg_agent_inference_s",
         hue="model",
         marker="o",
-        ax=axes[0],
+        ax=ax,
     )
-    axes[0].set_title("A) Avg Agent Inference Time")
-    axes[0].set_xlabel("Number of provers")
-    axes[0].set_ylabel("Seconds")
-    axes[0].set_xticks(sorted(df["num_provers"].unique()))
+    ax.set_title("A) Avg Agent Inference Time")
+    ax.set_xlabel("Number of provers")
+    ax.set_ylabel("Seconds")
+    ax.set_xticks(x_ticks)
+    if args.title_prefix:
+        fig.suptitle(args.title_prefix, y=1.02)
+    fig.tight_layout()
+    fig_path_infer = outdir / "multiprover_sweep_a_avg_agent_inference_time.png"
+    fig.savefig(fig_path_infer, dpi=300, bbox_inches="tight")
+    plt.close(fig)
 
-    timing_map = {
-        "avg_agent_commit_s": "commit",
-        "avg_agent_total_prove_s": "prove",
-        "avg_agent_total_verify_s": "verify",
-    }
-    timing_long = df.melt(
-        id_vars=["model", "num_provers"],
-        value_vars=list(timing_map.keys()),
-        var_name="timing_metric",
-        value_name="seconds",
-    )
-    timing_long["timing_metric"] = timing_long["timing_metric"].map(timing_map)
-    timing_long["series"] = timing_long["model"] + " | " + timing_long["timing_metric"]
-
+    fig, ax = plt.subplots(figsize=(7, 5))
     sns.lineplot(
-        data=timing_long,
+        data=df,
         x="num_provers",
-        y="seconds",
-        hue="series",
+        y="avg_agent_commit_s",
+        hue="model",
         marker="o",
-        ax=axes[1],
+        ax=ax,
     )
-    axes[1].set_title("B) Avg Agent Commit/Prove/Verify")
-    axes[1].set_xlabel("Number of provers")
-    axes[1].set_ylabel("Seconds")
-    axes[1].set_xticks(sorted(df["num_provers"].unique()))
+    ax.set_title("B) Avg Agent Commit Time")
+    ax.set_xlabel("Number of provers")
+    ax.set_ylabel("Seconds")
+    ax.set_xticks(x_ticks)
+    if args.title_prefix:
+        fig.suptitle(args.title_prefix, y=1.02)
+    fig.tight_layout()
+    fig_path_commit = outdir / "multiprover_sweep_b_avg_agent_commit_time.png"
+    fig.savefig(fig_path_commit, dpi=300, bbox_inches="tight")
+    plt.close(fig)
 
+    fig, ax = plt.subplots(figsize=(7, 5))
+    sns.lineplot(
+        data=df,
+        x="num_provers",
+        y="avg_agent_total_prove_s",
+        hue="model",
+        marker="o",
+        ax=ax,
+    )
+    ax.set_title("C) Avg Agent Prove Time")
+    ax.set_xlabel("Number of provers")
+    ax.set_ylabel("Seconds")
+    ax.set_xticks(x_ticks)
+    if args.title_prefix:
+        fig.suptitle(args.title_prefix, y=1.02)
+    fig.tight_layout()
+    fig_path_prove = outdir / "multiprover_sweep_c_avg_agent_prove_time.png"
+    fig.savefig(fig_path_prove, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    sns.lineplot(
+        data=df,
+        x="num_provers",
+        y="avg_agent_total_verify_s",
+        hue="model",
+        marker="o",
+        ax=ax,
+    )
+    ax.set_title("D) Avg Agent Verify Time")
+    ax.set_xlabel("Number of provers")
+    ax.set_ylabel("Seconds")
+    ax.set_xticks(x_ticks)
+    if args.title_prefix:
+        fig.suptitle(args.title_prefix, y=1.02)
+    fig.tight_layout()
+    fig_path_verify = outdir / "multiprover_sweep_d_avg_agent_verify_time.png"
+    fig.savefig(fig_path_verify, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(7, 5))
     sns.lineplot(
         data=df,
         x="num_provers",
         y="avg_exchange_mib",
         hue="model",
         marker="o",
-        ax=axes[2],
+        ax=ax,
     )
-    axes[2].set_title("C) Avg Embedding Exchange Size")
-    axes[2].set_xlabel("Number of provers")
-    axes[2].set_ylabel("MiB per transfer")
-    axes[2].set_xticks(sorted(df["num_provers"].unique()))
-
+    ax.set_title("E) Avg Embedding Exchange Size")
+    ax.set_xlabel("Number of provers")
+    ax.set_ylabel("MiB per transfer")
+    ax.set_xticks(x_ticks)
     if args.title_prefix:
         fig.suptitle(args.title_prefix, y=1.02)
     fig.tight_layout()
-
-    fig_path = outdir / "multiprover_sweep_three_panel.png"
-    fig.savefig(fig_path, dpi=300, bbox_inches="tight")
+    fig_path_exchange = outdir / "multiprover_sweep_e_avg_embedding_exchange_size.png"
+    fig.savefig(fig_path_exchange, dpi=300, bbox_inches="tight")
     plt.close(fig)
 
     print(f"[plot] Saved merged CSV: {merged_csv}")
-    print(f"[plot] Saved figure: {fig_path}")
+    print(f"[plot] Saved figure: {fig_path_infer}")
+    print(f"[plot] Saved figure: {fig_path_commit}")
+    print(f"[plot] Saved figure: {fig_path_prove}")
+    print(f"[plot] Saved figure: {fig_path_verify}")
+    print(f"[plot] Saved figure: {fig_path_exchange}")
 
 
 if __name__ == "__main__":
     main()
-

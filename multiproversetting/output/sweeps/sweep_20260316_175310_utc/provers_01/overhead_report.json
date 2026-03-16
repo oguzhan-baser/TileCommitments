@@ -1,0 +1,105 @@
+{
+  "generated_at_utc": "2026-03-16T17:55:24.845035+00:00",
+  "config": {
+    "model": "Qwen/Qwen2-7B",
+    "prompt": "Where is the capital of the world?",
+    "num_provers": 1,
+    "devices": [
+      "cuda:0"
+    ],
+    "dtype": "bfloat16",
+    "scale_factor": 16,
+    "quantize": 50.0,
+    "num_queries": 10
+  },
+  "stage_timings_seconds": {
+    "one_prover_compute": 15.498580038081855,
+    "multi_prover_compute": 21.628918634029105,
+    "one_prover_commit_pipeline_total": 37.48383262404241,
+    "multi_prover_commit_pipeline_total": 37.199161108001135,
+    "one_prover_total_compute_plus_commit": 52.98241266212426,
+    "multi_prover_total_compute_plus_commit": 58.82807974203024
+  },
+  "multi_prover_compute_summary": {
+    "per_prover_compute_seconds": [
+      12.755657393950969
+    ],
+    "avg_inference_time_across_agents_seconds": 12.755657393950969,
+    "max_inference_time_across_agents_seconds": 12.755657393950969
+  },
+  "embedding_exchange_summary": {
+    "num_exchanges": 0,
+    "total_exchange_bytes": 0,
+    "total_exchange_mib": 0.0,
+    "average_exchange_bytes": 0.0,
+    "average_exchange_mib": 0.0,
+    "exchanges": []
+  },
+  "overhead": {
+    "compute_delta_seconds": 6.130338595947251,
+    "compute_ratio_multi_over_one": 1.3955419516422976,
+    "commit_pipeline_delta_seconds": -0.2846715160412714,
+    "commit_pipeline_ratio_multi_over_one": 0.9924054853489374,
+    "total_delta_seconds": 5.845667079905979,
+    "total_ratio_multi_over_one": 1.1103322175451797
+  },
+  "one_vs_multi_match": {
+    "hidden_allclose": true,
+    "logits_allclose": true,
+    "one_prover_next_token_id": 576,
+    "multi_prover_next_token_id": 576,
+    "next_token_match": true,
+    "hidden_max_abs_diff": 0.0,
+    "hidden_mean_abs_diff": 0.0,
+    "logits_max_abs_diff": 0.0,
+    "logits_mean_abs_diff": 0.0,
+    "rtol": 0.001,
+    "atol": 0.05
+  },
+  "one_prover_commit_summary": {
+    "all_verified": true,
+    "all_ground_truth_match": true,
+    "timing": {
+      "setup_time_s": 1.046,
+      "commit_time_s": 1.036,
+      "total_eval_time_s": 4.728,
+      "total_prove_time_s": 22.1,
+      "total_verify_time_s": 0.057,
+      "avg_prove_time_s": 2.21,
+      "avg_verify_time_s": 0.0057
+    },
+    "proof_stats": {
+      "avg_proof_bytes": 192.0,
+      "proof_elements_per_query": 6
+    },
+    "pipeline_wall_seconds": 37.48383262404241
+  },
+  "multi_prover_commit_summary": [
+    {
+      "prover_index": 0,
+      "all_verified": true,
+      "all_ground_truth_match": true,
+      "timing": {
+        "setup_time_s": 1.041,
+        "commit_time_s": 1.083,
+        "total_eval_time_s": 4.655,
+        "total_prove_time_s": 21.791,
+        "total_verify_time_s": 0.062,
+        "avg_prove_time_s": 2.179,
+        "avg_verify_time_s": 0.0062
+      },
+      "proof_stats": {
+        "avg_proof_bytes": 192.0,
+        "proof_elements_per_query": 6
+      },
+      "pipeline_wall_seconds": 37.199161108001135,
+      "part_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_175310_utc/provers_01/multi_prover/prover_00"
+    }
+  ],
+  "artifacts": {
+    "output_dir": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_175310_utc/provers_01",
+    "prover_assignment_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_175310_utc/provers_01/prover_assignment.json",
+    "comparison_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_175310_utc/provers_01/one_vs_multi_comparison.json",
+    "layout_json": "/home/ob3942/repos/TileCommitments/multiproversetting/output/sweeps/sweep_20260316_175310_utc/provers_01/multiprover_compute_layout.json"
+  }
+}

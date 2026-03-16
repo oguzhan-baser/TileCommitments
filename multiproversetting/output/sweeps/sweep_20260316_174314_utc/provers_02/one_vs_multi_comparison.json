@@ -1,0 +1,13 @@
+{
+  "hidden_allclose": true,
+  "logits_allclose": true,
+  "one_prover_next_token_id": 14566,
+  "multi_prover_next_token_id": 14566,
+  "next_token_match": true,
+  "hidden_max_abs_diff": 0.0,
+  "hidden_mean_abs_diff": 0.0,
+  "logits_max_abs_diff": 0.0,
+  "logits_mean_abs_diff": 0.0,
+  "rtol": 0.001,
+  "atol": 0.05
+}
