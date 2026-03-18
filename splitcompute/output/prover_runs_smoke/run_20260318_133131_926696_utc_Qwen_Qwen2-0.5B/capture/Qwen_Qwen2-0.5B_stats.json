@@ -1,0 +1,387 @@
+{
+  "model_name": "Qwen/Qwen2-0.5B",
+  "prompt": "Where is the capital of the world?",
+  "generated_text": " Options: - united",
+  "size_summary": {
+    "min_size": 10752,
+    "max_size": 10752,
+    "avg_size": 10752.0
+  },
+  "layer_stats": [
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "embedding",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -0.06787109375,
+      "max": 0.0673828125,
+      "mean": -7.218837708933279e-05,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_0",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -1.5068359375,
+      "max": 3.82421875,
+      "mean": 0.0030462010763585567,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_1",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -1.9228515625,
+      "max": 22.765625,
+      "mean": 0.010412292554974556,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_2",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -38.09375,
+      "max": 621.0,
+      "mean": 0.12627345323562622,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_3",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -38.71875,
+      "max": 639.5,
+      "mean": 0.13270185887813568,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_4",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -69.125,
+      "max": 1062.0,
+      "mean": 0.22021019458770752,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_5",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -69.25,
+      "max": 1062.0,
+      "mean": 0.22584688663482666,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_6",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -69.4375,
+      "max": 1065.0,
+      "mean": 0.23245207965373993,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_7",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -69.25,
+      "max": 1064.0,
+      "mean": 0.236566424369812,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_8",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -67.8125,
+      "max": 1067.0,
+      "mean": 0.23629717528820038,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_9",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -66.375,
+      "max": 1070.0,
+      "mean": 0.24184229969978333,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_10",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -65.3125,
+      "max": 1073.0,
+      "mean": 0.24131137132644653,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_11",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -64.9375,
+      "max": 1074.0,
+      "mean": 0.2369999885559082,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_12",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -64.6875,
+      "max": 1073.0,
+      "mean": 0.2360149621963501,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_13",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -64.4375,
+      "max": 1073.0,
+      "mean": 0.23779362440109253,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_14",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -64.1875,
+      "max": 1073.0,
+      "mean": 0.23798967897891998,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_15",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -64.25,
+      "max": 1074.0,
+      "mean": 0.24023312330245972,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_16",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -64.125,
+      "max": 1074.0,
+      "mean": 0.23910833895206451,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_17",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -63.25,
+      "max": 1075.0,
+      "mean": 0.23906013369560242,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_18",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -63.125,
+      "max": 1075.0,
+      "mean": 0.24140405654907227,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_19",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -62.71875,
+      "max": 1074.0,
+      "mean": 0.2408713400363922,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_20",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -61.5,
+      "max": 1071.0,
+      "mean": 0.2447100132703781,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_21",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -59.625,
+      "max": 1057.0,
+      "mean": 0.25519588589668274,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_22",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -22.0,
+      "max": 74.9375,
+      "mean": 0.05031038448214531,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    },
+    {
+      "model": "Qwen/Qwen2-0.5B",
+      "layer": "layer_23",
+      "shape": [
+        1,
+        12,
+        896
+      ],
+      "num_elements": 10752,
+      "min": -220.5,
+      "max": 88.25,
+      "mean": -0.11176622658967972,
+      "dtype": "torch.float16",
+      "precision_bits": 16
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "verified_at_utc": "2026-03-18T13:31:57.228260+00:00",
+  "run_id": "run_20260318_133131_926696_utc_Qwen_Qwen2-0.5B",
+  "model_name": "Qwen/Qwen2-0.5B",
+  "inference_output": {
+    "model_name": "Qwen/Qwen2-0.5B",
+    "prompt": "Where is the capital of the world?",
+    "generated_text": " Options: - united",
+    "token_ids": [
+      [
+        9064,
+        374,
+        279,
+        6722,
+        315,
+        279,
+        1879,
+        30,
+        14566,
+        25,
+        481,
+        28192
+      ]
+    ]
+  },
+  "verification": {
+    "all_verified": true,
+    "num_proofs": 2,
+    "proof_results": [
+      {
+        "bundle_id": 0,
+        "index": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "value_int": "552368",
+        "proof_elements": 7,
+        "verified": true
+      },
+      {
+        "bundle_id": 1,
+        "index": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "value_int": "88281250",
+        "proof_elements": 7,
+        "verified": true
+      }
+    ]
+  }
+}

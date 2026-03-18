@@ -1,0 +1,49 @@
+{
+  "commitment_hex": "7de7e85fdcf66a9298a5928293086fbcb4edbbe64308ef05e0143e66cb21da26",
+  "num_variables": 7,
+  "degree_bound": 6,
+  "proofs": [
+    {
+      "point": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evaluation": 552368,
+      "proof_hex": [
+        "698bfa26684b490da2b4bcb052621fc5be48e3efaa097cd8ded4389659c0b411",
+        "78f6ece442cf6cd1728dcab9634afa593a1d79dd89c06c4effd4adad2f95c813",
+        "4fa65c499859a6a399e8b38bccd5706a8b7b017ead03e439d42a24fd1caf76ae",
+        "b57a8832b01396982601429ac2209e24aae1f547daf9e70cf6f79bcc1f5ec50f",
+        "49c7c59dc2edf0f9708e554a8cb395247cfaa665a1608d617a236e9a753bdd8e",
+        "6ef541849562b1b5eeb35961dda358e9f1a4b8799413da519b36cb9e866c0115",
+        "6fe48d5419da5ed75c2ce7444228a743b38a436ed7bd116acae19a1a517c2d2d"
+      ]
+    },
+    {
+      "point": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "evaluation": 88281250,
+      "proof_hex": [
+        "82f294dc04ca92a8dc839c5d60caba762ecb3117858369daebfc233957e53e16",
+        "0040355bea82b676c09c2c2d5e031a57e059751368a1b76aed9ae5b89e44aba2",
+        "f6b8e11e1780ba00758d6266f22e32b5a152399461f4b0a7fa6e110813d51524",
+        "56dc9db22475339090e57bf639217b3dc50e4a951f77daee71958697168f0107",
+        "8ef4f5095756721e3514351944fce3663c95fc6bea6ac7afaf8666d87f754109",
+        "a15e9e95b092a89595b40f95df1edcfced92982c1787c1d391f69c0d3fbd1913",
+        "1674453e04d671431cd10c7b9837b0fb6bc3c77609f25e363d27b998c5abb616"
+      ]
+    }
+  ]
+}

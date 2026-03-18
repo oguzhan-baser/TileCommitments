@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/ob3942/repos/TileCommitments/splitcompute/prover_server.py", line 158, in <module>
+    main()
+  File "/home/ob3942/repos/TileCommitments/splitcompute/prover_server.py", line 150, in main
+    server = ProverHTTPServer((args.host, args.port), ProverHandler, config=config)
+  File "/home/ob3942/repos/TileCommitments/splitcompute/prover_server.py", line 54, in __init__
+    super().__init__(server_address, request_handler_class)
+  File "/home/ob3942/miniconda3/envs/tilecommitments/lib/python3.10/socketserver.py", line 448, in __init__
+    self.socket = socket.socket(self.address_family,
+  File "/home/ob3942/miniconda3/envs/tilecommitments/lib/python3.10/socket.py", line 232, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted
