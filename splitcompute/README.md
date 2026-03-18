@@ -141,6 +141,10 @@ http://<VERIFIER_IP>:8091
 
 Use dropdown + prompt, then click **Query Prover and Verify**.
 
+UI behavior:
+- Uses a Theseus-inspired dark neon visual theme.
+- Shows a full-screen loading animation while verifier waits for prover response.
+
 ---
 
 ## 6) API contract (prover)

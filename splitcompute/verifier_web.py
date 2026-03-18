@@ -68,7 +68,12 @@ def render_page(
         f"<option value='{_escape(m)}' {'selected' if m == selected_model else ''}>{_escape(m)}</option>"
         for m in models
     )
-    message_html = f"<div style='padding:10px;background:#eef;border-radius:8px;margin-bottom:12px'>{_escape(message)}</div>" if message else ""
+    message_kind = "error" if str(message).lower().startswith("error") else "success"
+    message_html = (
+        f"<div class='status {message_kind}'>{_escape(message)}</div>"
+        if message
+        else ""
+    )
 
     results_html = ""
     if verification_payload is not None:
@@ -89,23 +94,29 @@ def render_page(
         generated_text = verification_payload.get("inference_output", {}).get("generated_text", "")
         summary_json = _escape(json.dumps(verification_payload, indent=2))
         results_html = f"""
-        <h3>Verification Result</h3>
-        <p><b>Model:</b> {_escape(verification_payload.get("model_name", ""))}</p>
-        <p><b>All proofs verified:</b> {'✅' if verification['all_verified'] else '❌'}</p>
-        <p><b>Proof count:</b> {verification['num_proofs']}</p>
-        <p><b>Inference output:</b> {_escape(generated_text)}</p>
-        <table border="1" cellpadding="6" cellspacing="0">
-          <thead>
-            <tr><th>Bundle</th><th>Index</th><th>Value</th><th>Proof elems</th><th>Verified</th></tr>
-          </thead>
-          <tbody>
-            {rows_html}
-          </tbody>
-        </table>
-        <details style="margin-top:12px">
-          <summary>Full verification JSON</summary>
-          <pre>{summary_json}</pre>
-        </details>
+        <section class="card">
+          <h3>Verification Result</h3>
+          <div class="kv-grid">
+            <div><span class="k">Model</span><span class="v">{_escape(verification_payload.get("model_name", ""))}</span></div>
+            <div><span class="k">All proofs verified</span><span class="v">{'✅' if verification['all_verified'] else '❌'}</span></div>
+            <div><span class="k">Proof count</span><span class="v">{verification['num_proofs']}</span></div>
+            <div><span class="k">Inference output</span><span class="v">{_escape(generated_text)}</span></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Bundle</th><th>Index</th><th>Value</th><th>Proof elems</th><th>Verified</th></tr>
+              </thead>
+              <tbody>
+                {rows_html}
+              </tbody>
+            </table>
+          </div>
+          <details>
+            <summary>Full verification JSON</summary>
+            <pre>{summary_json}</pre>
+          </details>
+        </section>
         """
 
     return f"""
@@ -114,24 +125,290 @@ def render_page(
   <head>
     <meta charset="utf-8" />
     <title>SplitCompute Verifier UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {{
+        --bg-1: #060a14;
+        --bg-2: #0a1226;
+        --panel: rgba(18, 26, 44, 0.78);
+        --panel-border: rgba(119, 224, 255, 0.25);
+        --text: #e8efff;
+        --muted: #9fb3d9;
+        --accent: #7af4ff;
+        --accent-2: #6bffbc;
+        --danger: #ff6e8d;
+      }}
+      * {{
+        box-sizing: border-box;
+      }}
+      body {{
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(1200px 600px at 0% 0%, rgba(85, 183, 255, 0.22), transparent 60%),
+          radial-gradient(900px 500px at 100% 0%, rgba(120, 255, 197, 0.18), transparent 55%),
+          linear-gradient(180deg, var(--bg-2), var(--bg-1));
+        min-height: 100vh;
+      }}
+      .container {{
+        max-width: 1080px;
+        margin: 28px auto 42px;
+        padding: 0 16px;
+      }}
+      .hero {{
+        margin-bottom: 16px;
+      }}
+      .eyebrow {{
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent-2);
+        margin-bottom: 8px;
+      }}
+      h1 {{
+        margin: 0 0 6px;
+        font-size: clamp(26px, 3.2vw, 38px);
+        line-height: 1.1;
+      }}
+      .subtitle {{
+        margin: 0;
+        color: var(--muted);
+      }}
+      .card {{
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        padding: 16px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+        margin-bottom: 14px;
+      }}
+      .status {{
+        padding: 10px 12px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+        font-size: 14px;
+      }}
+      .status.success {{
+        background: rgba(77, 246, 179, 0.14);
+        border: 1px solid rgba(77, 246, 179, 0.35);
+      }}
+      .status.error {{
+        background: rgba(255, 110, 141, 0.14);
+        border: 1px solid rgba(255, 110, 141, 0.45);
+      }}
+      label {{
+        display: block;
+        font-size: 13px;
+        color: var(--muted);
+        margin: 10px 0 6px;
+      }}
+      select, textarea, input {{
+        width: 100%;
+        background: rgba(10, 17, 31, 0.9);
+        color: var(--text);
+        border: 1px solid rgba(131, 170, 255, 0.28);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 14px;
+        outline: none;
+      }}
+      select:focus, textarea:focus, input:focus {{
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(122, 244, 255, 0.18);
+      }}
+      .grid {{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }}
+      .btn {{
+        margin-top: 14px;
+        border: 0;
+        border-radius: 10px;
+        padding: 11px 16px;
+        background: linear-gradient(90deg, #74f2ff, #78ffcb);
+        color: #051019;
+        font-weight: 700;
+        cursor: pointer;
+      }}
+      .btn:disabled {{
+        opacity: 0.75;
+        cursor: wait;
+      }}
+      .prover-url {{
+        margin-top: 12px;
+        font-size: 13px;
+        color: var(--muted);
+      }}
+      .kv-grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+        margin-bottom: 12px;
+      }}
+      .kv-grid > div {{
+        border: 1px solid rgba(137, 170, 255, 0.22);
+        border-radius: 10px;
+        padding: 10px;
+        background: rgba(13, 21, 37, 0.8);
+      }}
+      .k {{
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }}
+      .v {{
+        display: block;
+        font-size: 14px;
+      }}
+      .table-wrap {{
+        overflow-x: auto;
+      }}
+      table {{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }}
+      th, td {{
+        border-bottom: 1px solid rgba(138, 170, 255, 0.2);
+        padding: 8px 10px;
+        text-align: left;
+        font-size: 13px;
+      }}
+      th {{
+        color: var(--accent);
+      }}
+      details {{
+        margin-top: 12px;
+      }}
+      pre {{
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: rgba(9, 16, 27, 0.92);
+        border: 1px solid rgba(133, 160, 255, 0.22);
+        border-radius: 10px;
+        padding: 10px;
+        max-height: 300px;
+        overflow: auto;
+      }}
+      .loading-overlay {{
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(4, 8, 16, 0.82);
+        backdrop-filter: blur(3px);
+      }}
+      .loading-overlay.hidden {{
+        display: none;
+      }}
+      .loading-card {{
+        width: min(520px, 92vw);
+        background: rgba(12, 19, 33, 0.96);
+        border: 1px solid rgba(122, 244, 255, 0.3);
+        border-radius: 16px;
+        padding: 18px 16px;
+        text-align: center;
+      }}
+      .spinner {{
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        border: 3px solid rgba(122, 244, 255, 0.28);
+        border-top-color: #76f7ff;
+        margin: 6px auto 12px;
+        animation: spin 0.85s linear infinite;
+      }}
+      @keyframes spin {{
+        to {{ transform: rotate(360deg); }}
+      }}
+      .loading-title {{
+        margin: 0 0 6px;
+        font-size: 18px;
+      }}
+      .loading-subtitle {{
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }}
+      @media (max-width: 760px) {{
+        .grid {{
+          grid-template-columns: 1fr;
+        }}
+      }}
+    </style>
   </head>
-  <body style="font-family:Arial,sans-serif;max-width:980px;margin:30px auto;line-height:1.4">
-    <h2>SplitCompute Verifier (Web Interface)</h2>
-    <p><b>Prover URL:</b> {_escape(prover_url)}</p>
-    {message_html}
-    <form method="POST" action="/verify">
-      <label>Model</label><br/>
-      <select name="model_name" style="min-width:420px">{options_html}</select><br/><br/>
-      <label>Prompt</label><br/>
-      <textarea name="prompt" rows="4" cols="110">{_escape(prompt)}</textarea><br/><br/>
-      <label>Max new tokens</label><br/>
-      <input type="number" name="max_new_tokens" value="{max_new_tokens}" min="1" /><br/><br/>
-      <label>Num commitment proofs</label><br/>
-      <input type="number" name="num_queries" value="{num_queries}" min="1" /><br/><br/>
-      <button type="submit">Query Prover and Verify</button>
-    </form>
-    <hr/>
-    {results_html}
+  <body>
+    <div class="loading-overlay hidden" id="loading-overlay">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <h3 class="loading-title">Verifier is waiting for prover results</h3>
+        <p class="loading-subtitle" id="loading-subtitle">
+          Running inference, generating commitment, and validating proofs...
+        </p>
+      </div>
+    </div>
+    <main class="container">
+      <section class="hero">
+        <div class="eyebrow">Multivariate Commitment/Verification Protocol</div>
+        <h1>Verifier Portal</h1>
+        <p class="subtitle">TensorCommitments for Theseus Agents.</p>
+      </section>
+      <section class="card">
+        {message_html}
+        <form method="POST" action="/verify" id="verify-form">
+          <label>Model</label>
+          <select name="model_name">{options_html}</select>
+          <label>Prompt</label>
+          <textarea name="prompt" rows="5">{_escape(prompt)}</textarea>
+          <div class="grid">
+            <div>
+              <label>Max new tokens</label>
+              <input type="number" name="max_new_tokens" value="{max_new_tokens}" min="1" />
+            </div>
+            <div>
+              <label>Num commitment proofs</label>
+              <input type="number" name="num_queries" value="{num_queries}" min="1" />
+            </div>
+          </div>
+          <button type="submit" class="btn" id="submit-btn">Query Prover and Verify</button>
+          <p class="prover-url"><b>Prover URL:</b> {_escape(prover_url)}</p>
+        </form>
+      </section>
+      {results_html}
+    </main>
+    <script>
+      (function() {{
+        const form = document.getElementById('verify-form');
+        const overlay = document.getElementById('loading-overlay');
+        const submitBtn = document.getElementById('submit-btn');
+        const subtitle = document.getElementById('loading-subtitle');
+        const frames = [
+          'Running inference, generating commitment, and validating proofs',
+          'Still working — proving and verification may take a while for larger models',
+          'Finalizing cryptographic checks and preparing response'
+        ];
+        let ticker = null;
+        form.addEventListener('submit', function() {{
+          overlay.classList.remove('hidden');
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting...';
+          let idx = 0;
+          ticker = setInterval(function() {{
+            idx = (idx + 1) % frames.length;
+            subtitle.textContent = frames[idx];
+          }}, 1800);
+        }});
+        window.addEventListener('pageshow', function() {{
+          if (ticker) clearInterval(ticker);
+        }});
+      }})();
+    </script>
   </body>
 </html>
 """
@@ -248,4 +525,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
