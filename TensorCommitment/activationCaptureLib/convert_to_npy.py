@@ -218,6 +218,18 @@ def main() -> None:
             flush=True,
         )
 
+        non_finite_mask = ~torch.isfinite(tensor)
+        if bool(non_finite_mask.any().item()):
+            non_finite_count = int(non_finite_mask.sum().item())
+            first_bad = torch.nonzero(non_finite_mask, as_tuple=False)[0].tolist()
+            first_bad_value = float(tensor[tuple(first_bad)].item())
+            sys.exit(
+                "[ERROR] Non-finite activation detected before integer conversion: "
+                f"layer={label} count={non_finite_count} first_index={first_bad} "
+                f"first_value={first_bad_value}. "
+                "Commitment requires finite activations; re-run capture with a more stable dtype (prefer bfloat16)."
+            )
+
         t0 = time.time()
         int_array = convert_tensor_to_scaled_int(tensor, effective_scale)
         elapsed = time.time() - t0

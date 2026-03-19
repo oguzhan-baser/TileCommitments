@@ -23,6 +23,10 @@
     {
       "id": "openai/gpt-oss-120b",
       "params_b": 120.0
+    },
+    {
+      "id": "Qwen/Qwen3-235B-A22B-Thinking-2507-FP8",
+      "params_b": 235.0
     }
   ]
 }

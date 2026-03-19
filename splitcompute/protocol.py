@@ -7,9 +7,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
-from urllib import error
-from urllib import request
+from urllib.parse import urljoin
 
+import requests
 import torch
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -273,7 +273,6 @@ def run_prover_pipeline(
 
 
 def post_json(url: str, payload: Dict[str, Any], timeout_s: int = 3600) -> Dict[str, Any]:
-    body = json.dumps(payload).encode("utf-8")
     minimal_payload = None
     if isinstance(payload, dict) and "model_name" in payload and "prompt" in payload:
         minimal_payload = {
@@ -281,74 +280,103 @@ def post_json(url: str, payload: Dict[str, Any], timeout_s: int = 3600) -> Dict[
             "prompt": payload["prompt"],
         }
 
-    def _do_post(target_url: str) -> Dict[str, Any]:
-        req_payload = body
-        req = request.Request(
-            target_url,
-            data=req_payload,
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        with request.urlopen(req, timeout=timeout_s) as resp:
-            raw = resp.read().decode("utf-8")
-        return json.loads(raw)
-
-    def _do_post_payload(target_url: str, req_payload: Dict[str, Any]) -> Dict[str, Any]:
-        req = request.Request(
-            target_url,
-            data=json.dumps(req_payload).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        with request.urlopen(req, timeout=timeout_s) as resp:
-            raw = resp.read().decode("utf-8")
-        return json.loads(raw)
-
-    try:
-        return _do_post(url)
-    except error.HTTPError as exc:
-        if exc.code == 422 and minimal_payload is not None:
-            try:
-                return _do_post_payload(url, minimal_payload)
-            except Exception:  # noqa: BLE001
-                pass
-        if exc.code in (404, 405) and url.endswith("/prove"):
-            base_url = url[: -len("/prove")]
-            try:
-                return _do_post(base_url)
-            except Exception:  # noqa: BLE001
-                pass
-            if minimal_payload is not None:
-                try:
-                    return _do_post_payload(base_url, minimal_payload)
-                except Exception:  # noqa: BLE001
-                    pass
-        response_body = ""
+    def _request_post_response(target_url: str, req_payload: Dict[str, Any]) -> requests.Response:
         try:
-            response_body = exc.read().decode("utf-8", errors="replace").strip()
-        except Exception:  # noqa: BLE001
-            response_body = ""
-        details = response_body[:400] if response_body else "<empty>"
-        hint = ""
-        if "modal.com/apps/" in url:
-            hint = (
-                " Hint: this looks like a Modal dashboard URL. Use the deployed `.modal.run` prover endpoint."
+            response = requests.post(
+                target_url,
+                json=req_payload,
+                timeout=timeout_s,
+                allow_redirects=False,
             )
-        elif ".modal.run" in url and exc.code in (404, 405):
-            hint = (
-                " Hint: verify this is the deployed `prover_api` URL from `modal deploy` (not a temporary `-dev.modal.run` URL)."
-            )
-        raise RuntimeError(
-            f"HTTP {exc.code} while POST {url}: {exc.reason}. Response body: {details}.{hint}"
-        ) from exc
-    except error.URLError as exc:
-        raise RuntimeError(f"Network error while POST {url}: {exc.reason}") from exc
+        except requests.RequestException as exc:
+            raise RuntimeError(f"Network error while POST {target_url}: {exc}") from exc
+
+        if response.status_code == 303:
+            location = response.headers.get("Location", "").strip()
+            if not location:
+                return response
+            follow_url = urljoin(target_url, location)
+            # Modal can return 303 to a result URL; follow manually to avoid redirect loops on POST.
+            for _ in range(10):
+                try:
+                    follow = requests.get(
+                        follow_url,
+                        timeout=timeout_s,
+                        allow_redirects=False,
+                    )
+                except requests.RequestException as exc:
+                    raise RuntimeError(f"Network error while GET {follow_url}: {exc}") from exc
+                if follow.status_code in (301, 302, 303, 307, 308):
+                    next_location = follow.headers.get("Location", "").strip()
+                    if not next_location:
+                        return follow
+                    follow_url = urljoin(follow_url, next_location)
+                    continue
+                return follow
+            raise RuntimeError(f"HTTP 303 redirect loop while POST {target_url}")
+
+        return response
+
+    def _decode_json(response: requests.Response, source_url: str) -> Dict[str, Any]:
+        try:
+            return response.json()
+        except ValueError as exc:
+            details = response.text[:400].strip().replace("\n", " ")
+            raise RuntimeError(
+                f"Expected JSON response from {source_url}, got HTTP {response.status_code}: {details}"
+            ) from exc
+
+    response = _request_post_response(url, payload)
+
+    if response.status_code == 422 and minimal_payload is not None:
+        retry_response = _request_post_response(url, minimal_payload)
+        if 200 <= retry_response.status_code < 300:
+            return _decode_json(retry_response, url)
+
+    if response.status_code in (404, 405) and url.endswith("/prove"):
+        base_url = url[: -len("/prove")]
+        retry_response = _request_post_response(base_url, payload)
+        if 200 <= retry_response.status_code < 300:
+            return _decode_json(retry_response, base_url)
+        if minimal_payload is not None:
+            retry_min_response = _request_post_response(base_url, minimal_payload)
+            if 200 <= retry_min_response.status_code < 300:
+                return _decode_json(retry_min_response, base_url)
+
+    if 200 <= response.status_code < 300:
+        return _decode_json(response, url)
+
+    details = response.text[:400].strip().replace("\n", " ")
+    hint = ""
+    if "modal.com/apps/" in url:
+        hint = " Hint: this looks like a Modal dashboard URL. Use the deployed `.modal.run` prover endpoint."
+    elif ".modal.run" in url and response.status_code in (303, 404, 405):
+        hint = (
+            " Hint: verify this is the deployed `prover_api` URL from `modal deploy` "
+            "(not a temporary `-dev.modal.run` URL)."
+        )
+    raise RuntimeError(
+        f"HTTP {response.status_code} while POST {url}: {response.reason}. "
+        f"Response body: {details if details else '<empty>'}.{hint}"
+    )
 
 
 def get_json(url: str, timeout_s: int = 30) -> Dict[str, Any]:
-    with request.urlopen(url, timeout=timeout_s) as resp:
-        raw = resp.read().decode("utf-8")
-    return json.loads(raw)
+    try:
+        response = requests.get(url, timeout=timeout_s, allow_redirects=True)
+    except requests.RequestException as exc:
+        raise RuntimeError(f"Network error while GET {url}: {exc}") from exc
+    if not (200 <= response.status_code < 300):
+        details = response.text[:400].strip().replace("\n", " ")
+        raise RuntimeError(
+            f"HTTP {response.status_code} while GET {url}: {response.reason}. "
+            f"Response body: {details if details else '<empty>'}"
+        )
+    try:
+        return response.json()
+    except ValueError as exc:
+        details = response.text[:400].strip().replace("\n", " ")
+        raise RuntimeError(f"Expected JSON response from {url}: {details}") from exc
 
 
 def verify_proof_bundles(proof_bundles: List[Dict[str, Any]]) -> Dict[str, Any]:

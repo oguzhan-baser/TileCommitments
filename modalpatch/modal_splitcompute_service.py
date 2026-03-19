@@ -207,6 +207,24 @@ def _extract_inference_output(activations_pt: Path) -> Dict[str, Any]:
     }
 
 
+def _count_non_finite_layers(stats_json_path: Path) -> int:
+    if not stats_json_path.is_file():
+        return 0
+    with stats_json_path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    layer_stats = payload.get("layer_stats", [])
+    non_finite = 0
+    for row in layer_stats:
+        values = [row.get("min"), row.get("max"), row.get("mean")]
+        try:
+            finite = all(math.isfinite(float(v)) for v in values)
+        except (TypeError, ValueError):
+            finite = False
+        if not finite:
+            non_finite += 1
+    return non_finite
+
+
 def _proof_bundles_from_proofs_json(proofs_payload: Dict[str, Any]) -> List[Dict[str, Any]]:
     commitment_hex = str(proofs_payload["commitment_hex"])
     num_variables = int(proofs_payload["num_variables"])
@@ -236,6 +254,26 @@ def _ensure_model_allowed(model_name: str) -> None:
         )
 
 
+def _build_capture_attempts(model_name: str, params_b: float) -> List[List[str]]:
+    model_name_lower = model_name.lower()
+
+    if model_name_lower == "openai/gpt-oss-120b":
+        return [
+            ["--dtype", "bfloat16", "--mxfp4-mode", "dequantize"],
+            ["--dtype", "float16", "--mxfp4-mode", "dequantize"],
+        ]
+
+    # Large FP8 checkpoints and very large models are numerically fragile in fp16.
+    # Prefer bf16 first, then fall back to fp16 for compatibility.
+    if "fp8" in model_name_lower or params_b >= 100.0:
+        return [
+            ["--dtype", "bfloat16"],
+            ["--dtype", "float16"],
+        ]
+
+    return [[]]
+
+
 def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, Any]:
     _ensure_model_allowed(str(payload["model_name"]))
     run_id = str(payload["run_id"])
@@ -244,10 +282,14 @@ def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, A
     max_new_tokens = int(payload["max_new_tokens"])
     seed = int(payload["seed"])
     selected_gpu_count = int(payload.get("selected_gpu_count", 1))
+    params_b = float(payload.get("params_b", MODEL_PARAM_TABLE[model_name]))
 
     run_dir = ARTIFACT_DIR / run_id
     capture_dir = run_dir / "capture"
     capture_dir.mkdir(parents=True, exist_ok=True)
+    safe = _sanitize_model_name(model_name)
+    activations_pt = capture_dir / f"{safe}_activations.pt"
+    stats_json = capture_dir / f"{safe}_stats.json"
 
     capture_cmd = [
         sys.executable,
@@ -281,36 +323,32 @@ def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, A
         )
 
     env_overrides = {"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"}
-    capture_attempts: List[List[str]]
+    capture_attempts = _build_capture_attempts(model_name, params_b)
     if model_name.lower() == "openai/gpt-oss-120b":
         env_overrides["CUDA_LAUNCH_BLOCKING"] = "1"
-        capture_attempts = [
-            ["--dtype", "bfloat16", "--mxfp4-mode", "dequantize"],
-            ["--dtype", "float16", "--mxfp4-mode", "dequantize"],
-        ]
-    else:
-        capture_attempts = [[]]
-
-    last_capture_error: subprocess.CalledProcessError | None = None
+    last_capture_error: Exception | None = None
+    non_finite_layers = 0
     for attempt_idx, attempt_args in enumerate(capture_attempts, start=1):
         cmd = [*capture_cmd, *attempt_args, *sharding_args]
         try:
             _run_cmd(cmd, env_overrides=env_overrides)
+            non_finite_layers = _count_non_finite_layers(stats_json)
+            if non_finite_layers > 0:
+                raise RuntimeError(
+                    "Activation capture produced non-finite values "
+                    f"for {model_name}: non_finite_layers={non_finite_layers}."
+                )
             last_capture_error = None
             break
-        except subprocess.CalledProcessError as exc:
+        except Exception as exc:  # noqa: BLE001
             last_capture_error = exc
-            if len(capture_attempts) > 1:
-                print(
-                    f"[WARN] Capture attempt {attempt_idx}/{len(capture_attempts)} failed "
-                    f"for {model_name} (return code={exc.returncode})."
-                )
+            if len(capture_attempts) > 1 or non_finite_layers > 0:
+                print(f"[WARN] Capture attempt {attempt_idx}/{len(capture_attempts)} failed for {model_name}.")
+                print(f"[WARN] attempt_args={attempt_args}  reason={type(exc).__name__}: {exc}")
 
     if last_capture_error is not None:
         raise last_capture_error
 
-    safe = _sanitize_model_name(model_name)
-    activations_pt = capture_dir / f"{safe}_activations.pt"
     if not activations_pt.is_file():
         raise FileNotFoundError(f"Expected activation artifact missing: {activations_pt}")
     _commit_volume_if_supported(ARTIFACT_VOL, "artifacts")
@@ -325,6 +363,7 @@ def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, A
         "selected_gpu_count": selected_gpu_count,
         "capture_dir": str(capture_dir),
         "activations_pt": str(activations_pt),
+        "non_finite_layers": non_finite_layers,
         "inference_output": inference_output,
     }
 
@@ -340,6 +379,7 @@ def _cpu_commit_prove_impl(payload: Dict[str, Any]) -> Dict[str, Any]:
     params_b = float(payload["params_b"])
     estimated_required_vram_gb = float(payload["estimated_required_vram_gb"])
     activations_pt = Path(str(payload["activations_pt"]))
+    stats_json = activations_pt.parent / f"{_sanitize_model_name(model_name)}_stats.json"
 
     num_queries = int(payload["num_queries"])
     seed = int(payload["seed"])
@@ -355,6 +395,14 @@ def _cpu_commit_prove_impl(payload: Dict[str, Any]) -> Dict[str, Any]:
     poly_dir = run_dir / "polynomial"
     commitment_dir = run_dir / "commitment"
     run_dir.mkdir(parents=True, exist_ok=True)
+
+    non_finite_layers = _count_non_finite_layers(stats_json)
+    if non_finite_layers > 0:
+        raise ValueError(
+            "Captured activations contain non-finite values and cannot be committed. "
+            f"model={model_name} non_finite_layers={non_finite_layers} stats={stats_json}. "
+            "Please re-run capture with a more stable dtype (prefer bfloat16 for large/FP8 models)."
+        )
 
     _run_cmd(
         [
@@ -696,6 +744,71 @@ def run_gpu_capture_h100_3(payload: Dict[str, Any]) -> Dict[str, Any]:
     return _gpu_capture_impl(payload, "H100")
 
 
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
+    gpu="H100:4",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_h100_4(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "H100")
+
+
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
+    gpu="H100:5",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_h100_5(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "H100")
+
+
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
+    gpu="H100:6",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_h100_6(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "H100")
+
+
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
+    gpu="H100:7",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_h100_7(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "H100")
+
+
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
+    gpu="H100:8",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_h100_8(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "H100")
+
+
 GPU_TO_CAPTURE_FN = {
     "T4": run_gpu_capture_t4,
     "L4": run_gpu_capture_l4,
@@ -713,6 +826,11 @@ GPU_TO_CAPTURE_FN_WITH_COUNT = {
     ("H100", 1): run_gpu_capture_h100,
     ("H100", 2): run_gpu_capture_h100_2,
     ("H100", 3): run_gpu_capture_h100_3,
+    ("H100", 4): run_gpu_capture_h100_4,
+    ("H100", 5): run_gpu_capture_h100_5,
+    ("H100", 6): run_gpu_capture_h100_6,
+    ("H100", 7): run_gpu_capture_h100_7,
+    ("H100", 8): run_gpu_capture_h100_8,
 }
 
 
