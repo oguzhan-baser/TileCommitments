@@ -118,6 +118,12 @@ def parse_args() -> argparse.Namespace:
         help="CPU RAM budget (e.g. 128GiB) used with device-map max_memory.",
     )
     p.add_argument(
+        "--offload-folder",
+        type=str,
+        default=None,
+        help="Disk folder used by Transformers when device_map triggers disk offload.",
+    )
+    p.add_argument(
         "--mxfp4-mode",
         type=str,
         choices=["auto", "native", "dequantize"],
@@ -341,6 +347,7 @@ def load_model_and_tokenizer(
     dtype: torch.dtype,
     device_map: str | None = None,
     max_memory: Dict[int | str, str] | None = None,
+    offload_folder: str | None = None,
     mxfp4_mode: str = "auto",
 ) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
     """Download / load a causal LM and its tokenizer from Hugging Face."""
@@ -349,6 +356,9 @@ def load_model_and_tokenizer(
         load_kwargs["device_map"] = device_map
     if max_memory is not None:
         load_kwargs["max_memory"] = max_memory
+    if offload_folder is not None:
+        Path(offload_folder).mkdir(parents=True, exist_ok=True)
+        load_kwargs["offload_folder"] = offload_folder
     quant_cfg_cache: Dict[bool, Dict[str, object] | None] = {}
 
     def _load_quant_cfg(trust_remote_code: bool) -> Dict[str, object] | None:
@@ -664,10 +674,15 @@ def process_model(
     max_memory: Dict[int | str, str] | None = None,
 ) -> Dict[str, object] | None:
     """End-to-end pipeline for a single model. Returns a report dict or None on failure."""
+    model_offload_folder: str | None = None
+    if args.offload_folder:
+        model_offload_folder = str((Path(args.offload_folder) / sanitize_model_name(model_name)).resolve())
+
     def _run_once(
         effective_mxfp4_mode: str,
         effective_device_map: str | None,
         effective_max_memory: Dict[int | str, str] | None,
+        effective_offload_folder: str | None,
     ) -> Dict[str, object]:
         model: AutoModelForCausalLM | None = None
         tokenizer: AutoTokenizer | None = None
@@ -684,6 +699,7 @@ def process_model(
                 dtype,
                 device_map=effective_device_map,
                 max_memory=effective_max_memory,
+                offload_folder=effective_offload_folder,
                 mxfp4_mode=effective_mxfp4_mode,
             )
 
@@ -734,7 +750,7 @@ def process_model(
                 torch.cuda.empty_cache()
 
     try:
-        return _run_once(args.mxfp4_mode, device_map, max_memory)
+        return _run_once(args.mxfp4_mode, device_map, max_memory, model_offload_folder)
     except Exception as exc:  # noqa: BLE001
         should_retry_dequantized = args.mxfp4_mode != "dequantize" and is_mxfp4_arch_error(exc)
         if should_retry_dequantized:
@@ -743,7 +759,7 @@ def process_model(
                 "retrying with --mxfp4-mode=dequantize"
             )
             try:
-                return _run_once("dequantize", device_map, max_memory)
+                return _run_once("dequantize", device_map, max_memory, model_offload_folder)
             except Exception as retry_exc:  # noqa: BLE001
                 print(f"[ERROR] {model_name}: {retry_exc}")
                 return None
@@ -762,7 +778,7 @@ def process_model(
                 f"and device_map={retry_device_map}. max_memory={shrunk_max_memory}"
             )
             try:
-                return _run_once(args.mxfp4_mode, retry_device_map, shrunk_max_memory)
+                return _run_once(args.mxfp4_mode, retry_device_map, shrunk_max_memory, model_offload_folder)
             except Exception as retry_exc:  # noqa: BLE001
                 print(f"[ERROR] {model_name}: {retry_exc}")
                 return None
@@ -798,6 +814,8 @@ def main() -> None:
         if device_map is not None:
             print("[WARN] --device-map ignored because --device is not CUDA")
         device_map = None
+    if device_map is None and args.offload_folder is not None:
+        print("[WARN] --offload-folder is ignored because --device-map is none")
     max_memory = build_max_memory_map(device, args.max_memory_per_gpu, args.max_memory_cpu)
     output_dir = Path(args.output_dir)
 

@@ -3,10 +3,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Any, Dict
 
 import requests
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from splitcompute.protocol import verify_prover_response
 
@@ -33,11 +38,81 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def normalize_prover_base_url(url: str) -> str:
+    base_url = url.strip().rstrip("/")
+    if not base_url:
+        raise ValueError("--prover-url cannot be empty")
+    if "modal.com/apps/" in base_url and ".modal.run" not in base_url:
+        raise ValueError(
+            "You passed a Modal dashboard URL. Use the deployed web endpoint URL ending in '.modal.run'."
+        )
+    if base_url.endswith("/prove"):
+        base_url = base_url[: -len("/prove")]
+    return base_url
+
+
+def post_prove_request(base_url: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+    candidate_endpoints = [base_url + "/prove", base_url]
+    attempts: list[tuple[str, int, str]] = []
+    minimal_payload = {
+        "model_name": payload["model_name"],
+        "prompt": payload["prompt"],
+    }
+
+    for endpoint in candidate_endpoints:
+        response = requests.post(endpoint, json=payload, timeout=7200, allow_redirects=True)
+        status = int(response.status_code)
+        body_head = response.text[:200].replace("\n", " ").strip()
+        attempts.append((endpoint, status, body_head))
+        if 200 <= status < 300:
+            return response.json()
+        if status == 422:
+            fallback_response = requests.post(
+                endpoint,
+                json=minimal_payload,
+                timeout=7200,
+                allow_redirects=True,
+            )
+            fallback_status = int(fallback_response.status_code)
+            fallback_body_head = fallback_response.text[:200].replace("\n", " ").strip()
+            attempts.append((f"{endpoint} [minimal_payload]", fallback_status, fallback_body_head))
+            if 200 <= fallback_status < 300:
+                return fallback_response.json()
+        if status not in (404, 405):
+            details = response.text[:800].strip().replace("\n", " ")
+            raise RuntimeError(
+                f"POST {endpoint} failed with HTTP {status}. Response: {details}"
+            )
+
+    health_status = None
+    models_status = None
+    try:
+        health_status = requests.get(base_url + "/health", timeout=20, allow_redirects=True).status_code
+    except requests.RequestException:
+        health_status = None
+    try:
+        models_status = requests.get(base_url + "/models", timeout=20, allow_redirects=True).status_code
+    except requests.RequestException:
+        models_status = None
+
+    attempt_lines = "\n".join(
+        f"  - POST {endpoint} -> {status} ({body_head})" for endpoint, status, body_head in attempts
+    )
+    raise RuntimeError(
+        "Prover endpoint did not accept the request.\n"
+        f"{attempt_lines}\n"
+        f"  - GET {base_url}/health -> {health_status}\n"
+        f"  - GET {base_url}/models -> {models_status}\n\n"
+        "If you are using Modal, run `modal deploy modalpatch/modal_splitcompute_service.py` and copy the "
+        "deployed `prover_api` URL (`...modal.run`). URLs from `modal run` / `-dev.modal.run` are temporary."
+    )
+
+
 def main() -> None:
     args = parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    endpoint = args.prover_url.rstrip("/") + "/prove"
+    base_url = normalize_prover_base_url(args.prover_url)
     payload: Dict[str, Any] = {
         "model_name": args.model_name,
         "prompt": args.prompt,
@@ -51,9 +126,7 @@ def main() -> None:
         "skip_interp_build": True,
     }
 
-    response = requests.post(endpoint, json=payload, timeout=7200)
-    response.raise_for_status()
-    prover_response = response.json()
+    prover_response = post_prove_request(base_url, payload)
 
     verification = verify_prover_response(prover_response)
     run_id = str(prover_response.get("run_id", "unknown"))
@@ -79,4 +152,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

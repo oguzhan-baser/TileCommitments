@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 import re
 import subprocess
@@ -64,7 +65,24 @@ def _load_model_catalog(path: Path) -> Dict[str, float]:
     return table
 
 
-MODEL_PARAM_TABLE = _load_model_catalog(MODEL_CATALOG_PATH)
+def _resolve_model_catalog_path() -> Path:
+    candidates = [
+        MODEL_CATALOG_PATH,
+        Path(__file__).resolve().with_name("model_catalog.json"),
+        Path("/root/model_catalog.json"),
+        Path("/root/modalpatch/model_catalog.json"),
+        REMOTE_MODALPATCH_DIR / "model_catalog.json",
+    ]
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate
+    raise FileNotFoundError(
+        "Could not find model_catalog.json. Tried: "
+        + ", ".join(str(path) for path in candidates)
+    )
+
+
+MODEL_PARAM_TABLE = _load_model_catalog(_resolve_model_catalog_path())
 
 
 def _extract_params_b_from_name(model_name: str) -> float | None:
@@ -126,17 +144,31 @@ def select_gpu_for_model(model_name: str) -> Dict[str, Any]:
         if GPU_MEMORY_GB[gpu_name] >= required_vram:
             selected = gpu_name
             break
+    # Rule-of-thumb sizing for multi-GPU placement:
+    # model params in billions * 2 bytes ~= total model memory in GiB.
+    # Example: 120B -> 240GiB -> 3x 80GiB GPUs.
+    rule_of_thumb_memory_gb = params_b * 2.0
+    selected_gpu_count = max(1, math.ceil(rule_of_thumb_memory_gb / GPU_MEMORY_GB[selected]))
     return {
         "model_name": model_name,
         "params_b": params_b,
         "estimated_required_vram_gb": required_vram,
+        "rule_of_thumb_memory_gb": rule_of_thumb_memory_gb,
         "selected_gpu": selected,
         "selected_gpu_memory_gb": GPU_MEMORY_GB[selected],
+        "selected_gpu_count": selected_gpu_count,
     }
 
 
-def _run_cmd(args: List[str], cwd: Path = REMOTE_REPO_ROOT) -> None:
-    subprocess.run(args, cwd=str(cwd), check=True)
+def _run_cmd(
+    args: List[str],
+    cwd: Path = REMOTE_REPO_ROOT,
+    env_overrides: Dict[str, str] | None = None,
+) -> None:
+    env = os.environ.copy()
+    if env_overrides:
+        env.update(env_overrides)
+    subprocess.run(args, cwd=str(cwd), check=True, env=env)
 
 
 def _extract_inference_output(activations_pt: Path) -> Dict[str, Any]:
@@ -189,26 +221,44 @@ def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, A
     prompt = str(payload["prompt"])
     max_new_tokens = int(payload["max_new_tokens"])
     seed = int(payload["seed"])
+    selected_gpu_count = int(payload.get("selected_gpu_count", 1))
 
     run_dir = ARTIFACT_DIR / run_id
     capture_dir = run_dir / "capture"
     capture_dir.mkdir(parents=True, exist_ok=True)
 
+    capture_cmd = [
+        sys.executable,
+        str(REMOTE_CAPTURE_SCRIPT),
+        "--models",
+        model_name,
+        "--prompt",
+        prompt,
+        "--max-new-tokens",
+        str(max_new_tokens),
+        "--output-dir",
+        str(capture_dir),
+        "--seed",
+        str(seed),
+    ]
+    if selected_gpu_count > 1:
+        per_gpu_mib = int(GPU_MEMORY_GB[selected_gpu] * 1024 * 85 // 100)
+        offload_dir = run_dir / "offload"
+        offload_dir.mkdir(parents=True, exist_ok=True)
+        capture_cmd.extend(
+            [
+                "--device-map",
+                "auto",
+                "--max-memory-per-gpu",
+                f"{per_gpu_mib}MiB",
+                "--offload-folder",
+                str(offload_dir),
+            ]
+        )
+
     _run_cmd(
-        [
-            sys.executable,
-            str(REMOTE_CAPTURE_SCRIPT),
-            "--models",
-            model_name,
-            "--prompt",
-            prompt,
-            "--max-new-tokens",
-            str(max_new_tokens),
-            "--output-dir",
-            str(capture_dir),
-            "--seed",
-            str(seed),
-        ]
+        capture_cmd,
+        env_overrides={"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"},
     )
 
     safe = _sanitize_model_name(model_name)
@@ -222,6 +272,7 @@ def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, A
         "model_name": model_name,
         "prompt": prompt,
         "selected_gpu": selected_gpu,
+        "selected_gpu_count": selected_gpu_count,
         "capture_dir": str(capture_dir),
         "activations_pt": str(activations_pt),
         "inference_output": inference_output,
@@ -352,8 +403,10 @@ def _cpu_commit_prove_impl(payload: Dict[str, Any]) -> Dict[str, Any]:
         },
         "modal_dispatch": {
             "selected_gpu": selected_gpu,
+            "selected_gpu_count": int(payload.get("selected_gpu_count", 1)),
             "params_b": params_b,
             "estimated_required_vram_gb": estimated_required_vram_gb,
+            "rule_of_thumb_memory_gb": float(payload.get("rule_of_thumb_memory_gb", 0.0)),
         },
         "artifact_paths_on_prover": {
             "run_dir": str(run_dir),
@@ -418,6 +471,11 @@ IMAGE = (
         copy=True,
         ignore=["**/__pycache__", "output"],
     )
+    .add_local_file(
+        str(REPO_ROOT / "modalpatch" / "model_catalog.json"),
+        remote_path="/root/model_catalog.json",
+        copy=True,
+    )
     .run_commands(
         "cd /root/TileCommitments/TensorCommitment/pst_commitment_lib && maturin build --features python --release",
         "pip install /root/TileCommitments/TensorCommitment/pst_commitment_lib/target/wheels/*.whl",
@@ -427,6 +485,9 @@ IMAGE = (
 
 
 APP = modal.App(APP_NAME, image=IMAGE)
+# Modal CLI expects a module-level `app` by default for `modal deploy <file.py>`.
+# Keep uppercase alias for internal readability.
+app = APP
 
 SHARED_MOUNTS = {
     str(HF_CACHE_DIR): HF_CACHE_VOL,
@@ -530,6 +591,32 @@ def run_gpu_capture_h100(payload: Dict[str, Any]) -> Dict[str, Any]:
     return _gpu_capture_impl(payload, "H100")
 
 
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
+    gpu="H100:2",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_h100_2(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "H100")
+
+
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
+    gpu="H100:3",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_h100_3(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "H100")
+
+
 GPU_TO_CAPTURE_FN = {
     "T4": run_gpu_capture_t4,
     "L4": run_gpu_capture_l4,
@@ -538,6 +625,12 @@ GPU_TO_CAPTURE_FN = {
     "A100-40GB": run_gpu_capture_a100_40,
     "A100-80GB": run_gpu_capture_a100_80,
     "H100": run_gpu_capture_h100,
+}
+
+GPU_TO_CAPTURE_FN_WITH_COUNT = {
+    ("H100", 1): run_gpu_capture_h100,
+    ("H100", 2): run_gpu_capture_h100_2,
+    ("H100", 3): run_gpu_capture_h100_3,
 }
 
 
@@ -574,21 +667,8 @@ def warm_models(models: str = "") -> None:
 @modal.asgi_app()
 def prover_api():
     from fastapi import FastAPI, HTTPException
-    from pydantic import BaseModel, Field
 
     web_app = FastAPI(title="TileCommitments SplitCompute Prover (Modal)")
-
-    class ProveRequest(BaseModel):
-        model_name: str = Field(..., min_length=1)
-        prompt: str = Field(..., min_length=1)
-        max_new_tokens: int = 16
-        num_queries: int = 10
-        seed: int = 42
-        scale_factor: int = 16
-        quantize: float = 50.0
-        min_dim: int = 4
-        max_dim: int = 10
-        skip_interp_build: bool = True
 
     @web_app.get("/health")
     def health() -> Dict[str, Any]:
@@ -608,33 +688,52 @@ def prover_api():
                     "id": model_id,
                     "params_b": policy["params_b"],
                     "estimated_required_vram_gb": round(policy["estimated_required_vram_gb"], 3),
+                    "rule_of_thumb_memory_gb": round(policy.get("rule_of_thumb_memory_gb", 0.0), 3),
                     "selected_gpu": policy["selected_gpu"],
+                    "selected_gpu_count": int(policy.get("selected_gpu_count", 1)),
                 }
             )
         return {"models": [row["id"] for row in rows], "catalog": rows}
 
     @web_app.post("/prove")
-    def prove(req: ProveRequest) -> Dict[str, Any]:
+    def prove(req: Dict[str, Any]) -> Dict[str, Any]:
         try:
-            _ensure_model_allowed(req.model_name)
-            policy = select_gpu_for_model(req.model_name)
+            model_name = str(req.get("model_name", "")).strip()
+            prompt = str(req.get("prompt", "")).strip()
+            if not model_name:
+                raise HTTPException(status_code=422, detail="model_name is required")
+            if not prompt:
+                raise HTTPException(status_code=422, detail="prompt is required")
+
+            _ensure_model_allowed(model_name)
+            policy = select_gpu_for_model(model_name)
             selected_gpu = policy["selected_gpu"]
-            capture_fn = GPU_TO_CAPTURE_FN[selected_gpu]
-            run_id = f"run_{_utc_tag()}_{_sanitize_model_name(req.model_name)}"
+            selected_gpu_count = int(policy.get("selected_gpu_count", 1))
+            if selected_gpu_count == 1:
+                capture_fn = GPU_TO_CAPTURE_FN[selected_gpu]
+            else:
+                capture_fn = GPU_TO_CAPTURE_FN_WITH_COUNT.get((selected_gpu, selected_gpu_count))
+                if capture_fn is None:
+                    raise ValueError(
+                        f"No capture function configured for {selected_gpu} with count={selected_gpu_count}"
+                    )
+            run_id = f"run_{_utc_tag()}_{_sanitize_model_name(model_name)}"
             shared_payload = {
                 "run_id": run_id,
-                "model_name": req.model_name,
-                "prompt": req.prompt,
-                "max_new_tokens": int(req.max_new_tokens),
-                "num_queries": int(req.num_queries),
-                "seed": int(req.seed),
-                "scale_factor": int(req.scale_factor),
-                "quantize": float(req.quantize),
-                "min_dim": int(req.min_dim),
-                "max_dim": int(req.max_dim),
-                "skip_interp_build": bool(req.skip_interp_build),
+                "model_name": model_name,
+                "prompt": prompt,
+                "max_new_tokens": int(req.get("max_new_tokens", 16)),
+                "num_queries": int(req.get("num_queries", 10)),
+                "seed": int(req.get("seed", 42)),
+                "scale_factor": int(req.get("scale_factor", 16)),
+                "quantize": float(req.get("quantize", 50.0)),
+                "min_dim": int(req.get("min_dim", 4)),
+                "max_dim": int(req.get("max_dim", 10)),
+                "skip_interp_build": bool(req.get("skip_interp_build", True)),
                 "params_b": float(policy["params_b"]),
                 "estimated_required_vram_gb": float(policy["estimated_required_vram_gb"]),
+                "rule_of_thumb_memory_gb": float(policy.get("rule_of_thumb_memory_gb", 0.0)),
+                "selected_gpu_count": selected_gpu_count,
             }
             capture_out = capture_fn.remote(shared_payload)
             stage2_in = dict(shared_payload)
@@ -645,4 +744,3 @@ def prover_api():
             raise HTTPException(status_code=400, detail=str(exc))
 
     return web_app
-

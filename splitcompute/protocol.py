@@ -7,6 +7,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
+from urllib import error
 from urllib import request
 
 import torch
@@ -273,15 +274,75 @@ def run_prover_pipeline(
 
 def post_json(url: str, payload: Dict[str, Any], timeout_s: int = 3600) -> Dict[str, Any]:
     body = json.dumps(payload).encode("utf-8")
-    req = request.Request(
-        url,
-        data=body,
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-    with request.urlopen(req, timeout=timeout_s) as resp:
-        raw = resp.read().decode("utf-8")
-    return json.loads(raw)
+    minimal_payload = None
+    if isinstance(payload, dict) and "model_name" in payload and "prompt" in payload:
+        minimal_payload = {
+            "model_name": payload["model_name"],
+            "prompt": payload["prompt"],
+        }
+
+    def _do_post(target_url: str) -> Dict[str, Any]:
+        req_payload = body
+        req = request.Request(
+            target_url,
+            data=req_payload,
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with request.urlopen(req, timeout=timeout_s) as resp:
+            raw = resp.read().decode("utf-8")
+        return json.loads(raw)
+
+    def _do_post_payload(target_url: str, req_payload: Dict[str, Any]) -> Dict[str, Any]:
+        req = request.Request(
+            target_url,
+            data=json.dumps(req_payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with request.urlopen(req, timeout=timeout_s) as resp:
+            raw = resp.read().decode("utf-8")
+        return json.loads(raw)
+
+    try:
+        return _do_post(url)
+    except error.HTTPError as exc:
+        if exc.code == 422 and minimal_payload is not None:
+            try:
+                return _do_post_payload(url, minimal_payload)
+            except Exception:  # noqa: BLE001
+                pass
+        if exc.code in (404, 405) and url.endswith("/prove"):
+            base_url = url[: -len("/prove")]
+            try:
+                return _do_post(base_url)
+            except Exception:  # noqa: BLE001
+                pass
+            if minimal_payload is not None:
+                try:
+                    return _do_post_payload(base_url, minimal_payload)
+                except Exception:  # noqa: BLE001
+                    pass
+        response_body = ""
+        try:
+            response_body = exc.read().decode("utf-8", errors="replace").strip()
+        except Exception:  # noqa: BLE001
+            response_body = ""
+        details = response_body[:400] if response_body else "<empty>"
+        hint = ""
+        if "modal.com/apps/" in url:
+            hint = (
+                " Hint: this looks like a Modal dashboard URL. Use the deployed `.modal.run` prover endpoint."
+            )
+        elif ".modal.run" in url and exc.code in (404, 405):
+            hint = (
+                " Hint: verify this is the deployed `prover_api` URL from `modal deploy` (not a temporary `-dev.modal.run` URL)."
+            )
+        raise RuntimeError(
+            f"HTTP {exc.code} while POST {url}: {exc.reason}. Response body: {details}.{hint}"
+        ) from exc
+    except error.URLError as exc:
+        raise RuntimeError(f"Network error while POST {url}: {exc.reason}") from exc
 
 
 def get_json(url: str, timeout_s: int = 30) -> Dict[str, Any]:
@@ -345,4 +406,3 @@ def verify_prover_response(response_payload: Dict[str, Any]) -> Dict[str, Any]:
         "inference_output": response_payload.get("inference_output", {}),
         "verification": verification,
     }
-

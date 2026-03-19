@@ -15,7 +15,12 @@ def parse_args() -> argparse.Namespace:
             "or verifies an already saved payload file."
         )
     )
-    parser.add_argument("--prover-url", type=str, default="http://127.0.0.1:8081", help="Base URL for prover server")
+    parser.add_argument(
+        "--prover-url",
+        type=str,
+        default="http://127.0.0.1:8081",
+        help="Base URL for prover server (use deployed .modal.run URL for Modal).",
+    )
     parser.add_argument("--model-name", type=str, default=None, help="Model in prover allowlist (required when querying prover)")
     parser.add_argument("--prompt", type=str, default=None, help="Prompt text (required when querying prover)")
     parser.add_argument("--max-new-tokens", type=int, default=16)
@@ -51,12 +56,25 @@ def load_payload_file(path: Path) -> Dict[str, Any]:
         return json.load(handle)
 
 
+def normalize_prover_base_url(url: str) -> str:
+    base_url = url.strip().rstrip("/")
+    if not base_url:
+        raise ValueError("--prover-url cannot be empty")
+    if "modal.com/apps/" in base_url and ".modal.run" not in base_url:
+        raise ValueError(
+            "You passed a Modal dashboard URL. Use the deployed web endpoint URL ending in '.modal.run'."
+        )
+    if base_url.endswith("/prove"):
+        base_url = base_url[: -len("/prove")]
+    return base_url
+
+
 def request_payload_from_prover(args: argparse.Namespace) -> Dict[str, Any]:
     if not args.model_name:
         raise ValueError("--model-name is required when --payload-file is not provided")
     if not args.prompt:
         raise ValueError("--prompt is required when --payload-file is not provided")
-    endpoint = args.prover_url.rstrip("/") + "/prove"
+    endpoint = normalize_prover_base_url(args.prover_url) + "/prove"
     request_payload = {
         "model_name": args.model_name,
         "prompt": args.prompt,
@@ -108,4 +126,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

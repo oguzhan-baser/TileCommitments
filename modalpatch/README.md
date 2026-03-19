@@ -41,6 +41,11 @@ Then picks the smallest GPU tier satisfying estimated VRAM:
 
 `T4 -> L4 -> A10G -> L40S -> A100-40GB -> A100-80GB -> H100`
 
+Multi-GPU rule of thumb:
+- `required_gpu_count = ceil((params_b * 2) / gpu_memory_gb)`
+- Example: `120B -> ~240GB`, so on 80GB H100/A100 this maps to `3` GPUs.
+- For multi-GPU capture, the service now sets an explicit Transformers disk offload folder to avoid `offload_folder` runtime errors.
+
 You can edit `GPU_MEMORY_GB`, `GPU_PRIORITY`, or `model_catalog.json` as needed.
 
 ---
@@ -89,6 +94,9 @@ cd /home/ob3942/repos/TileCommitments
 modal deploy modalpatch/modal_splitcompute_service.py
 ```
 
+Copy the `prover_api` URL printed by this command. That is the stable endpoint to pass as `--prover-url`.
+Do not use Modal dashboard links (`modal.com/apps/...`) or temporary `-dev.modal.run` links from ad-hoc runs.
+
 Warm model cache (recommended):
 
 ```bash
@@ -100,6 +108,7 @@ modal run modalpatch/modal_splitcompute_service.py --models "Qwen/Qwen2-0.5B,Qwe
 ## Calling from verifier side
 
 After deploy, Modal prints the web endpoint URL for `prover_api`.
+Use that deployed `https://...modal.run` URL (not the dashboard URL `https://modal.com/apps/...`).
 
 Use existing verifier CLI from `splitcompute`:
 
@@ -133,4 +142,3 @@ You can also use `splitcompute/verifier_web.py` by pointing `--prover-url` to th
 - GPU configuration (`modal.gpu` / `gpu=` strings).
 - Volumes for persistent caching.
 - Image build and local source inclusion (`Image.add_local_dir` / package setup).
-
