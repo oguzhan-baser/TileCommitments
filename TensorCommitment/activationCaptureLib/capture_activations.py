@@ -154,6 +154,11 @@ def parse_args() -> argparse.Namespace:
              "deterministic CUDA/cuDNN ops, and sets CUBLAS_WORKSPACE_CONFIG. "
              "Same input + same environment = bit-identical activations.",
     )
+    p.add_argument(
+        "--fail-on-error",
+        action="store_true",
+        help="Exit non-zero if any model fails during capture.",
+    )
     return p.parse_args()
 
 # ---------------------------------------------------------------------------
@@ -498,11 +503,11 @@ def load_model_and_tokenizer(
     def _load_with_quant_fallbacks(trust_remote_code: bool) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
         should_dequantize, reason = _should_force_mxfp4_dequantize(trust_remote_code)
         if should_dequantize:
-            print(f"[INFO] MXFP4 fallback: forcing dequantized bf16 load ({reason})")
+            print(f"[INFO] MXFP4 fallback: forcing dequantized {dtype} load ({reason})")
             return _load(
                 trust_remote_code=trust_remote_code,
                 quantization_config=Mxfp4Config(dequantize=True),
-                forced_dtype=torch.bfloat16,
+                forced_dtype=dtype,
             )
         return _load_with_awq_fallback(trust_remote_code=trust_remote_code)
 
@@ -828,6 +833,7 @@ def main() -> None:
     print(f"[INFO] output -> {output_dir.resolve()}")
 
     report: List[Dict[str, object]] = []
+    failed_models: List[str] = []
     for name in args.models:
         entry = process_model(
             name,
@@ -841,11 +847,17 @@ def main() -> None:
         )
         if entry is not None:
             report.append(entry)
+        else:
+            failed_models.append(name)
 
     # Print consolidated report
     print(f"\n{'='*60}")
     print("[JSON REPORT]")
     print(json.dumps(report, indent=2))
+
+    if args.fail_on_error and failed_models:
+        print(f"[FATAL] Activation capture failed for models: {failed_models}")
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

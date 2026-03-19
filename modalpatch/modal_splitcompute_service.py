@@ -139,11 +139,17 @@ def select_gpu_for_model(model_name: str) -> Dict[str, Any]:
         params_b = inferred
 
     required_vram = _estimate_required_vram_gb(params_b)
-    selected = GPU_PRIORITY[-1]
-    for gpu_name in GPU_PRIORITY:
-        if GPU_MEMORY_GB[gpu_name] >= required_vram:
-            selected = gpu_name
-            break
+    model_name_lower = model_name.lower()
+    # GPT-OSS-120B compatibility override:
+    # prefer A100-80GB over H100 because H100 path can hit kernel/dtype mismatch issues.
+    if model_name_lower == "openai/gpt-oss-120b":
+        selected = "A100-80GB"
+    else:
+        selected = GPU_PRIORITY[-1]
+        for gpu_name in GPU_PRIORITY:
+            if GPU_MEMORY_GB[gpu_name] >= required_vram:
+                selected = gpu_name
+                break
     # Rule-of-thumb sizing for multi-GPU placement:
     # model params in billions * 2 bytes ~= total model memory in GiB.
     # Example: 120B -> 240GiB -> 3x 80GiB GPUs.
@@ -169,6 +175,22 @@ def _run_cmd(
     if env_overrides:
         env.update(env_overrides)
     subprocess.run(args, cwd=str(cwd), check=True, env=env)
+
+
+def _commit_volume_if_supported(volume: modal.Volume, label: str) -> None:
+    try:
+        volume.commit()
+        print(f"[INFO] Volume commit: {label}")
+    except AttributeError:
+        return
+
+
+def _reload_volume_if_supported(volume: modal.Volume, label: str) -> None:
+    try:
+        volume.reload()
+        print(f"[INFO] Volume reload: {label}")
+    except AttributeError:
+        return
 
 
 def _extract_inference_output(activations_pt: Path) -> Dict[str, Any]:
@@ -240,12 +262,14 @@ def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, A
         str(capture_dir),
         "--seed",
         str(seed),
+        "--fail-on-error",
     ]
+    sharding_args: List[str] = []
     if selected_gpu_count > 1:
         per_gpu_mib = int(GPU_MEMORY_GB[selected_gpu] * 1024 * 85 // 100)
         offload_dir = run_dir / "offload"
         offload_dir.mkdir(parents=True, exist_ok=True)
-        capture_cmd.extend(
+        sharding_args.extend(
             [
                 "--device-map",
                 "auto",
@@ -256,15 +280,41 @@ def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, A
             ]
         )
 
-    _run_cmd(
-        capture_cmd,
-        env_overrides={"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"},
-    )
+    env_overrides = {"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"}
+    capture_attempts: List[List[str]]
+    if model_name.lower() == "openai/gpt-oss-120b":
+        env_overrides["CUDA_LAUNCH_BLOCKING"] = "1"
+        capture_attempts = [
+            ["--dtype", "bfloat16", "--mxfp4-mode", "dequantize"],
+            ["--dtype", "float16", "--mxfp4-mode", "dequantize"],
+        ]
+    else:
+        capture_attempts = [[]]
+
+    last_capture_error: subprocess.CalledProcessError | None = None
+    for attempt_idx, attempt_args in enumerate(capture_attempts, start=1):
+        cmd = [*capture_cmd, *attempt_args, *sharding_args]
+        try:
+            _run_cmd(cmd, env_overrides=env_overrides)
+            last_capture_error = None
+            break
+        except subprocess.CalledProcessError as exc:
+            last_capture_error = exc
+            if len(capture_attempts) > 1:
+                print(
+                    f"[WARN] Capture attempt {attempt_idx}/{len(capture_attempts)} failed "
+                    f"for {model_name} (return code={exc.returncode})."
+                )
+
+    if last_capture_error is not None:
+        raise last_capture_error
 
     safe = _sanitize_model_name(model_name)
     activations_pt = capture_dir / f"{safe}_activations.pt"
     if not activations_pt.is_file():
         raise FileNotFoundError(f"Expected activation artifact missing: {activations_pt}")
+    _commit_volume_if_supported(ARTIFACT_VOL, "artifacts")
+    _commit_volume_if_supported(HF_CACHE_VOL, "hf_cache")
 
     inference_output = _extract_inference_output(activations_pt)
     return {
@@ -280,6 +330,9 @@ def _gpu_capture_impl(payload: Dict[str, Any], selected_gpu: str) -> Dict[str, A
 
 
 def _cpu_commit_prove_impl(payload: Dict[str, Any]) -> Dict[str, Any]:
+    _reload_volume_if_supported(ARTIFACT_VOL, "artifacts")
+    _reload_volume_if_supported(HF_CACHE_VOL, "hf_cache")
+
     run_id = str(payload["run_id"])
     model_name = str(payload["model_name"])
     prompt = str(payload["prompt"])
@@ -582,6 +635,32 @@ def run_gpu_capture_a100_80(payload: Dict[str, Any]) -> Dict[str, Any]:
     timeout=60 * 60,
     cpu=4,
     memory=16384,
+    gpu="A100-80GB:2",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_a100_80_2(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "A100-80GB")
+
+
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
+    gpu="A100-80GB:3",
+    volumes=SHARED_MOUNTS,
+    scaledown_window=30,
+    min_containers=0,
+)
+def run_gpu_capture_a100_80_3(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return _gpu_capture_impl(payload, "A100-80GB")
+
+
+@APP.function(
+    timeout=60 * 60,
+    cpu=4,
+    memory=16384,
     gpu="H100",
     volumes=SHARED_MOUNTS,
     scaledown_window=30,
@@ -628,6 +707,9 @@ GPU_TO_CAPTURE_FN = {
 }
 
 GPU_TO_CAPTURE_FN_WITH_COUNT = {
+    ("A100-80GB", 1): run_gpu_capture_a100_80,
+    ("A100-80GB", 2): run_gpu_capture_a100_80_2,
+    ("A100-80GB", 3): run_gpu_capture_a100_80_3,
     ("H100", 1): run_gpu_capture_h100,
     ("H100", 2): run_gpu_capture_h100_2,
     ("H100", 3): run_gpu_capture_h100_3,

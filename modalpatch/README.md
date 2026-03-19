@@ -45,6 +45,7 @@ Multi-GPU rule of thumb:
 - `required_gpu_count = ceil((params_b * 2) / gpu_memory_gb)`
 - Example: `120B -> ~240GB`, so on 80GB H100/A100 this maps to `3` GPUs.
 - For multi-GPU capture, the service now sets an explicit Transformers disk offload folder to avoid `offload_folder` runtime errors.
+- Compatibility override: `openai/gpt-oss-120b` is pinned to `A100-80GB` (multi-GPU) instead of H100.
 
 You can edit `GPU_MEMORY_GB`, `GPU_PRIORITY`, or `model_catalog.json` as needed.
 
