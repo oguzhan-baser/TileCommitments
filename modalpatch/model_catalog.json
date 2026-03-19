@@ -21,6 +21,14 @@
       "params_b": 80.0
     },
     {
+      "id": "Qwen/Qwen3-30B-A3B-Thinking-2507-FP8",
+      "params_b": 30.0
+    },
+    {
+      "id": "Qwen/Qwen3-4B-Thinking-2507-FP8",
+      "params_b": 4.0
+    },
+    {
       "id": "openai/gpt-oss-120b",
       "params_b": 120.0
     },

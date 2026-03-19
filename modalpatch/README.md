@@ -101,7 +101,7 @@ Do not use Modal dashboard links (`modal.com/apps/...`) or temporary `-dev.modal
 Warm model cache (recommended):
 
 ```bash
-modal run modalpatch/modal_splitcompute_service.py --models "Qwen/Qwen2-0.5B,Qwen/Qwen2-1.5B,Qwen/Qwen2-7B"
+modal run modalpatch/modal_splitcompute_service.py --models "Qwen/Qwen2-0.5B,Qwen/Qwen2-1.5B,Qwen/Qwen2-7B,Qwen/Qwen3-4B-Thinking-2507-FP8,Qwen/Qwen3-30B-A3B-Thinking-2507-FP8"
 ```
 
 ---
