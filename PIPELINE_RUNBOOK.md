@@ -179,6 +179,43 @@ python verify_saved_proof.py \
   --bundle "$RUN_DIR/proof_bundle_flat_12345.json"
 ```
 
+## 11- Empirical measurements
+
+Use this after a run is complete to get empirical (file-size + runtime) measurements for verifier/prover overhead:
+
+```bash
+source /home/ob3942/miniconda3/etc/profile.d/conda.sh
+conda activate tilecommitments
+cd /home/ob3942/repos/TileCommitments
+
+python measure_empirical_pipeline.py \
+  --run-dir "$RUN_DIR" \
+  --model-id "$MODEL"
+```
+
+Outputs are written under `$RUN_DIR/empirical_measurements/`:
+- `stage5_stage6_size_report.json`
+- `stage7_stage8_compute_report.json`
+- `model_param_transfer_sizes.json`
+- `final_empirical_report.md`
+
+Example (already measured on this repo):
+
+```bash
+source /home/ob3942/miniconda3/etc/profile.d/conda.sh
+conda activate tilecommitments
+cd /home/ob3942/repos/TileCommitments
+python measure_empirical_pipeline.py \
+  --run-dir TensorCommitment/activationCaptureLib/output/deepseek_r1d_qwen15b_run_20260227 \
+  --model-id deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
+```
+
+Example outputs from that run (`.../deepseek_r1d_qwen15b_run_20260227/empirical_measurements/final_empirical_report.md`):
+- Verifier non-model payload: `2,312,453 B` raw (`2.21 MB`), `2,083,579 B` compressed (`1.99 MB`)
+- Prover non-model payload: `265 B` raw, `437 B` compressed
+- Verifier crypto verification: node `0.007140 s`, full-tile (`28` layers) `0.245146 s`
+- Prover proof generation: node `3.599282 s`, full-tile (`28` layers) `94.611687 s`
+
 ## Key artifacts
 
 - Activations: `$ACT_PT`
